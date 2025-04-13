@@ -1,0 +1,77 @@
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.left-section {
+  margin-top: 20px;
+  flex: 1;
+ // min-width: 300px;
+ width: 50%;
+
+}
+
+.right-section {
+  margin-top: 20px;
+  flex: 1;
+  //min-width: 300px;
+  width: 50%;
+
+}
+
+.application-level {
+  font-family: 'Times New Roman', Times, serif;
+  //overflow-y: auto;
+ // overflow-y: auto;
+}
+
+.image-dimentions {
+  height: 50%;
+  width: 50%;
+}
+
+.attraction-section {
+  margin-top: 20px;
+  // justify-items: left;
+  font-size: 20px;
+}
+
+.facility-section {
+  //margin-top: 20px;
+  // justify-items: left;
+  font-size: 20px;
+}
+
+.contact-info-section {
+  //justify-items: left;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.location-info-section {
+  // justify-items: left;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .left-section {
+    margin-top: 20px;
+    flex: 1;
+   // min-width: 300px;
+   width: 100%;
+  
+  }
+  
+  .right-section {
+    margin-top: 20px;
+    flex: 1;
+    //min-width: 300px;
+    width: 100%;
+  
+  }
+}

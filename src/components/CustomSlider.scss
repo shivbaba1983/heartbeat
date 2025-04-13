@@ -1,0 +1,33 @@
+.custom-slider-section {
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.left-slider-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    color: red;
+    background-color: darkgray;
+    height: 30px;
+    width: 30px;
+    border: none;
+}
+
+.right-slider-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    color: red;
+    background-color: darkgray;
+    height: 30px;
+    width: 30px;
+    border: none;
+}
+
+.slider-images {
+    width: 80%;
+    max-height: 400px;
+}

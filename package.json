@@ -1,0 +1,65 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "homepage": "https://shivbaba1983.github.io/cms",
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.8.4",
+    "cheerio": "^1.0.0",
+    "leaflet": "^1.9.4",
+    "path": "^0.12.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "7.2.0",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.15.2",
+    "sass": "^1.85.0",
+    "swiper": "^11.2.6",
+    "web-vitals": "^2.1.4",
+    "yahoo-finance2": "^2.13.3"
+  },
+  "scripts": {
+    "install-all": "npm install --prefix client && npm install --prefix server",
+    "dev": "concurrently \"vite\" \"npm start --prefix client\" \"npm start --prefix server\"",
+    "start": "vite",
+    "build": "vite build",
+    "build-prod": "vite build",
+    "ci": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.26.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "gh-pages": "^6.3.0",
+    "vite": "^5.4.6",
+    "vite-plugin-static-copy": "^1.0.1",
+    "concurrently": "^8.0.0"
+  },
+  "rules": {
+    "no-console": "off"
+  }
+}

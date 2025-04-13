@@ -1,0 +1,17 @@
+.complex-main-route-section {
+    .tab-list {
+       // overflow: hidden;
+        .cms-meganav-section{
+            display: inline-flex;
+            list-style-type: none;
+            .meganav-sublist{
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .link-button {
+        display: inline-block;
+        margin-right: 10px;
+    }
+}

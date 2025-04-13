@@ -1,0 +1,114 @@
+{
+    "data": {
+      "totalRecord": 933,
+      "lastTrade": "LAST TRADE: $504.38 (AS OF APR 7, 2025)",
+      "table": {
+        "asOf": null,
+        "headers": {
+          "expiryDate": "Exp. Date",
+          "c_Last": "Last",
+          "c_Change": "Change",
+          "c_Bid": "Bid",
+          "c_Ask": "Ask",
+          "c_Volume": "Volume",
+          "c_Openinterest": "Open Int.",
+          "strike": "Strike",
+          "p_Last": "Last",
+          "p_Change": "Change",
+          "p_Bid": "Bid",
+          "p_Ask": "Ask",
+          "p_Volume": "Volume",
+          "p_Openinterest": "Open Int."
+        },
+        "rows": [
+          {
+            "expirygroup": "April 7, 2025",
+            "expiryDate": null,
+            "c_Last": null,
+            "c_Change": null,
+            "c_Bid": null,
+            "c_Ask": null,
+            "c_Volume": null,
+            "c_Openinterest": null,
+            "c_colour": false,
+            "strike": null,
+            "p_Last": null,
+            "p_Change": null,
+            "p_Bid": null,
+            "p_Ask": null,
+            "p_Volume": null,
+            "p_Openinterest": null,
+            "p_colour": false,
+            "drillDownURL": null
+          },
+          {
+            "expirygroup": "",
+            "expiryDate": "Apr 7",
+            "c_Last": "43.01",
+            "c_Change": "8.18",
+            "c_Bid": "52.81",
+            "c_Ask": "55.53",
+            "c_Volume": "17",
+            "c_Openinterest": "--",
+            "c_colour": true,
+            "strike": "454.00",
+            "p_Last": "0.01",
+            "p_Change": "-0.33",
+            "p_Bid": "--",
+            "p_Ask": "0.01",
+            "p_Volume": "1958",
+            "p_Openinterest": "--",
+            "p_colour": false,
+            "drillDownURL": "/market-activity/etf/spy/option-chain/call-put-options/spy---250407c00454000"
+          },
+          {
+            "expirygroup": "",
+            "expiryDate": "Apr 7",
+            "c_Last": "44.72",
+            "c_Change": "16.09",
+            "c_Bid": "51.83",
+            "c_Ask": "54.51",
+            "c_Volume": "54",
+            "c_Openinterest": "--",
+            "c_colour": true,
+            "strike": "455.00",
+            "p_Last": "0.01",
+            "p_Change": "-0.89",
+            "p_Bid": "--",
+            "p_Ask": "0.01",
+            "p_Volume": "8174",
+            "p_Openinterest": "1437",
+            "p_colour": false,
+            "drillDownURL": "/market-activity/etf/spy/option-chain/call-put-options/spy---250407c00455000"
+          },
+          {
+            "expirygroup": "",
+            "expiryDate": "Apr 7",
+            "c_Last": "39.20",
+            "c_Change": "9.00",
+            "c_Bid": "50.81",
+            "c_Ask": "52.11",
+            "c_Volume": "32",
+            "c_Openinterest": "--",
+            "c_colour": true,
+            "strike": "456.00",
+            "p_Last": "0.01",
+            "p_Change": "-0.42",
+            "p_Bid": "--",
+            "p_Ask": "0.01",
+            "p_Volume": "6443",
+            "p_Openinterest": "--",
+            "p_colour": false,
+            "drillDownURL": "/market-activity/etf/spy/option-chain/call-put-options/spy---250407c00456000"
+          }
+          
+        ]
+      }
+    },
+    "message": null,
+    "status": {
+      "rCode": 200,
+      "bCodeMessage": null,
+      "developerMessage": null
+    }
+  }
