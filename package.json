@@ -26,7 +26,7 @@
   },
   "scripts": {
     "install-all": "npm install --prefix client && npm install --prefix server",
-    "dev": "concurrently \"vite\" \"npm start --prefix client\" \"npm start --prefix server\"",
+    "dev": "concurrently \"vite\" \"npm start --prefix src\" \"npm start --prefix server\"",
     "start": "vite",
     "build": "vite build",
     "build-prod": "vite build",
