@@ -11,6 +11,8 @@ const MainResponsiveLayout = () => {
         {/* <NASDAQStock/> */}
         {/* <FinnhubOptions/> */}
         <NasdaqOptions />
+
+   
       </div>
 
 

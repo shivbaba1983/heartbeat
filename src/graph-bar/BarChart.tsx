@@ -28,7 +28,7 @@ const rawData = [
 //   putVolume: Number(row.p_Volume)
 // }));
 
-const BarGraphChart = ({ rows, selectedTicker }) => {
+const BarGraphChart = ({ rows, selectedTicker , volumeOrInterest}) => {
 
     const [chartCallData, setChartCallData] = useState([]);
     const [chartPutData, setChartPutData] = useState([]);
@@ -37,7 +37,7 @@ const BarGraphChart = ({ rows, selectedTicker }) => {
     useEffect(() => {
         const tempCallData = rows.map(row => ({
             strike: row.strike,
-            callVolume: Number(row.c_Volume),
+            callVolume: Number(volumeOrInterest=== 'volume'? row.c_Volume: row.c_Openinterest),
             expiryDate: row.expiryDate,
             c_Last: row.c_Last
             //putVolume: Number(row.p_Volume)
@@ -45,7 +45,7 @@ const BarGraphChart = ({ rows, selectedTicker }) => {
         }))
         const tempPutData = rows.map(row => ({
             strike: row.strike,
-            putVolume: Number(row.p_Volume),
+            putVolume: Number(volumeOrInterest=== 'volume'? row.p_Volume : row.p_Openinterest),
             expiryDate: row.expiryDate,
             p_Last: row.p_Last
             //tempp: tempp + Number(row.p_Volume)
@@ -66,7 +66,7 @@ const BarGraphChart = ({ rows, selectedTicker }) => {
 
 
     return (<div>
-        <h2>{selectedTicker} :  {formattedCall}</h2>
+        <h2>{selectedTicker } {volumeOrInterest}  :  {formattedCall}</h2>
         <ResponsiveContainer width="100%" height={400}>
             <BarChart data={chartCallData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -81,7 +81,7 @@ const BarGraphChart = ({ rows, selectedTicker }) => {
             </BarChart>
         </ResponsiveContainer>
 
-        <h2>{selectedTicker} :  {formattedPut}</h2>
+        <h2>{selectedTicker} {volumeOrInterest} :  {formattedPut}</h2>
         <ResponsiveContainer width="100%" height={400}>
             <BarChart data={chartPutData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />

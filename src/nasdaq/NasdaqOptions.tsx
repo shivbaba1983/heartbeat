@@ -6,7 +6,7 @@ import LiveStrikeVolumeChart from './../graph-chart/LiveStrikeVolumeChart';
 import CallPutBarChart from './../graph-chart/CallPutBarChart';
 import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
-
+import OptionsChart from './../marketData/OptionsChart';
 
 const tickerListData = [
   { idx: 1, value: "SPY" },
@@ -19,7 +19,8 @@ const tickerListData = [
   { idx: 20, value: "TSLA" },
   { idx: 21, value: "DAL" },
   { idx: 22, value: "AAL" },
-  { idx: 22, value: "GME" }, ,
+  { idx: 22, value: "GME" }, 
+  { idx: 22, value: "BABA" }, 
   { idx: 1101, value: "SOXL" },
   { idx: 1102, value: "TSLL" },
   { idx: 1103, value: "TQQQ" },
@@ -48,9 +49,9 @@ const NasdaqOptions = () => {
   const [assetclass, setAssetclass] = useState('ETF');
   const [volumeOrInterest, setVolumeOrInterest] = useState('volume');
   const [lastTrade, setLastTrade] = useState('');
-  const [selected, setSelected] = useState('day'); // 'day' | 'month' | null
-  const [showChart, setShowChart] = useState(false);
-
+  const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
+  const [showBarChart, setShowBarChart] = useState(true);
+const [showMarketdata, setShowMarketdata]= useState(false);
 
   // useEffect(() => {
   //   fetch("http://localhost:5000/myData/")
@@ -64,11 +65,11 @@ const NasdaqOptions = () => {
 
   useEffect(() => {
     getmydata()
-  }, [selected, selectedTicker, assetclass]);
+  }, [selectedDayOrMonth, selectedTicker, assetclass]);
 
 
   const handleSelect = (value) => {
-    setSelected((prev) => (prev === value ? null : value)); // toggle off if already selected
+    setSelectedDayOrMonth((prev) => (prev === value ? null : value)); // toggle off if already selected
   };
 
   const handleChandleVolumeOrOPrnInterestChangehange = async (e) => {
@@ -108,7 +109,9 @@ const NasdaqOptions = () => {
     setPuts([]);
     try {
       //const res = await axios.get(`http://localhost:8080/api/options/${selected}/${assetclass}`);
-      const res = await axios.get(`http://localhost:8080/api/options/${selectedTicker}/${assetclass}/${selected}`);
+      //const res = await axios.get(`https://heartbeat-lgee.onrender.com/api/options/${selectedTicker}/${assetclass}/${selected}`);
+      const res = await axios.get(`https://e616-2600-1700-6cb0-2a20-5899-93a7-9cb4-db7f.ngrok-free.app/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
+      //const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       //console.log(res.data);
       const rows = res.data?.data?.table?.rows || [];
       const lstPrice = res.data?.data?.lastTrade;
@@ -160,7 +163,7 @@ const NasdaqOptions = () => {
           <label>
             <input
               type="checkbox"
-              checked={selected === 'day'}
+              checked={selectedDayOrMonth === 'day'}
               onChange={() => handleSelect('day')}
             />
             Day
@@ -169,7 +172,7 @@ const NasdaqOptions = () => {
           <label>
             <input
               type="checkbox"
-              checked={selected === 'month'}
+              checked={selectedDayOrMonth === 'month'}
               onChange={() => handleSelect('month')}
             />
             Month
@@ -197,8 +200,8 @@ const NasdaqOptions = () => {
           <label className="common-left-margin">
             <input
               type="checkbox"
-              checked={showChart}
-              onChange={() => setShowChart(!showChart)}
+              checked={showBarChart}
+              onChange={() => setShowBarChart(!showBarChart)}
             />
             <span>Show Chart</span>
           </label>
@@ -214,8 +217,26 @@ const NasdaqOptions = () => {
       <div>
         <CallPutBarChart rows={calls} volumeOrInterest={volumeOrInterest} />
       </div>
+
+      
       <div>
-        {showChart && <BarGraphChart rows={calls} selectedTicker={selectedTicker} />}
+        {showBarChart && <BarGraphChart rows={calls} selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest}/>}
+      </div>
+
+
+      <div className="market-data-checkbox">
+          <label className="">
+            <input
+              type="checkbox"
+              checked={showMarketdata}
+              onChange={() => setShowMarketdata(!showMarketdata)}
+            />
+            <span>MarketData</span>
+          </label>
+        </div>
+
+      <div>
+      {showMarketdata && <OptionsChart selectedTicker={selectedTicker}/>}
       </div>
       {/* <p>with live data compare</p>*/}
       {/* <LiveStrikeVolumeChart  rowsDataTest={calls}/>  */}

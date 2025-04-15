@@ -8,33 +8,33 @@ export default defineConfig({
     esbuild: {
         //include: /\.[jt]sx?$/,
         exclude: [],
-loader:"jsx",
+        loader: "jsx",
         include: [
             // Add this for business-as-usual behaviour for .jsx and .tsx files
             "src/**/*.jsx",
             "src/**/*.tsx",
             "node_modules/**/*.jsx",
             "node_modules/**/*.tsx",
-      
+
             // Add the specific files you want to allow JSX syntax in
             "src/LocalJsxInJsComponent.js",
             "node_modules/bad-jsx-in-js-component/index.js",
             "node_modules/bad-jsx-in-js-component/js/BadJSXinJS.js",
             "node_modules/bad-jsx-in-js-component/ts/index.ts",
             "node_modules/bad-jsx-in-js-component/ts/BadTSXinTS.ts",
-      
+
             // --- OR ---
-      
+
             // Add these lines to allow all .js files to contain JSX
             "src/**/*.js",
             "node_modules/**/*.js",
-      
+
             // Add these lines to allow all .ts files to contain JSX
             "src/**/*.ts",
             "node_modules/**/*.ts",
-          ],
-      },
-      optimizeDeps: { esbuildOptions: { loader:{ '.js': 'jsx' } } },
+        ],
+    },
+    optimizeDeps: { esbuildOptions: { loader: { '.js': 'jsx' } } },
 
     plugins: [
         react(),
@@ -61,7 +61,21 @@ loader:"jsx",
         }
     },
     server: {
-        port: 8086,
+        port: 5173,
+        proxy: {
+            '/api': 'http://localhost:5000'
+          },
+        allowedHosts: [
+            'all',
+            'https://e616-2600-1700-6cb0-2a20-5899-93a7-9cb4-db7f.ngrok-free.app',
+            'e616-2600-1700-6cb0-2a20-5899-93a7-9cb4-db7f.ngrok-free.app',
+            '*'
+          ],
+          cors: {
+            origin: '*',        // Allow all origins
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+            //allowedHeaders: ['Content-Type', 'Authorization']
+          }
     },
     build: {
         target: "esnext",
