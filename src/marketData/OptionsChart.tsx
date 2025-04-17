@@ -4,18 +4,20 @@ import {
 } from 'recharts';
 import { BarChart, Bar, } from 'recharts';
 import axiosInstance from './axiosInstance';
-let totalCallVolume=0;
-let totalPutVolume=0;
+let totalCallVolume = 0;
+let totalPutVolume = 0;
 let exDate;
 const validityData = [
-    { idx: 1, value: "weekly" },
-    { idx: 2, value: "monthly" },
+    { idx: 1, value: "day" },
+    { idx: 2, value: "weekly" },
+    { idx: 3, value: "monthly" },
     { idx: 4, value: "quarterly" },
 ]
 
-const transformOptionData = (data) => {
+const transformOptionData = async (data) => {
     const resultMap = {};
-
+    totalCallVolume = 0;
+    totalPutVolume = 0;
     data.strike.forEach((strike, i) => {
         if (!resultMap[strike]) {
             resultMap[strike] = {
@@ -26,7 +28,7 @@ const transformOptionData = (data) => {
                 putVolume: 0,
                 callBidPrice: 0,
                 putBidPrice: 0,
-                expirationDate:''
+                expirationDate: ''
             };
         }
 
@@ -34,13 +36,13 @@ const transformOptionData = (data) => {
         const openInterest = data.openInterest[i];
         const volume = data.volume[i];
         const bid = data.bid[i];
-       // const exDate = convertGMTtoEST(data.expiration[i]);
+        // const exDate = convertGMTtoEST(data.expiration[i]);
         if (side === 'call') {
             resultMap[strike].callOpenInterest = openInterest;
-            totalCallVolume+= resultMap[strike].callVolume = volume;
+            totalCallVolume+=resultMap[strike].callVolume = volume;
             resultMap[strike].callBidPrice = bid;
             //resultMap[strike].expirationDate =exDate;
-            
+
         } else {
             resultMap[strike].putOpenInterest = openInterest;
             totalPutVolume+=resultMap[strike].putVolume = volume;
@@ -53,69 +55,81 @@ const transformOptionData = (data) => {
     return Object.values(resultMap).sort((a, b) => a.strike - b.strike);
 };
 
-const convertGMTtoEST = (gmtTimestamp) => {
-    const date = new Date(gmtTimestamp); // Assumes input is ISO 8601 or epoch
-    return date.toLocaleString('en-US', {
-      timeZone: 'America/New_York',
-      hour12: false,
-    });
-  };
+
+async function getFridayOfCurrentWeek() {
+    const today = new Date();
+    const dayOfWeek = today.getDay(); // Sunday - Saturday : 0 - 6
+    const diffToFriday = 3 - dayOfWeek;
+    const friday = new Date(today);
+    friday.setDate(today.getDate() + diffToFriday);
+    return friday.toISOString().slice(0, 10);;
+}
 
 const OptionsChart = ({ selectedTicker }) => {
     const [graphData, setGraphData] = useState([]);
-    const [selectedValidity, setSelectedValidity] = useState('weekly');
+    const [selectedValidity, setSelectedValidity] = useState('day');
     const [lineGraphData, setLineGraphData] = useState([]);
-
+const [tempTicker, setTempTicker]=useState(selectedTicker);
     useEffect(() => {
         const fetchOptionsData = async () => {
+            setTempTicker(selectedTicker)
+            const expirationDate = "2025-04-17";// await getFridayOfCurrentWeek();//"2025-04-15";// getUnixTimeNow();
             try {
                 // Replace with your actual fetch call
                 //const response = await fetch('/v1/options/chain/AAPL/'); // your endpoint
                 let response;
                 if (selectedTicker === "QQQ" || selectedTicker === "SPY" || selectedTicker === "IWM") {
-                    response = await axiosInstance.get(`/v1/options/chain/${selectedTicker}?strikeLimit=50`);
+                    const today = new Date();
+                    let todayDate = today.toISOString().slice(0, 10);
+                    response = await axiosInstance.get(`/v1/options/chain/${selectedTicker}?strikeLimit=20&expiration=${todayDate}`);
                 }
                 else {
-                    response = await axiosInstance.get(`/v1/options/chain/${selectedTicker}?strikeLimit=50&${selectedValidity}=true`);
+                    if (selectedValidity === 'day') {
+                        response = await axiosInstance.get(`/v1/options/chain/${selectedTicker}?strikeLimit=20&expiration=${expirationDate}`);
+                    } else {
+                        response = await axiosInstance.get(`/v1/options/chain/${selectedTicker}?strikeLimit=20&${selectedValidity}=true`);
+                    }
                 }
 
                 const optionsData = response?.data;
 
-                const data = transformOptionData(optionsData);
+                const data = await transformOptionData(optionsData);
                 setGraphData(data)
 
-                const combinedData = optionsData.strike.map((strike, index) => ({
-                    strike,
-                    callBid: optionsData.side[index] === 'call' ? optionsData.bid[index] : null,
-                    putBid: optionsData.side[index] === 'put' ? optionsData.bid[index] : null,
-                }));
+                // const combinedData = optionsData.strike.map((strike, index) => ({
+                //     strike,
+                //     callBid: optionsData.side[index] === 'call' ? optionsData.bid[index] : null,
+                //     putBid: optionsData.side[index] === 'put' ? optionsData.bid[index] : null,
+                //     volume: optionsData.volume[index]
+                // }));
 
-                const mergedData = Object.values(
-                    combinedData.reduce((acc, item) => {
-                        const key = item.strike;
-                        if (!acc[key]) {
-                            acc[key] = { strike: item.strike, callBid: null, putBid: null };
-                        }
-                        if (item.callBid != null) acc[key].callBid = item.callBid;
-                        if (item.putBid != null) acc[key].putBid = item.putBid;
-                        return acc;
-                    }, {})
-                ).sort((a, b) => a.strike - b.strike);
+                // const mergedData = Object.values(
+                //     combinedData.reduce((acc, item) => {
+                //         const key = item.strike;
+                //         if (!acc[key]) {
+                //             acc[key] = { strike: item.strike, volume:null,callBid: null, putBid: null };
+                //         }
+                //         if (item.callBid != null) acc[key].callBid = item.callBid;
+                //         if (item.putBid != null) acc[key].putBid = item.putBid;
+                //         if (item.volume != null) acc[key].volume = item.volume;
+                //         return acc;
+                //     }, {})
+                // ).sort((a, b) => a.strike - b.strike);
 
-                setLineGraphData(mergedData);
+                //setLineGraphData(mergedData);
             } catch (err) {
                 console.error('Failed to fetch option data:', err);
             }
         };
 
         fetchOptionsData();
-    }, [selectedValidity]);
+    }, [selectedValidity, selectedTicker, tempTicker]);
 
 
 
 
-    const handleTickerChange = async (e) => {
-        const valdity = e.target.value || 'weekly';
+    const handleValidtyChange = async (e) => {
+        const valdity = e.target.value || 'day';
         setSelectedValidity(valdity);
         //await getmydata(ticker, selectedAsset);
     };
@@ -125,10 +139,10 @@ const OptionsChart = ({ selectedTicker }) => {
     return (
 
         <div>
-<div> call:{formattedCall} , put:{formattedPut}</div>
+            <div> call:{formattedCall} , put:{formattedPut}</div>
             <div className="common-left-margin">
                 <label htmlFor="validity-select">Validty: </label>
-                <select id="validity-select" value={selectedValidity} onChange={(e) => handleTickerChange(e)}>
+                <select id="validity-select" value={selectedValidity} onChange={(e) => handleValidtyChange(e)}>
                     <option value="">-- Choose Validty --</option>
                     {validityData.map((opt, idx) => (
                         <option key={idx} value={opt.value}>
@@ -139,7 +153,7 @@ const OptionsChart = ({ selectedTicker }) => {
             </div>
 
 
-            <ResponsiveContainer width="100%" height={500}>
+            {selectedValidity && <ResponsiveContainer width="100%" height={500}>
                 <BarChart data={graphData}>
                     <XAxis dataKey="strike" />
                     <YAxis />
@@ -149,13 +163,13 @@ const OptionsChart = ({ selectedTicker }) => {
         <Bar dataKey="putOpenInterest" fill="#f44336" name="Put OI" /> */}
                     <Bar dataKey="callVolume" fill="#4caf50" name="Call volume" />
                     <Bar dataKey="putVolume" fill="#f44336" name="Put volume" />
-                    <Bar dataKey="callBidPrice" fill="#f47836" name="Call Bid" />
-                    <Bar dataKey="putBidPrice" fill="#f41636" name="Put Bid" />
+                    {/* <Bar dataKey="callBidPrice" fill="#f47836" name="Call Bid" />
+                    <Bar dataKey="putBidPrice" fill="#f41636" name="Put Bid" /> */}
                     {/* <Bar dataKey="expirationDate" fill="#f12636" name="Expiration Date" /> */}
                 </BarChart>
-            </ResponsiveContainer>
+            </ResponsiveContainer>}
 
-            <ResponsiveContainer width="100%" height={500}>
+            {/* <ResponsiveContainer width="100%" height={500}>
                 <LineChart data={lineGraphData}>
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                     <XAxis dataKey="strike" />
@@ -164,8 +178,9 @@ const OptionsChart = ({ selectedTicker }) => {
                     <Legend />
                     <Line type="monotone" dataKey="callBid" name="Call Bid" stroke="#8884d8" dot={false} />
                     <Line type="monotone" dataKey="putBid" name="Put Bid" stroke="#82ca9d" dot={false} />
+                    <Line type="monotone" dataKey="volume" name="volume" stroke="#8jja9d" dot={false} />
                 </LineChart>
-            </ResponsiveContainer>
+            </ResponsiveContainer> */}
 
         </div>
 

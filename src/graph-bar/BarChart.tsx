@@ -35,7 +35,7 @@ const BarGraphChart = ({ rows, selectedTicker , volumeOrInterest}) => {
     let tempc = 0;
     let tempp = 0;
     useEffect(() => {
-        const tempCallData = rows.map(row => ({
+        const tempCallData = rows?.map(row => ({
             strike: row.strike,
             callVolume: Number(volumeOrInterest=== 'volume'? row.c_Volume: row.c_Openinterest),
             expiryDate: row.expiryDate,
@@ -43,7 +43,7 @@ const BarGraphChart = ({ rows, selectedTicker , volumeOrInterest}) => {
             //putVolume: Number(row.p_Volume)
             //tempc: tempc + Number(row.c_Volume)
         }))
-        const tempPutData = rows.map(row => ({
+        const tempPutData = rows?.map(row => ({
             strike: row.strike,
             putVolume: Number(volumeOrInterest=== 'volume'? row.p_Volume : row.p_Openinterest),
             expiryDate: row.expiryDate,
@@ -55,10 +55,10 @@ const BarGraphChart = ({ rows, selectedTicker , volumeOrInterest}) => {
     }, [rows])
     // Convert volume strings to numbers
     chartCallData.forEach((row) => {
-        row.callVolume ? tempc += row.callVolume : tempc += 0
+        row.callVolume >0 ? tempc += row.callVolume : tempc += 0
     });
     chartPutData.forEach((row) => {
-        row.putVolume ? tempp += row.putVolume : tempc += 0
+        row.putVolume >0  ? tempp += row.putVolume : tempp += 0
     });
     const formattedCall = new Intl.NumberFormat('en-IN').format(tempc);
     const formattedPut = new Intl.NumberFormat('en-IN').format(tempp);
@@ -89,7 +89,7 @@ const BarGraphChart = ({ rows, selectedTicker , volumeOrInterest}) => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="putVolume" fill="#8884d8" name="Put Volume" />
+                <Bar dataKey="putVolume" fill="#Ff0000" name="Put Volume" />
                 <Bar dataKey="expiryDate" fill="#82ca9d" name="expiryDate" />
                 <Bar dataKey="p_Last" fill="#8884d8" name="p_Last" />
             </BarChart>

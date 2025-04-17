@@ -1,0 +1,1 @@
+export const NASDAQ_TOKEN='https://e616-2600-1700-6cb0-2a20-5899-93a7-9cb4-db7f.ngrok-free.app'

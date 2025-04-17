@@ -9,15 +9,15 @@ import {
   Legend,
   CartesianGrid,
 } from 'recharts';
-
-
-const OptionVolumeChart = ({ rows, callOrPut, volumeOrInterest,selectedTicker }) => {
+import OwnChart from './../nasdaq/OwnChart';
+import './OptionVolumeChart.scss';
+const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
 
 
   const [tempRowData, setTempRowData] = useState(rows);
-  const [chartData, setChartData] = useState([]);
+  const [callChartData, setCallChartData] = useState([]);
 
-
+  const [putChartData, setPutChartData] = useState([]);
 
   useEffect(() => {
     setTempRowData(rows);
@@ -28,23 +28,39 @@ const OptionVolumeChart = ({ rows, callOrPut, volumeOrInterest,selectedTicker })
     const allStrikes = [...new Set(tempRowData.map(r => parseFloat(r.strike)).filter(Boolean))].sort((a, b) => a - b);
     const tempchartData = allStrikes.map((strike) => {
       const entry = { strike };
-      for (const expiry in groupedData) {
-        const match = groupedData[expiry].find((item) => item.strike === strike);
+      for (const expiry in callGroupedData) {
+        const match = callGroupedData[expiry].find((item) => item.strike === strike);
         entry[expiry] = match ? match.volume : 0;
       }
       return entry;
     })
-    setChartData(tempchartData)
+    setCallChartData(tempchartData)
   }, [tempRowData, volumeOrInterest]);
+
+  useEffect(() => {
+    const allStrikes = [...new Set(tempRowData.map(r => parseFloat(r.strike)).filter(Boolean))].sort((a, b) => a - b);
+    const tempchartData = allStrikes.map((strike) => {
+      const entry = { strike };
+      for (const expiry in putGroupedData) {
+        const match = putGroupedData[expiry].find((item) => item.strike === strike);
+        entry[expiry] = match ? match.volume : 0;
+      }
+      return entry;
+    })
+    setPutChartData(tempchartData)
+  }, [tempRowData, volumeOrInterest]);
+
+
 
   if (!rows || rows.length === 0) return <p>No data available</p>;
 
   // Clean and group rows by expiryDate
-  const groupedData = {};
+  const callGroupedData = {};
+  const putGroupedData = {};
   let tempc = 0;
   let tempp = 0;
   tempRowData.forEach((row) => {
-    if (callOrPut === 'call' && row.strike && row.c_Volume !== null) {
+    if (row.c_Volume !== null) {
       const strike = parseFloat(row.strike);
       let volume = 0;
       if (volumeOrInterest === 'volume') {
@@ -55,11 +71,11 @@ const OptionVolumeChart = ({ rows, callOrPut, volumeOrInterest,selectedTicker })
       }
       const expiry = row.expiryDate || 'Unknown';
       //const bid= parseInt(row.c_Bid.replace(/,/g, '')) || 0;
-      if (!groupedData[expiry]) groupedData[expiry] = [];
-      groupedData[expiry].push({ strike, volume});
+      if (!callGroupedData[expiry]) callGroupedData[expiry] = [];
+      callGroupedData[expiry].push({ strike, volume });
       tempc += volume
     }
-    if (callOrPut === 'put' && row.strike && row.p_Volume !== null) {
+    if (row.strike && row.p_Volume !== null) {
       const strike = parseFloat(row.strike);
       let volume = 0;
       if (volumeOrInterest === 'volume') {
@@ -71,27 +87,61 @@ const OptionVolumeChart = ({ rows, callOrPut, volumeOrInterest,selectedTicker })
       //const volume = parseInt(row.p_Openinterest.replace(/,/g, '')) || 0;
       const expiry = row.expiryDate || 'Unknown';
       //const bid= parseInt(row.c_Bid.replace(/,/g, '')) || 0;
-      if (!groupedData[expiry]) groupedData[expiry] = [];
-      groupedData[expiry].push({ strike, volume });
+      if (!putGroupedData[expiry]) putGroupedData[expiry] = [];
+      putGroupedData[expiry].push({ strike, volume });
       tempp += volume;
     }
   });
   const formattedCall = new Intl.NumberFormat('en-IN').format(tempc);
   const formattedPut = new Intl.NumberFormat('en-IN').format(tempp);
   const colors = ['#8884d8', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb'];
+
+  const now = new Date();
+  const formatted = now.toLocaleString(); // includes date and time
+  const tempD = [
+    {
+      "id": 1,
+      "timestamp": formatted,
+      "callVolume": tempc,
+      "putVolume": tempp,
+      "selectedTicker": selectedTicker
+    },
+  ]
+  const predictionData = tempD.map(item => {
+    const ratio = item.putVolume / item.callVolume;
+    let prediction = '';
+
+    if (ratio < 0.5) prediction = 'ExtremelyBullish';
+    else if (ratio < 0.7) prediction = 'Bullish';
+    else if (ratio <= 1.0) prediction = 'Neutral';
+    else if (ratio <= 1.3) prediction = 'Bearish';
+    else prediction = 'ExtremelyBearish';
+
+    return { ...item, ratio: +ratio.toFixed(2), prediction };
+  });
+
   //const colors = ['#8884d8', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb', '#FF0099','#cc0099','#ffff00'];
   // const colors = ['#000000','#000033','#000066','#000099','#0000cc','#0000ff','#003300','#003333','#003366','#003399','#0033cc','#0033ff','#006600','#006633','#006666','#006699','#0066cc','#0066ff','#009900','#009933','#009966','#009999','#0099cc','#0099ff','#00cc00','#00cc33','#00cc66','#00cc99','#00cccc','#00ccff'];
   return (
     <div>
-      <h2>{selectedTicker} {callOrPut === "call" ? `Total call ${volumeOrInterest} is ${formattedCall}` : `Total put ${volumeOrInterest} is ${formattedPut}`}</h2>
+
+      {tempc > 0 && <div style={{ marginTop: '1rem', background: 'pink' }}>
+        {predictionData.map((d, i) => (
+          <div key={i} className={d.prediction}>
+            Prediction <strong>{d.timestamp}: {d.prediction} (Ratio: {d.ratio})</strong>
+          </div>
+        ))}
+      </div>}
+
+      <h2>{selectedTicker} {`Total call ${volumeOrInterest} is ${formattedCall}`}</h2>
       <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={chartData}>
+        <LineChart data={callChartData}>
           <CartesianGrid strokeDasharray="2 2" />
           <XAxis dataKey="strike" type="number" domain={['auto', 'auto']} />
           <YAxis />
           <Tooltip />
           <Legend />
-          {Object.keys(groupedData).map((expiry, index) => (
+          {Object.keys(callGroupedData).map((expiry, index) => (
             <Line
               key={expiry}
               type="monotone"
@@ -103,6 +153,29 @@ const OptionVolumeChart = ({ rows, callOrPut, volumeOrInterest,selectedTicker })
           ))}
         </LineChart>
       </ResponsiveContainer>
+      <h2> {`Total put ${volumeOrInterest} is ${formattedPut}`}</h2>
+      <ResponsiveContainer width="100%" height={400}>
+        <LineChart data={putChartData}>
+          <CartesianGrid strokeDasharray="2 2" />
+          <XAxis dataKey="strike" type="number" domain={['auto', 'auto']} />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          {Object.keys(putGroupedData).map((expiry, index) => (
+            <Line
+              key={expiry}
+              type="monotone"
+              dataKey={expiry}
+              stroke={colors[index % colors.length]}
+              strokeWidth={2}
+              dot={false}
+            />
+          ))}
+        </LineChart>
+      </ResponsiveContainer>
+      <div>
+        {(volumeOrInterest === 'volume' && tempc > 1) && <OwnChart totalCallVolumeCount={tempc} totalPutVolumeCount={tempp} selectedTicker={selectedTicker} />}
+      </div>
     </div>
   );
 };

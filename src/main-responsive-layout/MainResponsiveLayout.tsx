@@ -1,7 +1,7 @@
 
 import "./MainResponsiveLayout.scss"
 import NasdaqOptions from './../nasdaq/NasdaqOptions';
-
+import HoodMain from './../hood/HoodMain';
 const MainResponsiveLayout = () => {
   return (
     <div className="application-level">
@@ -11,7 +11,7 @@ const MainResponsiveLayout = () => {
         {/* <NASDAQStock/> */}
         {/* <FinnhubOptions/> */}
         <NasdaqOptions />
-
+{/* <HoodMain/> */}
    
       </div>
 
