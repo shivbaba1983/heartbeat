@@ -67,8 +67,8 @@ export default defineConfig({
           },
         allowedHosts: [
             'all',
-            'https://e616-2600-1700-6cb0-2a20-5899-93a7-9cb4-db7f.ngrok-free.app',
-            'e616-2600-1700-6cb0-2a20-5899-93a7-9cb4-db7f.ngrok-free.app',
+            'https://1457-2600-1700-6cb0-2a20-8840-f45a-d603-e4e8.ngrok-free.app',
+            '1457-2600-1700-6cb0-2a20-8840-f45a-d603-e4e8.ngrok-free.app',
             '*'
           ],
           cors: {

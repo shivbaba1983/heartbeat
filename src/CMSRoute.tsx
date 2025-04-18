@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import ComplexHeader from './header/ComplexHeader';
 import { Routes, Route } from 'react-router-dom';
-import Home from "./home/home"
 
 
 import MainResponsiveLayout from "./main-responsive-layout/MainResponsiveLayout";
@@ -9,16 +7,11 @@ import './CMSRoute.scss';
 
 
 const CMSRoute = () => {
-    const Mega_Menu = [
-        { id: 1, name: 'Home', url: '/cms/home' },
-
-    ]
-    
+   
 
     return (
 
         <div>
-            {/* <ComplexHeader /> */}
             <div className='complex-main-route-section'>
                 {/* <nav className='tab-list'>
                     <ul className="cms-meganav-section">

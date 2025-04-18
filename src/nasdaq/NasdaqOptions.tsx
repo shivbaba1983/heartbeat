@@ -7,38 +7,7 @@ import CallPutBarChart from './../graph-chart/CallPutBarChart';
 import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
-import {NASDAQ_TOKEN }from './../constant/HeartbeatConstants';
-const tickerListData = [
-  { idx: 1, value: "SPY" },
-  { idx: 2, value: "QQQ" },
-  { idx: 4, value: "IWM" },
-  { idx: 10, value: "AAPL" },
-  { idx: 11, value: "NVDA" },
-  { idx: 12, value: "AMZN" },
-  { idx: 13, value: "GOOG" },
-  { idx: 20, value: "TSLA" },
-  { idx: 21, value: "DAL" },
-  { idx: 22, value: "UNH" },
-  { idx: 25, value: "GME" },
-  { idx: 23, value: "BABA" },
-  { idx: 24, value: "SMCI" },
-  { idx: 1101, value: "SOXL" },
-  { idx: 1102, value: "TSLL" },
-  { idx: 1103, value: "TQQQ" },
-  { idx: 1104, value: "SQQQ" },
-
-
-]
-const volumeOrOpenInterest = [
-  { idx: 1, value: "volume" },
-  { idx: 2, value: "openinterest" },
-
-]
-const dayOrMonthData = [
-  { idx: 1, value: "day" },
-  { idx: 2, value: "month" },
-
-]
+import { NASDAQ_TOKEN, tickerListData, volumeOrOpenInterest, dayOrMonthData } from './../constant/HeartbeatConstants';
 
 const NasdaqOptions = () => {
 
@@ -58,73 +27,95 @@ const NasdaqOptions = () => {
   const [totalPutVolumeCount, setTotalPutVolumeCount] = useState(0);
 
 
-    useEffect(() => {
-      const fetchOptionsData = async () => {
-        try {
-          await getmydata();
-  
-  
-        } catch (err) {
-          console.error('Failed to fetch option data:', err);
-        }
-      };
-      fetchOptionsData();
-    }, [selectedDayOrMonth, selectedTicker, assetclass]);
+  useEffect(() => {
+    const fetchOptionsData = async () => {
+      try {
+        await getmydata();
 
-    useEffect(() => {
 
-     // tickerList.forEach(ticker => {
-       // setSelectedTicker(ticker);
-       if (isWithinMarketHours()) {
+      } catch (err) {
+        console.error('Failed to fetch option data:', err);
+      }
+    };
+    fetchOptionsData();
+  }, [selectedDayOrMonth, selectedTicker, assetclass]);
+
+  useEffect(() => {
+    const fetchMyData = async () => {
+      // tickerList.forEach(ticker => {
+      // setSelectedTicker(ticker);
+      if (isWithinMarketHours()) {
         fetchData(); // Initial call on mount
       } else {
         console.log('⏸ Market is closed. Skipping API call.');
       }
-
-
       //});
 
-      
-  
+
+
       const interval = setInterval(() => {
         fetchData(); // Call every 10 minutes
       }, 10 * 60 * 1000); // 10 mins in milliseconds
-  
+
       return () => clearInterval(interval); // Cleanup on unmount
-    }, []);
 
-    const fetchData = async () => {
-      try {
-        const resp= await getmydata();
-        // Do something with the data
-      } catch (error) {
-        console.error('API error:', error);
-      }
+
     };
+    fetchMyData();
+  }, []);
+
+  // useEffect(() => {
+
+  //   // tickerList.forEach(ticker => {
+  //   // setSelectedTicker(ticker);
+  //   if (isWithinMarketHours()) {
+  //     fetchData(); // Initial call on mount
+  //   } else {
+  //     console.log('⏸ Market is closed. Skipping API call.');
+  //   }
+  //   //});
 
 
-    // Helper to check if it's between 9:40 AM and 4:15 PM EST, Monday–Friday
-const isWithinMarketHours = () => {
-  const now = new Date();
 
-  // Convert to EST (New York timezone)
-  const estNow = new Date(
-    now.toLocaleString('en-US', { timeZone: 'America/New_York' })
-  );
+  //   const interval = setInterval(() => {
+  //     fetchData(); // Call every 10 minutes
+  //   }, 10 * 60 * 1000); // 10 mins in milliseconds
 
-  const day = estNow.getDay(); // 0 = Sunday, 6 = Saturday
-  const hours = estNow.getHours();
-  const minutes = estNow.getMinutes();
+  //   return () => clearInterval(interval); // Cleanup on unmount
+  // }, []);
 
-  // Check for Monday to Friday
-  if (day < 1 || day > 5) return false;
+  const fetchData = async () => {
+    try {
+      const resp = await getmydata();
+      // Do something with the data
+    } catch (error) {
+      console.error('API error:', error);
+    }
+  };
 
-  const currentMinutes = hours * 60 + minutes;
-  const startMinutes = 9 * 60 + 40;   // 9:40 AM
-  const endMinutes = 16 * 60 + 15;    // 4:15 PM
 
-  return currentMinutes >= startMinutes && currentMinutes <= endMinutes;
-};
+  // Helper to check if it's between 9:40 AM and 4:15 PM EST, Monday–Friday
+  const isWithinMarketHours = () => {
+    const now = new Date();
+
+    // Convert to EST (New York timezone)
+    const estNow = new Date(
+      now.toLocaleString('en-US', { timeZone: 'America/New_York' })
+    );
+
+    const day = estNow.getDay(); // 0 = Sunday, 6 = Saturday
+    const hours = estNow.getHours();
+    const minutes = estNow.getMinutes();
+
+    // Check for Monday to Friday
+    if (day < 1 || day > 5) return false;
+
+    const currentMinutes = hours * 60 + minutes;
+    const startMinutes = 9 * 60 + 40;   // 9:40 AM
+    const endMinutes = 16 * 60 + 15;    // 4:15 PM
+
+    return currentMinutes >= startMinutes && currentMinutes <= endMinutes;
+  };
 
   const handleSelect = (value) => {
     setSelectedDayOrMonth((prev) => (prev === value ? null : value)); // toggle off if already selected
@@ -168,16 +159,15 @@ const isWithinMarketHours = () => {
     // setPuts([]);
     setData([]);
     try {
-      //const res = await axios.get(`http://localhost:8080/api/options/${selected}/${assetclass}`);
-      //const res = await axios.get(`https://heartbeat-lgee.onrender.com/api/options/${selectedTicker}/${assetclass}/${selected}`);
+
       const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       // const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       //console.log(res.data);
       const rows = res.data?.data?.table?.rows || [];
       const lstPrice = res.data?.data?.lastTrade;
-      const match = lstPrice.match(/\$\d+(\.\d+)?/);
-      const price = match ? match[0] : null;
-      setLastTrade(price);
+      //const match = lstPrice.match(/\$\d+(\.\d+)?/);
+      //const price = match ? match[0] : null;
+      setLastTrade(lstPrice);
       //const callData = rows;
 
       //const callData = rows.map((r) => r.c_Volume).filter(Boolean);
@@ -194,21 +184,7 @@ const isWithinMarketHours = () => {
 
   return (
     <div>
-      {/* <h2>NASDAQ Options for GOOG</h2>
-      {data ? (
-        <ul>
-          {data.map((option, index) => (
-            <li key={index}>
-              Strike: {option.strike}, Price: {option.price}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Loading...</p>
-      )} */}
-
       <div className="vol-or-openinterets">
-
         <div>
           <label htmlFor="volume-openinterest">Volume or open interest: </label>
           <select id="volume-openinterest" value={volumeOrInterest} onChange={(e) => handleChandleVolumeOrOPrnInterestChangehange(e)}>
@@ -251,12 +227,12 @@ const isWithinMarketHours = () => {
           </select>
         </div>
         <div className="common-left-margin">
-        <input 
-        type="text" 
-       
-        onChange={(e) => handleTickerChange(e)} 
-        placeholder="Type something..." 
-      />
+          <input
+            type="text"
+
+            onChange={(e) => handleTickerChange(e)}
+            placeholder="Type something..."
+          />
         </div>
         <div className="common-left-margin">
           <button onClick={(e) => handleTickerChange(e)}>Om shanti</button>
@@ -278,7 +254,7 @@ const isWithinMarketHours = () => {
       </div>
 
       <div>
-        <OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />
+        {data.length > 0 && <OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
       </div>
 
       {/* <div>
@@ -296,7 +272,7 @@ const isWithinMarketHours = () => {
         {showBarChart && <BarGraphChart rows={data} selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest} />}
       </div>
 
-   
+
 
       <div className="market-data-checkbox">
         <label className="">
