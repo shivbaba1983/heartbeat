@@ -8,7 +8,7 @@ import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
 import { NASDAQ_TOKEN, tickerListData, volumeOrOpenInterest, dayOrMonthData } from './../constant/HeartbeatConstants';
-import {isWithinMarketHours} from './../common/nasdaq.common';
+import { isWithinMarketHours } from './../common/nasdaq.common';
 const NasdaqOptions = () => {
 
   //const [data, setData] = useState(null);
@@ -30,8 +30,11 @@ const NasdaqOptions = () => {
   useEffect(() => {
     const fetchOptionsData = async () => {
       try {
-        await getmydata();
-
+        if (isWithinMarketHours()) {// Call every 10 minutes
+          await getmydata(); // Initial call on mount
+        } else {
+          console.log('⏸ Market is closed. Skipping API call.');
+        }
 
       } catch (err) {
         console.error('Failed to fetch option data:', err);
@@ -40,43 +43,19 @@ const NasdaqOptions = () => {
     fetchOptionsData();
   }, [selectedDayOrMonth, selectedTicker, assetclass]);
 
-  useEffect(() => {
-    const fetchMyData = async () => {
-      // tickerList.forEach(ticker => {
-      // setSelectedTicker(ticker);
-      if (isWithinMarketHours()) {
-        fetchData(); // Initial call on mount
-      } else {
-        console.log('⏸ Market is closed. Skipping API call.');
-      }
-      //});
-      const interval = setInterval(() => {
-        fetchData(); // Call every 10 minutes
-      }, 10 * 60 * 1000); // 10 mins in milliseconds
-
-      return () => clearInterval(interval); // Cleanup on unmount
-    };
-    fetchMyData();
-  }, []);
-
+  //Not needed here as JsonUpdater doing this job
   // useEffect(() => {
-
-  //   // tickerList.forEach(ticker => {
-  //   // setSelectedTicker(ticker);
-  //   if (isWithinMarketHours()) {
-  //     fetchData(); // Initial call on mount
-  //   } else {
-  //     console.log('⏸ Market is closed. Skipping API call.');
-  //   }
-  //   //});
-
-
-
-  //   const interval = setInterval(() => {
-  //     fetchData(); // Call every 10 minutes
-  //   }, 10 * 60 * 1000); // 10 mins in milliseconds
-
-  //   return () => clearInterval(interval); // Cleanup on unmount
+  //   const fetchMyData = async () => {
+  //     const interval = setInterval(() => {
+  //       if (isWithinMarketHours()) {// Call every 10 minutes
+  //         fetchData(); // Initial call on mount
+  //       } else {
+  //         console.log('⏸ Market is closed. Skipping API call.');
+  //       }
+  //     }, 10 * 60 * 1000); // 10 mins in milliseconds
+  //     return () => clearInterval(interval); // Cleanup on unmount
+  //   };
+  //   fetchMyData();
   // }, []);
 
   const fetchData = async () => {
@@ -133,7 +112,7 @@ const NasdaqOptions = () => {
     try {
 
       const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
-       //const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
+      //const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       //console.log(res.data);
       const rows = res.data?.data?.table?.rows || [];
       const lstPrice = res.data?.data?.lastTrade;
