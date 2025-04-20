@@ -1,7 +1,8 @@
 
 import "./MainResponsiveLayout.scss"
 import NasdaqOptions from './../nasdaq/NasdaqOptions';
-import HoodMain from './../hood/HoodMain';
+import NASDAQStock from './../nasdaq/NASDAQStock';
+import JsonUpdater from './../LogWriter/JsonUpdater';
 const MainResponsiveLayout = () => {
   return (
     <div className="application-level">
@@ -10,8 +11,9 @@ const MainResponsiveLayout = () => {
           {/* <FormData/> */}
         {/* <NASDAQStock/> */}
         {/* <FinnhubOptions/> */}
+        <JsonUpdater/>
         <NasdaqOptions />
-{/* <HoodMain/> */}
+
    
       </div>
 

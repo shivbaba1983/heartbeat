@@ -1,4 +1,4 @@
-export const NASDAQ_TOKEN = 'https://1457-2600-1700-6cb0-2a20-8840-f45a-d603-e4e8.ngrok-free.app';
+export const NASDAQ_TOKEN = 'http://localhost:5000';//'https://ad7c-2600-1700-6cb0-2a20-5914-66a1-1a7a-435e.ngrok-free.app';
 export const tickerListData = [
     { idx: 1, value: "SPY" },
     { idx: 2, value: "QQQ" },

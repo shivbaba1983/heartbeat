@@ -73,7 +73,7 @@ const [tempTicker, setTempTicker]=useState(selectedTicker);
     useEffect(() => {
         const fetchOptionsData = async () => {
             setTempTicker(selectedTicker)
-            const expirationDate = "2025-04-17";// await getFridayOfCurrentWeek();//"2025-04-15";// getUnixTimeNow();
+            const expirationDate = "2025-04-25";// await getFridayOfCurrentWeek();//"2025-04-15";// getUnixTimeNow();
             try {
                 // Replace with your actual fetch call
                 //const response = await fetch('/v1/options/chain/AAPL/'); // your endpoint

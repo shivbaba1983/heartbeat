@@ -8,7 +8,7 @@ import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
 import { NASDAQ_TOKEN, tickerListData, volumeOrOpenInterest, dayOrMonthData } from './../constant/HeartbeatConstants';
-
+import {isWithinMarketHours} from './../common/nasdaq.common';
 const NasdaqOptions = () => {
 
   //const [data, setData] = useState(null);
@@ -50,16 +50,11 @@ const NasdaqOptions = () => {
         console.log('⏸ Market is closed. Skipping API call.');
       }
       //});
-
-
-
       const interval = setInterval(() => {
         fetchData(); // Call every 10 minutes
       }, 10 * 60 * 1000); // 10 mins in milliseconds
 
       return () => clearInterval(interval); // Cleanup on unmount
-
-
     };
     fetchMyData();
   }, []);
@@ -93,29 +88,6 @@ const NasdaqOptions = () => {
     }
   };
 
-
-  // Helper to check if it's between 9:40 AM and 4:15 PM EST, Monday–Friday
-  const isWithinMarketHours = () => {
-    const now = new Date();
-
-    // Convert to EST (New York timezone)
-    const estNow = new Date(
-      now.toLocaleString('en-US', { timeZone: 'America/New_York' })
-    );
-
-    const day = estNow.getDay(); // 0 = Sunday, 6 = Saturday
-    const hours = estNow.getHours();
-    const minutes = estNow.getMinutes();
-
-    // Check for Monday to Friday
-    if (day < 1 || day > 5) return false;
-
-    const currentMinutes = hours * 60 + minutes;
-    const startMinutes = 9 * 60 + 40;   // 9:40 AM
-    const endMinutes = 16 * 60 + 15;    // 4:15 PM
-
-    return currentMinutes >= startMinutes && currentMinutes <= endMinutes;
-  };
 
   const handleSelect = (value) => {
     setSelectedDayOrMonth((prev) => (prev === value ? null : value)); // toggle off if already selected
@@ -161,7 +133,7 @@ const NasdaqOptions = () => {
     try {
 
       const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
-      // const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
+       //const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       //console.log(res.data);
       const rows = res.data?.data?.table?.rows || [];
       const lstPrice = res.data?.data?.lastTrade;

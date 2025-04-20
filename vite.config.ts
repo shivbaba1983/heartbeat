@@ -63,12 +63,18 @@ export default defineConfig({
     server: {
         port: 5173,
         proxy: {
-            '/api': 'http://localhost:5000'
+            '/api': {
+              target: 'http://localhost:5000',
+              changeOrigin: true
+            }
           },
         allowedHosts: [
             'all',
-            'https://1457-2600-1700-6cb0-2a20-8840-f45a-d603-e4e8.ngrok-free.app',
-            '1457-2600-1700-6cb0-2a20-8840-f45a-d603-e4e8.ngrok-free.app',
+            'https://shivbaba1983.github.io/heartbeat/',
+            'https://shivbaba1983.github.io',
+            'shivbaba1983.github.io/heartbeat/',
+            'https://ad7c-2600-1700-6cb0-2a20-5914-66a1-1a7a-435e.ngrok-free.app',
+            'ad7c-2600-1700-6cb0-2a20-5914-66a1-1a7a-435e.ngrok-free.app',
             '*'
           ],
           cors: {
