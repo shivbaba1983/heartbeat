@@ -9,7 +9,7 @@ import {
   Legend,
   CartesianGrid,
 } from 'recharts';
-import OwnChart from './../nasdaq/OwnChart';
+import OwnChart from '../own-chart/OwnChart';
 import './OptionVolumeChart.scss';
 const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
 
