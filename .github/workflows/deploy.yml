@@ -1,25 +1,35 @@
-name: Build React App (Self-Hosted)
+name: Deploy React App to S3
 
 on:
   push:
     branches:
-      - main
+      - main  # or your default branch
 
 jobs:
-  build:
-    runs-on: self-hosted
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: 🟢 Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: npm install
 
-      - name: Build React App
+      - name: ⚙️ Build the React app
         run: npm run build
+
+      - name: ☁️ Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: 🚀 Sync files to S3
+        run: aws s3 sync dist/ s3://anil-w-bucket --delete
