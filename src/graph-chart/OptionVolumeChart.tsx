@@ -10,6 +10,7 @@ import {
   CartesianGrid,
 } from 'recharts';
 import OwnChart from '../own-chart/OwnChart';
+import PredictionHint from './../components/PredictionHint';
 import './OptionVolumeChart.scss';
 const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
 
@@ -98,7 +99,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
 
   const now = new Date();
   const formatted = now.toLocaleString(); // includes date and time
-  const tempD = [
+  const predectionInput = [
     {
       "id": 1,
       "timestamp": formatted,
@@ -107,32 +108,12 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
       "selectedTicker": selectedTicker
     },
   ]
-  const predictionData = tempD.map(item => {
-    const ratio = item.putVolume / item.callVolume;
-    let prediction = '';
-
-    if (ratio < 0.5) prediction = 'ExtremelyBullish';
-    else if (ratio < 0.7) prediction = 'Bullish';
-    else if (ratio <= 1.0) prediction = 'Neutral';
-    else if (ratio <= 1.3) prediction = 'Bearish';
-    else prediction = 'ExtremelyBearish';
-
-    return { ...item, ratio: +ratio.toFixed(2), prediction };
-  });
 
   //const colors = ['#8884d8', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb', '#FF0099','#cc0099','#ffff00'];
   // const colors = ['#000000','#000033','#000066','#000099','#0000cc','#0000ff','#003300','#003333','#003366','#003399','#0033cc','#0033ff','#006600','#006633','#006666','#006699','#0066cc','#0066ff','#009900','#009933','#009966','#009999','#0099cc','#0099ff','#00cc00','#00cc33','#00cc66','#00cc99','#00cccc','#00ccff'];
   return (
     <div>
-
-      {tempc > 0 && <div style={{ marginTop: '1rem', background: 'pink' }}>
-        {predictionData.map((d, i) => (
-          <div key={i} className={d.prediction}>
-            Prediction <strong>{d.timestamp}: {d.prediction} (Ratio: {d.ratio})</strong>
-          </div>
-        ))}
-      </div>}
-
+      <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />
       <h2>{selectedTicker} {`Total call ${volumeOrInterest} is ${formattedCall}`}</h2>
       <ResponsiveContainer width="100%" height={400}>
         <LineChart data={callChartData}>

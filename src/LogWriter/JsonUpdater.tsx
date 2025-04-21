@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NASDAQ_TOKEN, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, LogTickerList,tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours } from '../common/nasdaq.common';
 
 const JsonUpdater = () => {
@@ -12,25 +12,24 @@ const JsonUpdater = () => {
     const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
     const [showBarChart, setShowBarChart] = useState(false);
     const [showMarketdata, setShowMarketdata] = useState(false);
-    const tickerList = ['AAPL', 'NVDA', 'GOOG', 'AMZN', 'SPY', 'QQQ', 'IWM'];
     const [totalCallVolumeCount, setTotalCallVolumeCount] = useState(0);
     const [totalPutVolumeCount, setTotalPutVolumeCount] = useState(0);
 
     useEffect(() => {
         const fetchMyData = async () => {
             const interval = setInterval(() => {
-                tickerList.forEach(ticker => {
-                    if (isWithinMarketHours()) {
+                LogTickerList.forEach(ticker => {
+                    if (true) {
                         fetchData(ticker); // Initial call on mount    
                     } else {
                         console.log('⏸ Market is closed. Skipping API call.');
                     }
                 });
-            }, 10 * 60 * 1000); // 10 mins in milliseconds
+            }, 5 * 60 * 1000); // 10 mins in milliseconds
 
             return () => clearInterval(interval); // Cleanup on unmount
         };
-        if (isWithinMarketHours()) {
+        if (true) {
             fetchMyData();
         }
     }, []);

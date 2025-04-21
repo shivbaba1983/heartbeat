@@ -3,6 +3,7 @@ import {
     LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer
 } from 'recharts';
 import { BarChart, Bar, } from 'recharts';
+import PredictionHint from './../components/PredictionHint';
 import axiosInstance from './axiosInstance';
 let totalCallVolume = 0;
 let totalPutVolume = 0;
@@ -39,13 +40,13 @@ const transformOptionData = async (data) => {
         // const exDate = convertGMTtoEST(data.expiration[i]);
         if (side === 'call') {
             resultMap[strike].callOpenInterest = openInterest;
-            totalCallVolume+=resultMap[strike].callVolume = volume;
+            totalCallVolume += resultMap[strike].callVolume = volume;
             resultMap[strike].callBidPrice = bid;
             //resultMap[strike].expirationDate =exDate;
 
         } else {
             resultMap[strike].putOpenInterest = openInterest;
-            totalPutVolume+=resultMap[strike].putVolume = volume;
+            totalPutVolume += resultMap[strike].putVolume = volume;
             resultMap[strike].putBidPrice = bid;
             //resultMap[strike].expirationDate =exDate;
         }
@@ -69,7 +70,7 @@ const OptionsChart = ({ selectedTicker }) => {
     const [graphData, setGraphData] = useState([]);
     const [selectedValidity, setSelectedValidity] = useState('day');
     const [lineGraphData, setLineGraphData] = useState([]);
-const [tempTicker, setTempTicker]=useState(selectedTicker);
+    const [tempTicker, setTempTicker] = useState(selectedTicker);
     useEffect(() => {
         const fetchOptionsData = async () => {
             setTempTicker(selectedTicker)
@@ -135,6 +136,20 @@ const [tempTicker, setTempTicker]=useState(selectedTicker);
     };
     const formattedCall = new Intl.NumberFormat('en-IN').format(totalCallVolume);
     const formattedPut = new Intl.NumberFormat('en-IN').format(totalPutVolume);
+    const data = [
+        { name: `Call ${''}`, value: totalCallVolume, clssName: 'call-style' },
+        { name: `Put ${''}`, value: totalPutVolume, clssName: 'put-style' },
+    ];
+
+    const predectionInput = [
+        {
+            "id": 1,
+            "timestamp": '',
+            "callVolume": totalCallVolume,
+            "putVolume": totalPutVolume,
+            "selectedTicker": selectedTicker
+        },
+    ]
 
     return (
 
@@ -181,6 +196,20 @@ const [tempTicker, setTempTicker]=useState(selectedTicker);
                     <Line type="monotone" dataKey="volume" name="volume" stroke="#8jja9d" dot={false} />
                 </LineChart>
             </ResponsiveContainer> */}
+
+            <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />
+            {totalCallVolume > 0 && <div style={{ width: '20%', height: 200 }}>
+                <h3>Total Call vs Put </h3>
+                <ResponsiveContainer>
+                    <BarChart data={data}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Bar dataKey="value" fill="#8884d8" />
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>}
 
         </div>
 
