@@ -3,6 +3,7 @@ import "./MainResponsiveLayout.scss"
 import NasdaqOptions from './../nasdaq/NasdaqOptions';
 import NASDAQStock from './../nasdaq/NASDAQStock';
 import JsonUpdater from './../LogWriter/JsonUpdater';
+import MyComponent from './../awsamplify/MyComponent';
 const MainResponsiveLayout = () => {
   return (
     <div className="application-level">
@@ -11,6 +12,8 @@ const MainResponsiveLayout = () => {
           {/* <FormData/> */}
         {/* <NASDAQStock/> */}
         {/* <FinnhubOptions/> */}
+<MyComponent/>
+
         <JsonUpdater/>
         <NasdaqOptions />
 

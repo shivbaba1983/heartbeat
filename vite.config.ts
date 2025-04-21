@@ -70,6 +70,8 @@ export default defineConfig({
           },
         allowedHosts: [
             'all',
+            'https://main.d1rin969pdam05.amplifyapp.com/',
+            'main.d1rin969pdam05.amplifyapp.com/',
             'https://58d8-2600-1700-6cb0-2a20-d4cc-706-4ef1-778c.ngrok-free.app',
             '58d8-2600-1700-6cb0-2a20-d4cc-706-4ef1-778c.ngrok-free.app',
             'https://shivbaba1983.github.io/heartbeat/',

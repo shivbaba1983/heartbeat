@@ -30,7 +30,7 @@ const NasdaqOptions = () => {
   useEffect(() => {
     const fetchOptionsData = async () => {
       try {
-        if (isWithinMarketHours()) {// Call every 10 minutes
+        if (true) {// Call every 10 minutes
           await getmydata(); // Initial call on mount
         } else {
           console.log('⏸ Market is closed. Skipping API call.');
@@ -206,7 +206,7 @@ const NasdaqOptions = () => {
 
       <div>
         {data.length > 0 && <OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
-      </div>
+      </div> 
 
       {/* <div>
         <OptionVolumeChart rows={calls} callOrPut={'call'} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />
