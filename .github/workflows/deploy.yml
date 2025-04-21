@@ -1,4 +1,4 @@
-name: Deploy API
+name: Build React App (Self-Hosted)
 
 on:
   push:
@@ -6,11 +6,8 @@ on:
       - main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    env:
-      AWS_REGION: us-east-1
+  build:
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
@@ -24,17 +21,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v3
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
+      - name: Build React App
+        run: npm run build
 
-      # Example: Deploy to AWS Lambda using AWS CLI
-      - name: Deploy to Lambda (example)
-        run: |
-          zip -r function.zip .
-          aws lambda update-function-code \
-            --function-name your-lambda-function-name \
-            --zip-file fileb://function.zip
+      - name: Optional: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: react-build
+          path: build
