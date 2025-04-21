@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NASDAQ_TOKEN, LogTickerList,tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, LogTickerList,JSON_UPDATE_TIME,tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours } from '../common/nasdaq.common';
 
 const JsonUpdater = () => {
@@ -25,7 +25,7 @@ const JsonUpdater = () => {
                         console.log('⏸ Market is closed. Skipping API call.');
                     }
                 });
-            }, 5 * 60 * 1000); // 10 mins in milliseconds
+            }, JSON_UPDATE_TIME * 60 * 1000); // 10 mins in milliseconds
 
             return () => clearInterval(interval); // Cleanup on unmount
         };

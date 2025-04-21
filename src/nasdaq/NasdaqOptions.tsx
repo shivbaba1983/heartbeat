@@ -44,19 +44,19 @@ const NasdaqOptions = () => {
   }, [selectedDayOrMonth, selectedTicker, assetclass]);
 
   //Not needed here as JsonUpdater doing this job
-  // useEffect(() => {
-  //   const fetchMyData = async () => {
-  //     const interval = setInterval(() => {
-  //       if (isWithinMarketHours()) {// Call every 10 minutes
-  //         fetchData(); // Initial call on mount
-  //       } else {
-  //         console.log('⏸ Market is closed. Skipping API call.');
-  //       }
-  //     }, 10 * 60 * 1000); // 10 mins in milliseconds
-  //     return () => clearInterval(interval); // Cleanup on unmount
-  //   };
-  //   fetchMyData();
-  // }, []);
+  useEffect(() => {
+    const fetchMyData = async () => {
+      const interval = setInterval(() => {
+        if (isWithinMarketHours()) {// Call every 10 minutes
+          fetchData(); // Initial call on mount
+        } else {
+          console.log('⏸ Market is closed. Skipping API call.');
+        }
+      }, 10 * 60 * 1000); // 10 mins in milliseconds
+      return () => clearInterval(interval); // Cleanup on unmount
+    };
+    fetchMyData();
+  }, []);
 
   const fetchData = async () => {
     try {

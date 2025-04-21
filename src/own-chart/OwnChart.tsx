@@ -42,7 +42,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
     setPutVolume(totalPutVolumeCount)
   }, [totalCallVolumeCount, totalPutVolumeCount]);
 
-  if (!IS_AUTOMATED_LOG) {
+  if (IS_AUTOMATED_LOG) {
     useEffect(() => {
       let fileName = selectedFileName;
       if (selectedFileName === "") {
