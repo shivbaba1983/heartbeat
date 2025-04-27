@@ -84,7 +84,6 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
           setTotalCallVolume(filteredData.reduce((sum, item) => sum + item.callVolume, 0));
            setTotalPutVolume(filteredData.reduce((sum, item) => sum + item.putVolume, 0));
         setData(filteredData);
-        console.log('Response:', filteredData);
         setRefreshData(false);
       } catch (err) {
         console.log('Fetched err:', err);
@@ -105,16 +104,6 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   };
   return (
     <div>
-      {/* <FileDropdown selectedTicker={selectedTicker} setFileName={setFileName}/> */}
-      {/* <div>
-      <h2>Files in Public S3 Bucket:</h2>
-      <ul>
-        {files.map((file, idx) => (
-          <li key={idx}>{file}</li>
-        ))}
-      </ul>
-    </div> */}
-
       <div>
         <h2 className="s3-volumechart-title"> {selectedTicker} S3 Options Volume Chart</h2>
         <h2>Select a File:</h2>
