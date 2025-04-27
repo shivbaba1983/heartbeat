@@ -19,7 +19,7 @@ const JsonUpdater = () => {
         const fetchMyData = async () => {
             const interval = setInterval(() => {
                 LogTickerList.forEach(ticker => {
-                    if (true) {
+                    if (isWithinMarketHours()) {
                         fetchData(ticker); // Initial call on mount    
                     } else {
                         console.log('⏸ Market is closed. Skipping API call.');
@@ -29,9 +29,12 @@ const JsonUpdater = () => {
 
             return () => clearInterval(interval); // Cleanup on unmount
         };
-        if (true) {
+        if (isWithinMarketHours()) {
             fetchMyData();
         }
+        else {
+            console.log('⏸ Market is closed. Skipping API call.');
+          }
     }, []);
 
 
@@ -74,7 +77,7 @@ const JsonUpdater = () => {
 
     const writeJsonFile = async (total, ticker) => {
         try {
-            fetch(`${NASDAQ_TOKEN}/api/volume`, {
+            fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

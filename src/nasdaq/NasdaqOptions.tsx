@@ -7,7 +7,7 @@ import CallPutBarChart from './../graph-chart/CallPutBarChart';
 import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
-import { NASDAQ_TOKEN, tickerListData, volumeOrOpenInterest, dayOrMonthData } from './../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, tickerListData, volumeOrOpenInterest, IS_AUTOMATED_LOG, dayOrMonthData } from './../constant/HeartbeatConstants';
 import { isWithinMarketHours } from './../common/nasdaq.common';
 const NasdaqOptions = () => {
 
@@ -30,8 +30,8 @@ const NasdaqOptions = () => {
   useEffect(() => {
     const fetchOptionsData = async () => {
       try {
-        if (true) {// Call every 10 minutes
-          await getmydata(); // Initial call on mount
+        if (isWithinMarketHours()) {
+          await getmydata();
         } else {
           console.log('⏸ Market is closed. Skipping API call.');
         }
@@ -40,23 +40,29 @@ const NasdaqOptions = () => {
         console.error('Failed to fetch option data:', err);
       }
     };
-    fetchOptionsData();
+    if (isWithinMarketHours()){
+      fetchOptionsData();
+    } 
+    else {
+      console.log('⏸ Market is closed. Skipping API call.');
+    }
   }, [selectedDayOrMonth, selectedTicker, assetclass]);
 
   //Not needed here as JsonUpdater doing this job
-  useEffect(() => {
-    const fetchMyData = async () => {
-      const interval = setInterval(() => {
-        if (isWithinMarketHours()) {// Call every 10 minutes
-          fetchData(); // Initial call on mount
-        } else {
-          console.log('⏸ Market is closed. Skipping API call.');
-        }
-      }, 10 * 60 * 1000); // 10 mins in milliseconds
-      return () => clearInterval(interval); // Cleanup on unmount
-    };
-    fetchMyData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchMyData = async () => {
+  //     const interval = setInterval(() => {
+  //       if (isWithinMarketHours()) {
+  //         fetchData();
+  //       } else {
+  //         console.log('⏸ Market is closed. Skipping API call.');
+  //       }
+  //     }, 10 * 60 * 1000); // 10 mins in milliseconds
+  //     return () => clearInterval(interval); // Cleanup on unmount
+  //   };
+  //   if (isWithinMarketHours())
+  //     fetchMyData();
+  // }, []);
 
   const fetchData = async () => {
     try {
@@ -66,6 +72,34 @@ const NasdaqOptions = () => {
       console.error('API error:', error);
     }
   };
+
+  async function getmydata() {
+    //event.preventDefault();
+    // setCalls([]);
+    // setPuts([]);
+    setData([]);
+    try {
+
+      const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
+      //const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
+      //console.log(res.data);
+      const rows = res.data?.data?.table?.rows || [];
+      const lstPrice = res.data?.data?.lastTrade;
+      //const match = lstPrice.match(/\$\d+(\.\d+)?/);
+      //const price = match ? match[0] : null;
+      setLastTrade(lstPrice);
+      //const callData = rows;
+
+      //const callData = rows.map((r) => r.c_Volume).filter(Boolean);
+      //const putData = rows.map((r) => r.p_Volume).filter(Boolean);
+      // setCalls(callData);
+      // setPuts(callData);
+      setData(rows);
+
+    } catch (err) {
+      console.error('Failed to get options data:', err);
+    }
+  }
 
 
   const handleSelect = (value) => {
@@ -103,34 +137,6 @@ const NasdaqOptions = () => {
     setAssetclass(selectedAsset);
     //await getmydata(ticker, selectedAsset);
   };
-
-  async function getmydata() {
-    //event.preventDefault();
-    // setCalls([]);
-    // setPuts([]);
-    setData([]);
-    try {
-
-      const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
-      //const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
-      //console.log(res.data);
-      const rows = res.data?.data?.table?.rows || [];
-      const lstPrice = res.data?.data?.lastTrade;
-      //const match = lstPrice.match(/\$\d+(\.\d+)?/);
-      //const price = match ? match[0] : null;
-      setLastTrade(lstPrice);
-      //const callData = rows;
-
-      //const callData = rows.map((r) => r.c_Volume).filter(Boolean);
-      //const putData = rows.map((r) => r.p_Volume).filter(Boolean);
-      // setCalls(callData);
-      // setPuts(callData);
-      setData(rows);
-
-    } catch (err) {
-      console.error('Failed to get options data:', err);
-    }
-  }
 
 
   return (
@@ -205,8 +211,8 @@ const NasdaqOptions = () => {
       </div>
 
       <div>
-        {data.length > 0 && <OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
-      </div> 
+        { <OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
+      </div>
 
       {/* <div>
         <OptionVolumeChart rows={calls} callOrPut={'call'} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />

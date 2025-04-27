@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {
-  LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
+  LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 import axios from "axios";
 import { NASDAQ_TOKEN } from '../constant/HeartbeatConstants';
 import PredictionChart from '../nasdaq/PredictionChart';
 import FileDropdown from './FileDropdown';
-//import { getTodayInEST } from './../common/nasdaq.common';
+import { getTodayInEST } from './../common/nasdaq.common';
 const VolumeChart = ({ selectedTicker, fileName }) => {
   const [data, setData] = useState([]);
   const [refreshData, setRefreshData] = useState(false);
@@ -14,14 +14,14 @@ const VolumeChart = ({ selectedTicker, fileName }) => {
 
   useEffect(() => {
     if (fileName === "") {
-      fileName =new Date().toISOString().slice(0, 10);
+      fileName =getTodayInEST();//new Date().toISOString().slice(0, 10);
     }
     const fetchOptionsData = async () => {
 
       try {
         const res = await fetch(`${NASDAQ_TOKEN}/api/volume/${fileName}`);
-        const json = await res.json();
-        const formatted = json
+        const responseJson = await res.json();
+        const formatted = responseJson
           .filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
           .map(item => ({
             ...item,
@@ -79,11 +79,22 @@ const VolumeChart = ({ selectedTicker, fileName }) => {
   const handleRefreshClick = async () => {
     setRefreshData(true);
   };
-
+// Group by selectedTicker and keep the latest record
+const latestByTicker = Object.values(
+  data.reduce((acc, curr) => {
+    if (
+      !acc[curr.selectedTicker] ||
+      new Date(curr.timestamp) > new Date(acc[curr.selectedTicker].timestamp)
+    ) {
+      acc[curr.selectedTicker] = curr;
+    }
+    return acc;
+  }, {})
+);
   return (
     <div>
       {/* <FileDropdown selectedTicker={selectedTicker} setFileName={setFileName}/> */}
-      <h2>Options Volume Chart</h2>
+      <h2>{selectedTicker} Options Volume Chart</h2>
       {data && <ResponsiveContainer width="100%" height={400}>
         <LineChart data={data}>
           <XAxis dataKey="time" />

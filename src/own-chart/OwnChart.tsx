@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import VolumeChart from './VolumeChart';
 import { NASDAQ_TOKEN, IS_AUTOMATED_LOG } from '../constant/HeartbeatConstants';
+import { getTodayInEST } from './../common/nasdaq.common';
+import ReadSThreeBucket from './../awsamplify/ReadSThreeBucket';
 const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker }) => {
   const [callVolume, setCallVolume] = useState(totalCallVolumeCount);
   const [putVolume, setPutVolume] = useState(totalPutVolumeCount);
 
   const [files, setFiles] = useState([]);
-  const [selectedFileName, setSelectedFileName] = useState("");
+  const [selectedFileName, setSelectedFileName] = useState(getTodayInEST());
 
   // useEffect(() => {
   //   fetch(`${NASDAQ_TOKEN}/api/files`)
@@ -49,7 +51,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
         fileName = new Date().toISOString().slice(0, 10);
       }
       try {
-        fetch(`${NASDAQ_TOKEN}/api/volume/`, {
+        fetch(`${NASDAQ_TOKEN}/api/writes3bucket/`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -74,7 +76,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch(`${NASDAQ_TOKEN}/api/volume`, {
+    await fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -121,7 +123,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
       </form>
 
       <VolumeChart selectedTicker={selectedTicker} fileName={selectedFileName} />
-
+      <ReadSThreeBucket selectedTicker={selectedTicker} fileName={selectedFileName} />
     </div>
   );
 };

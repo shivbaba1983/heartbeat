@@ -63,12 +63,14 @@ export default defineConfig({
         port: 5173,
         proxy: {
             '/api': {
-              target: 'https://main.d1rin969pdam05.amplifyapp.com',
+              target: 'https://shivbaba1983.github.io/',
               changeOrigin: true
             }
           },
         allowedHosts: [
             'all',
+            '5a7c-2600-1700-6cb0-2a20-8439-c155-b916-3e9a.ngrok-free.app',
+            'b6a9-2600-1700-6cb0-2a20-6899-3054-f454-356b.ngrok-free.app',
             'https://main.d1rin969pdam05.amplifyapp.com/',
             'main.d1rin969pdam05.amplifyapp.com/',
             'https://58d8-2600-1700-6cb0-2a20-d4cc-706-4ef1-778c.ngrok-free.app',

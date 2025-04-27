@@ -53,7 +53,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
 
 
 
-  if (!rows || rows.length === 0) return <p>No data available</p>;
+  // if (!rows || rows.length === 0) return <p>No data available</p>;
 
   // Clean and group rows by expiryDate
   const callGroupedData = {};
@@ -134,7 +134,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
           ))}
         </LineChart>
       </ResponsiveContainer>
-      <h2> {`Total put ${volumeOrInterest} is ${formattedPut}`}</h2>
+      <h2> {selectedTicker} {`Total put ${volumeOrInterest} is ${formattedPut}`}</h2>
       <ResponsiveContainer width="100%" height={400}>
         <LineChart data={putChartData}>
           <CartesianGrid strokeDasharray="2 2" />
@@ -155,7 +155,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
         </LineChart>
       </ResponsiveContainer>
       <div>
-        {(volumeOrInterest === 'volume' && tempc > 1) && <OwnChart totalCallVolumeCount={tempc} totalPutVolumeCount={tempp} selectedTicker={selectedTicker} />}
+        {(volumeOrInterest === 'volume') && <OwnChart totalCallVolumeCount={tempc} totalPutVolumeCount={tempp} selectedTicker={selectedTicker} />}
       </div>
     </div>
   );

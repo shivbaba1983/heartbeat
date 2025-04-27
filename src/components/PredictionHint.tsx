@@ -23,7 +23,7 @@ const PredictionHint = ({ selectedTicker, predectionInput }) => {
     return (
         <div>
             <div style={{ marginTop: '1rem', background: 'pink' }}>
-                {predictionData.map((d, i) => (
+                {predictionData?.map((d, i) => (
                     <div key={i} className={d.prediction}>
                         Prediction {selectedTicker} <strong>{d.timestamp}: {d.prediction} (Ratio: {d.ratio})</strong>
                     </div>
