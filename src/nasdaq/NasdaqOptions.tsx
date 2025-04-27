@@ -80,7 +80,7 @@ const NasdaqOptions = () => {
     setData([]);
     try {
 
-      const res = await axios.get(`https://main.d1rin969pdam05.amplifyapp.com/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
+      const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       //const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       //console.log(res.data);
       const rows = res.data?.data?.table?.rows || [];
