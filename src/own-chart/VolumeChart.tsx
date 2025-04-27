@@ -22,8 +22,8 @@ const VolumeChart = ({ selectedTicker, fileName }) => {
         const res = await fetch(`${NASDAQ_TOKEN}/api/volume/${fileName}`);
         const responseJson = await res.json();
         const formatted = responseJson
-          .filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
-          .map(item => ({
+          ?.filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
+          ?.map(item => ({
             ...item,
             time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
           }));
@@ -47,8 +47,8 @@ const VolumeChart = ({ selectedTicker, fileName }) => {
         const res = await fetch(`${NASDAQ_TOKEN}/api/volume/${fileName}`);
         const json = await res.json();
         const formatted = json
-          .filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
-          .map(item => ({
+          ?.filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
+          ?.map(item => ({
             ...item,
             time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
           }));

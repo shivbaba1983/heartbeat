@@ -76,8 +76,8 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
 
         const tempData = await response.json();
         const filteredData = tempData
-          .filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
-          .map(item => ({
+          ?.filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
+          ?.map(item => ({
             ...item,
             time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
           }));
