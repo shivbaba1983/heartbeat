@@ -1,7 +1,7 @@
 //export const NASDAQ_TOKEN ='https://b6a9-2600-1700-6cb0-2a20-6899-3054-f454-356b.ngrok-free.app';// 'http://localhost:5000';//https://main.d1rin969pdam05.amplifyapp.com';//'https://ad7c-2600-1700-6cb0-2a20-5914-66a1-1a7a-435e.ngrok-free.app';
 export const NASDAQ_TOKEN ='http://localhost:3000';
 export const IS_AUTOMATED_LOG =true;
-export const JSON_UPDATE_TIME =1;//in minutes
+export const JSON_UPDATE_TIME =4;//in minutes
 export const LogTickerList = ['AAPL', 'NVDA', 'SPY', 'QQQ', 'IWM', 'AMZN','GOOG', 'TSLA','SOXL'];
 //export const LogTickerList = ['SPY'];
 export const tickerListData = [
