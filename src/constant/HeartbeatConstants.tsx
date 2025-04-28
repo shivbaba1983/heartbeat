@@ -3,8 +3,8 @@ export const NASDAQ_TOKEN ='https://main.d1rin969pdam05.amplifyapp.com';
 //export const NASDAQ_TOKEN ='http://localhost:3000';
 export const IS_AUTOMATED_LOG =true;
 export const JSON_UPDATE_TIME =2;//in minutes
-//export const LogTickerList = ['AAPL', 'NVDA', 'SPY', 'QQQ', 'IWM', 'AMZN','GOOG', 'TSLA','SOXL'];
-export const LogTickerList = ['NVDA'];
+export const LogTickerList = ['AAPL', 'NVDA', 'SPY', 'QQQ', 'IWM', 'AMZN','GOOG', 'TSLA','SOXL'];
+//export const LogTickerList = ['NVDA'];
 export const tickerListData = [
     { idx: 1, value: "SPY" },
     { idx: 2, value: "QQQ" },

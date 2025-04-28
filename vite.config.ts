@@ -69,6 +69,8 @@ export default defineConfig({
           },
         allowedHosts: [
             'all',
+            'https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev',
+            'gj9yjr3b68.execute-api.us-east-1.amazonaws.com',
             '5a7c-2600-1700-6cb0-2a20-8439-c155-b916-3e9a.ngrok-free.app',
             'b6a9-2600-1700-6cb0-2a20-6899-3054-f454-356b.ngrok-free.app',
             'https://main.d1rin969pdam05.amplifyapp.com/',

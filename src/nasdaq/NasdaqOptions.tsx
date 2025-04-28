@@ -73,6 +73,17 @@ const NasdaqOptions = () => {
     }
   };
 
+  const fetchOptionsData = async (symbol, assetclass) => {
+    try {
+      const response = await axios.get('https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev');
+  
+      return response; // Assuming the response is JSON
+    } catch (error) {
+      console.error('Error fetching options data:', error);
+      throw error;
+    }
+  };
+
   async function getmydata() {
     //event.preventDefault();
     // setCalls([]);
@@ -80,11 +91,21 @@ const NasdaqOptions = () => {
     setData([]);
     try {
 
-      const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
+     
+        
+  
+       const url = `https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev`;
+       //const url = `https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev/?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}`;
+        const res = await axios.get(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
+        const temprows = JSON.parse(res.data?.body)  || [];
+        const lstPrice = temprows.data.lastTrade;
+        const rows = temprows?.data?.table?.rows || [];
+
+      //const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       //const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       //console.log(res.data);
-      const rows = res.data?.data?.table?.rows || [];
-      const lstPrice = res.data?.data?.lastTrade;
+      // const rows = res.data?.data?.table?.rows || [];
+      // const lstPrice = res.data?.data?.lastTrade;
       //const match = lstPrice.match(/\$\d+(\.\d+)?/);
       //const price = match ? match[0] : null;
       setLastTrade(lstPrice);
@@ -95,7 +116,7 @@ const NasdaqOptions = () => {
       // setCalls(callData);
       // setPuts(callData);
       setData(rows);
-
+   
     } catch (err) {
       console.error('Failed to get options data:', err);
     }

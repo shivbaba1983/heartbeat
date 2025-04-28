@@ -27,7 +27,7 @@ const MainResponsiveLayout = () => {
             <span>Log Reading</span>
           </label>
         </div>
-        <MyComponent />
+        {/* <MyComponent /> */}
 
         <JsonUpdater/>
         <NasdaqOptions />
