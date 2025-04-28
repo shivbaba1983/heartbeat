@@ -40,9 +40,9 @@ const NasdaqOptions = () => {
         console.error('Failed to fetch option data:', err);
       }
     };
-    if (isWithinMarketHours()){
+    if (isWithinMarketHours()) {
       fetchOptionsData();
-    } 
+    }
     else {
       console.log('⏸ Market is closed. Skipping API call.');
     }
@@ -68,7 +68,7 @@ const NasdaqOptions = () => {
     } else {
       console.log('⏸ Market is closed. Skipping API call.');
     }
-    
+
   }, [selectedDayOrMonth, selectedTicker, assetclass]);
 
   const fetchData = async () => {
@@ -83,7 +83,7 @@ const NasdaqOptions = () => {
   const fetchOptionsData = async (symbol, assetclass) => {
     try {
       const response = await axios.get('https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev');
-  
+
       return response; // Assuming the response is JSON
     } catch (error) {
       console.error('Error fetching options data:', error);
@@ -92,27 +92,22 @@ const NasdaqOptions = () => {
   };
 
   async function getmydata() {
-    //event.preventDefault();
-    // setCalls([]);
-    // setPuts([]);
     setData([]);
     try {
 
-     
-        
-  
-       const url = `https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev`;
-       //const url = `https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev/?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}`;
-        const res = await axios.get(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
-        const temprows = JSON.parse(res.data?.body)  || [];
-        const lstPrice = temprows.data.lastTrade;
-        const rows = temprows?.data?.table?.rows || [];
+      //const url = `https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev`;
+      const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/mywelcomeresource?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}`;
+      const response = await fetch(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
+      const latestData = await response.json();
+      //const temprows = JSON.parse(latestData.data?.body)  || [];
+      const lstPrice = latestData?.data?.lastTrade;
+      const rows = latestData?.data?.table?.rows || [];
 
       // const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       // const rows = res.data?.data?.table?.rows || [];
       // const lstPrice = res.data?.data?.lastTrade;
-      //const match = lstPrice.match(/\$\d+(\.\d+)?/);
-      //const price = match ? match[0] : null;
+      // const match = lstPrice.match(/\$\d+(\.\d+)?/);
+      // const price = match ? match[0] : null;
       setLastTrade(lstPrice);
       //const callData = rows;
 
@@ -121,7 +116,7 @@ const NasdaqOptions = () => {
       // setCalls(callData);
       // setPuts(callData);
       setData(rows);
-   
+
     } catch (err) {
       console.error('Failed to get options data:', err);
     }
@@ -237,7 +232,7 @@ const NasdaqOptions = () => {
       </div>
 
       <div>
-        { <OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
+        {<OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
       </div>
 
       {/* <div>

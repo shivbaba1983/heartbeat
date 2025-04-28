@@ -69,7 +69,13 @@ export default defineConfig({
           },
         allowedHosts: [
             'all',
+            'https://07tps3arid.execute-api.us-east-1.amazonaws.com',
+            '07tps3arid.execute-api.us-east-1.amazonaws.com',
+            'https://07tps3arid.execute-api.us-east-1.amazonaws.com',
+            '07tps3arid.execute-api.us-east-1.amazonaws.com',
             'https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev',
+            'https://wfmjtmplb7.execute-api.us-east-1.amazonaws.com/myTestStage/myREsource',
+            'wfmjtmplb7.execute-api.us-east-1.amazonaws.com/myTestStage/myREsource',
             'gj9yjr3b68.execute-api.us-east-1.amazonaws.com',
             '5a7c-2600-1700-6cb0-2a20-8439-c155-b916-3e9a.ngrok-free.app',
             'b6a9-2600-1700-6cb0-2a20-6899-3054-f454-356b.ngrok-free.app',
