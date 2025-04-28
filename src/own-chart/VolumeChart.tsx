@@ -35,7 +35,7 @@ const VolumeChart = ({ selectedTicker, fileName }) => {
       }
     };
     fetchOptionsData();
-  }, [fileName]);
+  }, [fileName, selectedTicker]);
 
   useEffect(() => {
     if (fileName === "") {

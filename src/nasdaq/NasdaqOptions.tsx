@@ -49,20 +49,27 @@ const NasdaqOptions = () => {
   }, [selectedDayOrMonth, selectedTicker, assetclass]);
 
   //Not needed here as JsonUpdater doing this job
-  // useEffect(() => {
-  //   const fetchMyData = async () => {
-  //     const interval = setInterval(() => {
-  //       if (isWithinMarketHours()) {
-  //         fetchData();
-  //       } else {
-  //         console.log('⏸ Market is closed. Skipping API call.');
-  //       }
-  //     }, 10 * 60 * 1000); // 10 mins in milliseconds
-  //     return () => clearInterval(interval); // Cleanup on unmount
-  //   };
-  //   if (isWithinMarketHours())
-  //     fetchMyData();
-  // }, []);
+  useEffect(() => {
+    // const fetchMyData = async () => {
+    //   const interval = setInterval(() => {
+    //     if (isWithinMarketHours()) {
+    //       fetchData();
+    //     } else {
+    //       console.log('⏸ Market is closed. Skipping API call.');
+    //     }
+    //   }, 1 * 60 * 1000); // 10 mins in milliseconds
+    //   return () => clearInterval(interval); // Cleanup on unmount
+    // };
+    // if (isWithinMarketHours())
+    //   fetchMyData();
+
+    if (isWithinMarketHours()) {
+      fetchData();
+    } else {
+      console.log('⏸ Market is closed. Skipping API call.');
+    }
+    
+  }, [selectedDayOrMonth, selectedTicker, assetclass]);
 
   const fetchData = async () => {
     try {
@@ -96,16 +103,16 @@ const NasdaqOptions = () => {
   
        const url = `https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev`;
        //const url = `https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev/?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}`;
-        const res = await axios.get(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
-        const temprows = JSON.parse(res.data?.body)  || [];
-        const lstPrice = temprows.data.lastTrade;
-        const rows = temprows?.data?.table?.rows || [];
+        // const res = await axios.get(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
+        // const temprows = JSON.parse(res.data?.body)  || [];
+        // const lstPrice = temprows.data.lastTrade;
+        // const rows = temprows?.data?.table?.rows || [];
 
-      //const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
+      const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       //const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       //console.log(res.data);
-      // const rows = res.data?.data?.table?.rows || [];
-      // const lstPrice = res.data?.data?.lastTrade;
+      const rows = res.data?.data?.table?.rows || [];
+      const lstPrice = res.data?.data?.lastTrade;
       //const match = lstPrice.match(/\$\d+(\.\d+)?/);
       //const price = match ? match[0] : null;
       setLastTrade(lstPrice);
