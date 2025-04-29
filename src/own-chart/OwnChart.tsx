@@ -91,36 +91,38 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
 
   return (
     <div>
-      <div>
-        <h2>Select a File:</h2>
-        <select value={selectedFileName} onChange={(e) => handleFileNameChange(e)}>
-          {files.map((file, idx) => (
-            <option key={idx} value={file}>
-              {file}
-            </option>
-          ))}
-        </select>
-      </div>
+      {NASDAQ_TOKEN.includes('localhost') && <div>
+        <div>
+          <h2>Select a File:</h2>
+          <select value={selectedFileName} onChange={(e) => handleFileNameChange(e)}>
+            {files.map((file, idx) => (
+              <option key={idx} value={file}>
+                {file}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type="number"
-          placeholder="Call Volume"
-          value={totalCallVolumeCount}
-          onChange={(e) => setCallVolume(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Put Volume"
-          value={totalPutVolumeCount}
-          onChange={(e) => setPutVolume(e.target.value)}
-          required
-        />
-        <button type="submit">Add Data</button>
-      </form>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <input
+            type="number"
+            placeholder="Call Volume"
+            value={totalCallVolumeCount}
+            onChange={(e) => setCallVolume(e.target.value)}
+            required
+          />
+          <input
+            type="number"
+            placeholder="Put Volume"
+            value={totalPutVolumeCount}
+            onChange={(e) => setPutVolume(e.target.value)}
+            required
+          />
+          <button type="submit">Add Data</button>
+        </form>
 
-      <VolumeChart selectedTicker={selectedTicker} fileName={selectedFileName} />
+        <VolumeChart selectedTicker={selectedTicker} fileName={selectedFileName} />
+      </div>}
       <ReadSThreeBucket selectedTicker={selectedTicker} fileName={selectedFileName} />
     </div>
   );
