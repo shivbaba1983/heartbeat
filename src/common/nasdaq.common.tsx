@@ -13,13 +13,13 @@
     const minutes = estNow.getMinutes();
 
     // Check for Monday to Friday
-    if (day < 1 || day > 5) return false;
+    if (day < 1 || day > 5) return true;
 
     const currentMinutes = hours * 60 + minutes;
     const startMinutes = 9 * 60 + 40;   // 9:40 AM
     const endMinutes = 16 * 60 + 15;    // 4:15 PM
 
-    return currentMinutes >= startMinutes && currentMinutes <= endMinutes;
+    return true;//currentMinutes >= startMinutes && currentMinutes <= endMinutes;
   };
 
   export function  getTodayInEST () {

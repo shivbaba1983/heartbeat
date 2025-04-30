@@ -12,16 +12,14 @@ import { isWithinMarketHours , getFridayOfCurrentWeek, getTodayInEST} from './..
 import DatePicker from './../components/DatePicker';
 const NasdaqOptions = () => {
 
-  //const [data, setData] = useState(null);
-  // const [calls, setCalls] = useState([]);
-  // const [puts, setPuts] = useState([]);
-  const [data, setData] = useState([]);
+  const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
   const [selectedTicker, setSelectedTicker] = useState('SPY');
   const [assetclass, setAssetclass] = useState('ETF');
   const [volumeOrInterest, setVolumeOrInterest] = useState('volume');
+  const [data, setData] = useState([]);
   const [lastTrade, setLastTrade] = useState('');
   const [requestedDate, setRequestedDate] = useState('');
-  const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
+
   const [showBarChart, setShowBarChart] = useState(false);
   const [showMarketdata, setShowMarketdata] = useState(false);
   const tickerList = ['QQQ', 'SPY', 'IWM'];
@@ -97,7 +95,7 @@ const NasdaqOptions = () => {
     setData([]);
     try {
 
-
+      //*********** to call aws amplify deployed api ***********
       const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/mywelcomeresource?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}`;
 
       const response = await fetch(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
@@ -106,6 +104,7 @@ const NasdaqOptions = () => {
       const lstPrice = latestData?.data?.lastTrade;
       const rows = latestData?.data?.table?.rows || [];
 
+      //***********to call local api end point*************
       // const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
       // const rows = res.data?.data?.table?.rows || [];
       // const lstPrice = res.data?.data?.lastTrade;
@@ -217,9 +216,7 @@ const NasdaqOptions = () => {
         <div className="common-left-margin">
           <button onClick={(e) => handleTickerChange(e)}>Om shanti</button>
         </div>
-        <div className="common-left-margin last-trade-price">
-          {lastTrade}
-        </div>
+
 
         <div>
           <label className="common-left-margin">
@@ -232,6 +229,9 @@ const NasdaqOptions = () => {
           </label>
         </div>
       </div>
+      <div className="common-left-margin last-trade-price">
+          {lastTrade}
+        </div>
 
 <div>
 
