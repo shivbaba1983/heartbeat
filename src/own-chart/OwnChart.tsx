@@ -49,7 +49,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
       fileName = new Date().toISOString().slice(0, 10);
     }
     try {
-      if (totalCallVolumeCount > 0 || totalPutVolumeCount > 0) {
+      //if (totalCallVolumeCount > 0 || totalPutVolumeCount > 0) {
         fetch(`${NASDAQ_TOKEN}/api/writes3bucket/`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -59,7 +59,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
             selectedTicker: selectedTicker,
           }),
         });
-      }
+      //}
     } catch (err) {
       console.error('Failed to fetch option data:', err);
     }

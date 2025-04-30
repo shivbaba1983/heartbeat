@@ -15,7 +15,7 @@ const NasdaqOptions = () => {
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
   const [selectedTicker, setSelectedTicker] = useState('SPY');
   const [assetclass, setAssetclass] = useState('ETF');
-  const [volumeOrInterest, setVolumeOrInterest] = useState();
+  const [volumeOrInterest, setVolumeOrInterest] = useState('volume');
   const [data, setData] = useState([]);
   const [lastTrade, setLastTrade] = useState('');
   const [requestedDate, setRequestedDate] = useState('');
@@ -46,7 +46,7 @@ const NasdaqOptions = () => {
     else {
       console.log('⏸ Market is closed. Skipping API call.');
     }
-  }, [selectedDayOrMonth, selectedTicker, assetclass]);
+  }, [selectedDayOrMonth, selectedTicker, assetclass, requestedDate]);
 
   //Not needed here as JsonUpdater doing this job
   useEffect(() => {
@@ -69,7 +69,7 @@ const NasdaqOptions = () => {
       console.log('⏸ Market is closed. Skipping API call.');
     }
 
-  }, [selectedDayOrMonth, selectedTicker, assetclass]);
+  }, [selectedDayOrMonth, selectedTicker, assetclass, requestedDate]);
 
   const fetchData = async () => {
     try {
@@ -94,9 +94,25 @@ const NasdaqOptions = () => {
   async function getmydata() {
     setData([]);
     try {
+      let selectedDate=''
+      if(requestedDate ===''){
+        if (selectedDayOrMonth === 'day' && (assetclass === 'ETF')) {  
+          if (["TQQQ", "SOXL", "TSLL", "SQQQ"].includes(selectedTicker))
+            selectedDate =getFridayOfCurrentWeek();
+          else
+          selectedDate = getTodayInEST();
+        }
+        else if (selectedDayOrMonth === 'day' && assetclass === 'stocks') {      
+          selectedDate = getFridayOfCurrentWeek();
+        }
+      }else{
+        selectedDate= requestedDate;
+      }
+
+
 
       //*********** to call aws amplify deployed api ***********
-      const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/mywelcomeresource?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}`;
+      const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/mywelcomeresource?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}&inputDate=${selectedDate}`;
 
       const response = await fetch(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
       const latestData = await response.json();
