@@ -77,15 +77,17 @@ const JsonUpdater = () => {
 
     const writeJsonFile = async (total, ticker) => {
         try {
-            fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    callVolume: Number(total?.c_Volume),
-                    putVolume: Number(total?.p_Volume),
-                    selectedTicker: ticker,
-                }),
-            });
+            if (total?.c_Volume > 0 || total?.p_Volume > 0) {
+                fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        callVolume: Number(total?.c_Volume),
+                        putVolume: Number(total?.p_Volume),
+                        selectedTicker: ticker,
+                    }),
+                });
+            }
         } catch (err) {
             console.error('Failed to fetch option data:', err);
         }

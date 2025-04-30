@@ -197,7 +197,7 @@ const OptionsChart = ({ selectedTicker }) => {
                 </LineChart>
             </ResponsiveContainer> */}
 
-            <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />
+            {totalCallVolume >0 && <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
             {totalCallVolume > 0 && <div style={{ width: '20%', height: 200 }}>
                 <h3>Total Call vs Put </h3>
                 <ResponsiveContainer>

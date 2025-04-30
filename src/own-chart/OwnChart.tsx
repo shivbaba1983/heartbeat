@@ -42,13 +42,14 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
     setPutVolume(totalPutVolumeCount)
   }, [totalCallVolumeCount, totalPutVolumeCount]);
 
-  if (IS_AUTOMATED_LOG) {
-    useEffect(() => {
-      let fileName = selectedFileName;
-      if (selectedFileName === "") {
-        fileName = new Date().toISOString().slice(0, 10);
-      }
-      try {
+  
+  useEffect(() => {
+    let fileName = selectedFileName;
+    if (selectedFileName === "") {
+      fileName = new Date().toISOString().slice(0, 10);
+    }
+    try {
+      if (totalCallVolumeCount > 0 || totalPutVolumeCount > 0) {
         fetch(`${NASDAQ_TOKEN}/api/writes3bucket/`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -58,11 +59,12 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
             selectedTicker: selectedTicker,
           }),
         });
-      } catch (err) {
-        console.error('Failed to fetch option data:', err);
       }
-    }, []);
-  }
+    } catch (err) {
+      console.error('Failed to fetch option data:', err);
+    }
+  }, []);
+
   const handleFileNameChange = (e) => {
     e.preventDefault();
     const tempFileName = e.target.value;

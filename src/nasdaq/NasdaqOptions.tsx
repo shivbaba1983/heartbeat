@@ -8,19 +8,19 @@ import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
 import { NASDAQ_TOKEN, tickerListData, volumeOrOpenInterest, IS_AUTOMATED_LOG, dayOrMonthData } from './../constant/HeartbeatConstants';
-import { isWithinMarketHours , getFridayOfCurrentWeek, getTodayInEST} from './../common/nasdaq.common';
+import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST } from './../common/nasdaq.common';
 import DatePicker from './../components/DatePicker';
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
   const [selectedTicker, setSelectedTicker] = useState('SPY');
   const [assetclass, setAssetclass] = useState('ETF');
-  const [volumeOrInterest, setVolumeOrInterest] = useState('volume');
+  const [volumeOrInterest, setVolumeOrInterest] = useState();
   const [data, setData] = useState([]);
   const [lastTrade, setLastTrade] = useState('');
   const [requestedDate, setRequestedDate] = useState('');
 
-  const [showBarChart, setShowBarChart] = useState(false);
+  const [showBarChart, setShowBarChart] = useState(true);
   const [showMarketdata, setShowMarketdata] = useState(false);
   const tickerList = ['QQQ', 'SPY', 'IWM'];
   const [totalCallVolumeCount, setTotalCallVolumeCount] = useState(0);
@@ -230,13 +230,13 @@ const NasdaqOptions = () => {
         </div>
       </div>
       <div className="common-left-margin last-trade-price">
-          {lastTrade}
-        </div>
+        {lastTrade}
+      </div>
 
-<div>
+      <div>
 
-  <DatePicker setRequestedDate={setRequestedDate}/>
-</div>
+        <DatePicker setRequestedDate={setRequestedDate} />
+      </div>
       <div>
         {<OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
       </div>

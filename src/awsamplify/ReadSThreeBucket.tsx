@@ -115,7 +115,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
           ))}
         </select>
       </div>
-     {totalCallVolume &&  <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
+     {(totalCallVolume > 0 || totalPutVolume> 0) &&  <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
 
       {data && <ResponsiveContainer width="100%" height={400}>
         <LineChart data={data}>
