@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NASDAQ_TOKEN, LogTickerList,JSON_UPDATE_TIME,tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours } from '../common/nasdaq.common';
 
 const JsonUpdater = () => {
@@ -34,7 +34,7 @@ const JsonUpdater = () => {
         }
         else {
             console.log('⏸ Market is closed. Skipping API call.');
-          }
+        }
     }, []);
 
 

@@ -8,7 +8,8 @@ import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
 import { NASDAQ_TOKEN, tickerListData, volumeOrOpenInterest, IS_AUTOMATED_LOG, dayOrMonthData } from './../constant/HeartbeatConstants';
-import { isWithinMarketHours } from './../common/nasdaq.common';
+import { isWithinMarketHours , getFridayOfCurrentWeek, getTodayInEST} from './../common/nasdaq.common';
+import DatePicker from './../components/DatePicker';
 const NasdaqOptions = () => {
 
   //const [data, setData] = useState(null);
@@ -19,6 +20,7 @@ const NasdaqOptions = () => {
   const [assetclass, setAssetclass] = useState('ETF');
   const [volumeOrInterest, setVolumeOrInterest] = useState('volume');
   const [lastTrade, setLastTrade] = useState('');
+  const [requestedDate, setRequestedDate] = useState('');
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
   const [showBarChart, setShowBarChart] = useState(false);
   const [showMarketdata, setShowMarketdata] = useState(false);
@@ -95,8 +97,9 @@ const NasdaqOptions = () => {
     setData([]);
     try {
 
-      //const url = `https://gj9yjr3b68.execute-api.us-east-1.amazonaws.com/dev`;
+
       const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/mywelcomeresource?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}`;
+
       const response = await fetch(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
       const latestData = await response.json();
       //const temprows = JSON.parse(latestData.data?.body)  || [];
@@ -116,7 +119,6 @@ const NasdaqOptions = () => {
       // setCalls(callData);
       // setPuts(callData);
       setData(rows);
-
     } catch (err) {
       console.error('Failed to get options data:', err);
     }
@@ -231,6 +233,10 @@ const NasdaqOptions = () => {
         </div>
       </div>
 
+<div>
+
+  <DatePicker setRequestedDate={setRequestedDate}/>
+</div>
       <div>
         {<OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
       </div>
