@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST } from './../common/nasdaq.common';
 function getCurrentWeekFriday() {
     const today = new Date();
     const dayOfWeek = today.getDay(); // 0 (Sun) to 6 (Sat)
@@ -11,7 +11,7 @@ function getCurrentWeekFriday() {
 
 const DatePicker = ({setRequestedDate}) => {
 
-    const [selectedDate, setSelectedDate] = useState(getCurrentWeekFriday());
+    const [selectedDate, setSelectedDate] = useState(getTodayInEST());
     useEffect(()=>{
         setRequestedDate(selectedDate);
     },[selectedDate])
@@ -30,7 +30,7 @@ const DatePicker = ({setRequestedDate}) => {
                 value={selectedDate}
                 onChange={handleChange}
             />
-            <p>Selected Date: {selectedDate}</p>
+            {/* <p>Selected Date: {selectedDate}</p> */}
         </div>
     );
 }

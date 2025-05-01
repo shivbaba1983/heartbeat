@@ -17,7 +17,7 @@ const MainResponsiveLayout = () => {
         {/* <FormData/> */}
         {/* <NASDAQStock/> */}
         {/* <FinnhubOptions/> */}
-        <div>
+        {/* <div>
           <label className="common-left-margin">
             <input
               type="checkbox"
@@ -26,7 +26,7 @@ const MainResponsiveLayout = () => {
             />
             <span>Log Reading</span>
           </label>
-        </div>
+        </div> */}
         {/* <MyComponent /> */}
 
         <JsonUpdater/>

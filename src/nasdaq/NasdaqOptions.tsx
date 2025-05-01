@@ -167,11 +167,11 @@ const NasdaqOptions = () => {
     setData([]);
     setSelectedTicker(ticker);
     if (ticker === "QQQ" || ticker === "SPY" || ticker === "IWM" || ticker === "TQQQ" || ticker === "SOXL" || ticker === "TSLL" || ticker === "SQQQ") {
-      selectedAsset = 'ETF';
+      selectedAsset = 'ETF';      
     }
     else {
       selectedAsset = 'stocks';
-    }
+          }
     setAssetclass(selectedAsset);
     //await getmydata(ticker, selectedAsset);
   };

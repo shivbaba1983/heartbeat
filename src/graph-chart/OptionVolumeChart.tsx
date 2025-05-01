@@ -113,7 +113,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
   // const colors = ['#000000','#000033','#000066','#000099','#0000cc','#0000ff','#003300','#003333','#003366','#003399','#0033cc','#0033ff','#006600','#006633','#006666','#006699','#0066cc','#0066ff','#009900','#009933','#009966','#009999','#0099cc','#0099ff','#00cc00','#00cc33','#00cc66','#00cc99','#00cccc','#00ccff'];
   return (
     <div>
-      {(tempc >0 || tempp >0) && <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
+      {<PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
       <h2>{selectedTicker} {`Total call ${volumeOrInterest} is ${formattedCall}`}</h2>
       <ResponsiveContainer width="100%" height={400}>
         <LineChart data={callChartData}>
