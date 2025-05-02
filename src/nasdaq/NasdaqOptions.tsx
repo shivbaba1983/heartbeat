@@ -25,7 +25,7 @@ const NasdaqOptions = () => {
   const tickerList = ['QQQ', 'SPY', 'IWM'];
   const [totalCallVolumeCount, setTotalCallVolumeCount] = useState(0);
   const [totalPutVolumeCount, setTotalPutVolumeCount] = useState(0);
-
+  const [isRequestedDateChanage, setIsRequestedDateChanage] = useState(false);
 
   useEffect(() => {
     const fetchOptionsData = async () => {
@@ -94,19 +94,20 @@ const NasdaqOptions = () => {
   async function getmydata() {
     setData([]);
     try {
-      let selectedDate=''
-      if(requestedDate ===''){
-        if (selectedDayOrMonth === 'day' && (assetclass === 'ETF')) {  
+      let selectedDate = ''
+      if (isRequestedDateChanage) {
+        selectedDate = requestedDate;
+        setIsRequestedDateChanage(false);
+      } else {
+        if (selectedDayOrMonth === 'day' && (assetclass === 'ETF')) {
           if (["TQQQ", "SOXL", "TSLL", "SQQQ"].includes(selectedTicker))
-            selectedDate =getFridayOfCurrentWeek();
+            selectedDate = getFridayOfCurrentWeek();
           else
-          selectedDate = getTodayInEST();
+            selectedDate = getTodayInEST();
         }
-        else if (selectedDayOrMonth === 'day' && assetclass === 'stocks') {      
+        else if (selectedDayOrMonth === 'day' && assetclass === 'stocks') {
           selectedDate = getFridayOfCurrentWeek();
         }
-      }else{
-        selectedDate= requestedDate;
       }
 
 
@@ -167,11 +168,11 @@ const NasdaqOptions = () => {
     setData([]);
     setSelectedTicker(ticker);
     if (ticker === "QQQ" || ticker === "SPY" || ticker === "IWM" || ticker === "TQQQ" || ticker === "SOXL" || ticker === "TSLL" || ticker === "SQQQ") {
-      selectedAsset = 'ETF';      
+      selectedAsset = 'ETF';
     }
     else {
       selectedAsset = 'stocks';
-          }
+    }
     setAssetclass(selectedAsset);
     //await getmydata(ticker, selectedAsset);
   };
@@ -251,7 +252,7 @@ const NasdaqOptions = () => {
 
       <div>
 
-        <DatePicker setRequestedDate={setRequestedDate} />
+        <DatePicker setRequestedDate={setRequestedDate} setIsRequestedDateChanage={setIsRequestedDateChanage} />
       </div>
       <div>
         {<OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
