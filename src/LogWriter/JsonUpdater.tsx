@@ -49,9 +49,11 @@ const JsonUpdater = () => {
             const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${ticker}/${assetclass}/${selectedDayOrMonth}`);
             // const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
             const rows = res.data?.data?.table?.rows || [];
-            const lstPrice = res.data?.data?.lastTrade;
+            let lstPrice = res.data?.data?.lastTrade;
+            const match = lstPrice? lstPrice.match(/\$([\d.]+)/) : 0;
+            lstPrice = match ? parseFloat(match[1]) : 0;
             const total = await caculateSum(rows);
-            await writeJsonFile(total, ticker);
+            await writeJsonFile(total, ticker, lstPrice);
 
         } catch (err) {
             console.error('Failed to get options data:', err);
@@ -75,7 +77,7 @@ const JsonUpdater = () => {
         );
     }
 
-    const writeJsonFile = async (total, ticker) => {
+    const writeJsonFile = async (total, ticker,lstPrice) => {
         try {
             fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
                 method: 'POST',
@@ -84,6 +86,7 @@ const JsonUpdater = () => {
                     callVolume: Number(total?.c_Volume),
                     putVolume: Number(total?.p_Volume),
                     selectedTicker: ticker,
+                    lstPrice:lstPrice
                 }),
             });
         } catch (err) {

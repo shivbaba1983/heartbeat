@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { HttpRequest } from "@aws-sdk/protocol-http";
 import PredictionHint from './../components/PredictionHint';
 import {
-  LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
+  LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid
 } from 'recharts';
-
 const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const [data, setData] = useState([]);
+  const [completeFileData, setCompleteFileData] = useState([]);
   const [refreshData, setRefreshData] = useState(false);
   const [files, setFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState(fileName);
 
-  const [totalCallVolume, setTotalCallVolume]=useState(1);
-  const [totalPutVolume, setTotalPutVolume]=useState(1);
+  const [totalCallVolume, setTotalCallVolume] = useState(1);
+  const [totalPutVolume, setTotalPutVolume] = useState(1);
   useEffect(() => {
     setSelectedFile(fileName);
   }, [fileName])
@@ -75,14 +75,15 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
         const response = await fetch(`https://anil-w-bucket.s3.amazonaws.com/${selectedFile}.json`);
 
         const tempData = await response.json();
+        setCompleteFileData(tempData);
         const filteredData = tempData
           ?.filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
           ?.map(item => ({
             ...item,
             time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
           }));
-          setTotalCallVolume(filteredData.reduce((sum, item) => sum + item.callVolume, 0));
-           setTotalPutVolume(filteredData.reduce((sum, item) => sum + item.putVolume, 0));
+        setTotalCallVolume(filteredData.reduce((sum, item) => sum + item.callVolume, 0));
+        setTotalPutVolume(filteredData.reduce((sum, item) => sum + item.putVolume, 0));
         setData(filteredData);
         setRefreshData(false);
       } catch (err) {
@@ -93,7 +94,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   }, [selectedTicker, selectedFile, fileName, refreshData]);
 
 
- const handleRefreshClick = async () => {
+  const handleRefreshClick = async () => {
     setRefreshData(true);
   };
   const handleChange = (e) => {
@@ -117,7 +118,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
       </div>
       <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />
 
-      {data && <ResponsiveContainer width="100%" height={400}>
+      {/* {data && <ResponsiveContainer width="100%" height={400}>
         <LineChart data={data}>
           <XAxis dataKey="time" />
           <YAxis />
@@ -125,6 +126,28 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
           <Legend />
           <Line type="monotone" dataKey="callVolume" stroke="#008000" />
           <Line type="monotone" dataKey="putVolume" stroke="#FF0000" />
+        </LineChart>
+      </ResponsiveContainer>} */}
+
+      {data && <ResponsiveContainer width="100%" height={400}>
+        <LineChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="timestamp" tickFormatter={(t) => t.slice(11, 16)} />
+
+          {/* Left Y-Axis: Volume */}
+          <YAxis yAxisId="left" />
+          {/* Right Y-Axis: Last Price */}
+          <YAxis yAxisId="right" orientation="right" />
+
+          <Tooltip />
+          <Legend />
+
+          {/* Volume Lines */}
+          <Line yAxisId="left" type="monotone" dataKey="callVolume" stroke="#008000" name="Call Volume" />
+          <Line yAxisId="left" type="monotone" dataKey="putVolume" stroke="#FF2C2C" name="Put Volume" />
+
+          {/* Last Price Line */}
+          <Line yAxisId="right" type="monotone" dataKey="lstPrice" stroke="#00008B" name="Last Price" dot={false} />
         </LineChart>
       </ResponsiveContainer>}
 

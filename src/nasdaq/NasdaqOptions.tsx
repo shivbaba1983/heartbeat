@@ -118,7 +118,9 @@ const NasdaqOptions = () => {
       const response = await fetch(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
       const latestData = await response.json();
       //const temprows = JSON.parse(latestData.data?.body)  || [];
-      const lstPrice = latestData?.data?.lastTrade;
+      let lstPrice = latestData?.data?.lastTrade;
+      const match = lstPrice? lstPrice.match(/\$([\d.]+)/) : 0;
+      lstPrice = match ? parseFloat(match[1]) : 0;
       const rows = latestData?.data?.table?.rows || [];
 
       //***********to call local api end point*************
@@ -247,7 +249,7 @@ const NasdaqOptions = () => {
         </div>
       </div>
       <div className="common-left-margin last-trade-price">
-        {lastTrade}
+       <span>Last Price: {lastTrade}</span> 
       </div>
 
       <div>
