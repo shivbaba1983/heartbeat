@@ -1,26 +1,19 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NASDAQ_TOKEN, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, ETF_List, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours } from '../common/nasdaq.common';
+import { writeS3JsonFile } from '../services/WriteS3Service';
 
 const JsonUpdater = () => {
     const [data, setData] = useState([]);
     const [selectedTicker, setSelectedTicker] = useState('SPY');
-    const [assetclass, setAssetclass] = useState('ETF');
-    const [volumeOrInterest, setVolumeOrInterest] = useState('volume');
-    const [lastTrade, setLastTrade] = useState('');
-    const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
-    const [showBarChart, setShowBarChart] = useState(false);
-    const [showMarketdata, setShowMarketdata] = useState(false);
-    const [totalCallVolumeCount, setTotalCallVolumeCount] = useState(0);
-    const [totalPutVolumeCount, setTotalPutVolumeCount] = useState(0);
 
     useEffect(() => {
         const fetchMyData = async () => {
             const interval = setInterval(() => {
                 LogTickerList.forEach(ticker => {
                     if (isWithinMarketHours()) {
-                        fetchData(ticker); // Initial call on mount    
+                        postDataToS3Bucket(ticker); // write data to json file in s3 bucket    
                     } else {
                         console.log('⏸ Market is closed. Skipping API call.');
                     }
@@ -37,26 +30,25 @@ const JsonUpdater = () => {
         }
     }, []);
 
-
-    const fetchData = async (ticker) => {
+    const postDataToS3Bucket = async (ticker) => {
         setData([]);
         let assetclass = 'stocks';
         const selectedDayOrMonth = 'day';
         try {
 
-            if (ticker === "SPY" || ticker === "QQQ" || ticker === "IWM" || ticker === "TQQQ" || ticker === "SOXL" || ticker === "TSLL" || ticker === "SQQQ")
+            if (ETF_List.includes(selectedTicker))
                 assetclass = 'ETF'
             const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${ticker}/${assetclass}/${selectedDayOrMonth}`);
             // const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
             const rows = res.data?.data?.table?.rows || [];
             let lstPrice = res.data?.data?.lastTrade;
-            const match = lstPrice? lstPrice.match(/\$([\d.]+)/) : 0;
+            const match = lstPrice ? lstPrice.match(/\$([\d.]+)/) : 0;
             lstPrice = match ? parseFloat(match[1]) : 0;
             const total = await caculateSum(rows);
-            await writeJsonFile(total, ticker, lstPrice);
+            await writeS3JsonFile(total, ticker, lstPrice);// calling the service
 
         } catch (err) {
-            console.error('Failed to get options data:', err);
+            console.error('Failed to get options data log writer-JsonUpdater:', err);
         }
     };
 
@@ -77,22 +69,23 @@ const JsonUpdater = () => {
         );
     }
 
-    const writeJsonFile = async (total, ticker,lstPrice) => {
-        try {
-            fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    callVolume: Number(total?.c_Volume),
-                    putVolume: Number(total?.p_Volume),
-                    selectedTicker: ticker,
-                    lstPrice:lstPrice
-                }),
-            });
-        } catch (err) {
-            console.error('Failed to fetch option data:', err);
-        }
-    }
+    //moved this part to services
+    // const writeJsonFile = async (total, ticker,lstPrice) => {
+    //     try {
+    //         fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify({
+    //                 callVolume: Number(total?.c_Volume),
+    //                 putVolume: Number(total?.p_Volume),
+    //                 selectedTicker: ticker,
+    //                 lstPrice:lstPrice
+    //             }),
+    //         });
+    //     } catch (err) {
+    //         console.error('Failed to fetch option data:', err);
+    //     }
+    // }
     return (
         <div>
 

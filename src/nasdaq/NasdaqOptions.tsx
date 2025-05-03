@@ -10,6 +10,8 @@ import OptionsChart from './../marketData/OptionsChart';
 import { NASDAQ_TOKEN, tickerListData, volumeOrOpenInterest, IS_AUTOMATED_LOG, dayOrMonthData } from './../constant/HeartbeatConstants';
 import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST } from './../common/nasdaq.common';
 import DatePicker from './../components/DatePicker';
+import { getNasdaqOptionData } from './../services/NasdaqDataService';
+import PriceMarquee from './../components/PriceMarquee';
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -110,16 +112,15 @@ const NasdaqOptions = () => {
         }
       }
 
+      //*********** to call aws amplify deployed api & mywelcomefunction Lambda  ***********
+      //const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/mywelcomeresource?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}&inputDate=${selectedDate}`;
 
-
-      //*********** to call aws amplify deployed api ***********
-      const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/mywelcomeresource?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}&inputDate=${selectedDate}`;
-
-      const response = await fetch(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
+      const response = await getNasdaqOptionData(selectedTicker, assetclass, selectedDayOrMonth, selectedDate);
+      //const response = await fetch(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
       const latestData = await response.json();
       //const temprows = JSON.parse(latestData.data?.body)  || [];
       let lstPrice = latestData?.data?.lastTrade;
-      const match = lstPrice? lstPrice.match(/\$([\d.]+)/) : 0;
+      const match = lstPrice ? lstPrice.match(/\$([\d.]+)/) : 0;
       lstPrice = match ? parseFloat(match[1]) : 0;
       const rows = latestData?.data?.table?.rows || [];
 
@@ -169,6 +170,7 @@ const NasdaqOptions = () => {
     // setPuts([]);
     setData([]);
     setSelectedTicker(ticker);
+    
     if (ticker === "QQQ" || ticker === "SPY" || ticker === "IWM" || ticker === "TQQQ" || ticker === "SOXL" || ticker === "TSLL" || ticker === "SQQQ") {
       selectedAsset = 'ETF';
     }
@@ -186,7 +188,7 @@ const NasdaqOptions = () => {
         <div>
           <label htmlFor="volume-openinterest">Volume or open interest: </label>
           <select id="volume-openinterest" value={volumeOrInterest} onChange={(e) => handleChandleVolumeOrOPrnInterestChangehange(e)}>
-            <option value="">-- Choose Expiry --</option>
+            {/* <option value="">-- Choose Expiry --</option> */}
             {volumeOrOpenInterest.map((opt, idx) => (
               <option key={idx} value={opt.value}>
                 {opt.value}
@@ -213,10 +215,11 @@ const NasdaqOptions = () => {
             Month
           </label>
         </div>
+      </div>
+
+      <div className="vol-or-openinterets">
         <div className="common-left-margin">
-          <label htmlFor="expiry-select">Ticker: </label>
           <select id="expiry-select" value={selectedTicker} onChange={(e) => handleTickerChange(e)}>
-            <option value="">-- Choose Expiry --</option>
             {tickerListData.map((opt, idx) => (
               <option key={idx} value={opt.value}>
                 {opt.value}
@@ -227,15 +230,22 @@ const NasdaqOptions = () => {
         <div className="common-left-margin">
           <input
             type="text"
-
             onChange={(e) => handleTickerChange(e)}
-            placeholder="Type something..."
+            placeholder="Ticker..."
           />
         </div>
         <div className="common-left-margin">
           <button onClick={(e) => handleTickerChange(e)}>Om shanti</button>
         </div>
+      </div>
+      <div className="common-left-margin last-trade-price">
+        <PriceMarquee lastPrice={lastTrade} />
+      </div>
 
+      <div className="vol-or-openinterets">
+        <div>
+          <DatePicker setRequestedDate={setRequestedDate} setIsRequestedDateChanage={setIsRequestedDateChanage} />
+        </div>
 
         <div>
           <label className="common-left-margin">
@@ -247,14 +257,6 @@ const NasdaqOptions = () => {
             <span>Show Chart</span>
           </label>
         </div>
-      </div>
-      <div className="common-left-margin last-trade-price">
-       <span>Last Price: {lastTrade}</span> 
-      </div>
-
-      <div>
-
-        <DatePicker setRequestedDate={setRequestedDate} setIsRequestedDateChanage={setIsRequestedDateChanage} />
       </div>
       <div>
         {<OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}

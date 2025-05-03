@@ -5,6 +5,7 @@ export const IS_AUTOMATED_LOG =true;
 export const JSON_UPDATE_TIME =5;//in minutes
 export const LogTickerList = ['AAPL', 'NVDA', 'SPY', 'QQQ', 'IWM', 'AMZN','GOOG', 'TSLA','SOXL'];
 //export const LogTickerList = ['NVDA'];
+export const ETF_List = ['SPY', 'QQQ', 'IWM', 'TQQQ','SOXL', 'TSLL', 'SQQQQ'];
 export const tickerListData = [
     { idx: 1, value: "SPY" },
     { idx: 2, value: "QQQ" },

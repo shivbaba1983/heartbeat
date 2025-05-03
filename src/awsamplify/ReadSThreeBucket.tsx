@@ -4,6 +4,7 @@ import PredictionHint from './../components/PredictionHint';
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid
 } from 'recharts';
+
 const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
