@@ -1,0 +1,688 @@
+[
+    {
+      "id": 1,
+      "timestamp": "2025-04-22 11:21:23",
+      "callVolume": 1099244,
+      "putVolume": 942155,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 2,
+      "timestamp": "2025-04-22 11:21:46",
+      "callVolume": 1099244,
+      "putVolume": 942155,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 3,
+      "timestamp": "2025-04-22 11:21:46",
+      "callVolume": 81064,
+      "putVolume": 45475,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 4,
+      "timestamp": "2025-04-22 11:21:46",
+      "callVolume": 117281,
+      "putVolume": 113123,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 5,
+      "timestamp": "2025-04-22 11:21:46",
+      "callVolume": 274038,
+      "putVolume": 177390,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 6,
+      "timestamp": "2025-04-22 11:21:46",
+      "callVolume": 28764,
+      "putVolume": 7784,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 7,
+      "timestamp": "2025-04-22 11:21:47",
+      "callVolume": 433576,
+      "putVolume": 396878,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 8,
+      "timestamp": "2025-04-22 11:21:48",
+      "callVolume": 78776,
+      "putVolume": 69319,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 9,
+      "timestamp": "2025-04-22 11:23:12",
+      "callVolume": 438166,
+      "putVolume": 402514,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 10,
+      "timestamp": "2025-04-22 11:23:46",
+      "callVolume": 438166,
+      "putVolume": 402514,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 11,
+      "timestamp": "2025-04-22 11:23:46",
+      "callVolume": 283733,
+      "putVolume": 181212,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 12,
+      "timestamp": "2025-04-22 11:23:46",
+      "callVolume": 28847,
+      "putVolume": 7838,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 13,
+      "timestamp": "2025-04-22 11:23:46",
+      "callVolume": 82118,
+      "putVolume": 45920,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 14,
+      "timestamp": "2025-04-22 11:23:46",
+      "callVolume": 118186,
+      "putVolume": 113893,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 15,
+      "timestamp": "2025-04-22 11:23:46",
+      "callVolume": 81713,
+      "putVolume": 70420,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 16,
+      "timestamp": "2025-04-22 11:23:47",
+      "callVolume": 1108927,
+      "putVolume": 956248,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 17,
+      "timestamp": "2025-04-22 11:23:47",
+      "callVolume": 1108927,
+      "putVolume": 956248,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 18,
+      "timestamp": "2025-04-22 11:25:46",
+      "callVolume": 83253,
+      "putVolume": 46159,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 19,
+      "timestamp": "2025-04-22 11:25:46",
+      "callVolume": 120287,
+      "putVolume": 114531,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 20,
+      "timestamp": "2025-04-22 11:25:46",
+      "callVolume": 289258,
+      "putVolume": 185877,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 21,
+      "timestamp": "2025-04-22 11:25:46",
+      "callVolume": 28951,
+      "putVolume": 7881,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 22,
+      "timestamp": "2025-04-22 11:25:47",
+      "callVolume": 84489,
+      "putVolume": 71630,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 23,
+      "timestamp": "2025-04-22 11:25:47",
+      "callVolume": 1123869,
+      "putVolume": 974737,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 24,
+      "timestamp": "2025-04-22 11:25:47",
+      "callVolume": 445112,
+      "putVolume": 409422,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 25,
+      "timestamp": "2025-04-22 11:27:46",
+      "callVolume": 121142,
+      "putVolume": 115068,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 26,
+      "timestamp": "2025-04-22 11:27:46",
+      "callVolume": 292318,
+      "putVolume": 187642,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 27,
+      "timestamp": "2025-04-22 11:27:46",
+      "callVolume": 84260,
+      "putVolume": 46881,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 28,
+      "timestamp": "2025-04-22 11:27:46",
+      "callVolume": 29131,
+      "putVolume": 7900,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 29,
+      "timestamp": "2025-04-22 11:27:46",
+      "callVolume": 87749,
+      "putVolume": 73198,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 30,
+      "timestamp": "2025-04-22 11:27:47",
+      "callVolume": 1141853,
+      "putVolume": 990183,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 31,
+      "timestamp": "2025-04-22 11:27:47",
+      "callVolume": 447896,
+      "putVolume": 414863,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 32,
+      "timestamp": "2025-04-22 11:28:25",
+      "callVolume": 447896,
+      "putVolume": 414863,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 33,
+      "timestamp": "2025-04-22 11:28:43",
+      "callVolume": 87749,
+      "putVolume": 73198,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 34,
+      "timestamp": "2025-04-22 11:29:46",
+      "callVolume": 122356,
+      "putVolume": 116130,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 35,
+      "timestamp": "2025-04-22 11:29:46",
+      "callVolume": 84862,
+      "putVolume": 47094,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 36,
+      "timestamp": "2025-04-22 11:29:46",
+      "callVolume": 291426,
+      "putVolume": 188742,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 37,
+      "timestamp": "2025-04-22 11:29:46",
+      "callVolume": 29198,
+      "putVolume": 7938,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 38,
+      "timestamp": "2025-04-22 11:29:46",
+      "callVolume": 90653,
+      "putVolume": 74911,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 39,
+      "timestamp": "2025-04-22 11:29:47",
+      "callVolume": 1159779,
+      "putVolume": 1002228,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 40,
+      "timestamp": "2025-04-22 11:29:47",
+      "callVolume": 450474,
+      "putVolume": 419214,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 41,
+      "timestamp": "2025-04-22 11:31:46",
+      "callVolume": 85500,
+      "putVolume": 47813,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 42,
+      "timestamp": "2025-04-22 11:31:46",
+      "callVolume": 293573,
+      "putVolume": 190242,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 43,
+      "timestamp": "2025-04-22 11:31:46",
+      "callVolume": 93111,
+      "putVolume": 75885,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 44,
+      "timestamp": "2025-04-22 11:31:46",
+      "callVolume": 123220,
+      "putVolume": 116932,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 45,
+      "timestamp": "2025-04-22 11:31:46",
+      "callVolume": 29536,
+      "putVolume": 7994,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 46,
+      "timestamp": "2025-04-22 11:31:47",
+      "callVolume": 1174766,
+      "putVolume": 1015853,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 47,
+      "timestamp": "2025-04-22 11:31:47",
+      "callVolume": 453974,
+      "putVolume": 423468,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 48,
+      "timestamp": "2025-04-22 11:33:48",
+      "callVolume": 299413,
+      "putVolume": 191937,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 49,
+      "timestamp": "2025-04-22 11:33:48",
+      "callVolume": 126606,
+      "putVolume": 118189,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 50,
+      "timestamp": "2025-04-22 11:33:48",
+      "callVolume": 86379,
+      "putVolume": 48399,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 51,
+      "timestamp": "2025-04-22 11:33:48",
+      "callVolume": 96402,
+      "putVolume": 77234,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 52,
+      "timestamp": "2025-04-22 11:33:48",
+      "callVolume": 29703,
+      "putVolume": 8199,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 53,
+      "timestamp": "2025-04-22 11:33:49",
+      "callVolume": 1184376,
+      "putVolume": 1026240,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 54,
+      "timestamp": "2025-04-22 11:33:49",
+      "callVolume": 458147,
+      "putVolume": 429167,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 55,
+      "timestamp": "2025-04-22 12:06:26",
+      "callVolume": 140742,
+      "putVolume": 132119,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 56,
+      "timestamp": "2025-04-22 12:06:26",
+      "callVolume": 95738,
+      "putVolume": 57782,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 57,
+      "timestamp": "2025-04-22 12:06:26",
+      "callVolume": 111812,
+      "putVolume": 96601,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 58,
+      "timestamp": "2025-04-22 12:06:26",
+      "callVolume": 325996,
+      "putVolume": 219086,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 59,
+      "timestamp": "2025-04-22 12:06:26",
+      "callVolume": 23093,
+      "putVolume": 9838,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 60,
+      "timestamp": "2025-04-22 12:06:27",
+      "callVolume": 1373165,
+      "putVolume": 1316779,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 61,
+      "timestamp": "2025-04-22 12:06:27",
+      "callVolume": 530205,
+      "putVolume": 543239,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 62,
+      "timestamp": "2025-04-22 12:08:26",
+      "callVolume": 96391,
+      "putVolume": 58120,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 63,
+      "timestamp": "2025-04-22 12:08:26",
+      "callVolume": 327348,
+      "putVolume": 221157,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 64,
+      "timestamp": "2025-04-22 12:08:26",
+      "callVolume": 143358,
+      "putVolume": 133683,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 65,
+      "timestamp": "2025-04-22 12:08:26",
+      "callVolume": 23172,
+      "putVolume": 10040,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 66,
+      "timestamp": "2025-04-22 12:08:26",
+      "callVolume": 112971,
+      "putVolume": 97006,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 67,
+      "timestamp": "2025-04-22 12:08:27",
+      "callVolume": 1394224,
+      "putVolume": 1337069,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 68,
+      "timestamp": "2025-04-22 12:08:27",
+      "callVolume": 537096,
+      "putVolume": 550678,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 69,
+      "timestamp": "2025-04-22 14:58:44",
+      "callVolume": 212718,
+      "putVolume": 239846,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 70,
+      "timestamp": "2025-04-22 14:58:44",
+      "callVolume": 213504,
+      "putVolume": 240919,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 71,
+      "timestamp": "2025-04-22 15:00:59",
+      "callVolume": 214831,
+      "putVolume": 241498,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 72,
+      "timestamp": "2025-04-22 15:00:59",
+      "callVolume": 193214,
+      "putVolume": 108409,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 73,
+      "timestamp": "2025-04-22 15:00:59",
+      "callVolume": 554641,
+      "putVolume": 382505,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 74,
+      "timestamp": "2025-04-22 15:00:59",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 75,
+      "timestamp": "2025-04-22 15:01:00",
+      "callVolume": 64808,
+      "putVolume": 18125,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 76,
+      "timestamp": "2025-04-22 15:01:00",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 77,
+      "timestamp": "2025-04-22 15:01:00",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 78,
+      "timestamp": "2025-04-22 15:02:59",
+      "callVolume": 195263,
+      "putVolume": 108609,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 79,
+      "timestamp": "2025-04-22 15:02:59",
+      "callVolume": 555132,
+      "putVolume": 383388,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 80,
+      "timestamp": "2025-04-22 15:02:59",
+      "callVolume": 215086,
+      "putVolume": 242430,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 81,
+      "timestamp": "2025-04-22 15:02:59",
+      "callVolume": 64894,
+      "putVolume": 18133,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 82,
+      "timestamp": "2025-04-22 15:03:00",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 83,
+      "timestamp": "2025-04-22 15:03:00",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 84,
+      "timestamp": "2025-04-22 15:03:02",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 85,
+      "timestamp": "2025-04-22 15:04:59",
+      "callVolume": 195582,
+      "putVolume": 108821,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 86,
+      "timestamp": "2025-04-22 15:04:59",
+      "callVolume": 215328,
+      "putVolume": 243533,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 87,
+      "timestamp": "2025-04-22 15:04:59",
+      "callVolume": 556160,
+      "putVolume": 383589,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 88,
+      "timestamp": "2025-04-22 15:04:59",
+      "callVolume": 64968,
+      "putVolume": 18140,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 89,
+      "timestamp": "2025-04-22 15:05:00",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "QQQ"
+    },
+    {
+      "id": 90,
+      "timestamp": "2025-04-22 15:05:00",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 91,
+      "timestamp": "2025-04-22 15:05:00",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 92,
+      "timestamp": "2025-04-22 15:06:59",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "SPY"
+    },
+    {
+      "id": 93,
+      "timestamp": "2025-04-22 15:06:59",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "IWM"
+    },
+    {
+      "id": 94,
+      "timestamp": "2025-04-22 15:06:59",
+      "callVolume": 216129,
+      "putVolume": 244900,
+      "selectedTicker": "TSLA"
+    },
+    {
+      "id": 95,
+      "timestamp": "2025-04-22 15:06:59",
+      "callVolume": 196147,
+      "putVolume": 109282,
+      "selectedTicker": "AAPL"
+    },
+    {
+      "id": 96,
+      "timestamp": "2025-04-22 15:06:59",
+      "callVolume": 65248,
+      "putVolume": 18182,
+      "selectedTicker": "SOXL"
+    },
+    {
+      "id": 97,
+      "timestamp": "2025-04-22 15:06:59",
+      "callVolume": 557075,
+      "putVolume": 384044,
+      "selectedTicker": "NVDA"
+    },
+    {
+      "id": 98,
+      "timestamp": "2025-04-22 15:07:00",
+      "callVolume": 0,
+      "putVolume": 0,
+      "selectedTicker": "QQQ"
+    }
+  ]
