@@ -7,12 +7,13 @@ import CallPutBarChart from './../graph-chart/CallPutBarChart';
 import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
-import { NASDAQ_TOKEN, tickerListData, volumeOrOpenInterest, IS_AUTOMATED_LOG, dayOrMonthData } from './../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, IS_AWS_API, tickerListData, volumeOrOpenInterest, IS_AUTOMATED_LOG, dayOrMonthData } from './../constant/HeartbeatConstants';
 import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST } from './../common/nasdaq.common';
 import DatePicker from './../components/DatePicker';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
 import PriceMarquee from './../components/PriceMarquee';
 import StockHistoryData from './../nasdaq/StockHistoryData';
+import SPXData from './../spx/SPXData';
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -23,7 +24,7 @@ const NasdaqOptions = () => {
   const [lastTrade, setLastTrade] = useState('');
   const [requestedDate, setRequestedDate] = useState('');
 
-  const [showBarChart, setShowBarChart] = useState(true);
+  const [showBarChart, setShowBarChart] = useState(false);
   const [showMarketdata, setShowMarketdata] = useState(false);
   const tickerList = ['QQQ', 'SPY', 'IWM'];
   const [totalCallVolumeCount, setTotalCallVolumeCount] = useState(0);
@@ -66,11 +67,11 @@ const NasdaqOptions = () => {
     // if (isWithinMarketHours())
     //   fetchMyData();
 
-    if (isWithinMarketHours()) {
+    //if (isWithinMarketHours()) {
       fetchData();
-    } else {
-      console.log('⏸ Market is closed. Skipping API call.');
-    }
+    //} else {
+     // console.log('⏸ Market is closed. Skipping API call.');
+   // }
 
   }, [selectedDayOrMonth, selectedTicker, assetclass, requestedDate]);
 
@@ -115,22 +116,28 @@ const NasdaqOptions = () => {
 
       //*********** to call aws amplify deployed api & mywelcomefunction Lambda  ***********
       //const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/mywelcomeresource?selectedTicker=${selectedTicker}&assetclass=${assetclass}&selectedDayOrMonth=${selectedDayOrMonth}&inputDate=${selectedDate}`;
+      let lstPrice;
+      let rows = [];
+      if (IS_AWS_API) {
+        const response = await getNasdaqOptionData(selectedTicker, assetclass, selectedDayOrMonth, selectedDate);
+        //const response = await fetch(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
+        const latestData = await response.json();
+        //const temprows = JSON.parse(latestData.data?.body)  || [];
+        lstPrice = latestData?.data?.lastTrade;
+        const match = lstPrice ? lstPrice.match(/\$([\d.]+)/) : 0;
+        lstPrice = match ? parseFloat(match[1]) : 0;
+        rows = latestData?.data?.table?.rows || [];
+      } else {
+        //***********to call local api end point*************
+        const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
+        rows = res.data?.data?.table?.rows || [];
+        lstPrice = res.data?.data?.lastTrade;
+        const match = lstPrice.match(/\$\d+(\.\d+)?/);
+        lstPrice = match ? match[0] : null;
+      }
 
-      const response = await getNasdaqOptionData(selectedTicker, assetclass, selectedDayOrMonth, selectedDate);
-      //const response = await fetch(url);// await fetchOptionsData('NVDA', 'stocks');//await axios.get(url);
-      const latestData = await response.json();
-      //const temprows = JSON.parse(latestData.data?.body)  || [];
-      let lstPrice = latestData?.data?.lastTrade;
-      const match = lstPrice ? lstPrice.match(/\$([\d.]+)/) : 0;
-      lstPrice = match ? parseFloat(match[1]) : 0;
-      const rows = latestData?.data?.table?.rows || [];
 
-      //***********to call local api end point*************
-      // const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
-      // const rows = res.data?.data?.table?.rows || [];
-      // const lstPrice = res.data?.data?.lastTrade;
-      // const match = lstPrice.match(/\$\d+(\.\d+)?/);
-      // const price = match ? match[0] : null;
+
       setLastTrade(lstPrice);
       //const callData = rows;
 
@@ -171,7 +178,7 @@ const NasdaqOptions = () => {
     // setPuts([]);
     setData([]);
     setSelectedTicker(ticker);
-    
+
     if (ticker === "QQQ" || ticker === "SPY" || ticker === "IWM" || ticker === "TQQQ" || ticker === "SOXL" || ticker === "TSLL" || ticker === "SQQQ") {
       selectedAsset = 'ETF';
     }
@@ -260,9 +267,10 @@ const NasdaqOptions = () => {
           </label>
         </div>
       </div>
-<div>
-  <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass}/>
-</div>
+      <div>
+        <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass} />
+      </div>
+      <SPXData selectedTicker={selectedTicker} assetclass={assetclass} />
 
       <div>
         {<OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}

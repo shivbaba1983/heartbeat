@@ -1,0 +1,112 @@
+"options": [
+    {
+        "expirationDate": "2025-05-05T00:00:00.000Z",
+        "hasMiniOptions": false,
+        "calls": [
+            {
+                "contractSymbol": "SPY250505C00255000",
+                "strike": 255,
+                "currency": "USD",
+                "lastPrice": 268.7,
+                "change": 0,
+                "percentChange": 0,
+                "volume": 1,
+                "openInterest": 1,
+                "bid": 310.41,
+                "ask": 313.64,
+                "contractSize": "REGULAR",
+                "expiration": "2025-05-05T00:00:00.000Z",
+                "lastTradeDate": "2025-04-22T14:22:40.000Z",
+                "impliedVolatility": 4.363285795898436,
+                "inTheMoney": true
+            },
+            {
+                "contractSymbol": "SPY250505C00340000",
+                "strike": 340,
+                "currency": "USD",
+                "lastPrice": 197.51,
+                "change": 0,
+                "percentChange": 0,
+                "volume": 1,
+                "openInterest": 4,
+                "bid": 225.4,
+                "ask": 228.64,
+                "contractSize": "REGULAR",
+                "expiration": "2025-05-05T00:00:00.000Z",
+                "lastTradeDate": "2025-04-23T18:59:21.000Z",
+                "impliedVolatility": 2.886721533203125,
+                "inTheMoney": true
+            },
+            {
+                "contractSymbol": "SPY250505C00345000",
+                "strike": 345,
+                "currency": "USD",
+                "lastPrice": 204.67,
+                "change": 0,
+                "percentChange": 0,
+                "volume": 1,
+                "openInterest": 1,
+                "bid": 220.41,
+                "ask": 223.64,
+                "contractSize": "REGULAR",
+                "expiration": "2025-05-05T00:00:00.000Z",
+                "lastTradeDate": "2025-04-25T19:35:07.000Z",
+                "impliedVolatility": 2.816409208984375,
+                "inTheMoney": true
+            }
+        ]
+"puts": [
+            {
+                "contractSymbol": "SPY250505P00250000",
+                "strike": 250,
+                "currency": "USD",
+                "lastPrice": 0.01,
+                "change": 0,
+                "percentChange": 0,
+                "volume": 20,
+                "openInterest": 106,
+                "bid": 0,
+                "ask": 0.01,
+                "contractSize": "REGULAR",
+                "expiration": "2025-05-05T00:00:00.000Z",
+                "lastTradeDate": "2025-05-02T20:05:12.000Z",
+                "impliedVolatility": 3.1250021875,
+                "inTheMoney": false
+            },
+            {
+                "contractSymbol": "SPY250505P00300000",
+                "strike": 300,
+                "currency": "USD",
+                "lastPrice": 0.02,
+                "change": 0,
+                "percentChange": 0,
+                "volume": 1,
+                "openInterest": 25,
+                "bid": 0,
+                "ask": 0.01,
+                "contractSize": "REGULAR",
+                "expiration": "2025-05-05T00:00:00.000Z",
+                "lastTradeDate": "2025-04-22T19:01:58.000Z",
+                "impliedVolatility": 2.50000375,
+                "inTheMoney": false
+            },
+            {
+                "contractSymbol": "SPY250505P00305000",
+                "strike": 305,
+                "currency": "USD",
+                "lastPrice": 0.01,
+                "change": 0,
+                "percentChange": 0,
+                "volume": 1,
+                "openInterest": 1,
+                "bid": 0,
+                "ask": 0.01,
+                "contractSize": "REGULAR",
+                "expiration": "2025-05-05T00:00:00.000Z",
+                "lastTradeDate": "2025-04-22T20:09:01.000Z",
+                "impliedVolatility": 2.43750390625,
+                "inTheMoney": false
+            }
+        ]
+    }
+]

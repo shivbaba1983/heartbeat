@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NASDAQ_TOKEN, ETF_List, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, ETF_List, IS_AWS_API, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours, getTodayInEST } from '../common/nasdaq.common';
 import DateRangeSelector from './../components/DateRangeSelector';
 import { getNasdaqStockHistoryData } from './../services/NasdaqStockDataService';
@@ -22,18 +22,19 @@ const StockHistoryData = ({ selectedTicker, assetclass }) => {
         setStockHistoryData([]);
         const todayDate = getTodayInEST()
         try {
-
+            let rows = [];
             if (ETF_List.includes(selectedTicker))
                 assetclass = 'ETF'
             //call through deploye API lamda method
-            const response = await getNasdaqStockHistoryData(selectedTicker, assetclass, requestedFromDate, todayDate);
-            const latestData = await response.json();
-
-            //call from local api express server
-            //const response = await axios.get(`${NASDAQ_TOKEN}/api/stockhistory/${selectedTicker}/${assetclass}/${requestedFromDate}/${todayDate}`);
-            //const rows = response.data?.data?.tradesTable?.rows || [];
-
-            const rows = latestData.data?.tradesTable?.rows || [];
+            if (IS_AWS_API) {
+                const response = await getNasdaqStockHistoryData(selectedTicker, assetclass, requestedFromDate, todayDate);
+                const latestData = await response.json();
+                rows = latestData.data?.tradesTable?.rows || [];
+            } else {
+                //call from local api express server
+                const response = await axios.get(`${NASDAQ_TOKEN}/api/stockhistory/${selectedTicker}/${assetclass}/${requestedFromDate}/${todayDate}`);
+                rows = response.data?.data?.tradesTable?.rows || [];
+            }
             setStockHistoryData(rows);
         } catch (err) {
             console.error('Failed to get options data log writer-JsonUpdater:', err);
