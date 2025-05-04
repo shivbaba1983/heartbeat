@@ -2,7 +2,7 @@
 export const NASDAQ_TOKEN ='https://main.d1rin969pdam05.amplifyapp.com';
 //export const NASDAQ_TOKEN ='http://localhost:3000';
 export const IS_AUTOMATED_LOG =true;
-export const JSON_UPDATE_TIME =5;//in minutes
+export const JSON_UPDATE_TIME =3;//in minutes
 export const LogTickerList = ['AAPL', 'NVDA', 'SPY', 'QQQ', 'IWM', 'AMZN','GOOG', 'TSLA','SOXL'];
 //export const LogTickerList = ['NVDA'];
 export const ETF_List = ['SPY', 'QQQ', 'IWM', 'TQQQ','SOXL', 'TSLL', 'SQQQQ'];
@@ -37,4 +37,13 @@ export const dayOrMonthData = [
     { idx: 2, value: "month" },
 
 ]
-
+export const TIME_RANGES = {
+    '1D': 1,
+    '1W': 7,
+    '1M': 30,
+    '3M': 90,
+    '6M': 180,
+    '1Y': 365,
+    '5Y': 1825,
+    'MAX': null, // Will be handled specially
+  };

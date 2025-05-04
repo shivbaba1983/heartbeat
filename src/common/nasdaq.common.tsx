@@ -1,4 +1,4 @@
-
+import {TIME_RANGES} from './../constant/HeartbeatConstants';
   // Helper to check if it's between 9:40 AM and 4:15 PM EST, Monday–Friday
   export function isWithinMarketHours() {
     const now = new Date();
@@ -13,14 +13,25 @@
     const minutes = estNow.getMinutes();
 
     // Check for Monday to Friday
-    if (day < 1 || day > 5) return true;
+    if (day < 1 || day > 5) return false;
 
     const currentMinutes = hours * 60 + minutes;
     const startMinutes = 9 * 60 + 40;   // 9:40 AM
     const endMinutes = 16 * 60 + 15;    // 4:15 PM
 
-    return true;//currentMinutes >= startMinutes && currentMinutes <= endMinutes;
+    return currentMinutes >= startMinutes && currentMinutes <= endMinutes;
   };
+
+  export function  getFromDate(range) {
+    const today = new Date();
+    if (range === 'MAX') return '2000-01-01'; // or earliest available
+  
+    const days = TIME_RANGES[range];
+    const from = new Date(today);
+    from.setDate(from.getDate() - days);
+  
+    return from.toISOString().split('T')[0]; // 'YYYY-MM-DD'
+  }
 
   export function  getTodayInEST () {
     const estDate = new Date().toLocaleString("en-US", {

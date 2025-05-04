@@ -12,6 +12,7 @@ import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST } from './..
 import DatePicker from './../components/DatePicker';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
 import PriceMarquee from './../components/PriceMarquee';
+import StockHistoryData from './../nasdaq/StockHistoryData';
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -239,7 +240,8 @@ const NasdaqOptions = () => {
         </div>
       </div>
       <div className="common-left-margin last-trade-price">
-        <PriceMarquee lastPrice={lastTrade} />
+        {/* <PriceMarquee lastPrice={lastTrade} /> */}
+        Last Price: {lastTrade}
       </div>
 
       <div className="vol-or-openinterets">
@@ -258,6 +260,10 @@ const NasdaqOptions = () => {
           </label>
         </div>
       </div>
+<div>
+  <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass}/>
+</div>
+
       <div>
         {<OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
       </div>
