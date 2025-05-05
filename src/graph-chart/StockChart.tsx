@@ -29,7 +29,7 @@ const StockChart = ({ stockHistoryData }) => {
 
   return (
     <div style={{ width: '100%', height: 400 }}>
-    <ResponsiveContainer>
+    {stockHistoryData &&<ResponsiveContainer>
       <ComposedChart data={processedData}>
         <CartesianGrid stroke="#f5f5f5" />
         <XAxis dataKey="date" />
@@ -55,7 +55,7 @@ const StockChart = ({ stockHistoryData }) => {
         <Bar yAxisId="right" dataKey="volume" barSize={20} fill="#82ca9d" />
         <Line yAxisId="left" type="monotone" dataKey="close" stroke="#8884d8" strokeWidth={2} dot={false} />
       </ComposedChart>
-    </ResponsiveContainer>
+    </ResponsiveContainer>}
   </div>
   );
 };
