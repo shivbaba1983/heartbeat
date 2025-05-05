@@ -7,7 +7,7 @@ import CallPutBarChart from './../graph-chart/CallPutBarChart';
 import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
-import { NASDAQ_TOKEN, IS_AWS_API, tickerListData, volumeOrOpenInterest, IS_AUTOMATED_LOG, dayOrMonthData } from './../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from './../constant/HeartbeatConstants';
 import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST } from './../common/nasdaq.common';
 import DatePicker from './../components/DatePicker';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
@@ -67,11 +67,11 @@ const NasdaqOptions = () => {
     // if (isWithinMarketHours())
     //   fetchMyData();
 
-    //if (isWithinMarketHours()) {
+    if (isWithinMarketHours()) {
       fetchData();
-    //} else {
-     // console.log('⏸ Market is closed. Skipping API call.');
-   // }
+    } else {
+      console.log('⏸ Market is closed. Skipping API call.');
+    }
 
   }, [selectedDayOrMonth, selectedTicker, assetclass, requestedDate]);
 
@@ -112,6 +112,7 @@ const NasdaqOptions = () => {
         else if (selectedDayOrMonth === 'day' && assetclass === 'stocks') {
           selectedDate = getFridayOfCurrentWeek();
         }
+        setRequestedDate(selectedDate)
       }
 
       //*********** to call aws amplify deployed api & mywelcomefunction Lambda  ***********
@@ -247,13 +248,13 @@ const NasdaqOptions = () => {
         </div>
       </div>
       <div className="common-left-margin last-trade-price">
-        {/* <PriceMarquee lastPrice={lastTrade} /> */}
-        Last Price: {lastTrade}
+        <PriceMarquee lastPrice={lastTrade} />
+        {/* Last Price: {lastTrade} */}
       </div>
 
       <div className="vol-or-openinterets">
         <div>
-          <DatePicker setRequestedDate={setRequestedDate} setIsRequestedDateChanage={setIsRequestedDateChanage} />
+          <DatePicker setRequestedDate={setRequestedDate} setIsRequestedDateChanage={setIsRequestedDateChanage} requestedDate={requestedDate} />
         </div>
 
         <div>
@@ -266,9 +267,6 @@ const NasdaqOptions = () => {
             <span>Show Chart</span>
           </label>
         </div>
-      </div>
-      <div>
-        <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass} />
       </div>
       <SPXData selectedTicker={selectedTicker} assetclass={assetclass} />
 
@@ -302,6 +300,10 @@ const NasdaqOptions = () => {
           />
           <span>MarketData</span>
         </label>
+      </div>
+
+      <div>
+        <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass} />
       </div>
 
       <div>

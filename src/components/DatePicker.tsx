@@ -9,13 +9,16 @@ function getCurrentWeekFriday() {
     return friday.toISOString().split('T')[0]; // returns 'yyyy-mm-dd'
 }
 
-const DatePicker = ({setRequestedDate, setIsRequestedDateChanage}) => {
+const DatePicker = ({ setRequestedDate, setIsRequestedDateChanage, requestedDate }) => {
 
     const [selectedDate, setSelectedDate] = useState(getTodayInEST());
-    useEffect(()=>{
+    useEffect(() => {
         setRequestedDate(selectedDate);
-    },[selectedDate])
+    }, [selectedDate, requestedDate])
 
+    useEffect(() => {
+        setRequestedDate(requestedDate);
+    }, [requestedDate])
     const handleChange = (e) => {
         setSelectedDate(e.target.value);
         setIsRequestedDateChanage(true);

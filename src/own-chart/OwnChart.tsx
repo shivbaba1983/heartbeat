@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import VolumeChart from './VolumeChart';
-import { NASDAQ_TOKEN, IS_AUTOMATED_LOG } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN } from '../constant/HeartbeatConstants';
 import { getTodayInEST } from './../common/nasdaq.common';
 import ReadSThreeBucket from './../awsamplify/ReadSThreeBucket';
 const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker }) => {

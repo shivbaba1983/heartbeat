@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import NasdaqOptions from './../nasdaq/NasdaqOptions';
 import NASDAQStock from './../nasdaq/NASDAQStock';
 import JsonUpdater from './../LogWriter/JsonUpdater';
-import { IS_AUTOMATED_LOG } from './../constant/HeartbeatConstants';
 const MainResponsiveLayout = () => {
   const [isLogReading, setIsLogReading] = useState(false);
 
