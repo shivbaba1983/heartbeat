@@ -37,7 +37,7 @@ const StockHistoryData = ({ selectedTicker, assetclass }) => {
             }
             setStockHistoryData(rows);
         } catch (err) {
-            console.error('Failed to get options data log writer-JsonUpdater:', err);
+            console.error('Failed stock history data:', err);
         }
     };
 

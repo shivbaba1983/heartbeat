@@ -108,7 +108,6 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
     <div>
       <div>
         <h2 className="s3-volumechart-title"> {selectedTicker} S3 Options Volume Chart</h2>
-        <h2>Select a File:</h2>
         <select value={selectedFile} onChange={handleChange}>
           {files.map((file, idx) => (
             <option key={idx} value={file}>

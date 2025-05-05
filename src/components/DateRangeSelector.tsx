@@ -5,13 +5,23 @@ import {getFromDate} from './../common/nasdaq.common';
 const DateRangeSelector = ({ setRequestedFromDate }) => {
   const [range, setRange] = useState('1M');
 
+  // useEffect(() => {
+  //   const toDate = new Date().toISOString().split('T')[0];
+  //   const fromDate = await getFromDate(range);
+  //   //setRequestedFromDate(fromDate)
+  //   //onChange({ fromDate, toDate });
+  //   setRequestedFromDate(fromDate);
+  // }, [range]);
+
   useEffect(() => {
-    const toDate = new Date().toISOString().split('T')[0];
-    const fromDate = getFromDate(range);
-    //setRequestedFromDate(fromDate)
-    //onChange({ fromDate, toDate });
-    setRequestedFromDate(fromDate);
-  }, [range]);
+    const fetchMyData = async () => {
+      const fromDate = await getFromDate(range);
+      //setRequestedFromDate(fromDate)
+      //onChange({ fromDate, toDate });
+      setRequestedFromDate(fromDate);
+    };
+    fetchMyData();
+}, [range]);
 
   return (
     <select

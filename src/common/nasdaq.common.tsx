@@ -22,7 +22,7 @@ import {TIME_RANGES} from './../constant/HeartbeatConstants';
     return currentMinutes >= startMinutes && currentMinutes <= endMinutes;
   };
 
-  export function  getFromDate(range) {
+  export async function  getFromDate(range) {
     const today = new Date();
     if (range === 'MAX') return '2000-01-01'; // or earliest available
   

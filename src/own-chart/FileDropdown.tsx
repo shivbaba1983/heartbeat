@@ -49,7 +49,6 @@ const FileDropdown = ({selectedTicker, setFileName}) => {
 
   return (
     <div>
-      <h2>Select a File:</h2>
       <select value={selectedFile} onChange={handleChange}>
         <option value="">-- Select File --</option>
         {files.map((file, idx) => (

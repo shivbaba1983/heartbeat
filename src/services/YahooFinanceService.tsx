@@ -6,7 +6,7 @@ export async function getYahooFinanceData(selectedTicker) {
     try {
         resp =  await fetch(url)
     } catch (err) {
-        console.error('Failed to fetch option data:', err);
+        console.error('Failed to fetch yahoo finace  data:', err);
     }
     return resp;
 }

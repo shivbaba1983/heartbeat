@@ -95,7 +95,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
     <div>
       {NASDAQ_TOKEN.includes('localhost') && <div>
         <div>
-          <h2>Select a File:</h2>
+          <h2>Select a File (Local server log):</h2>
           <select value={selectedFileName} onChange={(e) => handleFileNameChange(e)}>
             {files.map((file, idx) => (
               <option key={idx} value={file}>
