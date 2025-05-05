@@ -67,11 +67,11 @@ const NasdaqOptions = () => {
     // if (isWithinMarketHours())
     //   fetchMyData();
 
-    if (isWithinMarketHours()) {
+   // if (isWithinMarketHours()) {
       fetchData();
-    } else {
-      console.log('⏸ Market is closed. Skipping API call.');
-    }
+    // } else {
+    //   console.log('⏸ Market is closed. Skipping API call.');
+    // }
 
   }, [selectedDayOrMonth, selectedTicker, assetclass, requestedDate]);
 
@@ -268,7 +268,11 @@ const NasdaqOptions = () => {
           </label>
         </div>
       </div>
-      <SPXData selectedTicker={selectedTicker} assetclass={assetclass} />
+
+      <div>
+     {NASDAQ_TOKEN.includes('localhost') && <SPXData selectedTicker={selectedTicker} assetclass={assetclass} />}
+      </div>
+
 
       <div>
         {<OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
