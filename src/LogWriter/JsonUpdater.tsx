@@ -36,7 +36,7 @@ const JsonUpdater = () => {
         const selectedDayOrMonth = 'day';
         try {
 
-            if (ETF_List.includes(selectedTicker))
+            if (ETF_List.includes(ticker))
                 assetclass = 'ETF'
             const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${ticker}/${assetclass}/${selectedDayOrMonth}`);
             // const res = await axios.get(`http://localhost:5000/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
