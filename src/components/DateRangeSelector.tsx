@@ -3,7 +3,7 @@ import{TIME_RANGES} from './../constant/HeartbeatConstants';
 import {getFromDate} from './../common/nasdaq.common';
 
 const DateRangeSelector = ({ setRequestedFromDate }) => {
-  const [range, setRange] = useState('1M');
+  const [range, setRange] = useState('1Y');
 
   useEffect(() => {
     const fetchMyData = async () => {

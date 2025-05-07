@@ -45,7 +45,12 @@ const JsonUpdater = () => {
             const match = lstPrice ? lstPrice.match(/\$([\d.]+)/) : 0;
             lstPrice = match ? parseFloat(match[1]) : 0;
             const total = await caculateSum(rows);
-            await writeS3JsonFile(total, ticker, lstPrice);// calling the service
+            if (total.c_Volume > 0) {
+                await writeS3JsonFile(total, ticker, lstPrice);// calling the service
+            } else {
+                console.error('observer 0 call or put volume hence not write to s3 bucket');
+            }
+
 
         } catch (err) {
             console.error('Failed to get options data log writer-JsonUpdater:', err);
@@ -54,7 +59,7 @@ const JsonUpdater = () => {
 
 
     const caculateSum = async (rows) => {
-        return rows.reduce(
+        return await rows.reduce(
             (totals, row) => {
                 const cVol = parseInt(row.c_Volume);
                 const pVol = parseInt(row.p_Volume);
