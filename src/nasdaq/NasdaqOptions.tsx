@@ -24,7 +24,7 @@ const NasdaqOptions = () => {
   const [lastTrade, setLastTrade] = useState('');
   const [requestedDate, setRequestedDate] = useState('');
 
-  const [showBarChart, setShowBarChart] = useState(false);
+  const [showBarChart, setShowBarChart] = useState(true);
   const [showMarketdata, setShowMarketdata] = useState(false);
   const tickerList = ['QQQ', 'SPY', 'IWM'];
   const [totalCallVolumeCount, setTotalCallVolumeCount] = useState(0);
