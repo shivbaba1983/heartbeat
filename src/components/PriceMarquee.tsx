@@ -1,10 +1,10 @@
 import Marquee from "react-fast-marquee";
 
-const PriceMarquee = ({ lastPrice }) => {
+const PriceMarquee = ({ lastPrice , selectedTicker}) => {
   return (
     <div className="bg-black text-white p-2">
       <Marquee gradient={false} speed={50}>
-        <span className="mx-4">{lastPrice}</span>
+        <span className="mx-4">{selectedTicker} {lastPrice}</span>
       </Marquee>
     </div>
   );

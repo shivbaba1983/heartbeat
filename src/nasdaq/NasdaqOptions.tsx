@@ -248,7 +248,7 @@ const NasdaqOptions = () => {
         </div>
       </div>
       <div className="common-left-margin last-trade-price">
-        <PriceMarquee lastPrice={lastTrade} />
+        <PriceMarquee lastPrice={lastTrade} selectedTicker={selectedTicker}/>
         {/* Last Price: {lastTrade} */}
       </div>
 

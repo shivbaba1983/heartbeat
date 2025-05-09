@@ -47,19 +47,22 @@ const SpyYahooChart = ({ selectedTicker }) => {
             let tempCallVolume = 0;
             let tempPutVolume = 0;
             // Process calls
-            rows[0]?.calls.forEach(({ strike, volume }) => {
+            rows[0]?.calls.forEach(({ strike, volume, lastPrice }) => {
                 if (!merged[strike]) {
-                    merged[strike] = { strike, callVolume: 0, putVolume: 0 };
+                    merged[strike] = { strike, callVolume: 0, putVolume: 0, lastPrice:0 };
                 }
                 merged[strike].callVolume = volume || 0;
+                merged[strike].calllastPrice = lastPrice || 0;
+                
             });
 
             // Process puts
-            rows[0]?.puts.forEach(({ strike, volume }) => {
+            rows[0]?.puts.forEach(({ strike, volume, lastPrice }) => {
                 if (!merged[strike]) {
-                    merged[strike] = { strike, callVolume: 0, putVolume: 0 };
+                    merged[strike] = { strike, callVolume: 0, putVolume: 0 , lastPrice:0};
                 }
                 merged[strike].putVolume = volume || 0;
+                merged[strike].putlastPrice = lastPrice || 0;
             });
             setExpiryDate(rows[0]?.expirationDate);
             // Convert to array
@@ -104,7 +107,9 @@ const SpyYahooChart = ({ selectedTicker }) => {
                     <Tooltip />
                     <Legend />
                     <Bar dataKey="callVolume" fill="#8884d8" name="Call Volume" />
+                    <Bar dataKey="calllastPrice" fill="#006400" name="Call Last Price" />
                     <Bar dataKey="putVolume" fill="#FF2C2C" name="Put Volume" />
+                    <Bar dataKey="putlastPrice" fill="#FF2C2C" name="Put Last Price" />
                 </BarChart>
             </ResponsiveContainer>}
         </div>
