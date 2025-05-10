@@ -1,38 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import{TIME_RANGES} from './../constant/HeartbeatConstants';
-import {getFromDate} from './../common/nasdaq.common';
+import { TIME_RANGES } from './../constant/HeartbeatConstants';
+import { getFromDate } from './../common/nasdaq.common';
 
 const DateRangeSelector = ({ setRequestedFromDate }) => {
-  const [range, setRange] = useState('1Y');
-
+  // const [range, setRange] = useState('1Y');
+  const [selectedRange, setSelectedRange] = useState('1Y');
   useEffect(() => {
     const fetchMyData = async () => {
-      const fromDate = await getFromDate(range);
+      const fromDate = await getFromDate(selectedRange);
       setRequestedFromDate(fromDate);
     };
     fetchMyData();
-}, []);
+  }, []);
 
   useEffect(() => {
     const fetchMyData = async () => {
-      const fromDate = await getFromDate(range);
+      const fromDate = await getFromDate(selectedRange);
       //setRequestedFromDate(fromDate)
       //onChange({ fromDate, toDate });
       setRequestedFromDate(fromDate);
     };
     fetchMyData();
-}, [range]);
+  }, [selectedRange]);
 
   return (
-    <select
-      value={range}
-      onChange={e => setRange(e.target.value)}
-      className="border rounded p-2"
-    >
-      {Object.keys(TIME_RANGES).map(r => (
-        <option key={r} value={r}>{r}</option>
+    <div style={{ display: 'flex', gap: '1rem' }}>
+      {Object.keys(TIME_RANGES).map((range) => (
+        <label key={range}>
+          <input
+            type="radio"
+            name="timeRange"
+            value={range}
+            checked={selectedRange === range}
+            onChange={() => setSelectedRange(range)}
+          />
+          {range}
+        </label>
       ))}
-    </select>
+    </div>
   );
 };
 

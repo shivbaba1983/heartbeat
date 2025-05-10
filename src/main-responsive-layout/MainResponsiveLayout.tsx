@@ -7,6 +7,8 @@ import JsonUpdater from './../LogWriter/JsonUpdater';
 import NSEHome from './../nse/nse-home';
 const MainResponsiveLayout = () => {
   const [isLogReading, setIsLogReading] = useState(false);
+  const [showUSA, setUSA] = useState(true);
+  const [showNSE, setShowNSE] = useState(false);
 
   return (
     <div className="application-level">
@@ -25,16 +27,31 @@ const MainResponsiveLayout = () => {
             <span>Log Reading</span>
           </label>
         </div> */}
-
-
-        <JsonUpdater/>
-        <NasdaqOptions />
-
+        {showUSA && <JsonUpdater />}
+        {showUSA && <NasdaqOptions />}
         {/* <NSEHome/> */}
-
+        <div className="market-data-checkbox">
+          <label className="">
+            <input
+              type="checkbox"
+              checked={showUSA}
+              onChange={() => setUSA(!showUSA)}
+            />
+            <span>Nasdaq</span>
+          </label>
+          <label className="">
+            <input
+              type="checkbox"
+              checked={showNSE}
+              onChange={() => setShowNSE(!showNSE)}
+            />
+            <span>NSE</span>
+          </label>
+        </div>
+        <div>
+          {showNSE && <NSEHome />}
+        </div>
       </div>
-
-
     </div>
   );
 };

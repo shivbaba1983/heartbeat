@@ -67,8 +67,8 @@ const NasdaqOptions = () => {
     // if (isWithinMarketHours())
     //   fetchMyData();
 
-   // if (isWithinMarketHours()) {
-      fetchData();
+    // if (isWithinMarketHours()) {
+    fetchData();
     // } else {
     //   console.log('⏸ Market is closed. Skipping API call.');
     // }
@@ -248,7 +248,7 @@ const NasdaqOptions = () => {
         </div>
       </div>
       <div className="common-left-margin last-trade-price">
-        <PriceMarquee lastPrice={lastTrade} selectedTicker={selectedTicker}/>
+        <PriceMarquee lastPrice={lastTrade} selectedTicker={selectedTicker} />
         {/* Last Price: {lastTrade} */}
       </div>
 
@@ -270,7 +270,7 @@ const NasdaqOptions = () => {
       </div>
 
       <div>
-      <SPXData selectedTicker={selectedTicker} assetclass={assetclass} />
+        <SPXData selectedTicker={selectedTicker} assetclass={assetclass} />
       </div>
 
 
@@ -293,6 +293,9 @@ const NasdaqOptions = () => {
         {showBarChart && <BarGraphChart rows={data} selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest} />}
       </div>
 
+      <div>
+        <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass} />
+      </div>
 
 
       <div className="market-data-checkbox">
@@ -306,9 +309,6 @@ const NasdaqOptions = () => {
         </label>
       </div>
 
-      <div>
-        <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass} />
-      </div>
 
       <div>
         {showMarketdata && <OptionsChart selectedTicker={selectedTicker} />}

@@ -32,13 +32,13 @@ const NSEData = () => {
     async function getmydata() {
         setData([]);
         try {
-const symbol='SBIN';
+            const symbol = 'SBIN.NS';
             //***********to call local api end point*************
             //const res = await axios.get(`${NASDAQ_TOKEN}/api/nse-option-chain?symbol=SBIN`);
             const response = await axios.get(`${NASDAQ_TOKEN}/api/yahoonse/${symbol}`);
             const rows = response?.data?.options || [];
 
-           // const rows = res.data?.data?.table?.rows || [];
+            // const rows = res.data?.data?.table?.rows || [];
             setData(rows);
         } catch (err) {
             console.error('Failed to get options data:', err);
@@ -46,13 +46,13 @@ const symbol='SBIN';
     }
     return (
         <div>
-        <h1>Option Chain: RELIANCE</h1>
-        {data ? (
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div>
+            <h1>Option Chain: RELIANCE</h1>
+            {data ? (
+                <pre>{JSON.stringify(data, null, 2)}</pre>
+            ) : (
+                <p>Loading...</p>
+            )}
+        </div>
     );
 };
 
