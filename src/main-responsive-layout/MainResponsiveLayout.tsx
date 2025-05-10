@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import NasdaqOptions from './../nasdaq/NasdaqOptions';
 import NASDAQStock from './../nasdaq/NASDAQStock';
 import JsonUpdater from './../LogWriter/JsonUpdater';
+import NSEHome from './../nse/nse-home';
 const MainResponsiveLayout = () => {
   const [isLogReading, setIsLogReading] = useState(false);
 
@@ -28,6 +29,8 @@ const MainResponsiveLayout = () => {
 
         <JsonUpdater/>
         <NasdaqOptions />
+
+        {/* <NSEHome/> */}
 
       </div>
 

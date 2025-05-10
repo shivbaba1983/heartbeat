@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import'./SpyYahooChart.scss';
 import axios from "axios";
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
@@ -7,11 +8,13 @@ import {
 import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, ETF_List, IS_AWS_API, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import PredictionHint from './../components/PredictionHint';
+import {getDateForatted} from './../common/nasdaq.common';
 const SpyYahooChart = ({ selectedTicker }) => {
     // Define a type for merged data
 
     const [options, setOptions] = useState([]);
     const [data, setData] = useState([]);
+    const [stockDetails, setStockdetails] = useState({});
     const [totalCallVolume, setTotalCallVolume] = useState(1);
     const [totalPutVolume, setTotalPutVolume] = useState(1);
     const [expiryDate, setExpiryDate] = useState();
@@ -32,6 +35,7 @@ const SpyYahooChart = ({ selectedTicker }) => {
         //const todayDate = getTodayInEST()
         try {
             let rows = [];
+            let stockquote = {earningsTimestamp:''};
             if (IS_AWS_API) {
                 //call from aws api
                 const response = await getYahooFinanceData(selectedTicker);
@@ -41,6 +45,7 @@ const SpyYahooChart = ({ selectedTicker }) => {
                 //call from local api express server
                 const response = await axios.get(`${NASDAQ_TOKEN}/api/yahooFinance/${selectedTicker}`);
                 rows = response?.data?.options || [];
+                stockquote= response?.data?.quote || {earningsTimestamp:''};
             }
             const merged = {};
             // Compute totals
@@ -79,7 +84,8 @@ const SpyYahooChart = ({ selectedTicker }) => {
             });
             setTotalCallVolume(tempCallVolume);
             setTotalPutVolume(tempPutVolume);
-            setData(tempData)
+            setData(tempData);
+            setStockdetails(stockquote);
             //setOptions(rows);
         } catch (err) {
             console.error('Failed to get options data yahoo finance SpyYahoo:', err);
@@ -91,13 +97,14 @@ const SpyYahooChart = ({ selectedTicker }) => {
             "timestamp": '',
             "callVolume": totalCallVolume,
             "putVolume": totalPutVolume,
-            "selectedTicker": selectedTicker
+            "selectedTicker": selectedTicker,
+            'customClassName': totalCallVolume> totalPutVolume? 'greenmarket':'redmareket'
         },
     ]
 
     return (
         <div>
-            <h3>Yahoo Finance Data Total- Call {totalCallVolume}, puts {totalPutVolume} exp - {expiryDate}</h3>
+            <h3>Yahoo- Call-<span className={predectionInput[0].customClassName}>{totalCallVolume} </span>, Put-{totalPutVolume} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}</h3>
             {totalCallVolume >0 && <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
             {data && <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>

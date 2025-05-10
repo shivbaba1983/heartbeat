@@ -62,3 +62,7 @@ import {TIME_RANGES} from './../constant/HeartbeatConstants';
     friday.setDate(today.getDate() + diffToFriday);
     return friday.toISOString().slice(0, 10);;
   }
+
+  export function getDateForatted(inputDate){
+    return inputDate?.split("T")[0]
+  }
