@@ -39,8 +39,9 @@ const SpyYahooChart = ({ selectedTicker }) => {
             if (IS_AWS_API) {
                 //call from aws api
                 const response = await getYahooFinanceData(selectedTicker);
-                rows = response?.body || [];
-                //rows = response?.data?.options || [];
+                const responseJson = await response.json();
+                rows = responseJson?.options || [];
+                stockquote= responseJson?.quote || {earningsTimestamp:''};
             } else {
                 //call from local api express server
                 const response = await axios.get(`${NASDAQ_TOKEN}/api/yahooFinance/${selectedTicker}`);

@@ -270,7 +270,7 @@ const NasdaqOptions = () => {
       </div>
 
       <div>
-     {NASDAQ_TOKEN.includes('localhost') && <SPXData selectedTicker={selectedTicker} assetclass={assetclass} />}
+      <SPXData selectedTicker={selectedTicker} assetclass={assetclass} />
       </div>
 
 
