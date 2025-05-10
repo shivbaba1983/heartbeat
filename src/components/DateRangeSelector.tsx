@@ -4,7 +4,7 @@ import { getFromDate } from './../common/nasdaq.common';
 
 const DateRangeSelector = ({ setRequestedFromDate }) => {
   // const [range, setRange] = useState('1Y');
-  const [selectedRange, setSelectedRange] = useState('1Y');
+  const [selectedRange, setSelectedRange] = useState('6M');
   useEffect(() => {
     const fetchMyData = async () => {
       const fromDate = await getFromDate(selectedRange);

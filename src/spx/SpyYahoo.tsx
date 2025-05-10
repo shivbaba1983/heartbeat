@@ -104,7 +104,7 @@ const SpyYahooChart = ({ selectedTicker }) => {
     ]
 
     return (
-        <div>
+        <div className="yahoo-chart-section">
             <h3>Yahoo- Call-<span className={predectionInput[0].customClassName}>{totalCallVolume} </span>, Put-{totalPutVolume} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}</h3>
             {totalCallVolume >0 && <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
             {data && <ResponsiveContainer width="100%" height={400}>

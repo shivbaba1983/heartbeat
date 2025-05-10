@@ -193,6 +193,10 @@ const NasdaqOptions = () => {
 
   return (
     <div>
+
+         <div className="panel-sticky-marquee">
+
+
       <div className="vol-or-openinterets">
         <div>
           <label htmlFor="volume-openinterest">Volume or open interest: </label>
@@ -247,10 +251,7 @@ const NasdaqOptions = () => {
           <button onClick={(e) => handleTickerChange(e)}>Om shanti</button>
         </div>
       </div>
-      <div className="common-left-margin last-trade-price">
-        <PriceMarquee lastPrice={lastTrade} selectedTicker={selectedTicker} />
-        {/* Last Price: {lastTrade} */}
-      </div>
+
 
       <div className="vol-or-openinterets">
         <div>
@@ -269,7 +270,12 @@ const NasdaqOptions = () => {
         </div>
       </div>
 
-      <div>
+    </div>
+          <div className="common-left-margin last-trade-price">
+        <PriceMarquee lastPrice={lastTrade} selectedTicker={selectedTicker} />
+        {/* Last Price: {lastTrade} */}
+      </div>
+      <div className="yahoo-data-section">
         <SPXData selectedTicker={selectedTicker} assetclass={assetclass} />
       </div>
 

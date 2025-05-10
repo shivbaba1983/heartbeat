@@ -19,3 +19,30 @@
 .last-trade-price{
     background-color: greenyellow;
 }
+
+.panel-sticky-marquee {
+      margin-top: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+   // height: 20px;
+    background-color: greenyellow;
+    color: black;
+    z-index: 9999;
+    overflow: hidden;
+  }
+  
+.yahoo-data-section{
+    margin-top: 20px;
+}
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
