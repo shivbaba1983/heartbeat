@@ -14,6 +14,7 @@ import { getNasdaqOptionData } from './../services/NasdaqDataService';
 import PriceMarquee from './../components/PriceMarquee';
 import StockHistoryData from './../nasdaq/StockHistoryData';
 import SPXData from './../spx/SPXData';
+import StockNewsData from './../stocknews/stocknewsData';
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -26,6 +27,7 @@ const NasdaqOptions = () => {
 
   const [showBarChart, setShowBarChart] = useState(true);
   const [showMarketdata, setShowMarketdata] = useState(false);
+  const [showStockNews, setShowStockNews] = useState(false);
   const tickerList = ['QQQ', 'SPY', 'IWM'];
   const [totalCallVolumeCount, setTotalCallVolumeCount] = useState(0);
   const [totalPutVolumeCount, setTotalPutVolumeCount] = useState(0);
@@ -331,6 +333,19 @@ const NasdaqOptions = () => {
          <OptionTable data={puts} title="Put Options" /> */}
       </div>
 
+
+      <div className="market-data-checkbox">
+        <label className="">
+          <input
+            type="checkbox"
+            checked={showStockNews}
+            onChange={() => setShowStockNews(!showStockNews)}
+          />
+          <span>Stock News</span>
+        </label>
+      </div>
+
+      {showStockNews && <StockNewsData />}
 
     </div>
   );
