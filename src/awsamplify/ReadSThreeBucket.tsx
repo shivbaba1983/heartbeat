@@ -151,7 +151,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
         </LineChart>
       </ResponsiveContainer>}
 
-      <button onClick={() => handleRefreshClick()}>Refres Data</button>
+      <button onClick={() => handleRefreshClick()}>Refresh Data</button>
 
       {/* <PredictionChart data={data}/> */}
     </div>

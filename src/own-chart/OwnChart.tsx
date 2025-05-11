@@ -3,16 +3,41 @@ import VolumeChart from './VolumeChart';
 import { NASDAQ_TOKEN } from '../constant/HeartbeatConstants';
 import { getTodayInEST } from './../common/nasdaq.common';
 import ReadSThreeBucket from './../awsamplify/ReadSThreeBucket';
+import { getAdjustedDate } from './../common/nasdaq.common';
 const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker }) => {
   const [callVolume, setCallVolume] = useState(totalCallVolumeCount);
   const [putVolume, setPutVolume] = useState(totalPutVolumeCount);
-
+  const [isLoading, setIsLoading] = useState(true);
   const [files, setFiles] = useState([]);
-  const [selectedFileName, setSelectedFileName] = useState(getTodayInEST());
+  const [selectedFileName, setSelectedFileName] = useState(getAdjustedDate());
+
+  useEffect(() => {
+    let fileName = selectedFileName;
+    if (selectedFileName === "") {
+      fileName = getAdjustedDate();//new Date().toISOString().slice(0, 10);
+      setSelectedFileName(fileName);
+    }
+    try {
+      if (totalCallVolumeCount > 0) {
+        fetch(`${NASDAQ_TOKEN}/api/writes3bucket/`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            callVolume: Number(totalCallVolumeCount),
+            putVolume: Number(totalPutVolumeCount),
+            selectedTicker: selectedTicker,
+          }),
+        });
+      }
+    } catch (err) {
+      console.error('Failed to fetch option data:', err);
+    }
+  }, []);
 
   //call only oces to get the file name only
   useEffect(() => {
     async function fetchFiles() {
+
       const bucketUrl = "https://anil-w-bucket.s3.amazonaws.com?list-type=2";
 
       try {
@@ -31,6 +56,9 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
       } catch (error) {
         console.error("Error fetching S3 files:", error);
       }
+      finally {
+        setIsLoading(false);
+      }
     }
 
     fetchFiles();
@@ -42,28 +70,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
     setPutVolume(totalPutVolumeCount)
   }, [totalCallVolumeCount, totalPutVolumeCount]);
 
-  
-  useEffect(() => {
-    let fileName = selectedFileName;
-    if (selectedFileName === "") {
-      fileName = new Date().toISOString().slice(0, 10);
-    }
-    try {
-      if (totalCallVolumeCount > 0) {
-        fetch(`${NASDAQ_TOKEN}/api/writes3bucket/`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            callVolume: Number(totalCallVolumeCount),
-            putVolume: Number(totalPutVolumeCount),
-            selectedTicker: selectedTicker,
-          }),
-        });
-      }
-    } catch (err) {
-      console.error('Failed to fetch option data:', err);
-    }
-  }, []);
+
 
   const handleFileNameChange = (e) => {
     e.preventDefault();
@@ -125,7 +132,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
 
         <VolumeChart selectedTicker={selectedTicker} fileName={selectedFileName} />
       </div>}
-      <ReadSThreeBucket selectedTicker={selectedTicker} fileName={selectedFileName} />
+      {!isLoading && <ReadSThreeBucket selectedTicker={selectedTicker} fileName={selectedFileName} />}
     </div>
   );
 };

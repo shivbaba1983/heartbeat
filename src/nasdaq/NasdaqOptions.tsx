@@ -30,24 +30,28 @@ const NasdaqOptions = () => {
   const [totalCallVolumeCount, setTotalCallVolumeCount] = useState(0);
   const [totalPutVolumeCount, setTotalPutVolumeCount] = useState(0);
   const [isRequestedDateChanage, setIsRequestedDateChanage] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchOptionsData = async () => {
       try {
         if (isWithinMarketHours()) {
           await getmydata();
+
         } else {
           console.log('⏸ Market is closed. Skipping API call.');
         }
 
       } catch (err) {
         console.error('Failed to fetch option data:', err);
+      } finally {
+        setIsLoading(false);
       }
     };
     if (isWithinMarketHours()) {
       fetchOptionsData();
     }
     else {
+      setIsLoading(false);
       console.log('⏸ Market is closed. Skipping API call.');
     }
   }, [selectedDayOrMonth, selectedTicker, assetclass, requestedDate]);
@@ -274,12 +278,15 @@ const NasdaqOptions = () => {
         {/* Last Price: {lastTrade} */}
       </div>
       <div className="yahoo-data-section">
-        <SPXData selectedTicker={selectedTicker} assetclass={assetclass}  volumeOrInterest={volumeOrInterest}/>
+        <SPXData selectedTicker={selectedTicker} assetclass={assetclass} volumeOrInterest={volumeOrInterest} />
       </div>
 
+      {isLoading && <div>
+        <h2> Loading....... Please wait</h2>
+      </div>}
 
       <div>
-        {<OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
+        {!isLoading && <OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
       </div>
 
       {/* <div>

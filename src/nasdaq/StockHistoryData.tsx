@@ -11,9 +11,16 @@ const StockHistoryData = ({ selectedTicker, assetclass }) => {
     //const [selectedTicker, setSelectedTicker] = useState('SPY');
     const [requestedFromDate, setRequestedFromDate] = useState('');
     const [requestedToDate, setRequestedToDate] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         const fetchMyData = async () => {
-            await getStockHistoryAPIData(selectedTicker); // write data to json file in s3 bucket    
+            try {
+                await getStockHistoryAPIData(selectedTicker);
+            } catch (err) {
+                console.error('Failed to fetch option history data from Nasdaq:', err);
+            } finally {
+                setIsLoading(false);
+            }
         };
         fetchMyData();
     }, [selectedTicker, requestedFromDate]);
@@ -42,10 +49,15 @@ const StockHistoryData = ({ selectedTicker, assetclass }) => {
     };
 
     return (
-        <div style={{ marginTop: 30}}>
-            <h3> Stock History Data {selectedTicker}</h3>
-            <DateRangeSelector setRequestedFromDate={setRequestedFromDate} />
-            {stockHistoryData?.length > 0 && <StockChart stockHistoryData={stockHistoryData} />}
+        <div>
+            {isLoading && <div>
+                <h2> Loading....... Please wait</h2>
+            </div>}
+            {!isLoading && <div style={{ marginTop: 30 }}>
+                <h3> Stock History Data {selectedTicker}</h3>
+                <DateRangeSelector setRequestedFromDate={setRequestedFromDate} />
+                {stockHistoryData?.length > 0 && <StockChart stockHistoryData={stockHistoryData} />}
+            </div>}
         </div>
     );
 }

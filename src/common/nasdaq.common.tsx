@@ -107,4 +107,28 @@ export function getComingFriday() {
   return `${yyyy}-${mm}-${dd}`;
 }
 
-console.log(getComingFriday());
+//previous friday date
+export  function getAdjustedDate() {
+const today = new Date();
+  const day = today.getDay(); // 0 = Sunday, 6 = Saturday
+
+  const result = new Date(today);
+
+  if (day === 6) {
+    // Saturday → go back 1 day
+    result.setDate(today.getDate() - 1);
+  } else if (day === 0) {
+    // Sunday → go back 2 days
+    result.setDate(today.getDate() - 2);
+  }
+
+  // Format as 'YYYY-mm-dd'
+  const yyyy = result.getFullYear();
+  const mm = String(result.getMonth() + 1).padStart(2, '0');
+  const dd = String(result.getDate()).padStart(2, '0');
+
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+
+
