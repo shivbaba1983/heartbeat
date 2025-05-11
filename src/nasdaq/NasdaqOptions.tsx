@@ -136,7 +136,8 @@ const NasdaqOptions = () => {
         rows = latestData?.data?.table?.rows || [];
       } else {
         //***********to call local api end point*************
-        const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
+          const tempToken = import.meta.env.VITE_STOCK_API_URL;
+        const res = await axios.get(`${tempToken}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
         rows = res.data?.data?.table?.rows || [];
         lstPrice = res.data?.data?.lastTrade;
         const match = lstPrice.match(/\$\d+(\.\d+)?/);
@@ -345,7 +346,7 @@ const NasdaqOptions = () => {
         </label>
       </div>
 
-      {showStockNews && <StockNewsData />}
+      {showStockNews && <StockNewsData selectedTicker={selectedTicker} />}
 
     </div>
   );

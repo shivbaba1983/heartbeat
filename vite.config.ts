@@ -54,6 +54,9 @@ export default defineConfig({
             ]
         })
     ],
+     define: {
+    __API_URL__: JSON.stringify(process.env.VITE_STOCKNEWS_KEY),
+  },
     resolve: {
         alias: {
             "@": normalizePath(path.resolve(__dirname, "./src")),

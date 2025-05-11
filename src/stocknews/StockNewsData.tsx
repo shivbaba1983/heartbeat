@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './StockNewsData.scss'; // Import the custom CSS
 
-const StockNewsData = () => {
+const StockNewsData = ({selectedTicker}) => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const API_KEY = '4ZSLH07FO4QPIYE1'; // Replace with your key
+  const stockNewsApiKey = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const res = await axios.get(
-          `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=${API_KEY}`
+          `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${selectedTicker}&apikey=${stockNewsApiKey}`
         );
         const feed = res.data.feed || [];
         setNews(feed.slice(0, 10));
@@ -23,13 +23,13 @@ const StockNewsData = () => {
     };
 
     fetchNews();
-  }, []);
+  }, [selectedTicker]);
 
   if (loading) return <p style={{ textAlign: 'center', marginTop: '1rem' }}>Loading...</p>;
 
   return (
     <div className="container">
-      <h2 className="news-title">Apple (AAPL) News</h2>
+      <h2 className="news-title">News {selectedTicker}</h2>
       <div className="grid">
         {news.map((item, idx) => (
           <div key={idx} className="card">
