@@ -28,7 +28,7 @@ const StockChart = ({ stockHistoryData }) => {
   .reverse();
 
   return (
-    <div style={{ width: '100%', height: 400 }}>
+    <div style={{ width: '100%', height: 400 , marginTop:10}}>
     {stockHistoryData &&<ResponsiveContainer>
       <ComposedChart data={processedData}>
         <CartesianGrid stroke="#f5f5f5" />

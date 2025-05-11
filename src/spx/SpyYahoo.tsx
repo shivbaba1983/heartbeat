@@ -9,7 +9,7 @@ import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, ETF_List, IS_AWS_API, LogTickerList, 
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import PredictionHint from './../components/PredictionHint';
 import {getDateForatted} from './../common/nasdaq.common';
-const SpyYahooChart = ({ selectedTicker }) => {
+const SpyYahooChart = ({ selectedTicker, volumeOrInterest }) => {
     // Define a type for merged data
 
     const [options, setOptions] = useState([]);

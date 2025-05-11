@@ -66,3 +66,45 @@ import {TIME_RANGES} from './../constant/HeartbeatConstants';
   export function getDateForatted(inputDate){
     return inputDate?.split("T")[0]
   }
+
+  export function getEffectiveDate() {
+  const today = new Date();
+  const day = today.getDay(); // 0 = Sunday, 6 = Saturday
+
+  if (day === 6) {
+    today.setDate(today.getDate() + 2); // Saturday → Monday
+  } else if (day === 0) {
+    today.setDate(today.getDate() + 1); // Sunday → Monday
+  }
+
+  // Format as 'yyyy-mm-dd'
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+export function getComingFriday() {
+  const today = new Date();
+  const day = today.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+
+  // Calculate days to next Monday
+  const daysToNextMonday = (8 - day) % 7 || 7;
+
+  // Move to next Monday
+  const nextMonday = new Date(today);
+  nextMonday.setDate(today.getDate() + daysToNextMonday);
+
+  // Add 4 days to get Friday
+  nextMonday.setDate(nextMonday.getDate() + 4);
+
+  // Format as 'yyyy-mm-dd'
+  const yyyy = nextMonday.getFullYear();
+  const mm = String(nextMonday.getMonth() + 1).padStart(2, '0');
+  const dd = String(nextMonday.getDate()).padStart(2, '0');
+
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+console.log(getComingFriday());

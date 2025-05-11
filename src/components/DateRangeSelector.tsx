@@ -24,7 +24,7 @@ const DateRangeSelector = ({ setRequestedFromDate }) => {
   }, [selectedRange]);
 
   return (
-    <div style={{ display: 'flex', gap: '1rem' }}>
+    <div style={{ display: 'flex', gap: '1rem' , backgroundColor: 'lightblue'}}>
       {Object.keys(TIME_RANGES).map((range) => (
         <label key={range}>
           <input

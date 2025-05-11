@@ -18,6 +18,7 @@ const DatePicker = ({ setRequestedDate, setIsRequestedDateChanage, requestedDate
 
     useEffect(() => {
         setRequestedDate(requestedDate);
+        setSelectedDate(requestedDate)
     }, [requestedDate])
     const handleChange = (e) => {
         setSelectedDate(e.target.value);

@@ -8,7 +8,7 @@ import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
 import { NASDAQ_TOKEN, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from './../constant/HeartbeatConstants';
-import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST } from './../common/nasdaq.common';
+import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
 import DatePicker from './../components/DatePicker';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
 import PriceMarquee from './../components/PriceMarquee';
@@ -107,10 +107,10 @@ const NasdaqOptions = () => {
           if (["TQQQ", "SOXL", "TSLL", "SQQQ"].includes(selectedTicker))
             selectedDate = getFridayOfCurrentWeek();
           else
-            selectedDate = getTodayInEST();
+            selectedDate = getEffectiveDate();// getTodayInEST();
         }
         else if (selectedDayOrMonth === 'day' && assetclass === 'stocks') {
-          selectedDate = getFridayOfCurrentWeek();
+          selectedDate = getComingFriday();//getFridayOfCurrentWeek();
         }
         setRequestedDate(selectedDate)
       }
@@ -160,7 +160,6 @@ const NasdaqOptions = () => {
   const handleChandleVolumeOrOPrnInterestChangehange = async (e) => {
     const selectedVolumeOrOpenIntereset = e.target.value || 'volume';
     let selectedAsset = "volume"
-
     if (selectedVolumeOrOpenIntereset === "volume") {
       selectedAsset = 'volume';
     }
@@ -173,10 +172,8 @@ const NasdaqOptions = () => {
 
 
   const handleTickerChange = async (e) => {
-    const ticker = e.target.value.toUpperCase() || 'SPY';
+    const ticker = e.target.value.toUpperCase();
     let selectedAsset = "ETF"
-    // setCalls([]);
-    // setPuts([]);
     setData([]);
     setSelectedTicker(ticker);
 
@@ -187,96 +184,97 @@ const NasdaqOptions = () => {
       selectedAsset = 'stocks';
     }
     setAssetclass(selectedAsset);
-    //await getmydata(ticker, selectedAsset);
   };
 
 
   return (
     <div>
 
-         <div className="panel-sticky-marquee">
-
-
-      <div className="vol-or-openinterets">
-        <div>
-          <label htmlFor="volume-openinterest">Volume or open interest: </label>
-          <select id="volume-openinterest" value={volumeOrInterest} onChange={(e) => handleChandleVolumeOrOPrnInterestChangehange(e)}>
-            {/* <option value="">-- Choose Expiry --</option> */}
-            {volumeOrOpenInterest.map((opt, idx) => (
-              <option key={idx} value={opt.value}>
-                {opt.value}
-              </option>
+      <div className="panel-sticky-marquee">
+        <div className="vol-or-openinterets">
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            {volumeOrOpenInterest.map((range) => (
+              <label key={range.idx}>
+                <input
+                  type="radio"
+                  name="volOpenInterest"
+                  value={range.value}
+                  checked={volumeOrInterest === range.value}
+                  onChange={(e) => handleChandleVolumeOrOPrnInterestChangehange(e)}
+                />
+                {range.value}
+              </label>
             ))}
-          </select>
+          </div>
+
+          <div style={{ display: 'inline', gap: '1rem' }} className="common-left-margin">
+            <label>
+              <input
+                type="checkbox"
+                checked={selectedDayOrMonth === 'day'}
+                onChange={() => handleSelect('day')}
+              />
+              Day
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={selectedDayOrMonth === 'month'}
+                onChange={() => handleSelect('month')}
+              />
+              Month
+            </label>
+          </div>
         </div>
-        <div style={{ display: 'inline', gap: '1rem' }} className="common-left-margin">
-          <label>
+
+        <div className="vol-or-openinterets">
+          <div className="common-left-margin">
+            <select id="expiry-select" value={selectedTicker} onChange={(e) => handleTickerChange(e)}>
+              {tickerListData.map((opt, idx) => (
+                <option key={idx} value={opt.value}>
+                  {opt.value}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="common-left-margin">
             <input
-              type="checkbox"
-              checked={selectedDayOrMonth === 'day'}
-              onChange={() => handleSelect('day')}
+              type="text"
+              onChange={(e) => handleTickerChange(e)}
+              placeholder="Ticker..."
             />
-            Day
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={selectedDayOrMonth === 'month'}
-              onChange={() => handleSelect('month')}
-            />
-            Month
-          </label>
+          </div>
+          <div className="common-left-margin">
+            <button onClick={(e) => handleTickerChange(e)}>Om shanti</button>
+          </div>
         </div>
+
+
+        <div className="vol-or-openinterets">
+          <div>
+            <DatePicker setRequestedDate={setRequestedDate} setIsRequestedDateChanage={setIsRequestedDateChanage} requestedDate={requestedDate} />
+          </div>
+
+          <div>
+            <label className="common-left-margin">
+              <input
+                type="checkbox"
+                checked={showBarChart}
+                onChange={() => setShowBarChart(!showBarChart)}
+              />
+              <span>Show Chart</span>
+            </label>
+          </div>
+        </div>
+
       </div>
-
-      <div className="vol-or-openinterets">
-        <div className="common-left-margin">
-          <select id="expiry-select" value={selectedTicker} onChange={(e) => handleTickerChange(e)}>
-            {tickerListData.map((opt, idx) => (
-              <option key={idx} value={opt.value}>
-                {opt.value}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="common-left-margin">
-          <input
-            type="text"
-            onChange={(e) => handleTickerChange(e)}
-            placeholder="Ticker..."
-          />
-        </div>
-        <div className="common-left-margin">
-          <button onClick={(e) => handleTickerChange(e)}>Om shanti</button>
-        </div>
-      </div>
-
-
-      <div className="vol-or-openinterets">
-        <div>
-          <DatePicker setRequestedDate={setRequestedDate} setIsRequestedDateChanage={setIsRequestedDateChanage} requestedDate={requestedDate} />
-        </div>
-
-        <div>
-          <label className="common-left-margin">
-            <input
-              type="checkbox"
-              checked={showBarChart}
-              onChange={() => setShowBarChart(!showBarChart)}
-            />
-            <span>Show Chart</span>
-          </label>
-        </div>
-      </div>
-
-    </div>
-          <div className="common-left-margin last-trade-price">
+      <div className="common-left-margin last-trade-price">
         <PriceMarquee lastPrice={lastTrade} selectedTicker={selectedTicker} />
         {/* Last Price: {lastTrade} */}
       </div>
       <div className="yahoo-data-section">
-        <SPXData selectedTicker={selectedTicker} assetclass={assetclass} />
+        <SPXData selectedTicker={selectedTicker} assetclass={assetclass}  volumeOrInterest={volumeOrInterest}/>
       </div>
 
 

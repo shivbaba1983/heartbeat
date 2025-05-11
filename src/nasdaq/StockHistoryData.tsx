@@ -42,8 +42,8 @@ const StockHistoryData = ({ selectedTicker, assetclass }) => {
     };
 
     return (
-        <div>
-            <span> Stock History Data {selectedTicker}</span>
+        <div style={{ marginTop: 30}}>
+            <h3> Stock History Data {selectedTicker}</h3>
             <DateRangeSelector setRequestedFromDate={setRequestedFromDate} />
             {stockHistoryData?.length > 0 && <StockChart stockHistoryData={stockHistoryData} />}
         </div>
