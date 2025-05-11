@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import'./SpyYahooChart.scss';
+import './SpyYahooChart.scss';
 import axios from "axios";
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
@@ -8,7 +8,7 @@ import {
 import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, ETF_List, IS_AWS_API, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import PredictionHint from './../components/PredictionHint';
-import {getDateForatted} from './../common/nasdaq.common';
+import { getDateForatted } from './../common/nasdaq.common';
 const SpyYahooChart = ({ selectedTicker, volumeOrInterest }) => {
     // Define a type for merged data
 
@@ -27,7 +27,7 @@ const SpyYahooChart = ({ selectedTicker, volumeOrInterest }) => {
             await getSpyHistoryAPIData(selectedTicker); // write data to json file in s3 bucket
         };
         fetchMyData();
-    }, [selectedTicker]);
+    }, [selectedTicker, volumeOrInterest]);
 
 
     const getSpyHistoryAPIData = async (selectedTicker) => {
@@ -35,54 +35,88 @@ const SpyYahooChart = ({ selectedTicker, volumeOrInterest }) => {
         //const todayDate = getTodayInEST()
         try {
             let rows = [];
-            let stockquote = {earningsTimestamp:''};
+            let stockquote = { earningsTimestamp: '' };
             if (IS_AWS_API) {
                 //call from aws api
                 const response = await getYahooFinanceData(selectedTicker);
                 const responseJson = await response.json();
                 rows = responseJson?.options || [];
-                stockquote= responseJson?.quote || {earningsTimestamp:''};
+                stockquote = responseJson?.quote || { earningsTimestamp: '' };
             } else {
                 //call from local api express server
                 const response = await axios.get(`${NASDAQ_TOKEN}/api/yahooFinance/${selectedTicker}`);
                 rows = response?.data?.options || [];
-                stockquote= response?.data?.quote || {earningsTimestamp:''};
+                stockquote = response?.data?.quote || { earningsTimestamp: '' };
             }
             const merged = {};
             // Compute totals
             let tempCallVolume = 0;
             let tempPutVolume = 0;
             // Process calls
-            rows[0]?.calls.forEach(({ strike, volume, lastPrice }) => {
-                if (!merged[strike]) {
-                    merged[strike] = { strike, callVolume: 0, putVolume: 0, lastPrice:0 };
-                }
-                merged[strike].callVolume = volume || 0;
-                merged[strike].calllastPrice = lastPrice || 0;
-                
-            });
+            let tempData;
+            if (volumeOrInterest === 'volume') {
+                rows[0]?.calls.forEach(({ strike, volume, lastPrice }) => {
+                    if (!merged[strike]) {
+                        merged[strike] = { strike, callVolume: 0, putVolume: 0, lastPrice: 0 };
+                    }
+                    merged[strike].callVolume = volume || 0;
+                    merged[strike].calllastPrice = lastPrice || 0;
 
-            // Process puts
-            rows[0]?.puts.forEach(({ strike, volume, lastPrice }) => {
-                if (!merged[strike]) {
-                    merged[strike] = { strike, callVolume: 0, putVolume: 0 , lastPrice:0};
-                }
-                merged[strike].putVolume = volume || 0;
-                merged[strike].putlastPrice = lastPrice || 0;
-            });
-            setExpiryDate(rows[0]?.expirationDate);
-            // Convert to array
-            //const tempData = Object.values(merged);
-            const tempData = Object.values(merged).filter(
-                item => item.callVolume > YAHOO_VOLUME_LIMIT || item.putVolume > YAHOO_VOLUME_LIMIT
-            ).sort((a, b) => a.strike - b.strike);;
+                });
+
+                // Process puts
+                rows[0]?.puts.forEach(({ strike, volume, lastPrice }) => {
+                    if (!merged[strike]) {
+                        merged[strike] = { strike, callVolume: 0, putVolume: 0, lastPrice: 0 };
+                    }
+                    merged[strike].putVolume = volume || 0;
+                    merged[strike].putlastPrice = lastPrice || 0;
+                });
+                setExpiryDate(rows[0]?.expirationDate);
+                // Convert to array
+                //const tempData = Object.values(merged);
+                tempData = Object.values(merged).filter(
+                    item => item.callVolume > YAHOO_VOLUME_LIMIT || item.putVolume > YAHOO_VOLUME_LIMIT
+                ).sort((a, b) => a.strike - b.strike);;
 
 
 
-            Object.values(tempData).forEach(({ callVolume = 0, putVolume = 0 }) => {
-                tempCallVolume += callVolume;
-                tempPutVolume += putVolume;
-            });
+                Object.values(tempData).forEach(({ callVolume = 0, putVolume = 0 }) => {
+                    tempCallVolume += callVolume;
+                    tempPutVolume += putVolume;
+                });
+            }
+            else {
+                rows[0]?.calls.forEach(({ strike, openInterest, lastPrice }) => {
+                    if (!merged[strike]) {
+                        merged[strike] = { strike, callOI: 0, putOI: 0, calllastPrice: 0, putlastPrice: 0 };
+                    }
+                    merged[strike].callOI = openInterest || 0;
+                    merged[strike].calllastPrice = lastPrice || 0;
+                });
+
+                // Process puts
+                rows[0]?.puts.forEach(({ strike, openInterest, lastPrice }) => {
+                    if (!merged[strike]) {
+                        merged[strike] = { strike, callOI: 0, putOI: 0, calllastPrice: 0, putlastPrice: 0 };
+                    }
+                    merged[strike].putOI = openInterest || 0;
+                    merged[strike].putlastPrice = lastPrice || 0;
+                });
+
+                setExpiryDate(rows[0]?.expirationDate);
+
+                // Filter and sort
+                tempData = Object.values(merged).filter(
+                    item => item.callOI > YAHOO_VOLUME_LIMIT || item.putOI > YAHOO_VOLUME_LIMIT
+                ).sort((a, b) => a.strike - b.strike);
+
+                // Sum OI
+                Object.values(tempData).forEach(({ callOI = 0, putOI = 0 }) => {
+                    tempCallVolume += callOI;
+                    tempPutVolume += putOI;
+                });
+            }
             setTotalCallVolume(tempCallVolume);
             setTotalPutVolume(tempPutVolume);
             setData(tempData);
@@ -99,27 +133,46 @@ const SpyYahooChart = ({ selectedTicker, volumeOrInterest }) => {
             "callVolume": totalCallVolume,
             "putVolume": totalPutVolume,
             "selectedTicker": selectedTicker,
-            'customClassName': totalCallVolume> totalPutVolume? 'greenmarket':'redmareket'
+            'customClassName': totalCallVolume > totalPutVolume ? 'greenmarket' : 'redmareket'
         },
     ]
 
     return (
         <div className="yahoo-chart-section">
             <h3>Yahoo- Call-<span className={predectionInput[0].customClassName}>{totalCallVolume} </span>, Put-{totalPutVolume} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}</h3>
-            {totalCallVolume >0 && <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
-            {data && <ResponsiveContainer width="100%" height={400}>
-                <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="strike" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="callVolume" fill="#8884d8" name="Call Volume" />
-                    <Bar dataKey="calllastPrice" fill="#006400" name="Call Last Price" />
-                    <Bar dataKey="putVolume" fill="#FF2C2C" name="Put Volume" />
-                    <Bar dataKey="putlastPrice" fill="#FF2C2C" name="Put Last Price" />
-                </BarChart>
-            </ResponsiveContainer>}
+            {totalCallVolume > 0 && <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
+            {volumeOrInterest === 'volume' && <div>
+                {data && <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="strike" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="callVolume" fill="#8884d8" name="Call Volume" />
+                        <Bar dataKey="calllastPrice" fill="#006400" name="Call Last Price" />
+                        <Bar dataKey="putVolume" fill="#FF2C2C" name="Put Volume" />
+                        <Bar dataKey="putlastPrice" fill="#FF2C2C" name="Put Last Price" />
+                    </BarChart>
+                </ResponsiveContainer>}
+            </div>}
+
+            {volumeOrInterest === 'openinterest' && <div>
+                {data && <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="strike" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="callOI" fill="#8884d8" name="Call OI" />
+                        <Bar dataKey="calllastPrice" fill="#006400" name="Call Last Price" />
+                        <Bar dataKey="putOI" fill="#FF2C2C" name="Put OI" />
+                        <Bar dataKey="putlastPrice" fill="#FF2C2C" name="Put Last Price" />
+                    </BarChart>
+                </ResponsiveContainer>}
+            </div>}
+
         </div>
     );
 };
