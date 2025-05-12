@@ -14,7 +14,7 @@ import { getNasdaqOptionData } from './../services/NasdaqDataService';
 import PriceMarquee from './../components/PriceMarquee';
 import StockHistoryData from './../nasdaq/StockHistoryData';
 import SPXData from './../spx/SPXData';
-import StockNewsData from './../stocknews/stocknewsData';
+import StockNewsData from './../stocknews/StockNewsData';
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
