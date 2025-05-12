@@ -28,6 +28,8 @@
         "./.src",
         "src/**/*",
         "**/*.scss",
-        "vite.config.ts"
+        "vite.config.ts",
+        "src", 
+        "src/env.d.ts"
     ]
 }
