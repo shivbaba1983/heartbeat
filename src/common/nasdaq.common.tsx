@@ -87,24 +87,15 @@ import {TIME_RANGES} from './../constant/HeartbeatConstants';
 
 export function getComingFriday() {
   const today = new Date();
-  const day = today.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+  const dayOfWeek = today.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
 
-  // Calculate days to next Monday
-  const daysToNextMonday = (8 - day) % 7 || 7;
+  const daysUntilFriday = (5 - dayOfWeek + 7) % 7 || 7;
+  // Ensures that if today is Friday, it returns next Friday (not today)
 
-  // Move to next Monday
-  const nextMonday = new Date(today);
-  nextMonday.setDate(today.getDate() + daysToNextMonday);
+  const nextFriday = new Date(today);
+  nextFriday.setDate(today.getDate() + daysUntilFriday);
 
-  // Add 4 days to get Friday
-  nextMonday.setDate(nextMonday.getDate() + 4);
-
-  // Format as 'yyyy-mm-dd'
-  const yyyy = nextMonday.getFullYear();
-  const mm = String(nextMonday.getMonth() + 1).padStart(2, '0');
-  const dd = String(nextMonday.getDate()).padStart(2, '0');
-
-  return `${yyyy}-${mm}-${dd}`;
+  return nextFriday.toISOString().split('T')[0]; // YYYY-MM-DD
 }
 
 //previous friday date
