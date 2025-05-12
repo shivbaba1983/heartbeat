@@ -136,7 +136,7 @@ const NasdaqOptions = () => {
         rows = latestData?.data?.table?.rows || [];
       } else {
         //***********to call local api end point*************
-          const tempToken = import.meta.env.VITE_STOCK_API_URL;
+        const tempToken = import.meta.env.VITE_STOCK_API_URL;
         const res = await axios.get(`${tempToken}/api/options/${selectedTicker}/${assetclass}/${selectedDayOrMonth}`);
         rows = res.data?.data?.table?.rows || [];
         lstPrice = res.data?.data?.lastTrade;
