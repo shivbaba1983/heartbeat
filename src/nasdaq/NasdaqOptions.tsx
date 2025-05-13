@@ -111,7 +111,7 @@ const NasdaqOptions = () => {
       } else {
         if (selectedDayOrMonth === 'day' && (assetclass === 'ETF')) {
           if (["TQQQ", "SOXL", "TSLL", "SQQQ"].includes(selectedTicker))
-            selectedDate = getFridayOfCurrentWeek();
+            selectedDate = getComingFriday();
           else
             selectedDate = getEffectiveDate();// getTodayInEST();
         }

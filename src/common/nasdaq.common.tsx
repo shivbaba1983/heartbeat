@@ -87,15 +87,28 @@ import {TIME_RANGES} from './../constant/HeartbeatConstants';
 
 export function getComingFriday() {
   const today = new Date();
-  const dayOfWeek = today.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
 
-  const daysUntilFriday = (5 - dayOfWeek + 7) % 7 || 7;
-  // Ensures that if today is Friday, it returns next Friday (not today)
+  // Get current day (0 = Sunday, ..., 6 = Saturday)
+  const currentDay = today.getDay();
 
+  // Calculate how many days to add to reach next Friday (5)
+  const daysUntilFriday = (5 - currentDay + 7) % 7 || 7;
+
+  // Calculate next Friday's date
   const nextFriday = new Date(today);
   nextFriday.setDate(today.getDate() + daysUntilFriday);
 
-  return nextFriday.toISOString().split('T')[0]; // YYYY-MM-DD
+  // Format for America/New_York timezone
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/New_York',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+
+  const [month, day, year] = formatter.format(nextFriday).split('/');
+
+  return `${year}-${month}-${day}`; // e.g., 2025-05-16
 }
 
 //previous friday date
