@@ -28,6 +28,7 @@ export const tickerListData = [
     { idx: 1104, value: "SQQQ" },
     { idx: 1105, value: "SOFI" },
     { idx: 1106, value: "HUM" },
+    { idx: 1107, value: "INTC" },
 ]
 export const volumeOrOpenInterest = [
     { idx: 1, value: "volume" },
