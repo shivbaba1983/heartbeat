@@ -2,7 +2,7 @@
 export const NASDAQ_TOKEN ='https://main.d1rin969pdam05.amplifyapp.com';
 //export const NASDAQ_TOKEN ='http://localhost:3000';
 export const IS_AWS_API =true;
-export const JSON_UPDATE_TIME =4;//in minutes
+export const JSON_UPDATE_TIME =3;//in minutes
 export const YAHOO_VOLUME_LIMIT =1000;
 export const LogTickerList = ['AMZN','SPY', 'QQQ', 'IWM','AAPL', 'NVDA', 'GOOG', 'TSLA','SOXL', 'SOFI','SQQQ', 'HUM', 'BABA', 'AAL','INTC'];
 //export const LogTickerList = ['NVDA'];

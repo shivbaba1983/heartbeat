@@ -95,8 +95,8 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
   });
   const formattedCall = new Intl.NumberFormat('en-IN').format(tempc);
   const formattedPut = new Intl.NumberFormat('en-IN').format(tempp);
-  const colors = ['#8884d8', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb'];
-
+  const colorsCalls = ['#8884d8', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb'];
+  const colorsPuts = ['#FF0000', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb'];
   const now = new Date();
   const formatted = now.toLocaleString(); // includes date and time
   const predectionInput = [
@@ -127,7 +127,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
               key={expiry}
               type="monotone"
               dataKey={expiry}
-              stroke={colors[index % colors.length]}
+              stroke={colorsCalls[index % colorsCalls.length]}
               strokeWidth={2}
               dot={false}
             />
@@ -147,7 +147,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
               key={expiry}
               type="monotone"
               dataKey={expiry}
-              stroke={colors[index % colors.length]}
+              stroke={colorsPuts[index % colorsPuts.length]}
               strokeWidth={2}
               dot={false}
             />
