@@ -25,6 +25,7 @@ const SpyYahooChart = ({ selectedTicker, volumeOrInterest }) => {
     useEffect(() => {
         const fetchMyData = async () => {
             try {
+                setIsLoading(true);
                 await getSpyHistoryAPIData(selectedTicker);
             } catch (err) {
                 console.error('Failed to fetch stock history data from yahoo:', err);

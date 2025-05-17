@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
     LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer
 } from 'recharts';
+import {getComingFriday} from './../common/nasdaq.common';
 import { BarChart, Bar, } from 'recharts';
 import PredictionHint from './../components/PredictionHint';
 import axiosInstance from './axiosInstance';
@@ -74,7 +75,7 @@ const OptionsChart = ({ selectedTicker }) => {
     useEffect(() => {
         const fetchOptionsData = async () => {
             setTempTicker(selectedTicker)
-            const expirationDate = "2025-04-25";// await getFridayOfCurrentWeek();//"2025-04-15";// getUnixTimeNow();
+            const expirationDate = getComingFriday();//"2025-04-25";// await getFridayOfCurrentWeek();//"2025-04-15";// getUnixTimeNow();
             try {
                 // Replace with your actual fetch call
                 //const response = await fetch('/v1/options/chain/AAPL/'); // your endpoint

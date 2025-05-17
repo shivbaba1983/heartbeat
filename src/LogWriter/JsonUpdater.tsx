@@ -12,22 +12,22 @@ const JsonUpdater = () => {
         const fetchMyData = async () => {
             const interval = setInterval(() => {
                 LogTickerList.forEach(ticker => {
-                    if (isWithinMarketHours()) {
+                   // if (isWithinMarketHours()) {
                         postDataToS3Bucket(ticker); // write data to json file in s3 bucket    
-                    } else {
-                        console.log('⏸ Market is closed. Skipping API call.');
-                    }
+                    // } else {
+                    //     console.log('⏸ Market is closed. Skipping API call.');
+                    // }
                 });
             }, JSON_UPDATE_TIME * 60 * 1000); // 10 mins in milliseconds
 
             return () => clearInterval(interval); // Cleanup on unmount
         };
-        if (isWithinMarketHours()) {
+       // if (isWithinMarketHours()) {
             fetchMyData();
-        }
-        else {
-            console.log('⏸ Market is closed. Skipping API call.');
-        }
+        // }
+        // else {
+        //     console.log('⏸ Market is closed. Skipping API call.');
+        // }
     }, []);
 
     const postDataToS3Bucket = async (ticker) => {
