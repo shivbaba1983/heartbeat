@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NASDAQ_TOKEN, ETF_List, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, ETF_List, LogTickerList, JSON_UPDATE_TIME, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours } from '../common/nasdaq.common';
-import { writeS3JsonFile } from '../services/WriteS3Service';
+import { writeS3JsonFile, writeToS3Bucket } from '../services/WriteS3Service';
 
 const JsonUpdater = () => {
     const [data, setData] = useState([]);
@@ -46,9 +46,13 @@ const JsonUpdater = () => {
             lstPrice = match ? parseFloat(match[1]) : 0;
             const total = await caculateSum(rows);
             if (total.c_Volume > 0) {
-                await writeS3JsonFile(total, ticker, lstPrice);// calling the service
+                if (IS_AWS_API) {
+                    await writeToS3Bucket(total, ticker, lstPrice) //calling aws amplify deployed api
+                } else {
+                    await writeS3JsonFile(total, ticker, lstPrice);// calling the local express service
+                }
             } else {
-                console.error('observer 0 call or put volume hence not write to s3 bucket');
+                console.error(`observer 0 call or put volume for ${ticker} hence not write to s3 bucket`);
             }
 
 

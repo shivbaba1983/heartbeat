@@ -13,6 +13,19 @@ export async function writeS3JsonFile(total, ticker, lstPrice) {
             }),
         });
     } catch (err) {
-        console.error('Failed to fetch option data:', err);
+        console.error('writeS3JsonFile-Local-Failed to fetch option data:', err);
     }
+}
+
+export async function writeToS3Bucket(total, ticker, lstPrice) {
+    let tempcallVolume = Number(total?.c_Volume);
+    let tempputVolume = Number(total?.p_Volume);
+    const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/writes3bucket?selectedTicker=${ticker}&callVolume=${tempcallVolume}&putVolume=${tempputVolume}&lstPrice=${lstPrice}&limit=3000`;
+    let resp;
+    try {
+        resp = await fetch(url)
+    } catch (err) {
+        console.error('writeToS3Bucket AWS Server-Failed to write data in S3 bucket:', err);
+    }
+    return resp;
 }
