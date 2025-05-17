@@ -11,7 +11,7 @@ import {
 } from 'recharts';
 import { useEffect, useState } from "react";
 const StockChart = ({ stockHistoryData }) => {
-
+  let tempTotalVolume = 0;
   const rawData = [
     { date: "03/31/2025", close: "$222.13", volume: "65,299,320", open: "$217.005", high: "$225.62", low: "$216.23" },
     { date: "03/28/2025", close: "$217.90", volume: "39,818,620", open: "$221.67", high: "$223.81", low: "$217.68" },
@@ -20,43 +20,67 @@ const StockChart = ({ stockHistoryData }) => {
     { date: "03/25/2025", close: "$223.75", volume: "34,493,580", open: "$220.77", high: "$224.10", low: "$220.08" },
   ];
   const processedData = stockHistoryData
-  .map(d => ({
-    date: d.date,
-    close: parseFloat(d.close.replace('$', '')),
-    volume: parseInt(d.volume.replace(/,/g, '')),
-  }))
-  .reverse();
+    .map(d => ({
+      date: d.date,
+      close: parseFloat(d.close.replace('$', '')),
+      volume: parseInt(d.volume.replace(/,/g, ''))
+    }))
+    .reverse();
+
+
+  // 1. Calculate average volume in millions
+  const volumes = processedData.map(d => d.volume);
+  const totalVolume = volumes.reduce((acc, val) => acc + val, 0);
+  const averageVolumeMillions = (totalVolume / volumes.length);
+
+  // 2. Add avgVolume field to each data point
+  const dataWithAvg = processedData.map(d => ({
+    ...d,
+    avgVolume: averageVolumeMillions,
+  }));
+
 
   return (
-    <div style={{ width: '100%', height: 400 , marginTop:10}}>
-    {stockHistoryData &&<ResponsiveContainer>
-      <ComposedChart data={processedData}>
-        <CartesianGrid stroke="#f5f5f5" />
-        <XAxis dataKey="date" />
-        <YAxis
-          yAxisId="left"
-          domain={['auto', 'auto']}
-          tickFormatter={v => `$${v}`}
-        />
-        <YAxis
-          yAxisId="right"
-          orientation="right"
-          domain={[0, 'auto']}
-          tickFormatter={v => `${(v / 1e6).toFixed(1)}M`}
-        />
-        <Tooltip
-          formatter={(value, name) => {
-            if (name === 'close') return [`$${value}`, 'Close'];
-            if (name === 'volume') return [`${(value / 1e6).toFixed(2)}M`, 'Volume'];
-            return [value, name];
-          }}
-        />
-        <Legend />
-        <Bar yAxisId="right" dataKey="volume" barSize={20} fill="#82ca9d" />
-        <Line yAxisId="left" type="monotone" dataKey="close" stroke="#8884d8" strokeWidth={2} dot={false} />
-      </ComposedChart>
-    </ResponsiveContainer>}
-  </div>
+    <div style={{ width: '100%', height: 400, marginTop: 10 }}>
+      {stockHistoryData && <ResponsiveContainer>
+        <ComposedChart data={dataWithAvg}>
+          <CartesianGrid stroke="#f5f5f5" />
+          <XAxis dataKey="date" />
+          <YAxis
+            yAxisId="left"
+            domain={['auto', 'auto']}
+            tickFormatter={v => `$${v}`}
+          />
+          <YAxis
+            yAxisId="right"
+            orientation="right"
+            domain={[0, 'auto']}
+            tickFormatter={v => `${(v / 1e6).toFixed(1)}M`}
+          />
+          <Tooltip
+            formatter={(value, name) => {
+              if (name === 'close') return [`$${value}`, 'Close'];
+              if (name === 'volume') return [`${(value / 1e6).toFixed(2)}M`, 'Volume'];
+              if (name === 'Avg Volume') return [`${(value / 1e6).toFixed(2)}M`, 'Avg Volume'];
+              return [value, name];
+            }}
+          />
+          <Legend />
+          <Bar yAxisId="right" dataKey="volume" barSize={20} fill="#82ca9d" />
+          <Line yAxisId="left" type="monotone" dataKey="close" stroke="#8884d8" strokeWidth={2} dot={false} />
+          <Line
+            yAxisId="right"
+            type="monotone"
+            dataKey="avgVolume"
+            stroke="#ff7300"
+            strokeDasharray="3 3"
+            strokeWidth={2}
+            dot={false}
+            name="Avg Volume"
+          />
+        </ComposedChart>
+      </ResponsiveContainer>}
+    </div>
   );
 };
 export default StockChart;
