@@ -6,33 +6,30 @@ import { writeS3JsonFile, writeToS3Bucket } from '../services/WriteS3Service';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
 
 const JsonUpdater = () => {
-    const [data, setData] = useState([]);
-    const [selectedTicker, setSelectedTicker] = useState('SPY');
 
     useEffect(() => {
         const fetchMyData = async () => {
             const interval = setInterval(() => {
                 LogTickerList.forEach(ticker => {
-                    // if (isWithinMarketHours()) {
-                    postDataToS3Bucket(ticker); // write data to json file in s3 bucket    
-                    // } else {
-                    //     console.log('⏸ Market is closed. Skipping API call.');
-                    // }
+                    if (isWithinMarketHours()) {
+                        postDataToS3Bucket(ticker); // write data to json file in s3 bucket    
+                    } else {
+                        console.log('⏸ Market is closed. Skipping API call.');
+                    }
                 });
             }, JSON_UPDATE_TIME * 60 * 1000); // 10 mins in milliseconds
 
             return () => clearInterval(interval); // Cleanup on unmount
         };
-        // if (isWithinMarketHours()) {
-        fetchMyData();
-        // }
-        // else {
-        //     console.log('⏸ Market is closed. Skipping API call.');
-        // }
+        if (isWithinMarketHours()) {
+            fetchMyData();
+        }
+        else {
+            console.log('⏸ Market is closed. Skipping API call.');
+        }
     }, []);
 
     const postDataToS3Bucket = async (ticker) => {
-        setData([]);
         let assetclass = 'stocks';
         const selectedDayOrMonth = 'day';
 
@@ -68,10 +65,6 @@ const JsonUpdater = () => {
                 const match = lstPrice.match(/\$\d+(\.\d+)?/);
                 lstPrice = match ? match[0] : null;
             }
-            // rows = res.data?.data?.table?.rows || [];
-            //  lstPrice = res.data?.data?.lastTrade;
-            // const match = lstPrice ? lstPrice.match(/\$([\d.]+)/) : 0;
-            // lstPrice = match ? parseFloat(match[1]) : 0;
             const total = await caculateSum(rows);
             if (total.c_Volume > 0) {
                 if (IS_AWS_API) {
@@ -105,24 +98,6 @@ const JsonUpdater = () => {
             { c_Volume: 0, p_Volume: 0 }
         );
     }
-
-    //moved this part to services
-    // const writeJsonFile = async (total, ticker,lstPrice) => {
-    //     try {
-    //         fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
-    //             method: 'POST',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({
-    //                 callVolume: Number(total?.c_Volume),
-    //                 putVolume: Number(total?.p_Volume),
-    //                 selectedTicker: ticker,
-    //                 lstPrice:lstPrice
-    //             }),
-    //         });
-    //     } catch (err) {
-    //         console.error('Failed to fetch option data:', err);
-    //     }
-    // }
     return (
         <div>
 
