@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
     LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer
 } from 'recharts';
-import {getComingFriday} from './../common/nasdaq.common';
+import {getComingFriday,getEffectiveDate} from './../common/nasdaq.common';
 import { BarChart, Bar, } from 'recharts';
 import PredictionHint from './../components/PredictionHint';
 import axiosInstance from './axiosInstance';
@@ -82,7 +82,7 @@ const OptionsChart = ({ selectedTicker }) => {
                 let response;
                 if (selectedTicker === "QQQ" || selectedTicker === "SPY" || selectedTicker === "IWM") {
                     const today = new Date();
-                    let todayDate = today.toISOString().slice(0, 10);
+                    let todayDate = getEffectiveDate();//today.toISOString().slice(0, 10);
                     response = await axiosInstance.get(`/v1/options/chain/${selectedTicker}?strikeLimit=20&expiration=${todayDate}`);
                 }
                 else {

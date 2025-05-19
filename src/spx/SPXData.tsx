@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import SpyYahooChart from './SpyYahoo';
 
-const SPXData = ({selectedTicker, assetclass, volumeOrInterest}) => {
+const SPXData = ({selectedTicker, assetclass, volumeOrInterest, setAverageDailyVolume3Month}) => {
     const [spx, setSpx] = useState(null);
 
     // useEffect(() => {
@@ -14,7 +14,7 @@ const SPXData = ({selectedTicker, assetclass, volumeOrInterest}) => {
 
     return (
         <div>
-            <SpyYahooChart selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest}/>
+            <SpyYahooChart selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest} setAverageDailyVolume3Month={setAverageDailyVolume3Month}/>
             {/* {spx ? (
                 <>
                     <h2>S&P 500 Index (^GSPC)</h2>

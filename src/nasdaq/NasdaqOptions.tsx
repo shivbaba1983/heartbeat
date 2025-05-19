@@ -29,8 +29,7 @@ const NasdaqOptions = () => {
   const [showMarketdata, setShowMarketdata] = useState(false);
   const [showStockNews, setShowStockNews] = useState(false);
   const tickerList = ['QQQ', 'SPY', 'IWM'];
-  const [totalCallVolumeCount, setTotalCallVolumeCount] = useState(0);
-  const [totalPutVolumeCount, setTotalPutVolumeCount] = useState(0);
+  const [averageDailyVolume3Month, setAverageDailyVolume3Month] = useState(1);
   const [isRequestedDateChanage, setIsRequestedDateChanage] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -281,7 +280,7 @@ const NasdaqOptions = () => {
         {/* Last Price: {lastTrade} */}
       </div>
       <div className="yahoo-data-section">
-        <SPXData selectedTicker={selectedTicker} assetclass={assetclass} volumeOrInterest={volumeOrInterest} />
+        <SPXData selectedTicker={selectedTicker} assetclass={assetclass} volumeOrInterest={volumeOrInterest} setAverageDailyVolume3Month={setAverageDailyVolume3Month} />
       </div>
 
       {isLoading && <div>
@@ -308,7 +307,8 @@ const NasdaqOptions = () => {
       </div>
 
       <div>
-        <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass} />
+        {averageDailyVolume3Month > 1 && <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass} />}
+        <h3> Three Month Avg. Volume {(averageDailyVolume3Month / 1000000)} M (Yahoo)</h3>
       </div>
 
 

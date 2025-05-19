@@ -9,7 +9,7 @@ import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, ETF_List, IS_AWS_API, LogTickerList, 
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import PredictionHint from './../components/PredictionHint';
 import { getDateForatted } from './../common/nasdaq.common';
-const SpyYahooChart = ({ selectedTicker, volumeOrInterest }) => {
+const SpyYahooChart = ({ selectedTicker, volumeOrInterest , setAverageDailyVolume3Month}) => {
     // Define a type for merged data
 
     const [options, setOptions] = useState([]);
@@ -128,6 +128,7 @@ const SpyYahooChart = ({ selectedTicker, volumeOrInterest }) => {
             setTotalPutVolume(tempPutVolume);
             setData(tempData);
             setStockdetails(stockquote);
+            setAverageDailyVolume3Month(stockquote.averageDailyVolume3Month)
             //setOptions(rows);
         } catch (err) {
             console.error('Failed to get options data yahoo finance SpyYahoo:', err);
@@ -185,6 +186,8 @@ const SpyYahooChart = ({ selectedTicker, volumeOrInterest }) => {
                         </BarChart>
                     </ResponsiveContainer>}
                 </div>}
+
+
             </div>}
         </div>
 
