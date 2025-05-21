@@ -21,25 +21,25 @@ const OCRReader = () => {
         }
     };
 
-      const extractVolumes = (ocrText) => {
+    const extractVolumes = (ocrText) => {
         const lines = ocrText.split('\n');
         let callVolume = 0;
         let putVolume = 0;
 
         lines.forEach((line) => {
-          const numbers = line.trim().split(/\s+/).map(Number).filter(n => !isNaN(n));
+            const numbers = line.trim().split(/\s+/).map(Number).filter(n => !isNaN(n));
 
-          // Check if line contains Call Volume and Put Volume
-          if (numbers.length >= 6) {
-            callVolume += numbers[0];  // Call Volume is the first number
-            putVolume += numbers[5];   // Put Volume is the 9th number in each row
-          }
+            // Check if line contains Call Volume and Put Volume
+            if (numbers.length >= 6) {
+                callVolume += numbers[0];  // Call Volume is the first number
+                putVolume += numbers[5];   // Put Volume is the 9th number in each row
+            }
         });
 
         //setVolumes({ call: callVolume, put: putVolume });
         setCallVolumes(callVolume);
         setPutVolumes(putVolume);
-      };
+    };
 
     const handleOCR = async () => {
         if (!imageData) return;
@@ -51,8 +51,34 @@ const OCRReader = () => {
 
         const rawText = result.data.text;
         setText(rawText);
-        extractVolumes(rawText);
+        //extractVolumes(rawText);
+        parseAndSumVolumes(rawText);
         setLoading(false);
+    };
+
+    const parseAndSumVolumes = (rawText) => {
+        const lines = rawText.split('\n');
+        let totalCall = 0;
+        let totalPut = 0;
+
+        const parseVolume = (value)  => {
+            const num = value.replace(/[^0-9.]/g, '');
+            const multiplier = value.includes('K') ? 1000 : 1;
+            return parseFloat(num) * multiplier;
+        };
+
+        for (let line of lines) {
+            const match = line.match(/([0-9.]+[Kk]?)\s+[\d.]+\s+[\d.]+\s+[\d,]+\s+[\d.]+\s+[\d.]+\s+([0-9.]+[Kk]?)/);
+            if (match) {
+                const callVolume = parseVolume(match[1]);
+                const putVolume = parseVolume(match[2]);
+                totalCall += callVolume;
+                totalPut += putVolume;
+            }
+        }
+
+        setCallVolumes(Math.round(totalCall));
+        setPutVolumes(Math.round(totalPut));
     };
 
     return (
@@ -66,8 +92,8 @@ const OCRReader = () => {
             {callVolumes && (
                 <div>
                     <h3>Results</h3>
-                    <p  style={{ color: 'green'}}>Total Call Volume: {callVolumes}</p>
-                    <p style={{ color: 'red'}}>Total Put Volume: {putVolumes}</p>
+                    <p style={{ color: 'green' }}>Total Call Volume: {callVolumes}</p>
+                    <p style={{ color: 'red' }}>Total Put Volume: {putVolumes}</p>
                 </div>
             )}
 
