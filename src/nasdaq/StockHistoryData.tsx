@@ -15,6 +15,7 @@ const StockHistoryData = ({ selectedTicker, assetclass }) => {
     useEffect(() => {
         const fetchMyData = async () => {
             try {
+                setIsLoading(true);
                 await getStockHistoryAPIData(selectedTicker);
             } catch (err) {
                 console.error('Failed to fetch option history data from Nasdaq:', err);
