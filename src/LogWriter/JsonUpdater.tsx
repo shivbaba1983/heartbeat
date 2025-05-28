@@ -40,7 +40,7 @@ const JsonUpdater = () => {
             if (ETF_List.includes(ticker))
                 assetclass = 'ETF'
             if (selectedDayOrMonth === 'day' && (assetclass === 'ETF')) {
-                if (["TQQQ", "SOXL", "TSLL", "SQQQ"].includes(ticker))
+                if (["TQQQ", "SOXL", "TSLL", "SQQQ",'AAPU'].includes(ticker))
                     selectedDate = getComingFriday();
                 else
                     selectedDate = getEffectiveDate();

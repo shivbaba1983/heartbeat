@@ -7,7 +7,7 @@ import CallPutBarChart from './../graph-chart/CallPutBarChart';
 import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
-import { NASDAQ_TOKEN, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from './../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData, ETF_List } from './../constant/HeartbeatConstants';
 import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
 import DatePicker from './../components/DatePicker';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
@@ -28,7 +28,6 @@ const NasdaqOptions = () => {
   const [showBarChart, setShowBarChart] = useState(true);
   const [showMarketdata, setShowMarketdata] = useState(false);
   const [showStockNews, setShowStockNews] = useState(false);
-  const tickerList = ['QQQ', 'SPY', 'IWM'];
   const [averageDailyVolume3Month, setAverageDailyVolume3Month] = useState(1);
   const [isRequestedDateChanage, setIsRequestedDateChanage] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -183,7 +182,7 @@ const NasdaqOptions = () => {
     setData([]);
     setSelectedTicker(ticker);
 
-    if (ticker === "QQQ" || ticker === "SPY" || ticker === "IWM" || ticker === "TQQQ" || ticker === "SOXL" || ticker === "TSLL" || ticker === "SQQQ") {
+    if (ETF_List.includes(ticker)) {
       selectedAsset = 'ETF';
     }
     else {
