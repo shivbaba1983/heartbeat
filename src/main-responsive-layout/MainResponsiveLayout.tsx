@@ -5,7 +5,8 @@ import NasdaqOptions from './../nasdaq/NasdaqOptions';
 import NASDAQStock from './../nasdaq/NASDAQStock';
 import JsonUpdater from './../LogWriter/JsonUpdater';
 import NSEHome from './../nse/nse-home';
-import OCRReader from'./../image-processing/OCRReader';
+import OCRReader from './../image-processing/OCRReader';
+import OCRVolumeExtractor from './../image-processing/OCRVolumeExtractor';
 const MainResponsiveLayout = () => {
   const [isLogReading, setIsLogReading] = useState(false);
   const [showUSA, setUSA] = useState(true);
@@ -52,8 +53,8 @@ const MainResponsiveLayout = () => {
         <div>
           {showNSE && <NSEHome />}
         </div>
-
-        <OCRReader/>
+        <OCRVolumeExtractor />
+        {/* <OCRReader/> */}
       </div>
     </div>
   );

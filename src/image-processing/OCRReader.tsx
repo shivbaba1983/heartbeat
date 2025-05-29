@@ -56,30 +56,30 @@ const OCRReader = () => {
         setLoading(false);
     };
 
-    const parseAndSumVolumes = (rawText) => {
-        const lines = rawText.split('\n');
-        let totalCall = 0;
-        let totalPut = 0;
+const parseAndSumVolumes = (rawText) => {
+    const lines = rawText.split('\n');
+    let totalCall = 0;
+    let totalPut = 0;
 
-        const parseVolume = (value)  => {
-            const num = value.replace(/[^0-9.]/g, '');
-            const multiplier = value.includes('K') ? 1000 : 1;
-            return parseFloat(num) * multiplier;
-        };
-
-        for (let line of lines) {
-            const match = line.match(/([0-9.]+[Kk]?)\s+[\d.]+\s+[\d.]+\s+[\d,]+\s+[\d.]+\s+[\d.]+\s+([0-9.]+[Kk]?)/);
-            if (match) {
-                const callVolume = parseVolume(match[1]);
-                const putVolume = parseVolume(match[2]);
-                totalCall += callVolume;
-                totalPut += putVolume;
-            }
-        }
-
-        setCallVolumes(Math.round(totalCall));
-        setPutVolumes(Math.round(totalPut));
+    const parseVolume = (value)  => {
+        const num = value.replace(/[^0-9.]/g, '');
+        const multiplier = value.toUpperCase().includes('K') ? 1000 : 1;
+        return parseFloat(num) * multiplier;
     };
+
+    for (let line of lines) {
+        const match = line.match(/^(\S+).*(\S+)$/);
+        if (match) {
+            const callVolume = parseVolume(match[1]);
+            const putVolume = parseVolume(match[2]);
+            totalCall += callVolume;
+            totalPut += putVolume;
+        }
+    }
+
+    setCallVolumes(Math.round(totalCall));
+    setPutVolumes(Math.round(totalPut));
+};
 
     return (
         <div>
@@ -89,7 +89,7 @@ const OCRReader = () => {
                 {loading ? 'Processing...' : 'Extract Volume'}
             </button>
 
-            {callVolumes && (
+            {callVolumes >0 && (
                 <div>
                     <h3>Results</h3>
                     <p style={{ color: 'green' }}>Total Call Volume: {callVolumes}</p>
