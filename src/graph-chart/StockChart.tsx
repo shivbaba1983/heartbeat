@@ -42,7 +42,7 @@ const StockChart = ({ stockHistoryData }) => {
 
   return (
     <div style={{ width: '100%', height: 400, marginTop: 10 }}>
-      {stockHistoryData?.length > 1 && <ResponsiveContainer>
+      {stockHistoryData && <ResponsiveContainer>
         <ComposedChart data={dataWithAvg}>
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis dataKey="date" />

@@ -1,7 +1,8 @@
 // React component
 import { useEffect, useState } from "react";
 import SpyYahooChart from './SpyYahoo';
-
+import RapidAPI from './RapidAPI';
+import SPXOptionsData from './SPXOptionsData';
 const SPXData = ({selectedTicker, assetclass, volumeOrInterest, setAverageDailyVolume3Month}) => {
     const [spx, setSpx] = useState(null);
 
@@ -15,6 +16,8 @@ const SPXData = ({selectedTicker, assetclass, volumeOrInterest, setAverageDailyV
     return (
         <div>
             <SpyYahooChart selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest} setAverageDailyVolume3Month={setAverageDailyVolume3Month}/>
+            {/* <RapidAPI selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest} setAverageDailyVolume3Month={setAverageDailyVolume3Month}/> */}
+            {/* <SPXOptionsData/> */}
             {/* {spx ? (
                 <>
                     <h2>S&P 500 Index (^GSPC)</h2>
