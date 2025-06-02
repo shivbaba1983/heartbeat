@@ -149,7 +149,7 @@ const SpyYahooChart = ({ selectedTicker, volumeOrInterest , setAverageDailyVolum
 
         <div>
             {isLoading && <div>
-                <h2> Loading....... Please wait</h2>
+                <h2> Loading....... Please wait(yahoo data)</h2>
             </div>}
 
             {!isLoading && <div className="yahoo-chart-section">

@@ -28,7 +28,7 @@ const NasdaqOptions = () => {
   const [showBarChart, setShowBarChart] = useState(true);
   const [showMarketdata, setShowMarketdata] = useState(false);
   const [showStockNews, setShowStockNews] = useState(false);
-  const [averageDailyVolume3Month, setAverageDailyVolume3Month] = useState(1);
+  const [averageDailyVolume3Month, setAverageDailyVolume3Month] = useState();
   const [isRequestedDateChanage, setIsRequestedDateChanage] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -177,6 +177,7 @@ const NasdaqOptions = () => {
 
 
   const handleTickerChange = async (e) => {
+        e.preventDefault();
     const ticker = e.target.value.toUpperCase();
     let selectedAsset = "ETF"
     setData([]);
@@ -191,7 +192,21 @@ const NasdaqOptions = () => {
     setAssetclass(selectedAsset);
   };
 
+  const handleOmShantiClick = async (e) => {
+        e.preventDefault();
+    let selectedAsset = "ETF"
+    setData([]);
+    setAssetclass('');
+    //setSelectedTicker(ticker);
 
+    if (ETF_List.includes(selectedTicker)) {
+      selectedAsset = 'ETF';
+    }
+    else {
+      selectedAsset = 'stocks';
+    }
+    setAssetclass(selectedAsset);
+  };
   return (
     <div>
 
@@ -251,7 +266,7 @@ const NasdaqOptions = () => {
             />
           </div>
           <div className="common-left-margin">
-            <button onClick={(e) => handleTickerChange(e)}>Om shanti</button>
+            <button onClick={(e) => handleOmShantiClick(e)}>Om shanti</button>
           </div>
         </div>
 
@@ -279,7 +294,7 @@ const NasdaqOptions = () => {
         {/* Last Price: {lastTrade} */}
       </div>
       <div className="yahoo-data-section">
-        <SPXData selectedTicker={selectedTicker} assetclass={assetclass} volumeOrInterest={volumeOrInterest} setAverageDailyVolume3Month={setAverageDailyVolume3Month} />
+       <SPXData selectedTicker={selectedTicker} assetclass={assetclass} volumeOrInterest={volumeOrInterest} setAverageDailyVolume3Month={setAverageDailyVolume3Month} />
       </div>
 
       {isLoading && <div>
