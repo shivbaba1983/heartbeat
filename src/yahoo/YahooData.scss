@@ -1,0 +1,17 @@
+.greenmarket {
+    background-color: green;
+}
+
+.redmareket {
+    background-color: red;
+}
+
+.yahoo-chart-section {
+    margin-top: 46px;
+}
+
+@media (max-width: 600px) {
+    .yahoo-chart-section {
+        margin-top: 120px;
+    }
+}

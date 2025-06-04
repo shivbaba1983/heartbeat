@@ -15,6 +15,8 @@ import PriceMarquee from './../components/PriceMarquee';
 import StockHistoryData from './../nasdaq/StockHistoryData';
 import SPXData from './../spx/SPXData';
 import StockNewsData from './../stocknews/StockNewsData';
+import { getYahooFinanceData } from "./../services/YahooFinanceService";
+import YahooData from "./../yahoo/YahooData";
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -31,6 +33,43 @@ const NasdaqOptions = () => {
   const [averageDailyVolume3Month, setAverageDailyVolume3Month] = useState();
   const [isRequestedDateChanage, setIsRequestedDateChanage] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [stockDetails, setStockdetails] = useState({});
+  const [yahooDataRows, setStsetYahooDataRows] = useState([]);
+  const [isYahooDataDisplay, setIsYahooDataDisplay] = useState(false);
+  
+  useEffect(() => {
+    const fetchYahooOptionsData = async () => {
+      try {
+        let rows = [];
+        setStsetYahooDataRows([])
+        setIsYahooDataDisplay(false)
+        let stockquote = { earningsTimestamp: '' };
+        if (IS_AWS_API) {
+          //call from aws api
+          const response = await getYahooFinanceData(selectedTicker);
+          const responseJson = await response.json();
+          rows = await responseJson?.options || [];
+          stockquote = await responseJson?.quote || { earningsTimestamp: '' };
+        } else {
+          //call from local api express server
+          const response = await axios.get(`${NASDAQ_TOKEN}/api/yahooFinance/${selectedTicker}`);
+          rows = await response?.data?.options || [];
+          stockquote = await response?.data?.quote || { earningsTimestamp: '' };
+        }
+        setStockdetails(stockquote);
+        setAverageDailyVolume3Month(stockquote?.averageDailyVolume3Month)
+        setStsetYahooDataRows(rows);
+        setIsYahooDataDisplay(true)
+      } catch (err) {
+        console.error('Failed to fetch option data:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchYahooOptionsData();
+
+  }, [selectedDayOrMonth, selectedTicker, assetclass, requestedDate]);
   useEffect(() => {
     const fetchOptionsData = async () => {
       try {
@@ -78,6 +117,15 @@ const NasdaqOptions = () => {
     // }
 
   }, [selectedDayOrMonth, selectedTicker, assetclass, requestedDate]);
+
+  //Not needed here as JsonUpdater doing this job
+  useEffect(() => {
+
+    setIsYahooDataDisplay(true);
+  }, [yahooDataRows]);
+
+
+
 
   const fetchData = async () => {
     try {
@@ -177,7 +225,7 @@ const NasdaqOptions = () => {
 
 
   const handleTickerChange = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
     const ticker = e.target.value.toUpperCase();
     let selectedAsset = "ETF"
     setData([]);
@@ -193,7 +241,7 @@ const NasdaqOptions = () => {
   };
 
   const handleOmShantiClick = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
     let selectedAsset = "ETF"
     setData([]);
     setAssetclass('');
@@ -293,8 +341,11 @@ const NasdaqOptions = () => {
         <PriceMarquee lastPrice={lastTrade} selectedTicker={selectedTicker} />
         {/* Last Price: {lastTrade} */}
       </div>
+      {/* <div className="yahoo-data-section">
+        <SPXData selectedTicker={selectedTicker} assetclass={assetclass} volumeOrInterest={volumeOrInterest} setAverageDailyVolume3Month={setAverageDailyVolume3Month} />
+      </div> */}
       <div className="yahoo-data-section">
-       <SPXData selectedTicker={selectedTicker} assetclass={assetclass} volumeOrInterest={volumeOrInterest} setAverageDailyVolume3Month={setAverageDailyVolume3Month} />
+        {isYahooDataDisplay && <YahooData selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest} rows={yahooDataRows} isYahooDataDisplay={isYahooDataDisplay} />}
       </div>
 
       {isLoading && <div>
