@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { MagnificentSevenStockList } from '../constant/HeartbeatConstants';
 import './DisplayPredictionHistory.scss';
+const cellStyle = {
+    border: "1px solid #ccc",
+    padding: "8px",
+    cursor: "pointer",
+};
+
 function DisplayPredictionHistory({ selectedTicker, stockData }) {
     const [tickerData, setTickerData] = useState({});
     const [isExpanded, setIsExpanded] = useState(false);
+    const [sortKey, setSortKey] = useState("ratio");
+    const [sortDirection, setSortDirection] = useState("desc");
 
-    const toggleExpanded = () => {
-        setIsExpanded(prev => !prev);
-    };
     useEffect(() => {
         //only read the local store, writing local stoage is in json upadter
         const savedDate = localStorage.getItem('marketDataDate');
@@ -28,6 +33,37 @@ function DisplayPredictionHistory({ selectedTicker, stockData }) {
     }, [selectedTicker, stockData]);
 
 
+    const handleSort = (key) => {
+        if (key === sortKey) {
+            setSortDirection(prev => (prev === "asc" ? "desc" : "asc"));
+        } else {
+            setSortKey(key);
+            setSortDirection("desc");
+        }
+    };
+    const toggleExpanded = () => {
+        setIsExpanded(prev => !prev);
+    };
+    const sortedData = Object.entries(tickerData).sort(([, a], [, b]) => {
+        const statsA = a.selectedTicker ?? a;
+        const statsB = b.selectedTicker ?? b;
+
+        const valA = statsA?.[sortKey] ?? 0;
+        const valB = statsB?.[sortKey] ?? 0;
+
+        if (typeof valA === "string") {
+            return sortDirection === "asc"
+                ? valA.localeCompare(valB)
+                : valB.localeCompare(valA);
+        }
+
+        return sortDirection === "asc" ? valA - valB : valB - valA;
+    });
+
+    const renderSortIcon = (key) =>
+        sortKey === key ? (sortDirection === "asc" ? " ▲" : " ▼") : "";
+
+
     return (
         <div>
             <div className='sentimate-history-data'>
@@ -41,36 +77,31 @@ function DisplayPredictionHistory({ selectedTicker, stockData }) {
                     <table style={{ borderCollapse: 'collapse', width: '100%' }}>
                         <thead>
                             <tr>
-                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Ticker</th>
-                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Last Price</th>
-                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Call</th>
-                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Put</th>
-                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Trend</th>
-                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Ratio</th>
+                                <th style={cellStyle} onClick={() => handleSort("ticker")}>Ticker{renderSortIcon("ticker")}</th>
+                                <th style={cellStyle} onClick={() => handleSort("lstPrice")}>Last Price{renderSortIcon("lstPrice")}</th>
+                                <th style={cellStyle} onClick={() => handleSort("callVolume")}>Call{renderSortIcon("callVolume")}</th>
+                                <th style={cellStyle} onClick={() => handleSort("putVolume")}>Put{renderSortIcon("putVolume")}</th>
+                                <th style={cellStyle} onClick={() => handleSort("prediction")}>Trend{renderSortIcon("prediction")}</th>
+                                <th style={cellStyle} onClick={() => handleSort("ratio")}>Ratio{renderSortIcon("ratio")}</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            {Object.entries(tickerData)
-                                .sort(([, a], [, b]) => {
-                                    const ratioA = (a.selectedTicker ?? a)?.ratio ?? 0;
-                                    const ratioB = (b.selectedTicker ?? b)?.ratio ?? 0;
-                                    return ratioB - ratioA; // Descending
-                                })
-                                .map(([ticker, data]) => {
-                                    const stats = data?.selectedTicker ?? data;
-                                    if (!stats) return null;
+                            {sortedData.map(([ticker, data]) => {
+                                const stats = data?.selectedTicker ?? data;
+                                if (!stats) return null;
 
-                                    return (
-                                        <tr key={ticker} className={stats.prediction}>
-                                            <td style={{ border: '1px solid #ccc', padding: '8px' }}>{stats.ticker}</td>
-                                            <td style={{ border: '1px solid #ccc', padding: '8px' }}>{stats.lstPrice}</td>
-                                            <td style={{ border: '1px solid #ccc', padding: '8px' }}>{stats.callVolume?.toLocaleString?.() ?? 'N/A'}</td>
-                                            <td style={{ border: '1px solid #ccc', padding: '8px' }}>{stats.putVolume?.toLocaleString?.() ?? 'N/A'}</td>
-                                            <td style={{ border: '1px solid #ccc', padding: '8px' }}>{stats.prediction}</td>
-                                            <td style={{ border: '1px solid #ccc', padding: '8px' }}>{stats.ratio?.toLocaleString?.() ?? 'N/A'}</td>
-                                        </tr>
-                                    );
-                                })}
+                                return (
+                                    <tr key={ticker} className={stats.prediction}>
+                                        <td style={cellStyle}>{stats.ticker}</td>
+                                        <td style={cellStyle}>{stats.lstPrice}</td>
+                                        <td style={cellStyle}>{stats.callVolume?.toLocaleString?.() ?? "N/A"}</td>
+                                        <td style={cellStyle}>{stats.putVolume?.toLocaleString?.() ?? "N/A"}</td>
+                                        <td style={cellStyle}>{stats.prediction}</td>
+                                        <td style={cellStyle}>{stats.ratio?.toLocaleString?.() ?? "N/A"}</td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 )}
