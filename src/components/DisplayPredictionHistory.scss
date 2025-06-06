@@ -1,0 +1,44 @@
+.sentimate-history-data {
+    .ExtremelyBullish {
+        background-color: green;
+    }
+
+    .Bullish {
+        background-color: lightgreen;
+    }
+
+    .Neutral {
+        background-color: whitesmoke;
+    }
+
+    .Bearish {
+        background-color: lightcoral;
+    }
+
+    .ExtremelyBearish {
+        background-color: red;
+    }
+
+    .bordered-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .bordered-table th,
+    .bordered-table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+    }
+
+    .link-like-header {
+        color: #007bff;
+        cursor: pointer;
+        user-select: none;
+        transition: color 0.2s;
+    }
+
+    .link-like-header:hover {
+        text-decoration: underline;
+    }
+
+}

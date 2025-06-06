@@ -5,11 +5,12 @@ import axios from "axios";
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
-import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, ETF_List, IS_AWS_API, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, MagnificentSevenStockList, ETF_List, IS_AWS_API, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import PredictionHint from './../components/PredictionHint';
 import { getDateForatted } from './../common/nasdaq.common';
-const YahooData = ({ selectedTicker, volumeOrInterest , rows, isYahooDataDisplay}) => {
+import DisplayPredictionHistory from './../components/DisplayPredictionHistory';
+const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay }) => {
     // Define a type for merged data
 
     const [options, setOptions] = useState([]);
@@ -25,7 +26,7 @@ const YahooData = ({ selectedTicker, volumeOrInterest , rows, isYahooDataDisplay
     useEffect(() => {
         const fetchMyData = async () => {
             try {
-                
+
                 await getSpyHistoryAPIData(selectedTicker);
             } catch (err) {
                 console.error('Failed to fetch stock history data from yahoo:', err);
@@ -128,7 +129,12 @@ const YahooData = ({ selectedTicker, volumeOrInterest , rows, isYahooDataDisplay
             "selectedTicker": selectedTicker,
             'customClassName': totalCallVolume > totalPutVolume ? 'greenmarket' : 'redmareket'
         },
+
     ]
+
+    const stockData = {
+        selectedTicker: { callVolume: totalCallVolume, putVolume: totalPutVolume, customClassName: totalCallVolume > totalPutVolume ? 'greenmarket' : 'redmareket', ticker: selectedTicker },
+    };
 
     return (
 
@@ -137,9 +143,11 @@ const YahooData = ({ selectedTicker, volumeOrInterest , rows, isYahooDataDisplay
                 <h2> Loading....... Please wait(yahoo data-new)</h2>
             </div>}
 
-            { isLoading && <div className="yahoo-chart-section">
+            {isLoading && <div className="yahoo-chart-section">
                 <h3>Yahoo-{volumeOrInterest}-Call-<span className={predectionInput[0].customClassName}>{totalCallVolume} </span>, Put-{totalPutVolume} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}</h3>
                 {totalCallVolume > 0 && <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
+                {(totalCallVolume > 0) && <DisplayPredictionHistory selectedTicker={selectedTicker} stockData={stockData} />}
+
                 {volumeOrInterest === 'volume' && <div>
                     {data && <ResponsiveContainer width="100%" height={400}>
                         <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>

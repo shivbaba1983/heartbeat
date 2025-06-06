@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NASDAQ_TOKEN, ETF_List, LogTickerList, JSON_UPDATE_TIME, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, MagnificentSevenStockList,ETF_List, LogTickerList, JSON_UPDATE_TIME, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
-import { writeS3JsonFile, writeToS3Bucket } from '../services/WriteS3Service';
+import { writeS3JsonFile, writeToS3Bucket, updateLocalStore } from '../services/WriteS3Service';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
 
 const JsonUpdater = () => {
@@ -69,13 +69,14 @@ const JsonUpdater = () => {
             if (total.c_Volume > 0) {
                 if (IS_AWS_API) {
                     await writeToS3Bucket(total, ticker, lstPrice) //calling aws amplify deployed api
+                    await updateLocalStore(total, ticker, lstPrice);
                 } else {
                     await writeS3JsonFile(total, ticker, lstPrice);// calling the local express service
+                    await updateLocalStore(total, ticker, lstPrice);
                 }
             } else {
                 console.error(`observer 0 call or put volume for ${ticker} hence not write to s3 bucket`);
             }
-
 
         } catch (err) {
             console.error(`Failed to get options data log writer-JsonUpdater: ${ticker}`, err);
