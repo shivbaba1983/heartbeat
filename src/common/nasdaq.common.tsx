@@ -24,7 +24,7 @@ export function isWithinMarketHours() {
 
 export async function getFromDate(range) {
   const today = new Date();
-  if (range === 'MAX') return '2000-01-01'; // or earliest available
+  if (range === 'MAX') return '1970-01-01'; // or earliest available
 
   // if(range==='1D'){
   //   return getTodayInEST();

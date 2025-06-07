@@ -5,13 +5,14 @@ import { isWithinMarketHours, getTodayInEST } from '../common/nasdaq.common';
 import DateRangeSelector from './../components/DateRangeSelector';
 import { getNasdaqStockHistoryData } from './../services/NasdaqStockDataService';
 import StockChart from './../graph-chart/StockChart';
-
+import YahoooStockData from '../yahoo/YahoooStockData';
 const StockHistoryData = ({ selectedTicker, assetclass }) => {
     const [stockHistoryData, setStockHistoryData] = useState([]);
     //const [selectedTicker, setSelectedTicker] = useState('SPY');
     const [requestedFromDate, setRequestedFromDate] = useState('');
     const [requestedToDate, setRequestedToDate] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [showYahooStockHistory, setYahooStockHistory] = useState(false);
     useEffect(() => {
         const fetchMyData = async () => {
             try {
@@ -55,9 +56,21 @@ const StockHistoryData = ({ selectedTicker, assetclass }) => {
                 <h2> Loading....... Please wait</h2>
             </div>}
             {!isLoading && <div style={{ marginTop: 30 }}>
-                <h3> Stock History Data {selectedTicker}</h3>
+                <h3> Stock History Data {selectedTicker} (Nasdaq)</h3>
                 <DateRangeSelector setRequestedFromDate={setRequestedFromDate} />
                 {stockHistoryData?.length > 0 && <StockChart stockHistoryData={stockHistoryData} />}
+                <div className="market-data-checkbox">
+                    <label className="">
+                        <input
+                            type="checkbox"
+                            checked={showYahooStockHistory}
+                            onChange={() => setYahooStockHistory(!showYahooStockHistory)}
+                        />
+                        <span>YahooStock History Data</span>
+                    </label>
+                </div>
+               {showYahooStockHistory &&  <YahoooStockData selectedTicker={selectedTicker} requestedFromDate={requestedFromDate} />}
+
             </div>}
         </div>
     );
