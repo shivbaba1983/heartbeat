@@ -50,5 +50,6 @@ export const TIME_RANGES = {
     '6M': 180,
     '1Y': 365,
     '5Y': 1825,
+    '10Y': 3650,
     'MAX': null, // Will be handled specially
   };
