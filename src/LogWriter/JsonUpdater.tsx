@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { NASDAQ_TOKEN, MagnificentSevenStockList,ETF_List, LogTickerList, JSON_UPDATE_TIME, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
-import { writeS3JsonFile, writeToS3Bucket } from '../services/WriteS3Service';
+import { writeS3JsonFile, writeToS3Bucket, writeToS3BucketOpenInterest } from '../services/WriteS3Service';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
 
 const JsonUpdater = () => {
-
+let firstTimeWriteOpenInterest=true;
     useEffect(() => {
         const fetchMyData = async () => {
             const interval = setInterval(() => {
@@ -17,6 +17,7 @@ const JsonUpdater = () => {
                         console.log('⏸ Market is closed. Skipping API call.');
                     }
                 });
+                firstTimeWriteOpenInterest=false;
             }, JSON_UPDATE_TIME * 60 * 1000); // 10 mins in milliseconds
 
             return () => clearInterval(interval); // Cleanup on unmount
@@ -31,8 +32,7 @@ const JsonUpdater = () => {
 
     const postDataToS3Bucket = async (ticker) => {
         let assetclass = 'stocks';
-        const selectedDayOrMonth = 'day';
-
+        const selectedDayOrMonth = 'day';        
         try {
             let lstPrice;
             let rows = [];
@@ -69,6 +69,9 @@ const JsonUpdater = () => {
             if (total.c_Volume > 0) {
                 if (IS_AWS_API) {
                     await writeToS3Bucket(total, ticker, lstPrice) //calling aws amplify deployed api
+                    if(firstTimeWriteOpenInterest){//call only one time for LogTickerList to wrote open interest only
+                        await writeToS3BucketOpenInterest(total, ticker, lstPrice) //calling aws amplify deployed api
+                    }
                 } else {
                     await writeS3JsonFile(total, ticker, lstPrice);// calling the local express service
                 }
@@ -87,14 +90,18 @@ const JsonUpdater = () => {
             (totals, row) => {
                 const cVol = parseInt(row.c_Volume);
                 const pVol = parseInt(row.p_Volume);
-
+                const cOpenInterest = parseInt(row.c_Openinterest);
+                const pOpenInterest = parseInt(row.p_Openinterest);
                 // Add only if the value is a valid number
                 if (!isNaN(cVol)) totals.c_Volume += cVol;
                 if (!isNaN(pVol)) totals.p_Volume += pVol;
 
+                if (!isNaN(cOpenInterest)) totals.c_OpenInterest += cOpenInterest;
+                if (!isNaN(pOpenInterest)) totals.p_OpenInterest += pOpenInterest;
+
                 return totals;
             },
-            { c_Volume: 0, p_Volume: 0 }
+            { c_Volume: 0, p_Volume: 0 , c_OpenInterest:0, p_OpenInterest:0}
         );
     }
     return (

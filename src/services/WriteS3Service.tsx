@@ -28,3 +28,16 @@ export async function writeToS3Bucket(total, ticker, lstPrice) {
     }
     return resp;
 }
+
+export async function writeToS3BucketOpenInterest(total, ticker, lstPrice) {
+    let tempcallOpenInterest = Number(total?.c_OpenInterest);
+    let tempputOpenInterest = Number(total?.p_OpenInterest);
+    const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/writes3bucket?selectedTicker=${ticker}&callOpenInterest=${tempcallOpenInterest}&putOpenInterest=${tempputOpenInterest}&lstPrice=${lstPrice}&limit=3000`;
+    let resp;
+    try {
+        resp = await fetch(url)
+    } catch (err) {
+        console.error('writeToS3BucketOpenInterest AWS Server-Failed to write data in S3 bucket:', err);
+    }
+    return resp;
+}
