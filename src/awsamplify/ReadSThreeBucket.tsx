@@ -5,13 +5,14 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid
 } from 'recharts';
 import MagnificientSevenTable from './../yahoo/MagnificientSevenTable';
+import './ReadSThreeBucket.scss';
 const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
   const [refreshData, setRefreshData] = useState(false);
   const [files, setFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState(fileName);
-
+  const [isExpanded, setIsExpanded] = useState(true);//set default to false later
   const [totalCallVolume, setTotalCallVolume] = useState(1);
   const [totalPutVolume, setTotalPutVolume] = useState(1);
   const [magnificientSevenTableData, setMagnificientSevenTableData] = useState([]);
@@ -94,6 +95,8 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
 
         setMagnificientSevenTableData(latestVolumesByTicker)
 
+
+
         const filteredData = tempData
           ?.filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
           ?.map(item => ({
@@ -121,8 +124,11 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
     setSelectedFile(tempFileName);
     console.log("Selected file:", tempFileName);
   };
+  const toggleExpanded = () => {
+    setIsExpanded(prev => !prev);
+  };
   return (
-    <div>
+    <div className="S3readSection">
       <div>
         <h2 className="s3-volumechart-title"> {selectedTicker} S3 Options Volume Chart</h2>
         <select value={selectedFile} onChange={handleChange}>
@@ -167,8 +173,17 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
           <Line yAxisId="right" type="monotone" dataKey="lstPrice" stroke="#00008B" name="Last Price" dot={false} />
         </LineChart>
       </ResponsiveContainer>}
-      {magnificientSevenTableData.length > 1 && <MagnificientSevenTable data={magnificientSevenTableData} />}
-      <button onClick={() => handleRefreshClick()}>Refresh Data</button>
+
+      <button onClick={() => handleRefreshClick()} className="refresh-button-sthree">Refresh Data</button>
+
+      <h2 onClick={toggleExpanded} className="link-like-header">
+        {isExpanded
+          ? "▼ Magnificent Seven Sentiments (Click to Collapse)"
+          : "► Magnificent Seven Sentiments (Click to Expand)"}
+      </h2>
+
+      {(magnificientSevenTableData.length > 1 && isExpanded) && <MagnificientSevenTable data={magnificientSevenTableData} />}
+
 
       {/* <PredictionChart data={data}/> */}
     </div>

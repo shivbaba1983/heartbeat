@@ -7,7 +7,6 @@ const cellStyle = {
 };
 const MagnificientSevenTable = ({ data }) => {
   const [sortConfig, setSortConfig] = useState({ key: 'ratio', direction: 'desc' });
-  const [isExpanded, setIsExpanded] = useState(false);
   const handleSort = (key) => {
     setSortConfig((prev) => ({
       key,
@@ -65,9 +64,6 @@ const MagnificientSevenTable = ({ data }) => {
       ? strA.localeCompare(strB)
       : strB.localeCompare(strA);
   });
-  const toggleExpanded = () => {
-    setIsExpanded(prev => !prev);
-  };
   const renderSortIcon = (key) => {
     return sortConfig.key === key
       ? sortConfig.direction === "asc" ? " ▲" : " ▼"
@@ -76,13 +72,7 @@ const MagnificientSevenTable = ({ data }) => {
   return (
     <div className='magnificient-seven-section'>
       <div className='sentimate-seven-history-data'>
-        <h2 onClick={toggleExpanded} className="link-like-header">
-          {isExpanded
-            ? "▼ Magnificent Seven Sentiments (Click to Collapse)"
-            : "► Magnificent Seven Sentiments (Click to Expand)"}
-        </h2>
-
-        {isExpanded && (
+        {(
           <table style={{ borderCollapse: 'collapse', width: '100%' }}>
             <thead>
               <tr>
