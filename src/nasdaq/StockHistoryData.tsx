@@ -6,7 +6,7 @@ import DateRangeSelector from './../components/DateRangeSelector';
 import { getNasdaqStockHistoryData } from './../services/NasdaqStockDataService';
 import StockChart from './../graph-chart/StockChart';
 import YahoooStockData from '../yahoo/YahoooStockData';
-const StockHistoryData = ({ selectedTicker, assetclass }) => {
+const StockHistoryData = ({ selectedTicker, assetclass, averageDailyVolume3Month }) => {
     const [stockHistoryData, setStockHistoryData] = useState([]);
     //const [selectedTicker, setSelectedTicker] = useState('SPY');
     const [requestedFromDate, setRequestedFromDate] = useState('');
@@ -56,7 +56,7 @@ const StockHistoryData = ({ selectedTicker, assetclass }) => {
                 <h2> Loading....... Please wait</h2>
             </div>}
             {!isLoading && <div style={{ marginTop: 30 }}>
-                <h3> Stock History Data {selectedTicker} (Nasdaq)</h3>
+                <h3> Stock History Data {selectedTicker} (Nasdaq), Three Month Avg. Volume {(averageDailyVolume3Month / 1000000)} M (Yahoo)</h3>
                 <DateRangeSelector setRequestedFromDate={setRequestedFromDate} />
                 {stockHistoryData?.length > 0 && <StockChart stockHistoryData={stockHistoryData} />}
                 <div className="market-data-checkbox">
@@ -69,7 +69,7 @@ const StockHistoryData = ({ selectedTicker, assetclass }) => {
                         <span>YahooStock History Data</span>
                     </label>
                 </div>
-               {showYahooStockHistory &&  <YahoooStockData selectedTicker={selectedTicker} requestedFromDate={requestedFromDate} />}
+                {showYahooStockHistory && <YahoooStockData selectedTicker={selectedTicker} requestedFromDate={requestedFromDate} />}
 
             </div>}
         </div>

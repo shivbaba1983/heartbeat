@@ -37,7 +37,7 @@ const NasdaqOptions = () => {
   const [stockDetails, setStockdetails] = useState({});
   const [yahooDataRows, setStsetYahooDataRows] = useState([]);
   const [isYahooDataDisplay, setIsYahooDataDisplay] = useState(false);
-  
+
   useEffect(() => {
     const fetchYahooOptionsData = async () => {
       try {
@@ -323,17 +323,24 @@ const NasdaqOptions = () => {
           <div>
             <DatePicker setRequestedDate={setRequestedDate} setIsRequestedDateChanage={setIsRequestedDateChanage} requestedDate={requestedDate} />
           </div>
+          <label className="common-left-margin">
+            <input
+              type="checkbox"
+              checked={showBarChart}
+              onChange={() => setShowBarChart(!showBarChart)}
+            />
+            <span>Show Chart</span>
+          </label>
 
-          <div>
-            <label className="common-left-margin">
-              <input
-                type="checkbox"
-                checked={showBarChart}
-                onChange={() => setShowBarChart(!showBarChart)}
-              />
-              <span>Show Chart</span>
-            </label>
-          </div>
+          <label className="common-left-margin">
+            <input
+              type="checkbox"
+              checked={showStockNews}
+              onChange={() => setShowStockNews(!showStockNews)}
+            />
+            <span>Stock News</span>
+          </label>
+
         </div>
 
       </div>
@@ -344,6 +351,8 @@ const NasdaqOptions = () => {
       {/* <div className="yahoo-data-section">
         <SPXData selectedTicker={selectedTicker} assetclass={assetclass} volumeOrInterest={volumeOrInterest} setAverageDailyVolume3Month={setAverageDailyVolume3Month} />
       </div> */}
+      {showStockNews && <StockNewsData selectedTicker={selectedTicker} />}
+
       <div className="yahoo-data-section">
         {isYahooDataDisplay && <YahooData selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest} rows={yahooDataRows} isYahooDataDisplay={isYahooDataDisplay} />}
       </div>
@@ -372,8 +381,8 @@ const NasdaqOptions = () => {
       </div>
 
       <div>
-        {averageDailyVolume3Month > 1 && <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass} />}
-        <h3> Three Month Avg. Volume {(averageDailyVolume3Month / 1000000)} M (Yahoo)</h3>
+        {averageDailyVolume3Month > 1 && <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass} averageDailyVolume3Month={averageDailyVolume3Month} />}
+
       </div>
 
 
@@ -400,18 +409,7 @@ const NasdaqOptions = () => {
       </div>
 
 
-      <div className="market-data-checkbox">
-        <label className="">
-          <input
-            type="checkbox"
-            checked={showStockNews}
-            onChange={() => setShowStockNews(!showStockNews)}
-          />
-          <span>Stock News</span>
-        </label>
-      </div>
 
-      {showStockNews && <StockNewsData selectedTicker={selectedTicker} />}
 
     </div>
   );

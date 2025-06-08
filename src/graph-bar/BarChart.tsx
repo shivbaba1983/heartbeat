@@ -28,7 +28,7 @@ const rawData = [
 //   putVolume: Number(row.p_Volume)
 // }));
 
-const BarGraphChart = ({ rows, selectedTicker , volumeOrInterest}) => {
+const BarGraphChart = ({ rows, selectedTicker, volumeOrInterest }) => {
 
     const [chartCallData, setChartCallData] = useState([]);
     const [chartPutData, setChartPutData] = useState([]);
@@ -37,7 +37,7 @@ const BarGraphChart = ({ rows, selectedTicker , volumeOrInterest}) => {
     useEffect(() => {
         const tempCallData = rows?.map(row => ({
             strike: row.strike,
-            callVolume: Number(volumeOrInterest=== 'volume'? row.c_Volume: row.c_Openinterest),
+            callVolume: Number(volumeOrInterest === 'volume' ? row.c_Volume : row.c_Openinterest),
             expiryDate: row.expiryDate,
             c_Last: row.c_Last
             //putVolume: Number(row.p_Volume)
@@ -45,20 +45,20 @@ const BarGraphChart = ({ rows, selectedTicker , volumeOrInterest}) => {
         }))
         const tempPutData = rows?.map(row => ({
             strike: row.strike,
-            putVolume: Number(volumeOrInterest=== 'volume'? row.p_Volume : row.p_Openinterest),
+            putVolume: Number(volumeOrInterest === 'volume' ? row.p_Volume : row.p_Openinterest),
             expiryDate: row.expiryDate,
             p_Last: row.p_Last
             //tempp: tempp + Number(row.p_Volume)
         }))
         setChartCallData(tempCallData);
         setChartPutData(tempPutData);
-    }, [rows])
+    }, [rows, volumeOrInterest])
     // Convert volume strings to numbers
     chartCallData.forEach((row) => {
-        row.callVolume >0 ? tempc += row.callVolume : tempc += 0
+        row.callVolume > 0 ? tempc += row.callVolume : tempc += 0
     });
     chartPutData.forEach((row) => {
-        row.putVolume >0  ? tempp += row.putVolume : tempp += 0
+        row.putVolume > 0 ? tempp += row.putVolume : tempp += 0
     });
     const formattedCall = new Intl.NumberFormat('en-IN').format(tempc);
     const formattedPut = new Intl.NumberFormat('en-IN').format(tempp);
@@ -66,7 +66,7 @@ const BarGraphChart = ({ rows, selectedTicker , volumeOrInterest}) => {
 
 
     return (<div>
-        <h2>{selectedTicker } {volumeOrInterest}  :  {formattedCall}</h2>
+        <h2>{selectedTicker} {volumeOrInterest}  :  {formattedCall}</h2>
         <ResponsiveContainer width="100%" height={400}>
             <BarChart data={chartCallData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
