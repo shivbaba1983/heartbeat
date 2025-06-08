@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './MagnificientSevenTable.scss'; // Create a CSS file for styles
-
+const cellStyle = {
+  border: "1px solid #ccc",
+  padding: "8px",
+  cursor: "pointer",
+};
 const MagnificientSevenTable = ({ data }) => {
-  //const [sortConfig, setSortConfig] = useState({ key: 'selectedTicker', direction: 'asc' });
-
-  const [sortConfig, setSortConfig] = useState({ key: 'selectedTicker', direction: 'asc' });
+  const [sortConfig, setSortConfig] = useState({ key: 'ratio', direction: 'desc' });
   const [isExpanded, setIsExpanded] = useState(false);
   const handleSort = (key) => {
     setSortConfig((prev) => ({
@@ -66,46 +68,53 @@ const MagnificientSevenTable = ({ data }) => {
   const toggleExpanded = () => {
     setIsExpanded(prev => !prev);
   };
+  const renderSortIcon = (key) => {
+    return sortConfig.key === key
+      ? sortConfig.direction === "asc" ? " ▲" : " ▼"
+      : "";
+  };
   return (
-    <div className='sentimate-seven-history-data'>
-      <h2 onClick={toggleExpanded} className="link-like-header">
-        {isExpanded
-          ? "▼ Magnificent Seven Sentiments (Click to Collapse)"
-          : "► Magnificent Seven Sentiments (Click to Expand)"}
-      </h2>
-      {isExpanded && (
-        <table className="volume-table">
-          <thead>
-            <tr>
-              <th onClick={() => handleSort('selectedTicker')}>Ticker</th>
-              <th onClick={() => handleSort('callVolume')}>Call Volume</th>
-              <th onClick={() => handleSort('putVolume')}>Put Volume</th>
-              <th onClick={() => handleSort('lstPrice')}>Last Price</th>
-              <th onClick={() => handleSort('timestamp')}>Timestamp</th>
-              <th onClick={() => handleSort('ratio')}>Put/Call Ratio</th>
-              <th onClick={() => handleSort('prediction')}>Prediction</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedData.map((row, index) => (
-              <tr key={row.id || index} className={row.prediction}>
-                <td>{row.selectedTicker}</td>
-                <td>{row.callVolume.toLocaleString()}</td>
-                <td>{row.putVolume.toLocaleString()}</td>
-                <td>
-                  {row.lstPrice !== undefined && !isNaN(row.lstPrice)
-                    ? Number(row.lstPrice).toFixed(2)
-                    : '-'}
-                </td>
-                <td>{row.timestamp}</td>
-                <td>{row.ratio}</td>
-                <td>{row.prediction}</td>
-              </tr>
-            ))}
+    <div className='magnificient-seven-section'>
+      <div className='sentimate-seven-history-data'>
+        <h2 onClick={toggleExpanded} className="link-like-header">
+          {isExpanded
+            ? "▼ Magnificent Seven Sentiments (Click to Collapse)"
+            : "► Magnificent Seven Sentiments (Click to Expand)"}
+        </h2>
 
-          </tbody>
-        </table>
-      )}
+        {isExpanded && (
+          <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+            <thead>
+              <tr>
+                <th style={cellStyle} onClick={() => handleSort("selectedTicker")}>Ticker{renderSortIcon("selectedTicker")}</th>
+                <th style={cellStyle} onClick={() => handleSort("callVolume")}>Call{renderSortIcon("callVolume")}</th>
+                <th style={cellStyle} onClick={() => handleSort("putVolume")}>Put{renderSortIcon("putVolume")}</th>
+                <th style={cellStyle} onClick={() => handleSort("lstPrice")}>Price{renderSortIcon("lstPrice")}</th>
+                <th style={cellStyle} onClick={() => handleSort("prediction")}>Trend{renderSortIcon("prediction")}</th>
+                <th style={cellStyle} onClick={() => handleSort("ratio")}>Ratio{renderSortIcon("ratio")}</th>
+                <th style={cellStyle} onClick={() => handleSort("timestamp")}>Time{renderSortIcon("timestamp")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedData.map((row, index) => (
+                <tr key={row.id || index} className={row.prediction}>
+                  <td style={cellStyle}>{row.selectedTicker}</td>
+                  <td style={cellStyle}>{row.callVolume.toLocaleString()}</td>
+                  <td style={cellStyle}>{row.putVolume.toLocaleString()}</td>
+                  <td style={cellStyle}>
+                    {row.lstPrice !== undefined && !isNaN(row.lstPrice)
+                      ? Number(row.lstPrice).toFixed(2)
+                      : '-'}
+                  </td>
+                  <td style={cellStyle}>{row.prediction}</td>
+                  <td style={cellStyle}>{row.ratio}</td>
+                  <td style={cellStyle}>{row.timestamp}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 };

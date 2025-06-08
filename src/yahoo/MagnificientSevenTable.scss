@@ -1,77 +1,46 @@
-.sentimate-seven-history-data {
-    .ExtremelyBullish {
-        background-color: green;
+.magnificient-seven-section {
+ 
+    .sentimate-seven-history-data {
+        .ExtremelyBullish {
+            background-color: green;
+        }
+
+        .Bullish {
+            background-color: lightgreen;
+        }
+
+        .Neutral {
+            background-color: whitesmoke;
+        }
+
+        .Bearish {
+            background-color: lightcoral;
+        }
+
+        .ExtremelyBearish {
+            background-color: red;
+        }
+
+        .bordered-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .bordered-table th,
+        .bordered-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        .link-like-header {
+            color: #007bff;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s;
+        }
+
+        .link-like-header:hover {
+            text-decoration: underline;
+        }
     }
-
-    .Bullish {
-        background-color: lightgreen;
-    }
-
-    .Neutral {
-        background-color: whitesmoke;
-    }
-
-    .Bearish {
-        background-color: lightcoral;
-    }
-
-    .ExtremelyBearish {
-        background-color: red;
-    }
-
-    .bordered-table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    .bordered-table th,
-    .bordered-table td {
-        border: 1px solid #ccc;
-        padding: 8px;
-    }
-
-    .link-like-header {
-        color: #007bff;
-        cursor: pointer;
-        user-select: none;
-        transition: color 0.2s;
-    }
-
-    .link-like-header:hover {
-        text-decoration: underline;
-    }
-
-
-    .volume-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        font-family: Arial, sans-serif;
-    }
-
-    .volume-table th,
-    .volume-table td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: center;
-    }
-
-    .volume-table th {
-        background-color: #004080;
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .volume-table th:hover {
-        background-color: #0066cc;
-    }
-
-    // .volume-table tr:nth-child(even) {
-    //     background-color: #f9f9f9;
-    // }
-
-    // .volume-table tr:hover {
-    //     background-color: #f1f1f1;
-    // }
 }

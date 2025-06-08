@@ -9,7 +9,6 @@ import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, MagnificentSevenStockList, ETF_List, 
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import PredictionHint from './../components/PredictionHint';
 import { getDateForatted } from './../common/nasdaq.common';
-import DisplayPredictionHistory from './../components/DisplayPredictionHistory';
 const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay }) => {
     // Define a type for merged data
 
@@ -132,10 +131,6 @@ const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay 
 
     ]
 
-    const stockData = {
-        selectedTicker: { callVolume: totalCallVolume, putVolume: totalPutVolume, customClassName: totalCallVolume > totalPutVolume ? 'greenmarket' : 'redmareket', ticker: selectedTicker },
-    };
-
     return (
 
         <div>
@@ -146,8 +141,6 @@ const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay 
             {isLoading && <div className="yahoo-chart-section">
                 <h3>Yahoo-{volumeOrInterest}-Call-<span className={predectionInput[0].customClassName}>{totalCallVolume} </span>, Put-{totalPutVolume} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}</h3>
                 {totalCallVolume > 0 && <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
-                {(totalCallVolume > 0) && <DisplayPredictionHistory selectedTicker={selectedTicker} stockData={stockData} />}
-
                 {volumeOrInterest === 'volume' && <div>
                     {data && <ResponsiveContainer width="100%" height={400}>
                         <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>

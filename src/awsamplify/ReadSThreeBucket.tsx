@@ -14,7 +14,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
 
   const [totalCallVolume, setTotalCallVolume] = useState(1);
   const [totalPutVolume, setTotalPutVolume] = useState(1);
-  const[magnificientSevenTableData, setMagnificientSevenTableData]=useState([]);
+  const [magnificientSevenTableData, setMagnificientSevenTableData] = useState([]);
   useEffect(() => {
     setSelectedFile(fileName);
   }, [fileName])
@@ -91,10 +91,8 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
             return acc;
           }, {})
         );
-        
-        setMagnificientSevenTableData(latestVolumesByTicker)
-        console.log('---latestVolumesByTicker---',latestVolumesByTicker);
 
+        setMagnificientSevenTableData(latestVolumesByTicker)
 
         const filteredData = tempData
           ?.filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
@@ -169,7 +167,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
           <Line yAxisId="right" type="monotone" dataKey="lstPrice" stroke="#00008B" name="Last Price" dot={false} />
         </LineChart>
       </ResponsiveContainer>}
-{magnificientSevenTableData.length>1 && <MagnificientSevenTable data={magnificientSevenTableData}/>}
+      {magnificientSevenTableData.length > 1 && <MagnificientSevenTable data={magnificientSevenTableData} />}
       <button onClick={() => handleRefreshClick()}>Refresh Data</button>
 
       {/* <PredictionChart data={data}/> */}
