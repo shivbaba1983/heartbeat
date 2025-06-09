@@ -156,10 +156,10 @@ const NasdaqOptions = () => {
         setIsRequestedDateChanage(false);
       } else {
         if (selectedDayOrMonth === 'day' && (assetclass === 'ETF')) {
-          if (["TQQQ", "SOXL", "TSLL", "SQQQ"].includes(selectedTicker))
+          if (["SPY", "QQQ", "IWM"].includes(selectedTicker))//day validty tickers
+            selectedDate = getEffectiveDate();
+          else// weekly validity tickers
             selectedDate = getComingFriday();
-          else
-            selectedDate = getEffectiveDate();// getTodayInEST();
         }
         else if (selectedDayOrMonth === 'day' && assetclass === 'stocks') {
           selectedDate = getComingFriday();//getFridayOfCurrentWeek();
