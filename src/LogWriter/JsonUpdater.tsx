@@ -75,6 +75,7 @@ const JsonUpdater = () => {
                 } else {
                     await writeS3JsonFile(total, ticker, lstPrice);// calling the local express service
                     if (firstTimeWriteOpenInterest) {//call only one time for LogTickerList to wrote open interest only
+                        console.log('calling----writeS3JsonFileOpenInterest')
                         await writeS3JsonFileOpenInterest(total, ticker, lstPrice) //calling local
                     }
                 }

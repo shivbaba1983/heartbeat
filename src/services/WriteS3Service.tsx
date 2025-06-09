@@ -17,8 +17,9 @@ export async function writeS3JsonFile(total, ticker, lstPrice) {
     }
 }
 export async function writeS3JsonFileOpenInterest(total, ticker, lstPrice) {
+    
     try {
-        await fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
+        await fetch(`${NASDAQ_TOKEN}/api/writes3bucketOpenInterest`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -28,8 +29,9 @@ export async function writeS3JsonFileOpenInterest(total, ticker, lstPrice) {
                 lstPrice: lstPrice
             }),
         });
+
     } catch (err) {
-        console.error('writeS3JsonFile-Local-Failed to fetch option data:', err);
+        console.error('writeS3JsonFileOpenInterest-Local-Failed to fetch option data:', err);
     }
 }
 export async function writeToS3Bucket(total, ticker, lstPrice) {
@@ -48,7 +50,7 @@ export async function writeToS3Bucket(total, ticker, lstPrice) {
 export async function writeToS3BucketOpenInterest(total, ticker, lstPrice) {
     let tempcallOpenInterest = Number(total?.c_OpenInterest);
     let tempputOpenInterest = Number(total?.p_OpenInterest);
-    const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/writes3bucket?selectedTicker=${ticker}&callOpenInterest=${tempcallOpenInterest}&putOpenInterest=${tempputOpenInterest}&lstPrice=${lstPrice}&limit=3000`;
+    const url = `https://07tps3arid.execute-api.us-east-1.amazonaws.com/welcome/writes3bucketOpenInterest?selectedTicker=${ticker}&callOpenInterest=${tempcallOpenInterest}&putOpenInterest=${tempputOpenInterest}&lstPrice=${lstPrice}&limit=3000`;
     let resp;
     try {
         resp = await fetch(url)

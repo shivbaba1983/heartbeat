@@ -17,6 +17,7 @@ export const tickerListData = [
     { idx: 12, value: "AMZN" },
     { idx: 13, value: "GOOG" },
     { idx: 20, value: "TSLA" },
+     { idx: 1109, value: "MSFT" },
     { idx: 21, value: "DAL" },
     { idx: 22, value: "AAL" },
     { idx: 23, value: "Uber" },    
