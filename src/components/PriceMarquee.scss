@@ -16,6 +16,9 @@
     padding-left: 100%; /* Push it off the screen initially */
     animation: marquee 10s linear infinite;
   }
+  .marathi-title{
+    margin-left: 100px;
+  }
   
   @keyframes marquee {
     0% {

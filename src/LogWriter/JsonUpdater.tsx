@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NASDAQ_TOKEN, MagnificentSevenStockList, ETF_List, LogTickerList, JSON_UPDATE_TIME, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, ETF_List, LogTickerList, JSON_UPDATE_TIME, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
 import { writeS3JsonFile, writeS3JsonFileOpenInterest, writeToS3Bucket, writeToS3BucketOpenInterest } from '../services/WriteS3Service';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';

@@ -5,7 +5,7 @@ import axios from "axios";
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
-import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, MagnificentSevenStockList, ETF_List, IS_AWS_API, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, ETF_List, IS_AWS_API, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import PredictionHint from './../components/PredictionHint';
 import { getDateForatted } from './../common/nasdaq.common';

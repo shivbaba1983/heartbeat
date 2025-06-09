@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import './MagnificientSevenTable.scss';
-
+import {MAG7,INDEXES} from './../constant/HeartbeatConstants';
 const cellStyle = {
   border: "1px solid #ccc",
   padding: "8px",
   cursor: "pointer",
 };
 
-const INDEXES = ["IWM", "SPY", "QQQ"];
-const MAG7 = ["TSLA", "AAPL", "NVDA", "GOOG", "AMZN", "MSFT"];
 
 const MagnificientSevenTable = ({ data }) => {
   const [sortConfig, setSortConfig] = useState({ key: 'ratio', direction: 'desc' });

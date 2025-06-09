@@ -19,7 +19,7 @@ const PriceMarquee = ({ lastPrice , selectedTicker}) => {
   return (
     <div className="sticky-marquee">
       <div className="marquee-content">
-        <span className="mx-4">{selectedTicker} {lastPrice}</span>
+        <span className="mx-4">{selectedTicker} {lastPrice} </span><span className="marathi-title">             !!स्वामी समर्थ!! ---- !!शिव बाबा!!</span>
       </div>
     </div>
   );

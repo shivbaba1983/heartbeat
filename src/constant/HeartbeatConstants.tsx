@@ -4,10 +4,11 @@ export const NASDAQ_TOKEN ='https://main.d1rin969pdam05.amplifyapp.com';
 export const IS_AWS_API =true;
 export const JSON_UPDATE_TIME =10;//in minutes
 export const YAHOO_VOLUME_LIMIT =1000;
-export const LogTickerList = ['SPY', 'QQQ', 'IWM','AAPL', 'NVDA','AMZN', 'GOOG', 'TSLA','SOXL','MSFT'];
+export const LogTickerList = ['SPY', 'QQQ', 'IWM','AAPL', 'NVDA','AMZN', 'GOOG', 'TSLA','META','MSFT','SOXL'];
 //export const LogTickerList = ['NVDA'];
 export const ETF_List = ['SPY', 'QQQ', 'IWM', 'TQQQ','SOXL', 'TSLL', 'SQQQQ','AAPU','NVDL','AMDL','BITX','AMZU','GGLL'];
-export const MagnificentSevenStockList = ['SPY', 'QQQ', 'IWM','AAPL', 'NVDA','AMZN', 'GOOG', 'TSLA','SOXL','MSFT'];
+export const INDEXES = ["IWM", "SPY", "QQQ"];
+export const MAG7 = ["TSLA", "AAPL", "NVDA", "GOOG", "AMZN", "MSFT","META"];
 export const tickerListData = [
     { idx: 1, value: "SPY" },
     { idx: 2, value: "QQQ" },
@@ -18,9 +19,10 @@ export const tickerListData = [
     { idx: 13, value: "GOOG" },
     { idx: 20, value: "TSLA" },
      { idx: 1109, value: "MSFT" },
-    { idx: 21, value: "DAL" },
+      { idx: 1110, value: "META" },
+    { idx: 21, value: "AMD" },
     { idx: 22, value: "AAL" },
-    { idx: 23, value: "Uber" },    
+    { idx: 23, value: "DAL" },    
     { idx: 201, value: "GME" },
     { idx: 202, value: "BABA" },
     { idx: 203, value: "SMCI" },
@@ -31,7 +33,6 @@ export const tickerListData = [
     { idx: 1105, value: "SOFI" },
     { idx: 1106, value: "HUM" },
     { idx: 1107, value: "INTC" },
-     { idx: 1108, value: "AAPU" },
 ]
 export const volumeOrOpenInterest = [
     { idx: 1, value: "volume" },
