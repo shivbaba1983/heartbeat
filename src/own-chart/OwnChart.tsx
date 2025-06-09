@@ -3,14 +3,16 @@ import VolumeChart from './VolumeChart';
 import { NASDAQ_TOKEN } from '../constant/HeartbeatConstants';
 import { getTodayInEST } from './../common/nasdaq.common';
 import ReadSThreeBucket from './../awsamplify/ReadSThreeBucket';
+import ReadSThreeBucketOpenInterest from './../awsamplify/ReadSThreeBucketOpenInterest';
 import { getAdjustedDate } from './../common/nasdaq.common';
 const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker }) => {
   const [callVolume, setCallVolume] = useState(totalCallVolumeCount);
   const [putVolume, setPutVolume] = useState(totalPutVolumeCount);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [files, setFiles] = useState([]);
   const [selectedFileName, setSelectedFileName] = useState(getAdjustedDate());
-
+  const [selectedFileNameOpenInterest, setSelectedFileNameOpenInterest] = useState("OpenInterest");
   useEffect(() => {
     let fileName = selectedFileName;
     if (selectedFileName === "") {
@@ -97,7 +99,9 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
     // setPutVolume('');
     //window.location.reload(); // Refresh chart
   };
-
+  const toggleExpanded = () => {
+    setIsExpanded(prev => !prev);
+  };
   return (
     <div>
       {NASDAQ_TOKEN.includes('localhost') && <div>
@@ -133,6 +137,15 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
         <VolumeChart selectedTicker={selectedTicker} fileName={selectedFileName} />
       </div>}
       {!isLoading && <ReadSThreeBucket selectedTicker={selectedTicker} fileName={selectedFileName} />}
+
+      <h2 onClick={toggleExpanded} className="link-like-header">
+        {isExpanded
+          ? "▼ Open Interest (Click to Collapse)"
+          : "► Open Interest (Click to Expand)"}
+      </h2>
+
+      {(!isLoading && isExpanded) && <ReadSThreeBucketOpenInterest selectedTicker={selectedTicker} selectedFileNameOpenInterest={selectedFileNameOpenInterest} />}
+
     </div>
   );
 };

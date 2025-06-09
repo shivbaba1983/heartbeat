@@ -1,0 +1,21 @@
+.S3readSectionOpenInterest {
+    .s3-volumechart-title {
+        background-color: greenyellow;
+    }
+
+    .refresh-button-sthree {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .link-like-header {
+        color: #007bff;
+        cursor: pointer;
+        user-select: none;
+        transition: color 0.2s;
+    }
+
+    .link-like-header:hover {
+        text-decoration: underline;
+    }
+}

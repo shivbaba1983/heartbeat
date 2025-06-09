@@ -16,6 +16,22 @@ export async function writeS3JsonFile(total, ticker, lstPrice) {
         console.error('writeS3JsonFile-Local-Failed to fetch option data:', err);
     }
 }
+export async function writeS3JsonFileOpenInterest(total, ticker, lstPrice) {
+    try {
+        await fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                callOpenInterest: Number(total?.c_OpenInterest),
+                putOpenInterest: Number(total?.p_OpenInterest),
+                selectedTicker: ticker,
+                lstPrice: lstPrice
+            }),
+        });
+    } catch (err) {
+        console.error('writeS3JsonFile-Local-Failed to fetch option data:', err);
+    }
+}
 export async function writeToS3Bucket(total, ticker, lstPrice) {
     let tempcallVolume = Number(total?.c_Volume);
     let tempputVolume = Number(total?.p_Volume);
