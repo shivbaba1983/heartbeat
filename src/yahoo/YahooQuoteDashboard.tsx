@@ -83,6 +83,28 @@ const YahooQuoteDashboard = ({ stockDetails }) => {
     </div>
   );
 
+  const AverageComparisonLineChart = () => {
+    const data = [
+      { label: '50D Avg', value: quote.fiftyDayAverage },
+      { label: '200D Avg', value: quote.twoHundredDayAverage },
+      { label: 'Current', value: quote.regularMarketPrice }
+    ];
+
+    return (
+      <div className="average-line-chart">
+        <h3>Price vs Averages</h3>
+        <ResponsiveContainer width="100%" height={200}>
+          <LineChart data={data}>
+            <XAxis dataKey="label" />
+            <YAxis />
+            <Tooltip formatter={(value) => `$${formatNumber(value)}`} />
+            <Line type="monotone" dataKey="value" stroke="#8884d8" strokeWidth={2} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    );
+  };
+
   return (
     <div className="quote-dashboard">
       <header className="dashboard-header">
@@ -115,6 +137,7 @@ const YahooQuoteDashboard = ({ stockDetails }) => {
       ]} />
 
       <BarVolumeChart />
+      <AverageComparisonLineChart />
 
       <EarningsBlock
         lastEarnings={quote.earningsTimestamp}
