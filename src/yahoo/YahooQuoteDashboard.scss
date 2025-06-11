@@ -1,0 +1,95 @@
+.quote-dashboard {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  font-family: sans-serif;
+}
+
+.dashboard-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.price-card {
+  background: yellowgreen;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.price-card-title {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.price-card-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.range-bar {
+  margin-top: 2rem;
+}
+
+.range-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.range-container {
+  position: relative;
+  background: #eee;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.range-fill {
+  height: 10px;
+  background: #4caf50;
+  border-radius: 5px 0 0 5px;
+}
+
+.range-low,
+.range-high {
+  position: absolute;
+  top: -20px;
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.range-low {
+  left: 0;
+}
+
+.range-high {
+  right: 0;
+}
+
+.metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+
+.metrics-table td {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.metrics-table .value {
+  text-align: right;
+  font-weight: 500;
+}
+
+.earnings-block {
+  margin-top: 2rem;
+}

@@ -17,6 +17,7 @@ import SPXData from './../spx/SPXData';
 import StockNewsData from './../stocknews/StockNewsData';
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import YahooData from "./../yahoo/YahooData";
+import YahooQuoteDashboard from './../yahoo/YahooQuoteDashboard'
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -30,6 +31,7 @@ const NasdaqOptions = () => {
   const [showBarChart, setShowBarChart] = useState(true);
   const [showMarketdata, setShowMarketdata] = useState(false);
   const [showStockNews, setShowStockNews] = useState(false);
+  const [showQuote, setShowQuote] = useState(false);
   const [averageDailyVolume3Month, setAverageDailyVolume3Month] = useState();
   const [isRequestedDateChanage, setIsRequestedDateChanage] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -329,7 +331,7 @@ const NasdaqOptions = () => {
               checked={showBarChart}
               onChange={() => setShowBarChart(!showBarChart)}
             />
-            <span>Show Chart</span>
+            <span>Chart</span>
           </label>
 
           <label className="common-left-margin">
@@ -338,14 +340,21 @@ const NasdaqOptions = () => {
               checked={showStockNews}
               onChange={() => setShowStockNews(!showStockNews)}
             />
-            <span>Stock News</span>
+            <span>News</span>
           </label>
-
+          <label className="common-left-margin">
+            <input
+              type="checkbox"
+              checked={showQuote}
+              onChange={() => setShowQuote(!showQuote)}
+            />
+            <span>Quote</span>
+          </label>
         </div>
 
       </div>
       <div className="common-left-margin last-trade-price">
-        <PriceMarquee lastPrice={lastTrade} selectedTicker={selectedTicker} />
+        <PriceMarquee lastPrice={lastTrade} selectedTicker={selectedTicker} averageAnalystRating={stockDetails?.averageAnalystRating} />
         {/* Last Price: {lastTrade} */}
       </div>
       {/* <div className="yahoo-data-section">
@@ -354,7 +363,8 @@ const NasdaqOptions = () => {
       {showStockNews && <StockNewsData selectedTicker={selectedTicker} />}
 
       <div className="yahoo-data-section">
-        {isYahooDataDisplay && <YahooData selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest} rows={yahooDataRows} isYahooDataDisplay={isYahooDataDisplay} />}
+        {isYahooDataDisplay && <YahooData selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest} rows={yahooDataRows} isYahooDataDisplay={isYahooDataDisplay} stockDetails={stockDetails} />}
+        {(stockDetails && showQuote) && <YahooQuoteDashboard stockDetails={stockDetails} />}
       </div>
 
       {isLoading && <div>

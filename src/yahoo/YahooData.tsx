@@ -9,12 +9,12 @@ import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, ETF_List, IS_AWS_API, LogTickerList, 
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import PredictionHint from './../components/PredictionHint';
 import { getDateForatted } from './../common/nasdaq.common';
-const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay }) => {
+const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay, stockDetails }) => {
     // Define a type for merged data
 
     const [options, setOptions] = useState([]);
     const [data, setData] = useState([]);
-    const [stockDetails, setStockdetails] = useState({});
+    //const [stockDetails, setStockdetails] = useState({});
     const [totalCallVolume, setTotalCallVolume] = useState(1);
     const [totalPutVolume, setTotalPutVolume] = useState(1);
     const [expiryDate, setExpiryDate] = useState();
