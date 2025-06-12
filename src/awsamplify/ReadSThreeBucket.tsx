@@ -6,6 +6,7 @@ import {
 } from 'recharts';
 import MagnificientSevenTable from './../yahoo/MagnificientSevenTable';
 import './ReadSThreeBucket.scss';
+import SentimentClassification from './SentimentClassification';
 const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
@@ -184,7 +185,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
 
       {(magnificientSevenTableData.length > 1 && isExpanded) && <MagnificientSevenTable data={magnificientSevenTableData} />}
 
-
+      {(magnificientSevenTableData.length > 1 && isExpanded) && <SentimentClassification S3JsonFileData={completeFileData} />}
       {/* <PredictionChart data={data}/> */}
     </div>
   );
