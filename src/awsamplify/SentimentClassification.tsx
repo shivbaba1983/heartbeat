@@ -9,10 +9,12 @@ import {
     ResponsiveContainer
 } from "recharts";
 
+import { MAG7, INDEXES } from './../constant/HeartbeatConstants';
+
 const SentimentClassification = ({ S3JsonFileData }) => {
     // Your full-day JSON data goes here
     const rawData = S3JsonFileData;// [/* paste your data here */];
-
+    const TICKERS = [...INDEXES, ...MAG7];
     // --- 1. Classify sentiment based on call/put ratio
     const classifySentiment = (call, put) => {
         const ratio = call / (put || 1);
@@ -27,28 +29,29 @@ const SentimentClassification = ({ S3JsonFileData }) => {
     const processSentimentTimeSeries = () => {
         const map = new Map();
 
-        rawData.forEach(({ timestamp, callVolume, putVolume }) => {
-            // Normalize time to "HH:mm"
-            const time = new Date(timestamp).toLocaleTimeString("en-US", {
-                hour12: false,
-                hour: "2-digit",
-                minute: "2-digit"
-            });
-
-            const sentiment = classifySentiment(callVolume, putVolume);
-            if (!map.has(time)) {
-                map.set(time, {
-                    time,
-                    ExtremelyBullish: 0,
-                    Bullish: 0,
-                    Neutral: 0,
-                    Bearish: 0,
-                    ExtremelyBearish: 0
+        rawData
+            .filter(d => TICKERS.includes(d.selectedTicker)) // ✅ Filter here
+            .forEach(({ timestamp, callVolume, putVolume }) => {
+                const time = new Date(timestamp).toLocaleTimeString("en-US", {
+                    hour12: false,
+                    hour: "2-digit",
+                    minute: "2-digit"
                 });
-            }
 
-            map.get(time)[sentiment]++;
-        });
+                const sentiment = classifySentiment(callVolume, putVolume);
+                if (!map.has(time)) {
+                    map.set(time, {
+                        time,
+                        ExtremelyBullish: 0,
+                        Bullish: 0,
+                        Neutral: 0,
+                        Bearish: 0,
+                        ExtremelyBearish: 0
+                    });
+                }
+
+                map.get(time)[sentiment]++;
+            });
 
         return Array.from(map.values()).sort((a, b) =>
             a.time.localeCompare(b.time)
