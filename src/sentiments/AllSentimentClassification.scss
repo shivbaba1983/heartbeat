@@ -1,0 +1,12 @@
+.sentiment-radio-options {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1rem;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

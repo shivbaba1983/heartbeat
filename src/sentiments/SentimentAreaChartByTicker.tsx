@@ -9,13 +9,13 @@ import {
   ResponsiveContainer
 } from "recharts";
 import "./SentimentAreaChartByTicker.scss";
-import { INDEXES, MAG7 } from './../constant/HeartbeatConstants';
+import { INDEXES, MAG7, LogTickerList } from './../constant/HeartbeatConstants';
 // Component
 const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
 
   const rawData = S3JsonFileData;//[/* your full JSON data here */];
 
-  const TICKERS = [...INDEXES, ...MAG7];
+  const TICKERS = LogTickerList;//[...INDEXES, ...MAG7];
 
   // Classify sentiment based on ratio
   const classifySentiment = (call, put) => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SentimentClassification from '../awsamplify/SentimentClassification';
-import SentimentAreaChart from './SentimentAreaChart';
+import AllSentimentClassification from './AllSentimentClassification';
+import LineSentimentAreaChart from './LineSentimentAreaChart';
 import SentimentAreaChartByTicker from './SentimentAreaChartByTicker';
 import './SentimentToggleChart.scss';
 
@@ -47,10 +47,10 @@ const [selected, setSelected] = useState("all");
 
           <div className="chart-section">
             {selected === "all" && (
-              <SentimentClassification S3JsonFileData={completeFileData} />
+              <AllSentimentClassification S3JsonFileData={completeFileData} />
             )}
             {selected === "line" && (
-              <SentimentAreaChart S3JsonFileData={completeFileData} />
+              <LineSentimentAreaChart S3JsonFileData={completeFileData} />
             )}
             {selected === "single" && (
               <SentimentAreaChartByTicker S3JsonFileData={completeFileData} selectedTicker={selectedTicker}/>
