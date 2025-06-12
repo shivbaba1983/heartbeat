@@ -1,0 +1,20 @@
+.sentiment-toggle-wrapper {
+  padding: 1rem;
+
+  .toggle-buttons {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1.5rem;
+
+    label {
+      font-weight: 500;
+      input {
+        margin-right: 0.4rem;
+      }
+    }
+  }
+
+  .chart-section {
+    margin-top: 1rem;
+  }
+}

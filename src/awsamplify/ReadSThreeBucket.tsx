@@ -5,8 +5,8 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid
 } from 'recharts';
 import MagnificientSevenTable from './../yahoo/MagnificientSevenTable';
+import SentimentToggleChart from '../sentiments/SentimentToggleChart';
 import './ReadSThreeBucket.scss';
-import SentimentClassification from './SentimentClassification';
 const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
@@ -185,7 +185,8 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
 
       {(magnificientSevenTableData.length > 1 && isExpanded) && <MagnificientSevenTable data={magnificientSevenTableData} />}
 
-      {(magnificientSevenTableData.length > 1 && isExpanded) && <SentimentClassification S3JsonFileData={completeFileData} />}
+      {(magnificientSevenTableData.length > 1 && isExpanded) && <SentimentToggleChart completeFileData={completeFileData} selectedTicker={selectedTicker} />}
+
       {/* <PredictionChart data={data}/> */}
     </div>
   );
