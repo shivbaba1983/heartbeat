@@ -1,24 +1,32 @@
 .sentiment-chart-by-ticker {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
   padding: 1rem;
 
+  .time-bucket-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+
+    label {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    input[type="radio"] {
+      accent-color: #007bff;
+      cursor: pointer;
+    }
+  }
+
   .ticker-chart {
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
 
     h3 {
       margin-bottom: 0.5rem;
-      font-size: 1.2rem;
+      font-size: 16px;
       color: #333;
-    }
-
-    .recharts-legend-item-text {
-      text-transform: capitalize;
     }
   }
 }

@@ -1,16 +1,39 @@
 .sentiment-chart-container {
-  margin-top: 1rem;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .sentiment-radio-options {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 
   label {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 4px;
+    font-size: 14px;
+    background: #f4f4f4;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    input[type="radio"] {
+      accent-color: #007bff;
+    }
+
+    &:hover {
+      background: #e8e8e8;
+    }
   }
+}
+
+.time-buckets {
+  margin-bottom: 20px;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import {
   AreaChart,
   Area,
@@ -9,15 +9,13 @@ import {
   ResponsiveContainer
 } from "recharts";
 import "./SentimentAreaChartByTicker.scss";
-import { INDEXES, MAG7, LogTickerList } from './../constant/HeartbeatConstants';
-// Component
+import { LogTickerList } from "./../constant/HeartbeatConstants";
+
 const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
+  const rawData = S3JsonFileData || [];
+  const TICKERS = LogTickerList;
+  const [bucketSize, setBucketSize] = useState(30); // 30, 60, 120
 
-  const rawData = S3JsonFileData;//[/* your full JSON data here */];
-
-  const TICKERS = LogTickerList;//[...INDEXES, ...MAG7];
-
-  // Classify sentiment based on ratio
   const classifySentiment = (call, put) => {
     const ratio = call / (put || 1);
     if (ratio >= 2) return "ExtremelyBullish";
@@ -27,11 +25,10 @@ const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
     return "ExtremelyBearish";
   };
 
-  // Get 5-min bucket
-  const get5MinBucket = (timestamp) => {
+  const getTimeBucket = (timestamp, bucketMins) => {
     const date = new Date(timestamp);
     const minutes = date.getMinutes();
-    date.setMinutes(minutes - (minutes % 5), 0, 0);
+    date.setMinutes(minutes - (minutes % bucketMins), 0, 0);
     return date.toLocaleTimeString("en-US", {
       hour12: false,
       hour: "2-digit",
@@ -39,17 +36,14 @@ const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
     });
   };
 
-  // Prepare grouped data per ticker
-  const processByTicker = () => {
+  const dataByTicker = useMemo(() => {
     const tickerMap = {};
 
     rawData
       .filter(d => d.selectedTicker === selectedTicker)
       .forEach(({ timestamp, selectedTicker, callVolume, putVolume }) => {
-        const bucket = get5MinBucket(timestamp);
+        const bucket = getTimeBucket(timestamp, bucketSize);
         const sentiment = classifySentiment(callVolume, putVolume);
-
-        const key = `${selectedTicker}_${bucket}`;
 
         if (!tickerMap[selectedTicker]) {
           tickerMap[selectedTicker] = {};
@@ -69,7 +63,6 @@ const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
         tickerMap[selectedTicker][bucket][sentiment]++;
       });
 
-    // Convert to sorted array per ticker
     const result = {};
     for (const ticker of Object.keys(tickerMap)) {
       const timeMap = tickerMap[ticker];
@@ -79,16 +72,45 @@ const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
     }
 
     return result;
-  };
-
-
-  const dataByTicker = processByTicker();
+  }, [rawData, selectedTicker, bucketSize]);
 
   return (
     <div className="sentiment-chart-by-ticker">
+      <div className="time-bucket-controls">
+        <label>
+          <input
+            type="radio"
+            name="bucket"
+            value="30"
+            checked={bucketSize === 30}
+            onChange={() => setBucketSize(30)}
+          />
+          30 min
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="bucket"
+            value="60"
+            checked={bucketSize === 60}
+            onChange={() => setBucketSize(60)}
+          />
+          60 min
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="bucket"
+            value="120"
+            checked={bucketSize === 120}
+            onChange={() => setBucketSize(120)}
+          />
+          120 min
+        </label>
+      </div>
 
-      {TICKERS.map(ticker => (
-        ticker === selectedTicker && (
+      {TICKERS.map(ticker =>
+        ticker === selectedTicker ? (
           <div key={ticker} className="ticker-chart">
             <h3>{ticker}</h3>
             <ResponsiveContainer width="100%" height={300}>
@@ -105,10 +127,10 @@ const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
               </AreaChart>
             </ResponsiveContainer>
           </div>
-        )
-      ))}
+        ) : null
+      )}
     </div>
   );
-}
+};
 
 export default SentimentAreaChartByTicker;

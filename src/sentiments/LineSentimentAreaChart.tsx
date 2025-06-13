@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   AreaChart,
   Area,
@@ -12,23 +12,21 @@ import "./LineSentimentAreaChart.scss";
 import { INDEXES, MAG7, LogTickerList } from "../constant/HeartbeatConstants";
 
 const LineSentimentAreaChart = ({ S3JsonFileData }) => {
-  const rawData = S3JsonFileData;
+  const rawData = S3JsonFileData || [];
 
-  // --- Radio button state
-  const [tickerSet, setTickerSet] = useState("all"); // 'all', 'indices', 'stocks'
+  const [tickerSet, setTickerSet] = useState("all");
+  const [bucketMinutes, setBucketMinutes] = useState(10);
 
-  const getSelectedTickers = () => {
+  const selectedTickers = useMemo(() => {
     switch (tickerSet) {
       case "indices":
         return INDEXES;
       case "stocks":
         return MAG7;
       default:
-        return LogTickerList;//[...INDEXES, ...MAG7];
+        return LogTickerList;
     }
-  };
-
-  const TICKERS = getSelectedTickers();
+  }, [tickerSet]);
 
   const classifySentiment = (call, put) => {
     const ratio = call / (put || 1);
@@ -39,10 +37,10 @@ const LineSentimentAreaChart = ({ S3JsonFileData }) => {
     return "ExtremelyBearish";
   };
 
-  const get10MinBucket = (timestamp) => {
+  const getBucketTime = (timestamp) => {
     const date = new Date(timestamp);
     const minutes = date.getMinutes();
-    date.setMinutes(minutes - (minutes % 10), 0, 0);
+    date.setMinutes(minutes - (minutes % bucketMinutes), 0, 0);
     return date.toLocaleTimeString("en-US", {
       hour12: false,
       hour: "2-digit",
@@ -50,13 +48,13 @@ const LineSentimentAreaChart = ({ S3JsonFileData }) => {
     });
   };
 
-  const processSentimentData = () => {
+  const data = useMemo(() => {
     const map = new Map();
 
     rawData
-      .filter((d) => TICKERS.includes(d.selectedTicker))
+      .filter((d) => selectedTickers.includes(d.selectedTicker))
       .forEach(({ timestamp, callVolume, putVolume }) => {
-        const bucket = get10MinBucket(timestamp);
+        const bucket = getBucketTime(timestamp);
         const sentiment = classifySentiment(callVolume, putVolume);
 
         if (!map.has(bucket)) {
@@ -70,19 +68,15 @@ const LineSentimentAreaChart = ({ S3JsonFileData }) => {
           });
         }
 
-        map.get(bucket)[sentiment]++;
+        const current = map.get(bucket);
+        if (current) current[sentiment]++;
       });
 
-    return Array.from(map.values()).sort((a, b) =>
-      a.time.localeCompare(b.time)
-    );
-  };
-
-  const data = processSentimentData();
+    return Array.from(map.values()).sort((a, b) => a.time.localeCompare(b.time));
+  }, [rawData, selectedTickers, bucketMinutes]);
 
   return (
     <div className="sentiment-chart-container">
-      {/* 🚀 Radio Button Controls */}
       <div className="sentiment-radio-options">
         <label>
           <input
@@ -116,7 +110,49 @@ const LineSentimentAreaChart = ({ S3JsonFileData }) => {
         </label>
       </div>
 
-      {/* 📊 Stacked Area Chart */}
+      <div className="sentiment-radio-options time-buckets">
+        <label>
+          <input
+            type="radio"
+            name="bucket"
+            value="10"
+            checked={bucketMinutes === 10}
+            onChange={() => setBucketMinutes(10)}
+          />
+          10 min
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="bucket"
+            value="30"
+            checked={bucketMinutes === 30}
+            onChange={() => setBucketMinutes(30)}
+          />
+          30 min
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="bucket"
+            value="60"
+            checked={bucketMinutes === 60}
+            onChange={() => setBucketMinutes(60)}
+          />
+          60 min
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="bucket"
+            value="120"
+            checked={bucketMinutes === 120}
+            onChange={() => setBucketMinutes(120)}
+          />
+          120 min
+        </label>
+      </div>
+
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart data={data} className="sentiment-area-chart" stackOffset="expand">
           <XAxis dataKey="time" />
