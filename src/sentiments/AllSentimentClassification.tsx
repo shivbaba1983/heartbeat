@@ -113,7 +113,7 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
             checked={tickerSet === "stocks"}
             onChange={() => setTickerSet("stocks")}
           />
-          Only Stocks-MAG7
+          MAG7
         </label>
       </div>
 

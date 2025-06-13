@@ -7,7 +7,7 @@ import CallPutBarChart from './../graph-chart/CallPutBarChart';
 import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
-import { NASDAQ_TOKEN, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData, ETF_List } from './../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, STOCKS_ASSETCLASS, ETF_ASSETCLASS, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData, ETF_List } from './../constant/HeartbeatConstants';
 import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
 import DatePicker from './../components/DatePicker';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
@@ -47,6 +47,10 @@ const NasdaqOptions = () => {
         setStsetYahooDataRows([])
         setIsYahooDataDisplay(false)
         let stockquote = { earningsTimestamp: '' };
+        if (ETF_List.includes(selectedTicker))
+          setAssetclass(ETF_ASSETCLASS);
+        else
+          setAssetclass(STOCKS_ASSETCLASS);
         if (IS_AWS_API) {
           //call from aws api
           const response = await getYahooFinanceData(selectedTicker);

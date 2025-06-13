@@ -9,6 +9,8 @@ export const LogTickerList = ['AAPL', 'NVDA','SPY','QQQ','IWM','AMZN', 'GOOG', '
 export const ETF_List = ['SPY', 'QQQ', 'IWM', 'TQQQ','SOXL', 'TSLL', 'SQQQQ','AAPU','NVDL','AMDL','BITX','AMZU','GGLL'];
 export const INDEXES = ["IWM", "SPY", "QQQ"];
 export const MAG7 = ["TSLA", "AAPL", "NVDA", "GOOG", "AMZN", "MSFT","META"];
+export const STOCKS_ASSETCLASS ="stocks";
+export const ETF_ASSETCLASS ="ETF";
 export const tickerListData = [
      { idx: 11, value: "NVDA" },
     { idx: 1, value: "SPY" },

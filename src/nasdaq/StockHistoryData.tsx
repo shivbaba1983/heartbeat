@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NASDAQ_TOKEN, ETF_List, IS_AWS_API, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, STOCKS_ASSETCLASS, ETF_ASSETCLASS, ETF_List, IS_AWS_API, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours, getTodayInEST } from '../common/nasdaq.common';
 import DateRangeSelector from './../components/DateRangeSelector';
 import { getNasdaqStockHistoryData } from './../services/NasdaqStockDataService';
@@ -33,7 +33,9 @@ const StockHistoryData = ({ selectedTicker, assetclass, averageDailyVolume3Month
         try {
             let rows = [];
             if (ETF_List.includes(selectedTicker))
-                assetclass = 'ETF'
+                assetclass = ETF_ASSETCLASS;
+            else
+                assetclass = STOCKS_ASSETCLASS;
             //call through deploye API lamda method
             if (IS_AWS_API) {
                 const response = await getNasdaqStockHistoryData(selectedTicker, assetclass, requestedFromDate, todayDate);
