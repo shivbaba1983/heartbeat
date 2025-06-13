@@ -17,7 +17,8 @@ import SPXData from './../spx/SPXData';
 import StockNewsData from './../stocknews/StockNewsData';
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import YahooData from "./../yahoo/YahooData";
-import YahooQuoteDashboard from './../yahoo/YahooQuoteDashboard'
+import YahooQuoteDashboard from './../yahoo/YahooQuoteDashboard';
+import HighVolumeBreakoutStocks from './HighVolumeBreakoutStocks';
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -32,6 +33,8 @@ const NasdaqOptions = () => {
   const [showMarketdata, setShowMarketdata] = useState(false);
   const [showStockNews, setShowStockNews] = useState(false);
   const [showQuote, setShowQuote] = useState(false);
+  const [showHighVolume, setShowHighVolume] = useState(false);
+
   const [averageDailyVolume3Month, setAverageDailyVolume3Month] = useState();
   const [isRequestedDateChanage, setIsRequestedDateChanage] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -398,6 +401,19 @@ const NasdaqOptions = () => {
         {averageDailyVolume3Month > 1 && <StockHistoryData selectedTicker={selectedTicker} assetclass={assetclass} averageDailyVolume3Month={averageDailyVolume3Month} />}
 
       </div>
+
+      <div className="market-data-checkbox">
+        <label className="">
+          <input
+            type="checkbox"
+            checked={showHighVolume}
+            onChange={() => setShowHighVolume(!showHighVolume)}
+          />
+          <span>Show High Volume 1.5X</span>
+        </label>
+      </div>
+
+      {showHighVolume && <HighVolumeBreakoutStocks />}
 
 
       <div className="market-data-checkbox">
