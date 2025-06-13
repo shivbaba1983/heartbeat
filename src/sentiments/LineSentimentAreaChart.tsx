@@ -119,7 +119,7 @@ const LineSentimentAreaChart = ({ S3JsonFileData }) => {
             checked={bucketMinutes === 10}
             onChange={() => setBucketMinutes(10)}
           />
-          10 min
+          10
         </label>
         <label>
           <input
@@ -129,7 +129,7 @@ const LineSentimentAreaChart = ({ S3JsonFileData }) => {
             checked={bucketMinutes === 30}
             onChange={() => setBucketMinutes(30)}
           />
-          30 min
+          30
         </label>
         <label>
           <input
@@ -139,7 +139,7 @@ const LineSentimentAreaChart = ({ S3JsonFileData }) => {
             checked={bucketMinutes === 60}
             onChange={() => setBucketMinutes(60)}
           />
-          60 min
+          60
         </label>
         <label>
           <input

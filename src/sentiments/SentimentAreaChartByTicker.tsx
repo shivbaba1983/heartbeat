@@ -85,7 +85,7 @@ const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
             checked={bucketSize === 30}
             onChange={() => setBucketSize(30)}
           />
-          30 min
+          30
         </label>
         <label>
           <input
@@ -95,7 +95,7 @@ const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
             checked={bucketSize === 60}
             onChange={() => setBucketSize(60)}
           />
-          60 min
+          60
         </label>
         <label>
           <input
