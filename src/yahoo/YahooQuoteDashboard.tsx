@@ -5,10 +5,8 @@ import {
 } from 'recharts';
 import StockTrendAnalyzer from './../yahoo/StockTrendAnalyzer';
 
-
 const YahooQuoteDashboard = ({ stockDetails, selectedTicker }) => {
-
-  const quote = stockDetails;//{ /* your full quote JSON here */ };
+  const quote = stockDetails;
 
   const formatNumber = (num, decimals = 2) => {
     if (typeof num !== 'number') return 'N/A';
@@ -36,8 +34,8 @@ const YahooQuoteDashboard = ({ stockDetails, selectedTicker }) => {
         <div className="range-label">Day Range</div>
         <div className="range-container">
           <div className="range-fill" style={{ width: `${percentage}%` }}></div>
-          <span className="range-low">{low}</span>
-          <span className="range-high">{high}</span>
+          <span className="range-low">{formatNumber(low)}</span>
+          <span className="range-high">{formatNumber(high)}</span>
         </div>
       </div>
     );
@@ -64,24 +62,19 @@ const YahooQuoteDashboard = ({ stockDetails, selectedTicker }) => {
     ];
 
     return (
-      <ResponsiveContainer width="100%" height={200}>
-        <BarChart data={data}>
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip formatter={(value) => `${formatNumber(value)}M`} />
-          <Bar dataKey="volume" fill="#3b82f6" />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="volume-chart">
+        <h3>Volume Comparison (in Millions)</h3>
+        <ResponsiveContainer width="100%" height={200}>
+          <BarChart data={data}>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip formatter={(value) => `${formatNumber(value)}M`} />
+            <Bar dataKey="volume" fill="#3b82f6" radius={[8, 8, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     );
   };
-
-  const EarningsBlock = ({ lastEarnings, nextEarningsStart, nextEarningsEnd }) => (
-    <div className="earnings-block">
-      <h3>Earnings</h3>
-      <p>Last Earnings: {new Date(lastEarnings).toLocaleDateString()}</p>
-      <p>Next Expected: {new Date(nextEarningsStart).toLocaleDateString()} - {new Date(nextEarningsEnd).toLocaleDateString()}</p>
-    </div>
-  );
 
   const AverageComparisonLineChart = () => {
     const data = [
@@ -105,9 +98,16 @@ const YahooQuoteDashboard = ({ stockDetails, selectedTicker }) => {
     );
   };
 
+  const EarningsBlock = ({ lastEarnings, nextEarningsStart, nextEarningsEnd }) => (
+    <div className="earnings-block">
+      <h3>Earnings</h3>
+      <p>Last: {new Date(lastEarnings).toLocaleDateString()}</p>
+      <p>Next: {new Date(nextEarningsStart).toLocaleDateString()} - {new Date(nextEarningsEnd).toLocaleDateString()}</p>
+    </div>
+  );
+
   return (
     <div className="quote-dashboard">
-
       <StockTrendAnalyzer selectedTicker={selectedTicker} />
 
       <header className="dashboard-header">
@@ -116,12 +116,12 @@ const YahooQuoteDashboard = ({ stockDetails, selectedTicker }) => {
       </header>
 
       <div className="stats-grid">
-        <PriceCard title="Price" value={`$${quote.regularMarketPrice}`} />
+        <PriceCard title="Price" value={`$${formatNumber(quote.regularMarketPrice)}`} />
         <PriceCard title="Change (%)" value={`${formatNumber(quote.regularMarketChange)} (${formatNumber(quote.regularMarketChangePercent * 100)}%)`} />
-        <PriceCard title="Post-Market" value={`$${quote.postMarketPrice}`} />
+        <PriceCard title="Post-Market" value={`$${formatNumber(quote.postMarketPrice)}`} />
         <PriceCard title="Volume" value={formatMillions(quote.regularMarketVolume)} />
         <PriceCard title="Market Cap" value={quote.marketCap ? `$${formatNumber(quote.marketCap / 1e9)}B` : 'N/A'} />
-        <PriceCard title="52W Range" value={`$${quote.fiftyTwoWeekLow} - $${quote.fiftyTwoWeekHigh}`} />
+        <PriceCard title="52W Range" value={`$${formatNumber(quote.fiftyTwoWeekLow)} - $${formatNumber(quote.fiftyTwoWeekHigh)}`} />
       </div>
 
       <RangeBar
@@ -149,6 +149,6 @@ const YahooQuoteDashboard = ({ stockDetails, selectedTicker }) => {
       />
     </div>
   );
+};
 
-}
 export default YahooQuoteDashboard;

@@ -1,35 +1,22 @@
 .trend-container {
-  padding: 20px;
-  border-radius: 10px;
-  color: #fff;
-  margin: 20px auto;
-  max-width: 700px;
-  transition: 0.3s ease;
-
-  h2 span {
-    font-weight: bold;
-  }
+  padding: 1rem;
 
   &.bullish {
-    background: linear-gradient(135deg, #00c853, #64dd17);
-    h2 span { color: #fff; }
+    background: #e6ffe6;
   }
 
   &.bearish {
-    background: linear-gradient(135deg, #d50000, #ff1744);
-    h2 span { color: #fff; }
+    background: #ffe6e6;
   }
 
   &.neutral {
-    background: linear-gradient(135deg, #455a64, #90a4ae);
-    h2 span { color: #fff; }
+    background: #f2f2f2;
   }
 
   .trend-indicators {
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
     p {
-      margin: 5px 0;
-      font-weight: 500;
+      margin: 0.2rem 0;
     }
   }
 }

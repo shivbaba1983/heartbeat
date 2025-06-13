@@ -14,7 +14,7 @@ import { LogTickerList } from "./../constant/HeartbeatConstants";
 const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
   const rawData = S3JsonFileData || [];
   const TICKERS = LogTickerList;
-  const [bucketSize, setBucketSize] = useState(30); // 30, 60, 120
+  const [bucketSize, setBucketSize] = useState("5"); // Default to 5 mins (string to match radio input)
 
   const classifySentiment = (call, put) => {
     const ratio = call / (put || 1);
@@ -42,34 +42,35 @@ const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
     rawData
       .filter(d => d.selectedTicker === selectedTicker)
       .forEach(({ timestamp, selectedTicker, callVolume, putVolume }) => {
-        const bucket = getTimeBucket(timestamp, bucketSize);
-        const sentiment = classifySentiment(callVolume, putVolume);
+        const buckets = bucketSize === "all" ? [5, 30, 60, 120] : [parseInt(bucketSize)];
+        
+        buckets.forEach(size => {
+          const bucket = getTimeBucket(timestamp, size);
+          const sentiment = classifySentiment(callVolume, putVolume);
 
-        if (!tickerMap[selectedTicker]) {
-          tickerMap[selectedTicker] = {};
-        }
+          if (!tickerMap[size]) tickerMap[size] = {};
+          if (!tickerMap[size][selectedTicker]) tickerMap[size][selectedTicker] = {};
+          if (!tickerMap[size][selectedTicker][bucket]) {
+            tickerMap[size][selectedTicker][bucket] = {
+              time: bucket,
+              ExtremelyBullish: 0,
+              Bullish: 0,
+              Neutral: 0,
+              Bearish: 0,
+              ExtremelyBearish: 0
+            };
+          }
 
-        if (!tickerMap[selectedTicker][bucket]) {
-          tickerMap[selectedTicker][bucket] = {
-            time: bucket,
-            ExtremelyBullish: 0,
-            Bullish: 0,
-            Neutral: 0,
-            Bearish: 0,
-            ExtremelyBearish: 0
-          };
-        }
-
-        tickerMap[selectedTicker][bucket][sentiment]++;
+          tickerMap[size][selectedTicker][bucket][sentiment]++;
+        });
       });
 
     const result = {};
-    for (const ticker of Object.keys(tickerMap)) {
-      const timeMap = tickerMap[ticker];
-      result[ticker] = Object.values(timeMap).sort((a, b) =>
-        a.time.localeCompare(b.time)
-      );
-    }
+    const sizes = bucketSize === "all" ? [5, 30, 60, 120] : [parseInt(bucketSize)];
+    sizes.forEach(size => {
+      const map = tickerMap[size]?.[selectedTicker] || {};
+      result[size] = Object.values(map).sort((a, b) => a.time.localeCompare(b.time));
+    });
 
     return result;
   }, [rawData, selectedTicker, bucketSize]);
@@ -77,55 +78,43 @@ const SentimentAreaChartByTicker = ({ S3JsonFileData, selectedTicker }) => {
   return (
     <div className="sentiment-chart-by-ticker">
       <div className="time-bucket-controls">
-        <label>
-          <input
-            type="radio"
-            name="bucket"
-            value="30"
-            checked={bucketSize === 30}
-            onChange={() => setBucketSize(30)}
-          />
-          30
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="bucket"
-            value="60"
-            checked={bucketSize === 60}
-            onChange={() => setBucketSize(60)}
-          />
-          60
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="bucket"
-            value="120"
-            checked={bucketSize === 120}
-            onChange={() => setBucketSize(120)}
-          />
-          120 min
-        </label>
+        {["all", "5", "30", "60", "120"].map(size => (
+          <label key={size}>
+            <input
+              type="radio"
+              name="bucket"
+              value={size}
+              checked={bucketSize === size}
+              onChange={() => setBucketSize(size)}
+            />
+            {size === "all" ? "All" : `${size} min`}
+          </label>
+        ))}
       </div>
 
       {TICKERS.map(ticker =>
         ticker === selectedTicker ? (
           <div key={ticker} className="ticker-chart">
-            <h3>{ticker}</h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <AreaChart data={dataByTicker[ticker]} stackOffset="expand">
-                <XAxis dataKey="time" />
-                <YAxis allowDecimals={false} />
-                <Tooltip />
-                <Legend />
-                <Area type="monotone" dataKey="ExtremelyBullish" stackId="1" stroke="#00b300" fill="#00b300" />
-                <Area type="monotone" dataKey="Bullish" stackId="1" stroke="#66cc66" fill="#66cc66" />
-                <Area type="monotone" dataKey="Neutral" stackId="1" stroke="#999999" fill="#999999" />
-                <Area type="monotone" dataKey="Bearish" stackId="1" stroke="#ff6666" fill="#ff6666" />
-                <Area type="monotone" dataKey="ExtremelyBearish" stackId="1" stroke="#cc0000" fill="#cc0000" />
-              </AreaChart>
-            </ResponsiveContainer>
+            <h3>{ticker} ({bucketSize === "all" ? "All Intervals" : `${bucketSize} min`} Sentiment)</h3>
+
+            {(bucketSize === "all" ? ["5", "30", "60", "120"] : [bucketSize]).map(size => (
+              <div key={size} className="chart-wrapper">
+                {bucketSize === "all" && <h4>{size} min</h4>}
+                <ResponsiveContainer width="100%" height={300}>
+                  <AreaChart data={dataByTicker[size]} stackOffset="expand">
+                    <XAxis dataKey="time" />
+                    <YAxis allowDecimals={false} />
+                    <Tooltip />
+                    <Legend />
+                    <Area type="monotone" dataKey="ExtremelyBullish" stackId="1" stroke="#00b300" fill="#00b300" />
+                    <Area type="monotone" dataKey="Bullish" stackId="1" stroke="#66cc66" fill="#66cc66" />
+                    <Area type="monotone" dataKey="Neutral" stackId="1" stroke="#999999" fill="#999999" />
+                    <Area type="monotone" dataKey="Bearish" stackId="1" stroke="#ff6666" fill="#ff6666" />
+                    <Area type="monotone" dataKey="ExtremelyBearish" stackId="1" stroke="#cc0000" fill="#cc0000" />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            ))}
           </div>
         ) : null
       )}

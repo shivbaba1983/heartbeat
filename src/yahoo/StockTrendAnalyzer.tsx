@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from "recharts";
-import { RSI, MACD, SMA } from "technicalindicators";
+import { RSI, MACD, SMA, BollingerBands } from "technicalindicators";
 import "./StockTrendAnalyzer.scss";
 import { NASDAQ_TOKEN } from '../constant/HeartbeatConstants';
 
@@ -14,9 +14,8 @@ const StockTrendAnalyzer = ({ selectedTicker }) => {
     useEffect(() => {
         const fetchData = async () => {
             const requestedFromDate = getPastDate(100);
-            const timeInterval = '1d'
-            const res = await fetch(`${NASDAQ_TOKEN}/api/yahooFinanceStockData/${selectedTicker}/${requestedFromDate}/${timeInterval}`);
-            const data = await res.json(); // Works only with native fetch
+            const res = await fetch(`${NASDAQ_TOKEN}/api/yahooFinanceStockData/${selectedTicker}/${requestedFromDate}/1d`);
+            const data = await res.json();
             setHistoricalData(data.slice(-60));
         };
         fetchData();
@@ -36,6 +35,11 @@ const StockTrendAnalyzer = ({ selectedTicker }) => {
             SimpleMAOscillator: false,
             SimpleMASignal: false,
         });
+        const bbands = BollingerBands.calculate({
+            period: 20,
+            values: prices,
+            stdDev: 2
+        });
 
         const currentPrice = prices[prices.length - 1];
         const currentRSI = rsiValues[rsiValues.length - 1];
@@ -50,21 +54,27 @@ const StockTrendAnalyzer = ({ selectedTicker }) => {
         }
 
         setTrend(trendValue);
+
+        // Attach indicator values to chartData
+        const enrichedData = historicalData.map((item, index) => ({
+            date: item.date.split("T")[0],
+            close: parseFloat(item.close.toFixed(2)),
+            sma: index >= 49 ? parseFloat(sma50[index - 49]?.toFixed(2)) : null,
+            upper: index >= 19 ? parseFloat(bbands[index - 19]?.upper.toFixed(2)) : null,
+            lower: index >= 19 ? parseFloat(bbands[index - 19]?.lower.toFixed(2)) : null,
+        }));
+
         setIndicators({
             currentPrice,
             currentRSI,
             currentSMA,
             currentMACD
         });
-    }, [historicalData]);
-
-    const chartData = historicalData.map(d => ({
-        date: d.date.split("T")[0],
-        close: d.close,
-    }));
+        setHistoricalData(enrichedData);
+    }, [historicalData.length]);
 
     const getPastDate = (daysAgo) => {
-        const MS_PER_DAY = 24 * 60 * 60 * 1000;   // # of ms in one day
+        const MS_PER_DAY = 24 * 60 * 60 * 1000;
         return new Date(Date.now() - daysAgo * MS_PER_DAY);
     };
 
@@ -73,20 +83,22 @@ const StockTrendAnalyzer = ({ selectedTicker }) => {
             <h2>Trend for {selectedTicker}: <span>{trend}</span></h2>
             {indicators && (
                 <div className="trend-indicators">
-                    <p>Current Price: ${indicators.currentPrice.toFixed(2)}</p>
-                    <p>RSI: {indicators.currentRSI.toFixed(2)}</p>
-                    <p>SMA(50): {indicators.currentSMA.toFixed(2)}</p>
-                    <p>MACD: {indicators.currentMACD.MACD.toFixed(2)} / Signal: {indicators.currentMACD.signal.toFixed(2)}</p>
+                    <span>Current Price: ${indicators.currentPrice.toFixed(2)}</span> <span>RSI: {indicators.currentRSI.toFixed(2)}</span>
+      
+                    <p><span>  SMA(50): { indicators.currentSMA.toFixed(2)}</span>            <span>MACD: {indicators.currentMACD.MACD.toFixed(2)} / Signal: {indicators.currentMACD.signal.toFixed(2)}</span></p>
                 </div>
             )}
 
             <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={chartData}>
+                <LineChart data={historicalData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="date" />
                     <YAxis domain={['auto', 'auto']} />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="close" stroke="#8884d8" />
+                    <Tooltip formatter={(value) => `$${value.toFixed(2)}`} />
+                    <Line type="monotone" dataKey="close" stroke="#8884d8" name="Close" dot={false} />
+                    <Line type="monotone" dataKey="sma" stroke="#FF8C00" name="SMA(50)" dot={false} />
+                    <Line type="monotone" dataKey="upper" stroke="#00C49F" name="Upper Band" dot={false} />
+                    <Line type="monotone" dataKey="lower" stroke="#FF4444" name="Lower Band" dot={false} />
                 </LineChart>
             </ResponsiveContainer>
         </div>
