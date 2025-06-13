@@ -3,10 +3,10 @@ import './YahooQuoteDashboard.scss';
 import {
   LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer
 } from 'recharts';
+import StockTrendAnalyzer from './../yahoo/StockTrendAnalyzer';
 
 
-
-const YahooQuoteDashboard = ({ stockDetails }) => {
+const YahooQuoteDashboard = ({ stockDetails, selectedTicker }) => {
 
   const quote = stockDetails;//{ /* your full quote JSON here */ };
 
@@ -107,6 +107,9 @@ const YahooQuoteDashboard = ({ stockDetails }) => {
 
   return (
     <div className="quote-dashboard">
+
+      <StockTrendAnalyzer selectedTicker={selectedTicker} />
+
       <header className="dashboard-header">
         <h1>{quote.displayName} ({quote.symbol})</h1>
         <p>{quote.fullExchangeName} | {quote.currency}</p>

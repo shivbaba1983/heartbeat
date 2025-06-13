@@ -364,7 +364,7 @@ const NasdaqOptions = () => {
 
       <div className="yahoo-data-section">
         {isYahooDataDisplay && <YahooData selectedTicker={selectedTicker} volumeOrInterest={volumeOrInterest} rows={yahooDataRows} isYahooDataDisplay={isYahooDataDisplay} stockDetails={stockDetails} />}
-        {(stockDetails && showQuote) && <YahooQuoteDashboard stockDetails={stockDetails} />}
+        {(stockDetails && showQuote) && <YahooQuoteDashboard stockDetails={stockDetails} selectedTicker={selectedTicker} />}
       </div>
 
       {isLoading && <div>

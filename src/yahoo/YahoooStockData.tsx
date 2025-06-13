@@ -6,24 +6,15 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer
 } from "recharts";
 import { NASDAQ_TOKEN } from '../constant/HeartbeatConstants';
-const YahoooStockData = ({ selectedTicker,requestedFromDate }) => {
+const YahoooStockData = ({ selectedTicker, requestedFromDate }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const loadHistory = async () => {
       try {
-        // const history = await yahooFinance.historical(ticker, {
-        //   period1: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
-        //   interval: '1h',
-        // });
 
-        // const formatted = history.map(point => ({
-        //   date: new Date(point.date).toLocaleString(),
-        //   close: point.close,
-        // }));
-
-        //just for stock data this return stock histry data from yahoo end point
-        const stockResponse = await axios.get(`${NASDAQ_TOKEN}/api/yahooFinanceStockData/${selectedTicker}/${requestedFromDate}`);
+        const timeInterval = '1wk'
+        const stockResponse = await axios.get(`${NASDAQ_TOKEN}/api/yahooFinanceStockData/${selectedTicker}/${requestedFromDate}/${timeInterval}`);
         console.log('--yahooFinanceStockData--', stockResponse)
 
         const formatted = stockResponse?.data?.map(point => {
