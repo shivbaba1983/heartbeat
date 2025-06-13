@@ -21,7 +21,7 @@ import YahooQuoteDashboard from './../yahoo/YahooQuoteDashboard'
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
-  const [selectedTicker, setSelectedTicker] = useState('SPY');
+  const [selectedTicker, setSelectedTicker] = useState('NVDA');
   const [assetclass, setAssetclass] = useState('ETF');
   const [volumeOrInterest, setVolumeOrInterest] = useState('volume');
   const [data, setData] = useState([]);

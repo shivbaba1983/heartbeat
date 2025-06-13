@@ -4,17 +4,18 @@ export const NASDAQ_TOKEN ='https://main.d1rin969pdam05.amplifyapp.com';
 export const IS_AWS_API =true;
 export const JSON_UPDATE_TIME =10;//in minutes
 export const YAHOO_VOLUME_LIMIT =1000;
-export const LogTickerList = ['SPY', 'QQQ', 'IWM','AAPL', 'NVDA','AMZN', 'GOOG', 'TSLA','META','MSFT','SOXL'];
+export const LogTickerList = ['AAPL', 'NVDA','SPY','QQQ','IWM','AMZN', 'GOOG', 'TSLA','META','MSFT','SOXL'];
 //export const LogTickerList = ['NVDA'];
 export const ETF_List = ['SPY', 'QQQ', 'IWM', 'TQQQ','SOXL', 'TSLL', 'SQQQQ','AAPU','NVDL','AMDL','BITX','AMZU','GGLL'];
 export const INDEXES = ["IWM", "SPY", "QQQ"];
 export const MAG7 = ["TSLA", "AAPL", "NVDA", "GOOG", "AMZN", "MSFT","META"];
 export const tickerListData = [
+     { idx: 11, value: "NVDA" },
     { idx: 1, value: "SPY" },
     { idx: 2, value: "QQQ" },
     { idx: 4, value: "IWM" },
     { idx: 10, value: "AAPL" },
-    { idx: 11, value: "NVDA" },
+   
     { idx: 12, value: "AMZN" },
     { idx: 13, value: "GOOG" },
     { idx: 20, value: "TSLA" },
