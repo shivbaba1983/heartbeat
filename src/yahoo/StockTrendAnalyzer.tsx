@@ -71,7 +71,7 @@ const StockTrendAnalyzer = ({ selectedTicker }) => {
             currentMACD
         });
         setHistoricalData(enrichedData);
-    }, [historicalData.length]);
+    }, [historicalData]);
 
     const getPastDate = (daysAgo) => {
         const MS_PER_DAY = 24 * 60 * 60 * 1000;
@@ -89,7 +89,7 @@ const StockTrendAnalyzer = ({ selectedTicker }) => {
                 </div>
             )}
 
-            <ResponsiveContainer width="100%" height={300}>
+           {historicalData && <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={historicalData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="date" />
@@ -100,7 +100,7 @@ const StockTrendAnalyzer = ({ selectedTicker }) => {
                     <Line type="monotone" dataKey="upper" stroke="#00C49F" name="Upper Band" dot={false} />
                     <Line type="monotone" dataKey="lower" stroke="#FF4444" name="Lower Band" dot={false} />
                 </LineChart>
-            </ResponsiveContainer>
+            </ResponsiveContainer>}
         </div>
     );
 };

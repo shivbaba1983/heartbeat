@@ -108,7 +108,7 @@ const YahooQuoteDashboard = ({ stockDetails, selectedTicker }) => {
 
   return (
     <div className="quote-dashboard">
-      <StockTrendAnalyzer selectedTicker={selectedTicker} />
+      {selectedTicker && <StockTrendAnalyzer selectedTicker={selectedTicker} />}
 
       <header className="dashboard-header">
         <h1>{quote.displayName} ({quote.symbol})</h1>
