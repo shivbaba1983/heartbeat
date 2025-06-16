@@ -20,6 +20,7 @@ import YahooData from "./../yahoo/YahooData";
 import YahooQuoteDashboard from './../yahoo/YahooQuoteDashboard';
 import HighVolumeBreakoutStocks from './HighVolumeBreakoutStocks';
 import CboeVolumeChart from './../spx/CboeVolumeChart';
+import TrendListDisplay from './../yahoo/TrendListDisplay';
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -32,6 +33,7 @@ const NasdaqOptions = () => {
 
   const [showBarChart, setShowBarChart] = useState(true);
   const [showMarketdata, setShowMarketdata] = useState(false);
+  const [showTrendTable, setShowTrendTable] = useState(false);
   const [showStockNews, setShowStockNews] = useState(false);
   const [showQuote, setShowQuote] = useState(false);
   const [showHighVolume, setShowHighVolume] = useState(false);
@@ -431,6 +433,21 @@ const NasdaqOptions = () => {
 
       <div>
         {showMarketdata && <OptionsChart selectedTicker={selectedTicker} />}
+      </div>
+
+   <div className="triend-table-checkbox">
+        <label className="">
+          <input
+            type="checkbox"
+            checked={showTrendTable}
+            onChange={() => setShowTrendTable(!showTrendTable)}
+          />
+          <span>100 Day Trend Table</span>
+        </label>
+      </div>
+
+      <div>
+       {showTrendTable && <TrendListDisplay/>}
       </div>
       <CboeVolumeChart/>
       {/* <p>with live data compare</p>*/}

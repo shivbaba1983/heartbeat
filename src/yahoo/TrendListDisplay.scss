@@ -1,0 +1,105 @@
+.trend-list-container {
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+
+  .header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    select {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  }
+
+  .trend-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+
+    th {
+      background-color: #f3f3f3;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      text-align: center;
+    }
+
+    tr.bullish {
+      background-color: #e6ffe6;
+      color: #006400;
+      font-weight: bold;
+    }
+
+    tr.bearish {
+      background-color: #ffe6e6;
+      color: #8b0000;
+      font-weight: bold;
+    }
+
+    tr.neutral {
+      background-color: #fafafa;
+      color: #444;
+    }
+
+    tr.highlight-bull {
+      animation: pulse-green 1s ease-in-out infinite alternate;
+    }
+
+    tr.highlight-bear {
+      animation: pulse-red 1s ease-in-out infinite alternate;
+    }
+
+    tr:hover {
+      background-color: #f0f8ff;
+    }
+  }
+.radio-group {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 1rem;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  input[type="radio"] {
+    accent-color: #1976d2;
+    cursor: pointer;
+  }
+}
+
+  @keyframes pulse-green {
+    from {
+      box-shadow: 0 0 10px #4caf50;
+    }
+    to {
+      box-shadow: 0 0 20px #81c784;
+    }
+  }
+
+  @keyframes pulse-red {
+    from {
+      box-shadow: 0 0 10px #f44336;
+    }
+    to {
+      box-shadow: 0 0 20px #e57373;
+    }
+  }
+}
