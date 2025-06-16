@@ -15,7 +15,7 @@ const MainResponsiveLayout = () => {
   return (
     <div className="application-level">
 
-      <div className="main-container11">
+      <div className="main-container">
         {/* <FormData/> */}
         {/* <NASDAQStock/> */}
         {/* <FinnhubOptions/> */}

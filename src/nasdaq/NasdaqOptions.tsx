@@ -19,6 +19,7 @@ import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import YahooData from "./../yahoo/YahooData";
 import YahooQuoteDashboard from './../yahoo/YahooQuoteDashboard';
 import HighVolumeBreakoutStocks from './HighVolumeBreakoutStocks';
+import CboeVolumeChart from './../spx/CboeVolumeChart';
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -431,6 +432,7 @@ const NasdaqOptions = () => {
       <div>
         {showMarketdata && <OptionsChart selectedTicker={selectedTicker} />}
       </div>
+      <CboeVolumeChart/>
       {/* <p>with live data compare</p>*/}
       {/* <LiveStrikeVolumeChart  rowsDataTest={calls}/>  */}
       <div>
