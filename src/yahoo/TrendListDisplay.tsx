@@ -1,23 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { RSI, MACD, SMA } from "technicalindicators";
-import { NASDAQ_TOKEN, LogTickerList, trendTableList } from "../constant/HeartbeatConstants";
+import { NASDAQ_TOKEN, trendTableList } from "../constant/HeartbeatConstants";
 import "./TrendListDisplay.scss";
-
-//const LogTickerList = ['AAPL', 'NVDA', 'SPY', 'QQQ', 'IWM', 'AMZN', 'GOOG', 'TSLA', 'META', 'MSFT', 'SOXL', 'COIN'];
-
-// interface TickerTrend {
-//   ticker: string;
-//   trend: string;
-//   price: number;
-//   rsi: number;
-//   sma: number;
-//   macd: number;
-//   signal: number;
-// }
 
 const TrendListDisplay = () => {
   const [results, setResults] = useState([]);
   const [sortKey, setSortKey] = useState("trend");
+  const [loading, setLoading] = useState(true); // <-- loading state
 
   const getPastDate = (daysAgo) => {
     const date = new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000);
@@ -73,12 +62,13 @@ const TrendListDisplay = () => {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const trends= [];
+      const trends = [];
       for (const ticker of trendTableList) {
         const result = await fetchTrendForTicker(ticker);
         if (result) trends.push(result);
       }
       setResults(trends);
+      setLoading(false); // <-- set loading to false
     };
     fetchAll();
   }, []);
@@ -107,40 +97,44 @@ const TrendListDisplay = () => {
         </select>
       </div>
 
-      <table className="trend-table">
-        <thead>
-          <tr>
-            <th>Ticker</th>
-            <th>Trend</th>
-            <th>Price</th>
-            <th>RSI</th>
-            <th>SMA(50)</th>
-            <th>MACD</th>
-            <th>Signal</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedResults.map((item, index) => {
-            const highlightClass =
-              sortKey === "rsi" && index === 0
-                ? "highlight-bull"
-                : sortKey === "rsi" && index === sortedResults.length - 1
-                ? "highlight-bear"
-                : "";
-            return (
-              <tr key={item.ticker} className={`${item.trend.toLowerCase()} ${highlightClass}`}>
-                <td>{item.ticker}</td>
-                <td>{item.trend}</td>
-                <td>${item.price.toFixed(2)}</td>
-                <td>{item.rsi.toFixed(2)}</td>
-                <td>{item.sma.toFixed(2)}</td>
-                <td>{item.macd.toFixed(2)}</td>
-                <td>{item.signal.toFixed(2)}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      {loading ? (
+        <div className="loading-spinner">Please wait, loading trend data...</div>
+      ) : (
+        <table className="trend-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Trend</th>
+              <th>Price</th>
+              <th>RSI</th>
+              <th>SMA(50)</th>
+              <th>MACD</th>
+              <th>Signal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedResults.map((item, index) => {
+              const highlightClass =
+                sortKey === "rsi" && index === 0
+                  ? "highlight-bull"
+                  : sortKey === "rsi" && index === sortedResults.length - 1
+                  ? "highlight-bear"
+                  : "";
+              return (
+                <tr key={item.ticker} className={`${item.trend.toLowerCase()} ${highlightClass}`}>
+                  <td>{item.ticker}</td>
+                  <td>{item.trend}</td>
+                  <td>${item.price.toFixed(2)}</td>
+                  <td>{item.rsi.toFixed(2)}</td>
+                  <td>{item.sma.toFixed(2)}</td>
+                  <td>{item.macd.toFixed(2)}</td>
+                  <td>{item.signal.toFixed(2)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
