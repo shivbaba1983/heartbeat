@@ -6,6 +6,7 @@
     .refresh-button-sthree {
         margin-top: 10px;
         margin-bottom: 10px;
+        margin-left: 10px;
     }
 
     .link-like-header {
@@ -17,5 +18,9 @@
 
     .link-like-header:hover {
         text-decoration: underline;
+    }
+
+    .filename-refresh-button-section {
+        display: inline;
     }
 }

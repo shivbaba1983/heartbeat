@@ -140,13 +140,13 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
     <div className="S3readSection">
       <div>
         <h2 className="s3-volumechart-title"> {selectedTicker} S3 Options Volume Chart</h2>
-        <select value={selectedFile} onChange={handleChange}>
+        {/* <select value={selectedFile} onChange={handleChange}>
           {files.map((file, idx) => (
             <option key={idx} value={file}>
               {file}
             </option>
           ))}
-        </select>
+        </select> */}
       </div>
       <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />
 
@@ -183,7 +183,17 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
         </LineChart>
       </ResponsiveContainer>}
 
-      <button onClick={() => handleRefreshClick()} className="refresh-button-sthree">Refresh Data</button>
+      <div className="filename-refresh-button-section">
+        <select value={selectedFile} onChange={handleChange}>
+          {files.map((file, idx) => (
+            <option key={idx} value={file}>
+              {file}
+            </option>
+          ))}
+        </select>
+        <button onClick={() => handleRefreshClick()} className="refresh-button-sthree">Refresh Data</button>
+      </div>
+
 
       {/* <div>
         {alertTickers.length > 0 && <S3AlertTable alertTickers={alertTickers} />}
