@@ -5,7 +5,7 @@ import SentimentAreaChartByTicker from './SentimentAreaChartByTicker';
 import './SentimentToggleChart.scss';
 
 
-const SentimentToggleChart = ({ completeFileData, selectedTicker }) => {
+const SentimentToggleChart = ({ completeFileData, selectedTicker}) => {
   const [selected, setSelected] = useState("all");
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -21,7 +21,9 @@ const SentimentToggleChart = ({ completeFileData, selectedTicker }) => {
 
     fetchFiles();
   }, [completeFileData]);
-
+  // const alertTickers = completeFileData.filter(
+  //   (item) => item.callVolume >= 2 * item.putVolume
+  // );
   return (
     <>
       {(

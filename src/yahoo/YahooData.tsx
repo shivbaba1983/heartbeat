@@ -9,6 +9,7 @@ import { NASDAQ_TOKEN, YAHOO_VOLUME_LIMIT, ETF_List, IS_AWS_API, LogTickerList, 
 import { getYahooFinanceData } from "./../services/YahooFinanceService";
 import PredictionHint from './../components/PredictionHint';
 import { getDateForatted } from './../common/nasdaq.common';
+import LoadingIndicator from "../components/LoadingIndicator";
 const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay, stockDetails }) => {
     // Define a type for merged data
 
@@ -132,51 +133,55 @@ const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay,
     ]
 
     return (
-
         <div>
-            {!isLoading && <div>
-                <h2> Loading....... Please wait(yahoo data-new)</h2>
-            </div>}
+            {!isLoading && <LoadingIndicator />}
 
-            {isLoading && <div className="yahoo-chart-section">
-                <h3>Yahoo-{volumeOrInterest}-Call-<span className={predectionInput[0].customClassName}>{totalCallVolume} </span>, Put-{totalPutVolume} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}</h3>
-                {totalCallVolume > 0 && <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
-                {volumeOrInterest === 'volume' && <div>
-                    {data && <ResponsiveContainer width="100%" height={400}>
-                        <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="strike" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Bar dataKey="callVolume" fill="#8884d8" name="Call Volume" />
-                            <Bar dataKey="calllastPrice" fill="#006400" name="Call Last Price" />
-                            <Bar dataKey="putVolume" fill="#FF2C2C" name="Put Volume" />
-                            <Bar dataKey="putlastPrice" fill="#FF2C2C" name="Put Last Price" />
-                        </BarChart>
-                    </ResponsiveContainer>}
-                </div>}
+            {isLoading && (
+                <div className="yahoo-chart-section">
+                    <h3>
+                        Yahoo-{volumeOrInterest}-Call-
+                        <span className={predectionInput[0].customClassName}>{totalCallVolume} </span>,
+                        Put-{totalPutVolume} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}
+                    </h3>
 
-                {volumeOrInterest === 'openinterest' && <div>
-                    {data && <ResponsiveContainer width="100%" height={400}>
-                        <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="strike" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Bar dataKey="callOI" fill="#8884d8" name="Call OI" />
-                            <Bar dataKey="calllastPrice" fill="#006400" name="Call Last Price" />
-                            <Bar dataKey="putOI" fill="#FF2C2C" name="Put OI" />
-                            <Bar dataKey="putlastPrice" fill="#FF2C2C" name="Put Last Price" />
-                        </BarChart>
-                    </ResponsiveContainer>}
-                </div>}
+                    {totalCallVolume > 0 && (
+                        <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />
+                    )}
 
+                    {volumeOrInterest === 'volume' && data && (
+                        <ResponsiveContainer width="100%" height={400}>
+                            <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="strike" />
+                                <YAxis />
+                                <Tooltip />
+                                <Legend />
+                                <Bar dataKey="callVolume" fill="#8884d8" name="Call Volume" />
+                                <Bar dataKey="calllastPrice" fill="#006400" name="Call Last Price" />
+                                <Bar dataKey="putVolume" fill="#FF2C2C" name="Put Volume" />
+                                <Bar dataKey="putlastPrice" fill="#FF2C2C" name="Put Last Price" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    )}
 
-            </div>}
+                    {volumeOrInterest === 'openinterest' && data && (
+                        <ResponsiveContainer width="100%" height={400}>
+                            <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="strike" />
+                                <YAxis />
+                                <Tooltip />
+                                <Legend />
+                                <Bar dataKey="callOI" fill="#8884d8" name="Call OI" />
+                                <Bar dataKey="calllastPrice" fill="#006400" name="Call Last Price" />
+                                <Bar dataKey="putOI" fill="#FF2C2C" name="Put OI" />
+                                <Bar dataKey="putlastPrice" fill="#FF2C2C" name="Put Last Price" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    )}
+                </div>
+            )}
         </div>
-
     );
 };
 

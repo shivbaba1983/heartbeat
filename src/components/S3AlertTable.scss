@@ -1,0 +1,55 @@
+    .s3-alert-table-section {
+        .alert-blink-table {
+            margin-top: 20px;
+            border: 2px solid red;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #fff0f0;
+
+            h3 {
+                color: red;
+                animation: blinkText 1s infinite;
+            }
+
+            .blink-table {
+                width: 100%;
+                border-collapse: collapse;
+
+                th,
+                td {
+                    padding: 8px 12px;
+                    border: 1px solid #ccc;
+                    text-align: center;
+                }
+
+                tr {
+                    animation: blinkRow 1.5s infinite alternate;
+                    background-color: #fff;
+                }
+            }
+        }
+
+        @keyframes blinkRow {
+            0% {
+                background-color: #fff0f0;
+            }
+
+            100% {
+                background-color: #ffeaea;
+            }
+        }
+
+        @keyframes blinkText {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    }

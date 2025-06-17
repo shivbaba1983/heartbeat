@@ -7,6 +7,7 @@ import {
 import MagnificientSevenTable from './../yahoo/MagnificientSevenTable';
 import SentimentToggleChart from '../sentiments/SentimentToggleChart';
 import './ReadSThreeBucket.scss';
+import S3AlertTable from './../components/S3AlertTable';
 const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
@@ -17,6 +18,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const [totalCallVolume, setTotalCallVolume] = useState(1);
   const [totalPutVolume, setTotalPutVolume] = useState(1);
   const [magnificientSevenTableData, setMagnificientSevenTableData] = useState([]);
+  const [alertTickers, setAlertTickers] = useState([]);
   useEffect(() => {
     setSelectedFile(fileName);
   }, [fileName])
@@ -96,8 +98,11 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
 
         setMagnificientSevenTableData(latestVolumesByTicker)
 
+        const temp = latestVolumesByTicker.filter(
+          (item) => item.callVolume >= 2 * item.putVolume
+        );
 
-
+        setAlertTickers(temp);
         const filteredData = tempData
           ?.filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
           ?.map(item => ({
@@ -177,6 +182,9 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
 
       <button onClick={() => handleRefreshClick()} className="refresh-button-sthree">Refresh Data</button>
 
+      <div>
+        {alertTickers.length > 0 && <S3AlertTable alertTickers={alertTickers} />}
+      </div>
       <h2 onClick={toggleExpanded} className="link-like-header">
         {isExpanded
           ? "▼ Magnificent Seven Sentiments (Click to Collapse)"
