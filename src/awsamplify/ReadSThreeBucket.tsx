@@ -99,7 +99,10 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
         setMagnificientSevenTableData(latestVolumesByTicker)
 
         const temp = latestVolumesByTicker.filter(
-          (item) => item.callVolume >= 2 * item.putVolume
+          (item) =>
+            item.callVolume > 0 &&
+            item.putVolume > 0 &&
+            item.callVolume >= 2 * item.putVolume
         );
 
         setAlertTickers(temp);
