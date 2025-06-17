@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './MagnificientSevenTable.scss';
-import {MAG7,INDEXES} from './../constant/HeartbeatConstants';
+import { MAG7, INDEXES } from './../constant/HeartbeatConstants';
 const cellStyle = {
   border: "1px solid #ccc",
   padding: "8px",
@@ -22,18 +22,24 @@ const MagnificientSevenTable = ({ data }) => {
     const ratio = row.callVolume === 0 ? 0 : row.putVolume / row.callVolume;
     const prediction =
       ratio < 0.5 ? 'ExtremelyBullish'
-      : ratio < 0.7 ? 'Bullish'
-      : ratio <= 1.0 ? 'Neutral'
-      : ratio <= 1.3 ? 'Bearish'
-      : 'ExtremelyBearish';
+        : ratio < 0.7 ? 'Bullish'
+          : ratio <= 1.0 ? 'Neutral'
+            : ratio <= 1.3 ? 'Bearish'
+              : 'ExtremelyBearish';
 
-    const customClassName = row.callVolume > row.putVolume ? 'greenmarket' : 'redmarket';
+    const customClassName = row.callVolume > row.putVolume ? 'redmarket' : 'greenmarket';
+
+    const blinking =
+      row.callVolume > 0 &&
+      row.putVolume > 0 &&
+      row.callVolume >= 2 * row.putVolume;
 
     return {
       ...row,
       ratio: Number(ratio.toFixed(2)),
       prediction,
       customClassName,
+      blinking,
     };
   };
 
@@ -67,21 +73,25 @@ const MagnificientSevenTable = ({ data }) => {
       : "";
   };
 
-  const renderRow = (row, index) => (
-    <tr key={row.id || index} className={row.prediction}>
-      <td style={cellStyle}>{row.selectedTicker}</td>
-      <td style={cellStyle}>{row.callVolume.toLocaleString()}</td>
-      <td style={cellStyle}>{row.putVolume.toLocaleString()}</td>
-      <td style={cellStyle}>
-        {row.lstPrice !== undefined && !isNaN(row.lstPrice)
-          ? Number(row.lstPrice).toFixed(2)
-          : '-'}
-      </td>
-      <td style={cellStyle}>{row.prediction}</td>
-      <td style={cellStyle}>{row.ratio}</td>
-      <td style={cellStyle}>{row.timestamp}</td>
-    </tr>
-  );
+  const renderRow = (row, index) => {
+    const rowClassName = `${row.prediction} ${row.blinking ? 'blinking-alert' : ''}`;
+
+    return (
+      <tr key={row.id || index} className={rowClassName}>
+        <td style={cellStyle}>{row.selectedTicker}</td>
+        <td style={cellStyle}>{row.callVolume.toLocaleString()}</td>
+        <td style={cellStyle}>{row.putVolume.toLocaleString()}</td>
+        <td style={cellStyle}>
+          {row.lstPrice !== undefined && !isNaN(row.lstPrice)
+            ? Number(row.lstPrice).toFixed(2)
+            : '-'}
+        </td>
+        <td style={cellStyle}>{row.prediction}</td>
+        <td style={cellStyle}>{row.ratio}</td>
+        <td style={cellStyle}>{row.timestamp}</td>
+      </tr>
+    );
+  };
 
   // Group data
   const indexes = sortedData.filter(row => INDEXES.includes(row.selectedTicker));

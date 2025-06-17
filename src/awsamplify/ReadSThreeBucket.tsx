@@ -185,9 +185,9 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
 
       <button onClick={() => handleRefreshClick()} className="refresh-button-sthree">Refresh Data</button>
 
-      <div>
+      {/* <div>
         {alertTickers.length > 0 && <S3AlertTable alertTickers={alertTickers} />}
-      </div>
+      </div> */}
       <h2 onClick={toggleExpanded} className="link-like-header">
         {isExpanded
           ? "▼ Magnificent Seven Sentiments (Click to Collapse)"

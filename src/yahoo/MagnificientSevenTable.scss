@@ -1,46 +1,63 @@
 .magnificient-seven-section {
- 
-    .sentimate-seven-history-data {
-        .ExtremelyBullish {
-            background-color: green;
-        }
-
-        .Bullish {
-            background-color: lightgreen;
-        }
-
-        .Neutral {
-            background-color: whitesmoke;
-        }
-
-        .Bearish {
-            background-color: lightcoral;
-        }
-
-        .ExtremelyBearish {
-            background-color: red;
-        }
-
-        .bordered-table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        .bordered-table th,
-        .bordered-table td {
-            border: 1px solid #ccc;
-            padding: 8px;
-        }
-
-        .link-like-header {
-            color: #007bff;
-            cursor: pointer;
-            user-select: none;
-            transition: color 0.2s;
-        }
-
-        .link-like-header:hover {
-            text-decoration: underline;
-        }
+  .sentimate-seven-history-data {
+    .ExtremelyBullish {
+      background-color: green;
     }
+
+    .Bullish {
+      background-color: lightgreen;
+    }
+
+    .Neutral {
+      background-color: whitesmoke;
+    }
+
+    .Bearish {
+      background-color: lightcoral;
+    }
+
+    .ExtremelyBearish {
+      background-color: red;
+    }
+
+    .blinking-alert {
+      animation: blink-bg 1s infinite;
+    }
+
+    @keyframes blink-bg {
+      0% {
+        background-color: #ffff00;
+      }
+
+      50% {
+        background-color: #ffcccc;
+      }
+
+      100% {
+        background-color: #008cff;
+      }
+    }
+
+    .bordered-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .bordered-table th,
+    .bordered-table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    .link-like-header {
+      color: #007bff;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    .link-like-header:hover {
+      text-decoration: underline;
+    }
+  }
 }
