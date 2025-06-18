@@ -6,18 +6,19 @@ const cellStyle = {
   padding: "8px",
   cursor: "pointer",
 };
-
-
 const MagnificientSevenTable = ({ data }) => {
   const [sortConfig, setSortConfig] = useState({ key: 'ratio', direction: 'desc' });
+  const [blinkingThreshold, setBlinkingThreshold] = useState(2);
 
+  const handleThresholdChange = (event) => {
+    setBlinkingThreshold(Number(event.target.value));
+  };
   const handleSort = (key) => {
     setSortConfig((prev) => ({
       key,
       direction: prev.key === key && prev.direction === 'asc' ? 'desc' : 'asc',
     }));
   };
-
   const getProcessedRow = (row) => {
     const ratio = row.callVolume === 0 ? 0 : row.putVolume / row.callVolume;
     const prediction =
@@ -26,13 +27,12 @@ const MagnificientSevenTable = ({ data }) => {
           : ratio <= 1.0 ? 'Neutral'
             : ratio <= 1.3 ? 'Bearish'
               : 'ExtremelyBearish';
-
     const customClassName = row.callVolume > row.putVolume ? 'redmarket' : 'greenmarket';
 
     const blinking =
       row.callVolume > 0 &&
       row.putVolume > 0 &&
-      row.callVolume >= 2 * row.putVolume;
+      row.callVolume >= blinkingThreshold * row.putVolume;
 
     return {
       ...row,
@@ -42,40 +42,32 @@ const MagnificientSevenTable = ({ data }) => {
       blinking,
     };
   };
-
   const processedData = data.map(getProcessedRow);
-
   const sortedData = [...processedData].sort((a, b) => {
     const { key, direction } = sortConfig;
     const valA = a[key];
     const valB = b[key];
-
     if (typeof valA === 'string' && typeof valB === 'string') {
       return direction === 'asc'
         ? valA.localeCompare(valB)
         : valB.localeCompare(valA);
     }
-
     if (typeof valA === 'number' && typeof valB === 'number') {
       return direction === 'asc' ? valA - valB : valB - valA;
     }
-
     const strA = String(valA ?? '');
     const strB = String(valB ?? '');
     return direction === 'asc'
       ? strA.localeCompare(strB)
       : strB.localeCompare(strA);
   });
-
   const renderSortIcon = (key) => {
     return sortConfig.key === key
       ? sortConfig.direction === "asc" ? " ▲" : " ▼"
       : "";
   };
-
   const renderRow = (row, index) => {
     const rowClassName = `${row.prediction} ${row.blinking ? 'blinking-alert' : ''}`;
-
     return (
       <tr key={row.id || index} className={rowClassName}>
         <td style={cellStyle}>{row.selectedTicker}</td>
@@ -92,17 +84,37 @@ const MagnificientSevenTable = ({ data }) => {
       </tr>
     );
   };
-
   // Group data
   const indexes = sortedData.filter(row => INDEXES.includes(row.selectedTicker));
   const mag7 = sortedData.filter(row => MAG7.includes(row.selectedTicker));
   const others = sortedData.filter(
     row => !INDEXES.includes(row.selectedTicker) && !MAG7.includes(row.selectedTicker)
   );
-
   return (
     <div className='magnificient-seven-section'>
       <div className='sentimate-seven-history-data'>
+        <div style={{ marginBottom: '10px' }}>
+          <label style={{ marginRight: '10px' }}>
+            <input
+              type="radio"
+              name="threshold"
+              value={2}
+              checked={blinkingThreshold === 2}
+              onChange={handleThresholdChange}
+            />
+           2X
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="threshold"
+              value={1.5}
+              checked={blinkingThreshold === 1.5}
+              onChange={handleThresholdChange}
+            />
+           1.5X
+          </label>
+        </div>
         <table style={{ borderCollapse: 'collapse', width: '100%' }}>
           <thead>
             <tr>
@@ -115,7 +127,6 @@ const MagnificientSevenTable = ({ data }) => {
               <th style={cellStyle} onClick={() => handleSort("timestamp")}>Time{renderSortIcon("timestamp")}</th>
             </tr>
           </thead>
-
           {/* Index Section */}
           <tbody>
             {indexes.length > 0 && (
@@ -125,7 +136,6 @@ const MagnificientSevenTable = ({ data }) => {
               </>
             )}
           </tbody>
-
           {/* Magnificent Seven Section */}
           <tbody>
             {mag7.length > 0 && (
@@ -135,7 +145,6 @@ const MagnificientSevenTable = ({ data }) => {
               </>
             )}
           </tbody>
-
           {/* Others Section */}
           <tbody>
             {others.length > 0 && (
@@ -150,5 +159,4 @@ const MagnificientSevenTable = ({ data }) => {
     </div>
   );
 };
-
 export default MagnificientSevenTable;
