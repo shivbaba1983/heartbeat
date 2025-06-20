@@ -5,6 +5,12 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
+.sentiment-radio-options input[type="radio"] {
+  appearance: auto !important;
+  -webkit-appearance: radio !important;
+  accent-color: #007bff; // optional: customize selected color
+}
+
 .sentiment-radio-options {
   display: flex;
   flex-wrap: wrap;

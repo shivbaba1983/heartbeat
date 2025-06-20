@@ -10,27 +10,19 @@ import {
 } from "recharts";
 import { MAG7, INDEXES, LogTickerList } from "../constant/HeartbeatConstants";
 import "./AllSentimentClassification.scss";
-import {isMarketOpenNow } from './../common/nasdaq.common';
+import { isMarketOpenNow, isWithinMarketHours } from "./../common/nasdaq.common";
+
 const AllSentimentClassification = ({ S3JsonFileData }) => {
   const rawData = S3JsonFileData || [];
 
   const [tickerSet, setTickerSet] = useState("all");
   const [bucketMinutes, setBucketMinutes] = useState(5);
-  const [timeRangeMinutes, setTimeRangeMinutes] = useState(null); // Will be set automatically on load
+  const [timeRangeMinutes, setTimeRangeMinutes] = useState(null); // Default: All Time
 
-  // ✅ Helper: Check if it's market hours in EST
-  // const isMarketOpenNow = () => {
-  //   const now = new Date();
-  //   const estTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
-  //   const hours = estTime.getHours();
-  //   const minutes = estTime.getMinutes();
-  //   const totalMinutes = hours * 60 + minutes;
-  //   return totalMinutes >= 570 && totalMinutes <= 960; // 9:30 AM (570) to 4:00 PM (960)
-  // };
-
-  // ✅ Automatically set timeRangeMinutes on first load
+  // ✅ Set default time range on mount
   useEffect(() => {
-    setTimeRangeMinutes(isMarketOpenNow() ? 30 : null);
+    const defaultRange = isWithinMarketHours() ? null : null;
+    setTimeRangeMinutes(defaultRange);
   }, []);
 
   const selectedTickers = useMemo(() => {
@@ -69,18 +61,14 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
       })
       .forEach(({ timestamp, callVolume, putVolume }) => {
         const date = new Date(timestamp);
-        const minutes = date.getMinutes();
-        const hours = date.getHours();
-        const totalMinutes = hours * 60 + minutes;
+        const totalMinutes = date.getHours() * 60 + date.getMinutes();
         const roundedTotal = Math.floor(totalMinutes / bucketMinutes) * bucketMinutes;
         const roundedHour = Math.floor(roundedTotal / 60);
         const roundedMinute = roundedTotal % 60;
 
         const bucketDate = new Date(date);
         bucketDate.setHours(roundedHour);
-        bucketDate.setMinutes(roundedMinute);
-        bucketDate.setSeconds(0);
-        bucketDate.setMilliseconds(0);
+        bucketDate.setMinutes(roundedMinute, 0, 0);
 
         const time = bucketDate.toLocaleTimeString("en-US", {
           hour12: false,
@@ -104,9 +92,7 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
         map.get(time)[sentiment]++;
       });
 
-    return Array.from(map.values()).sort((a, b) =>
-      a.time.localeCompare(b.time)
-    );
+    return Array.from(map.values()).sort((a, b) => a.time.localeCompare(b.time));
   }, [rawData, selectedTickers, bucketMinutes, timeRangeMinutes]);
 
   return (
@@ -145,7 +131,7 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
         </label>
       </div>
 
-      {/* Bucket Interval Selection */}
+      {/* Bucket Size */}
       <div className="sentiment-radio-options time-buckets">
         <label>
           <input
@@ -186,7 +172,7 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
             type="radio"
             name="timeRange"
             value="null"
-            checked={timeRangeMinutes === null}
+            checked={String(timeRangeMinutes) === "null"}
             onChange={() => setTimeRangeMinutes(null)}
           />
           All Time
@@ -196,7 +182,7 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
             type="radio"
             name="timeRange"
             value="10"
-            checked={timeRangeMinutes === 10}
+            checked={String(timeRangeMinutes) === "10"}
             onChange={() => setTimeRangeMinutes(10)}
           />
           Last 10 Min
@@ -206,7 +192,7 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
             type="radio"
             name="timeRange"
             value="30"
-            checked={timeRangeMinutes === 30}
+            checked={String(timeRangeMinutes) === "30"}
             onChange={() => setTimeRangeMinutes(30)}
           />
           Last 30 Min
@@ -216,12 +202,13 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
             type="radio"
             name="timeRange"
             value="60"
-            checked={timeRangeMinutes === 60}
+            checked={String(timeRangeMinutes) === "60"}
             onChange={() => setTimeRangeMinutes(60)}
           />
           Last 60 Min
         </label>
       </div>
+
 
       {/* Chart */}
       <ResponsiveContainer width="100%" height={400}>
@@ -230,36 +217,11 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
           <YAxis allowDecimals={false} />
           <Tooltip />
           <Legend />
-          <Line
-            type="monotone"
-            dataKey="ExtremelyBullish"
-            stroke="#00b300"
-            dot={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="Bullish"
-            stroke="#66cc66"
-            dot={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="Neutral"
-            stroke="#999999"
-            dot={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="Bearish"
-            stroke="#ff6666"
-            dot={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="ExtremelyBearish"
-            stroke="#cc0000"
-            dot={false}
-          />
+          <Line type="monotone" dataKey="ExtremelyBullish" stroke="#00b300" dot={false} />
+          <Line type="monotone" dataKey="Bullish" stroke="#66cc66" dot={false} />
+          <Line type="monotone" dataKey="Neutral" stroke="#999999" dot={false} />
+          <Line type="monotone" dataKey="Bearish" stroke="#ff6666" dot={false} />
+          <Line type="monotone" dataKey="ExtremelyBearish" stroke="#cc0000" dot={false} />
         </LineChart>
       </ResponsiveContainer>
     </div>
