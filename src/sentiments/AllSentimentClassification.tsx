@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import { MAG7, INDEXES, LogTickerList } from "../constant/HeartbeatConstants";
 import "./AllSentimentClassification.scss";
-
+import {isMarketOpenNow } from './../common/nasdaq.common';
 const AllSentimentClassification = ({ S3JsonFileData }) => {
   const rawData = S3JsonFileData || [];
 
@@ -19,14 +19,14 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
   const [timeRangeMinutes, setTimeRangeMinutes] = useState(null); // Will be set automatically on load
 
   // ✅ Helper: Check if it's market hours in EST
-  const isMarketOpenNow = () => {
-    const now = new Date();
-    const estTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
-    const hours = estTime.getHours();
-    const minutes = estTime.getMinutes();
-    const totalMinutes = hours * 60 + minutes;
-    return totalMinutes >= 570 && totalMinutes <= 960; // 9:30 AM (570) to 4:00 PM (960)
-  };
+  // const isMarketOpenNow = () => {
+  //   const now = new Date();
+  //   const estTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+  //   const hours = estTime.getHours();
+  //   const minutes = estTime.getMinutes();
+  //   const totalMinutes = hours * 60 + minutes;
+  //   return totalMinutes >= 570 && totalMinutes <= 960; // 9:30 AM (570) to 4:00 PM (960)
+  // };
 
   // ✅ Automatically set timeRangeMinutes on first load
   useEffect(() => {

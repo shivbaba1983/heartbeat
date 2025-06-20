@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { NASDAQ_TOKEN, ETF_List, LogTickerList, JSON_UPDATE_TIME, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
-import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
+import { isWithinMarketHours, isMarketOpenNow, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
 import { writeS3JsonFile, writeS3JsonFileOpenInterest, writeToS3Bucket, writeToS3BucketOpenInterest } from '../services/WriteS3Service';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
 
@@ -11,7 +11,8 @@ const JsonUpdater = () => {
         const fetchMyData = async () => {
             const interval = setInterval(() => {
                 LogTickerList.forEach(ticker => {
-                    if (isWithinMarketHours()) {
+                    //if (isWithinMarketHours()) {
+                    if (isMarketOpenNow()) {
                         postDataToS3Bucket(ticker); // write data to json file in s3 bucket    
                     } else {
                         console.log('⏸ Market is closed. Skipping API call.');
@@ -22,7 +23,8 @@ const JsonUpdater = () => {
 
             return () => clearInterval(interval); // Cleanup on unmount
         };
-        if (isWithinMarketHours()) {
+        //if (isWithinMarketHours()) {
+        if (isMarketOpenNow()) {
             fetchMyData();
         }
         else {

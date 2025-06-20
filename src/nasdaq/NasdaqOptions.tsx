@@ -8,7 +8,7 @@ import './NasdaqOptions.scss';
 import BarGraphChart from './../graph-bar/BarChart';
 import OptionsChart from './../marketData/OptionsChart';
 import { NASDAQ_TOKEN, STOCKS_ASSETCLASS, ETF_ASSETCLASS, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData, ETF_List } from './../constant/HeartbeatConstants';
-import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
+import { isWithinMarketHours, isMarketOpenNow, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
 import DatePicker from './../components/DatePicker';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
 import PriceMarquee from './../components/PriceMarquee';
@@ -85,7 +85,8 @@ const NasdaqOptions = () => {
   useEffect(() => {
     const fetchOptionsData = async () => {
       try {
-        if (isWithinMarketHours()) {
+        //if (isWithinMarketHours()) {
+        if (isMarketOpenNow()) {
           await getmydata();
 
         } else {
@@ -98,7 +99,8 @@ const NasdaqOptions = () => {
         setIsLoading(false);
       }
     };
-    if (isWithinMarketHours()) {
+    // if (isWithinMarketHours()) {
+    if (isMarketOpenNow()) {
       fetchOptionsData();
     }
     else {
@@ -435,7 +437,7 @@ const NasdaqOptions = () => {
         {showMarketdata && <OptionsChart selectedTicker={selectedTicker} />}
       </div>
 
-   <div className="triend-table-checkbox">
+      <div className="triend-table-checkbox">
         <label className="">
           <input
             type="checkbox"
@@ -447,9 +449,9 @@ const NasdaqOptions = () => {
       </div>
 
       <div>
-       {showTrendTable && <TrendListDisplay/>}
+        {showTrendTable && <TrendListDisplay />}
       </div>
-      <CboeVolumeChart/>
+      <CboeVolumeChart />
       {/* <p>with live data compare</p>*/}
       {/* <LiveStrikeVolumeChart  rowsDataTest={calls}/>  */}
       <div>

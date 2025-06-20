@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { isWithinMarketHours, getFridayOfCurrentWeek, getTodayInEST } from './../common/nasdaq.common';
+import { getFridayOfCurrentWeek, getTodayInEST } from './../common/nasdaq.common';
 function getCurrentWeekFriday() {
     const today = new Date();
     const dayOfWeek = today.getDay(); // 0 (Sun) to 6 (Sat)
