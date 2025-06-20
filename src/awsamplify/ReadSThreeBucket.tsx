@@ -8,35 +8,35 @@ import MagnificientSevenTable from './../yahoo/MagnificientSevenTable';
 import SentimentToggleChart from '../sentiments/SentimentToggleChart';
 import './ReadSThreeBucket.scss';
 import S3AlertTable from './../components/S3AlertTable';
+
 const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
   const [refreshData, setRefreshData] = useState(false);
   const [files, setFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState(fileName);
-  const [isExpanded, setIsExpanded] = useState(true);//set default to false later
+  const [isExpanded, setIsExpanded] = useState(true);
   const [totalCallVolume, setTotalCallVolume] = useState(1);
   const [totalPutVolume, setTotalPutVolume] = useState(1);
   const [magnificientSevenTableData, setMagnificientSevenTableData] = useState([]);
   const [alertTickers, setAlertTickers] = useState([]);
+
   useEffect(() => {
     setSelectedFile(fileName);
-  }, [fileName])
+  }, [fileName]);
+
   const now = new Date();
-  const formatted = now.toLocaleString(); // includes date and time
-  // let totalCallVolume =1;
-  // let totalPutVolume =1;
+  const formatted = now.toLocaleString();
   const predectionInput = [
     {
-      "id": 1,
-      "timestamp": formatted,
-      "callVolume": totalCallVolume,
-      "putVolume": totalPutVolume,
-      "selectedTicker": selectedTicker
+      id: 1,
+      timestamp: formatted,
+      callVolume: totalCallVolume,
+      putVolume: totalPutVolume,
+      selectedTicker,
     },
-  ]
+  ];
 
-  //call only oces to get the file name only
   useEffect(() => {
     async function fetchFiles() {
       const bucketUrl = "https://anil-w-bucket.s3.amazonaws.com?list-type=2";
@@ -44,15 +44,10 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
       try {
         const response = await fetch(bucketUrl);
         const text = await response.text();
-
-        // Parse the XML
         const parser = new DOMParser();
         const xml = parser.parseFromString(text, "application/xml");
         const keys = Array.from(xml.getElementsByTagName("Key")).map(key => key.textContent);
-        const filenames = keys.map(file => {
-          const name = file.split(".").slice(0, -1).join(".");
-          return name;
-        });
+        const filenames = keys.map(file => file.split(".").slice(0, -1).join("."));
         setFiles(filenames);
       } catch (error) {
         console.error("Error fetching S3 files:", error);
@@ -62,24 +57,10 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
     fetchFiles();
   }, []);
 
-  //to get the file data on file name change (date change)
   useEffect(() => {
     const fetchOptionsData = async () => {
       try {
-        const bucketName = 'anil-w-bucket';
-        const objectKey = fileName;//'2025-04-26.json'; // path inside the bucket
-        setData([]);
-        const request = new HttpRequest({
-          method: 'GET',
-          protocol: 'https:',
-          hostname: `${bucketName}.s3.amazonaws.com`,
-          path: `/${objectKey}`,
-          headers: {
-            'host': `${bucketName}.s3.amazonaws.com`,
-          },
-        });
         const response = await fetch(`https://anil-w-bucket.s3.amazonaws.com/${selectedFile}.json`);
-
         const tempData = await response.json();
         setCompleteFileData(tempData);
 
@@ -96,18 +77,15 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
           }, {})
         );
 
-        setMagnificientSevenTableData(latestVolumesByTicker)
+        setMagnificientSevenTableData(latestVolumesByTicker);
 
         const temp = latestVolumesByTicker.filter(
-          (item) =>
-            item.callVolume > 0 &&
-            item.putVolume > 0 &&
-            item.callVolume >= 2 * item.putVolume
+          (item) => item.callVolume > 0 && item.putVolume > 0 && item.callVolume >= 2 * item.putVolume
         );
 
         setAlertTickers(temp);
         const filteredData = tempData
-          ?.filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
+          ?.filter(item => item.selectedTicker === selectedTicker)
           ?.map(item => ({
             ...item,
             time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
@@ -123,7 +101,6 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
     fetchOptionsData();
   }, [selectedTicker, selectedFile, fileName, refreshData]);
 
-
   const handleRefreshClick = async () => {
     setRefreshData(true);
   };
@@ -136,52 +113,44 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const toggleExpanded = () => {
     setIsExpanded(prev => !prev);
   };
+
   return (
     <div className="S3readSection">
       <div>
         <h2 className="s3-volumechart-title"> {selectedTicker} S3 Options Volume Chart</h2>
-        {/* <select value={selectedFile} onChange={handleChange}>
-          {files.map((file, idx) => (
-            <option key={idx} value={file}>
-              {file}
-            </option>
-          ))}
-        </select> */}
       </div>
+
       <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />
 
-      {/* {data && <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={data}>
-          <XAxis dataKey="time" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="callVolume" stroke="#008000" />
-          <Line type="monotone" dataKey="putVolume" stroke="#FF0000" />
-        </LineChart>
-      </ResponsiveContainer>} */}
+      {data && (
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="timestamp" tickFormatter={(t) => t.slice(11, 16)} />
+            <YAxis yAxisId="left" />
+            <YAxis yAxisId="right" orientation="right" />
+            <Tooltip />
+            <Legend />
+            <Line yAxisId="left" type="monotone" dataKey="callVolume" stroke="#008000" name="Call Volume" />
+            <Line yAxisId="left" type="monotone" dataKey="putVolume" stroke="#FF2C2C" name="Put Volume" />
+            <Line yAxisId="right" type="monotone" dataKey="lstPrice" stroke="#00008B" name="Last Price" dot={false} />
+          </LineChart>
+        </ResponsiveContainer>
+      )}
 
-      {data && <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="timestamp" tickFormatter={(t) => t.slice(11, 16)} />
-
-          {/* Left Y-Axis: Volume */}
-          <YAxis yAxisId="left" />
-          {/* Right Y-Axis: Last Price */}
-          <YAxis yAxisId="right" orientation="right" />
-
-          <Tooltip />
-          <Legend />
-
-          {/* Volume Lines */}
-          <Line yAxisId="left" type="monotone" dataKey="callVolume" stroke="#008000" name="Call Volume" />
-          <Line yAxisId="left" type="monotone" dataKey="putVolume" stroke="#FF2C2C" name="Put Volume" />
-
-          {/* Last Price Line */}
-          <Line yAxisId="right" type="monotone" dataKey="lstPrice" stroke="#00008B" name="Last Price" dot={false} />
-        </LineChart>
-      </ResponsiveContainer>}
+      {/* Additional chart only for Last Price */}
+      {data && (
+        <ResponsiveContainer width="100%" height={250}>
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="timestamp" tickFormatter={(t) => t.slice(11, 16)} />
+            <YAxis domain={['auto', 'auto']} />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="lstPrice" stroke="#00008B" name="Last Price Movement" dot={false} />
+          </LineChart>
+        </ResponsiveContainer>
+      )}
 
       <div className="filename-refresh-button-section">
         <select value={selectedFile} onChange={handleChange}>
@@ -194,10 +163,6 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
         <button onClick={() => handleRefreshClick()} className="refresh-button-sthree">Refresh Data</button>
       </div>
 
-
-      {/* <div>
-        {alertTickers.length > 0 && <S3AlertTable alertTickers={alertTickers} />}
-      </div> */}
       <h2 onClick={toggleExpanded} className="link-like-header">
         {isExpanded
           ? "▼ Magnificent Seven Sentiments (Click to Collapse)"
@@ -207,10 +172,8 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
       {(magnificientSevenTableData.length > 1 && isExpanded) && <MagnificientSevenTable data={magnificientSevenTableData} />}
 
       {(magnificientSevenTableData.length > 1 && isExpanded) && <SentimentToggleChart completeFileData={completeFileData} selectedTicker={selectedTicker} />}
-
-      {/* <PredictionChart data={data}/> */}
     </div>
   );
-
 };
+
 export default ReadSThreeBucket;
