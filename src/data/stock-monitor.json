@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "timestamp": "2025-06-06 09:48:08",
+    "selectedTicker": "AMZN",
+    "expectedBuyPrice":160
+  },
+  {
+    "id": "2",
+    "timestamp": "2025-06-06 09:48:10",
+    "selectedTicker": "AAPL",
+     "expectedBuyPrice":201
+  }
+]

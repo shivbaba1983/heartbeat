@@ -37,7 +37,15 @@
     }
   }
 }
+@keyframes blinkLine {
+  0% { stroke-opacity: 1; }
+  50% { stroke-opacity: 0.5; }
+  100% { stroke-opacity: 1; }
+}
 
+.blinking-line {
+  animation: blinkLine 1s infinite !important;
+}
 .time-buckets {
   margin-bottom: 20px;
 }

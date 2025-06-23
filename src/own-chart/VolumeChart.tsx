@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import {
-  LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer
+  LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid
 } from 'recharts';
-import axios from "axios";
 import { NASDAQ_TOKEN } from '../constant/HeartbeatConstants';
-import PredictionChart from '../nasdaq/PredictionChart';
-import FileDropdown from './FileDropdown';
 import { getTodayInEST } from './../common/nasdaq.common';
+
 const VolumeChart = ({ selectedTicker, fileName }) => {
   const [data, setData] = useState([]);
   const [refreshData, setRefreshData] = useState(false);
-  // const[fileName, setFileName]= useState(selectedFileName);
 
   useEffect(() => {
     if (fileName === "") {
-      fileName =getTodayInEST();//new Date().toISOString().slice(0, 10);
+      fileName = getTodayInEST();
     }
-    const fetchOptionsData = async () => {
 
+    const fetchOptionsData = async () => {
       try {
         const res = await fetch(`${NASDAQ_TOKEN}/api/volume/${fileName}`);
         const responseJson = await res.json();
         const formatted = responseJson
-          ?.filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
+          ?.filter(item => item.selectedTicker === selectedTicker)
           ?.map(item => ({
             ...item,
             time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
@@ -34,81 +31,58 @@ const VolumeChart = ({ selectedTicker, fileName }) => {
         console.error('Failed to fetch option data:', err);
       }
     };
+
     fetchOptionsData();
-  }, [fileName, selectedTicker]);
+  }, [fileName, selectedTicker, refreshData]);
 
-  useEffect(() => {
-    if (fileName === "") {
-      fileName =new Date().toISOString().slice(0, 10);
-    }
-    const fetchOptionsData = async () => {
-
-      try {
-        const res = await fetch(`${NASDAQ_TOKEN}/api/volume/${fileName}`);
-        const json = await res.json();
-        const formatted = json
-          ?.filter(item => item.selectedTicker === selectedTicker) // ← This filters the data
-          ?.map(item => ({
-            ...item,
-            time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
-          }));
-
-        setData(formatted);
-        setRefreshData(false);
-      } catch (err) {
-        console.error('Failed to fetch option data:', err);
-      }
-    };
-    fetchOptionsData();
-  }, [refreshData]);
-
-  const getTodayInEST = async() => {
-    const estDate = new Date().toLocaleString("en-US", {
-      timeZone: "America/New_York"
-    });
-  
-    const date = new Date(estDate);
-  
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-based
-    const day = String(date.getDate()).padStart(2, "0");
-  
-    return `${year}-${month}-${day}`;
-  };
-
-  const handleRefreshClick = async () => {
+  const handleRefreshClick = () => {
     setRefreshData(true);
   };
-// Group by selectedTicker and keep the latest record
-const latestByTicker = Object.values(
-  data.reduce((acc, curr) => {
-    if (
-      !acc[curr.selectedTicker] ||
-      new Date(curr.timestamp) > new Date(acc[curr.selectedTicker].timestamp)
-    ) {
-      acc[curr.selectedTicker] = curr;
-    }
-    return acc;
-  }, {})
-);
+
+  // Filter valid lstPrice values > 0
+  const priceValues = data.map(d => d.lstPrice).filter(p => p > 0);
+  const hasValidPrice = priceValues.length > 0;
+  const lowerBound = hasValidPrice ? Math.floor(Math.min(...priceValues) - 2) : undefined;
+  const upperBound = hasValidPrice ? Math.ceil(Math.max(...priceValues) + 2) : undefined;
+
   return (
     <div>
-
       <h2>{selectedTicker} Options Volume Chart</h2>
-      {data && <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={data}>
-          <XAxis dataKey="time" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="callVolume" stroke="#008000" />
-          <Line type="monotone" dataKey="putVolume" stroke="#FF0000" />
-        </LineChart>
-      </ResponsiveContainer>}
 
-      <button onClick={() => handleRefreshClick()}>Refres Data</button>
+      {data && (
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="time" />
+            <YAxis yAxisId="left" />
+            {hasValidPrice && (
+              <YAxis
+                yAxisId="right"
+                orientation="right"
+                domain={[lowerBound, upperBound]}
+                tickFormatter={(val) => `$${val}`}
+              />
+            )}
+            <Tooltip />
+            <Legend />
+            <Line yAxisId="left" type="monotone" dataKey="callVolume" stroke="#008000" name="Call Volume" />
+            <Line yAxisId="left" type="monotone" dataKey="putVolume" stroke="#FF0000" name="Put Volume" />
+            {hasValidPrice && (
+              <Line
+                yAxisId="right"
+                type="monotone"
+                dataKey="lstPrice"
+                stroke="#00008B"
+                name="Last Price"
+                dot={false}
+                strokeWidth={2}
+              />
+            )}
+          </LineChart>
+        </ResponsiveContainer>
+      )}
 
-      {/* <PredictionChart data={data}/> */}
+      <button onClick={handleRefreshClick}>Refresh Data</button>
     </div>
   );
 };

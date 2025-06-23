@@ -8,7 +8,7 @@ import MagnificientSevenTable from './../yahoo/MagnificientSevenTable';
 import SentimentToggleChart from '../sentiments/SentimentToggleChart';
 import './ReadSThreeBucket.scss';
 import S3AlertTable from './../components/S3AlertTable';
-
+import { NASDAQ_TOKEN, IS_AWS_API } from '../constant/HeartbeatConstants';
 const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
@@ -43,13 +43,17 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
       const bucketUrl = "https://anil-w-bucket.s3.amazonaws.com?list-type=2";
 
       try {
-        const response = await fetch(bucketUrl);
-        const text = await response.text();
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(text, "application/xml");
-        const keys = Array.from(xml.getElementsByTagName("Key")).map(key => key.textContent);
-        const filenames = keys.map(file => file.split(".").slice(0, -1).join("."));
-        setFiles(filenames);
+        if (IS_AWS_API) {
+          const response = await fetch(bucketUrl);
+          const text = await response.text();
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(text, "application/xml");
+          const keys = Array.from(xml.getElementsByTagName("Key")).map(key => key.textContent);
+          const filenames = keys.map(file => file.split(".").slice(0, -1).join("."));
+          setFiles(filenames);
+        } else {
+          setSelectedFile(fileName)
+        }
       } catch (error) {
         console.error("Error fetching S3 files:", error);
       }
@@ -59,10 +63,17 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   }, []);
 
   useEffect(() => {
+    let response;
+    let tempData;
     const fetchOptionsData = async () => {
       try {
-        const response = await fetch(`https://anil-w-bucket.s3.amazonaws.com/${selectedFile}.json`);
-        const tempData = await response.json();
+        if (IS_AWS_API) {
+          response = await fetch(`https://anil-w-bucket.s3.amazonaws.com/${selectedFile}.json`);
+          tempData = await response.json();
+        } else {
+          response = await fetch(`${NASDAQ_TOKEN}/api/volume/${fileName}`);
+          tempData = await response.json();
+        }
         setCompleteFileData(tempData);
 
         const latestVolumesByTicker = Object.values(

@@ -217,7 +217,7 @@ const AllSentimentClassification = ({ S3JsonFileData }) => {
           <YAxis allowDecimals={false} />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="ExtremelyBullish" stroke="#00b300" dot={false} />
+          <Line type="monotone" dataKey="ExtremelyBullish" stroke="#00b300" dot={false} className="blinking-line"/>
           <Line type="monotone" dataKey="Bullish" stroke="#66cc66" dot={false} />
           <Line type="monotone" dataKey="Neutral" stroke="#999999" dot={false} />
           <Line type="monotone" dataKey="Bearish" stroke="#ff6666" dot={false} />

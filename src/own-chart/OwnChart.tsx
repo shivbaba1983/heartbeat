@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import VolumeChart from './VolumeChart';
-import { NASDAQ_TOKEN } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, IS_AWS_API } from '../constant/HeartbeatConstants';
 import { getTodayInEST } from './../common/nasdaq.common';
 import ReadSThreeBucket from './../awsamplify/ReadSThreeBucket';
 import ReadSThreeBucketOpenInterest from './../awsamplify/ReadSThreeBucketOpenInterest';
@@ -39,22 +39,29 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
   //call only oces to get the file name only
   useEffect(() => {
     async function fetchFiles() {
-
-      const bucketUrl = "https://anil-w-bucket.s3.amazonaws.com?list-type=2";
-
       try {
-        const response = await fetch(bucketUrl);
-        const text = await response.text();
+        if (IS_AWS_API) {
+          const bucketUrl = "https://anil-w-bucket.s3.amazonaws.com?list-type=2";
 
-        // Parse the XML
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(text, "application/xml");
-        const keys = Array.from(xml.getElementsByTagName("Key")).map(key => key.textContent);
-        const filenames = keys.map(file => {
-          const name = file.split(".").slice(0, -1).join(".");
-          return name;
-        });
-        setFiles(filenames || []);
+
+          const response = await fetch(bucketUrl);
+          const text = await response.text();
+
+          // Parse the XML
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(text, "application/xml");
+          const keys = Array.from(xml.getElementsByTagName("Key")).map(key => key.textContent);
+          const filenames = keys.map(file => {
+            const name = file.split(".").slice(0, -1).join(".");
+            return name;
+          });
+          setFiles(filenames || []);
+        } else {
+          await fetch(`${NASDAQ_TOKEN}/api/files`)
+            .then(res => res.json())
+            .then(data => setFiles(data.files || []))
+            .catch(err => console.error("Error fetching files:", err));
+        }
       } catch (error) {
         console.error("Error fetching S3 files:", error);
       }
