@@ -20,6 +20,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
   const [totalPutVolume, setTotalPutVolume] = useState(1);
   const [magnificientSevenTableData, setMagnificientSevenTableData] = useState([]);
   const [alertTickers, setAlertTickers] = useState([]);
+  const [showSecondChart, setShowSecondChart] = useState(false); // NEW
 
   useEffect(() => {
     setSelectedFile(fileName);
@@ -68,11 +69,9 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
           tempData.reduce((acc, item) => {
             const ticker = item.selectedTicker;
             const current = acc[ticker];
-
             if (!current || new Date(item.timestamp) > new Date(current.timestamp)) {
               acc[ticker] = item;
             }
-
             return acc;
           }, {})
         );
@@ -84,6 +83,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
         );
 
         setAlertTickers(temp);
+
         const filteredData = tempData
           ?.filter(item => item.selectedTicker === selectedTicker)
           ?.map(item => ({
@@ -101,34 +101,32 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
     fetchOptionsData();
   }, [selectedTicker, selectedFile, fileName, refreshData]);
 
-  const handleRefreshClick = async () => {
-    setRefreshData(true);
-  };
-  const handleChange = (e) => {
-    e.preventDefault();
-    const tempFileName = e.target.value;
-    setSelectedFile(tempFileName);
-    console.log("Selected file:", tempFileName);
-  };
-  const toggleExpanded = () => {
-    setIsExpanded(prev => !prev);
-  };
+  const handleRefreshClick = () => setRefreshData(true);
+  const handleChange = (e) => setSelectedFile(e.target.value);
+  const toggleExpanded = () => setIsExpanded(prev => !prev);
+
+  const priceValues = data.map(d => d.lstPrice).filter(p => p !== undefined && !isNaN(p));
+  const minPrice = Math.min(...priceValues);
+  const maxPrice = Math.max(...priceValues);
+  const lowerBound = Math.floor(minPrice - 2);
+  const upperBound = Math.ceil(maxPrice + 2);
 
   return (
     <div className="S3readSection">
       <div>
-        <h2 className="s3-volumechart-title"> {selectedTicker} S3 Options Volume Chart</h2>
+        <h2 className="s3-volumechart-title">{selectedTicker} S3 Options Volume Chart</h2>
       </div>
 
       <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />
 
+      {/* Always Visible Chart */}
       {data && (
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="timestamp" tickFormatter={(t) => t.slice(11, 16)} />
             <YAxis yAxisId="left" />
-            <YAxis yAxisId="right" orientation="right" />
+            <YAxis yAxisId="right" orientation="right" domain={[lowerBound, upperBound]} />
             <Tooltip />
             <Legend />
             <Line yAxisId="left" type="monotone" dataKey="callVolume" stroke="#008000" name="Call Volume" />
@@ -138,8 +136,21 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
         </ResponsiveContainer>
       )}
 
-      {/* Additional chart only for Last Price */}
-      {data && (
+      {/* Toggle Button */}
+      <div className="toggle-container">
+        <label className="switch">
+          <input
+            type="checkbox"
+            checked={showSecondChart}
+            onChange={() => setShowSecondChart(prev => !prev)}
+          />
+          <span className="slider round"></span>
+        </label>
+        <span className="toggle-label">Show Last Price Only Chart</span>
+      </div>
+
+      {/* Conditionally Rendered Second Chart */}
+      {data && showSecondChart && (
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -155,12 +166,10 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
       <div className="filename-refresh-button-section">
         <select value={selectedFile} onChange={handleChange}>
           {files.map((file, idx) => (
-            <option key={idx} value={file}>
-              {file}
-            </option>
+            <option key={idx} value={file}>{file}</option>
           ))}
         </select>
-        <button onClick={() => handleRefreshClick()} className="refresh-button-sthree">Refresh Data</button>
+        <button onClick={handleRefreshClick} className="refresh-button-sthree">Refresh Data</button>
       </div>
 
       <h2 onClick={toggleExpanded} className="link-like-header">
@@ -169,9 +178,12 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
           : "► Magnificent Seven Sentiments (Click to Expand)"}
       </h2>
 
-      {(magnificientSevenTableData.length > 1 && isExpanded) && <MagnificientSevenTable data={magnificientSevenTableData} />}
-
-      {(magnificientSevenTableData.length > 1 && isExpanded) && <SentimentToggleChart completeFileData={completeFileData} selectedTicker={selectedTicker} />}
+      {(magnificientSevenTableData.length > 1 && isExpanded) && (
+        <MagnificientSevenTable data={magnificientSevenTableData} />
+      )}
+      {(magnificientSevenTableData.length > 1 && isExpanded) && (
+        <SentimentToggleChart completeFileData={completeFileData} selectedTicker={selectedTicker} />
+      )}
     </div>
   );
 };
