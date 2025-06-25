@@ -18,12 +18,17 @@
       font-size: 14px;
     }
   }
-
+    .trend-table th {
+  cursor: pointer;
+  user-select: none;
+}
   .trend-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+
+
 
     th {
       background-color: #f3f3f3;

@@ -4,10 +4,14 @@ import { NASDAQ_TOKEN, trendTableList } from "../constant/HeartbeatConstants";
 import "./TrendListDisplay.scss";
 
 const TrendListDisplay = () => {
+  /** ---------- STATE ---------- */
   const [results, setResults] = useState([]);
-  const [sortKey, setSortKey] = useState("trend");
-  const [loading, setLoading] = useState(true); // <-- loading state
+  const [loading, setLoading] = useState(true);
 
+  // { key: 'price' | 'rsi' | 'macd' | 'trend' | 'ticker' | 'sma', direction: 'asc' | 'desc' }
+  const [sortConfig, setSortConfig] = useState({ key: "trend", direction: "asc" });
+
+  /** ---------- HELPERS ---------- */
   const getPastDate = (daysAgo) => {
     const date = new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000);
     return date.toISOString();
@@ -33,15 +37,23 @@ const TrendListDisplay = () => {
         SimpleMASignal: false,
       });
 
-      const currentPrice = prices[prices.length - 1];
-      const currentRSI = rsiValues[rsiValues.length - 1];
-      const currentSMA = sma50[sma50.length - 1];
-      const currentMACD = macdValues[macdValues.length - 1];
+      const currentPrice = prices.at(-1);
+      const currentRSI = rsiValues.at(-1);
+      const currentSMA = sma50.at(-1);
+      const currentMACD = macdValues.at(-1);
 
       let trend = "Neutral";
-      if (currentPrice > currentSMA && currentRSI > 60 && currentMACD?.MACD > currentMACD?.signal) {
+      if (
+        currentPrice > currentSMA &&
+        currentRSI > 60 &&
+        currentMACD?.MACD > currentMACD?.signal
+      ) {
         trend = "Bullish";
-      } else if (currentPrice < currentSMA && currentRSI < 40 && currentMACD?.MACD < currentMACD?.signal) {
+      } else if (
+        currentPrice < currentSMA &&
+        currentRSI < 40 &&
+        currentMACD?.MACD < currentMACD?.signal
+      ) {
         trend = "Bearish";
       }
 
@@ -60,42 +72,69 @@ const TrendListDisplay = () => {
     }
   };
 
+  /** ---------- DATA FETCH ---------- */
   useEffect(() => {
-    const fetchAll = async () => {
+    (async () => {
       const trends = [];
       for (const ticker of trendTableList) {
         const result = await fetchTrendForTicker(ticker);
         if (result) trends.push(result);
       }
       setResults(trends);
-      setLoading(false); // <-- set loading to false
-    };
-    fetchAll();
+      setLoading(false);
+    })();
   }, []);
 
-  const sortedResults = [...results].sort((a, b) => {
-    switch (sortKey) {
-      case "rsi": return b.rsi - a.rsi;
-      case "price": return b.price - a.price;
-      case "macd": return (b.macd - b.signal) - (a.macd - a.signal);
-      case "trend":
-      default:
-        const trendOrder = { Bullish: 1, Neutral: 2, Bearish: 3 };
-        return trendOrder[a.trend] - trendOrder[b.trend];
-    }
-  });
+  /** ---------- SORTING ---------- */
+  const compare = (a, b) => {
+    const { key, direction } = sortConfig;
+    let diff = 0;
 
+    switch (key) {
+      case "ticker":
+        diff = a.ticker.localeCompare(b.ticker);
+        break;
+      case "price":
+        diff = a.price - b.price;
+        break;
+      case "rsi":
+        diff = a.rsi - b.rsi;
+        break;
+      case "sma":
+        diff = a.sma - b.sma;
+        break;
+      case "macd":
+        diff = (a.macd - a.signal) - (b.macd - b.signal);
+        break;
+      case "signal":
+        diff = a.signal - b.signal;
+        break;
+      case "trend":
+      default: {
+        const order = { Bullish: 1, Neutral: 2, Bearish: 3 };
+        diff = order[a.trend] - order[b.trend];
+      }
+    }
+    return direction === "asc" ? diff : -diff;
+  };
+
+  const sortedResults = [...results].sort(compare);
+
+  const handleSort = (key) => {
+    setSortConfig(prev =>
+      prev.key === key
+        ? { key, direction: prev.direction === "asc" ? "desc" : "asc" }
+        : { key, direction: "asc" }
+    );
+  };
+
+  const arrow = (key) =>
+    sortConfig.key === key ? (sortConfig.direction === "asc" ? " ▲" : " ▼") : "";
+
+  /** ---------- RENDER ---------- */
   return (
     <div className="trend-list-container">
-      <div className="header-controls">
-        <h2>Stock Trend Summary</h2>
-        <select value={sortKey} onChange={(e) => setSortKey(e.target.value)}>
-          <option value="trend">Sort by Trend</option>
-          <option value="rsi">Sort by RSI</option>
-          <option value="price">Sort by Price</option>
-          <option value="macd">Sort by MACD Diff</option>
-        </select>
-      </div>
+      <h2>Stock Trend Summary</h2>
 
       {loading ? (
         <div className="loading-spinner">Please wait, loading trend data...</div>
@@ -103,23 +142,25 @@ const TrendListDisplay = () => {
         <table className="trend-table">
           <thead>
             <tr>
-              <th>Ticker</th>
-              <th>Trend</th>
-              <th>Price</th>
-              <th>RSI</th>
-              <th>SMA(50)</th>
-              <th>MACD</th>
-              <th>Signal</th>
+              <th onClick={() => handleSort("ticker")}>Ticker{arrow("ticker")}</th>
+              <th onClick={() => handleSort("trend")}>Trend{arrow("trend")}</th>
+              <th onClick={() => handleSort("price")}>Price{arrow("price")}</th>
+              <th onClick={() => handleSort("rsi")}>RSI{arrow("rsi")}</th>
+              <th onClick={() => handleSort("sma")}>SMA (50){arrow("sma")}</th>
+              <th onClick={() => handleSort("macd")}>MACD Diff{arrow("macd")}</th>
+              <th onClick={() => handleSort("signal")}>Signal{arrow("signal")}</th> {/* ← added */}
             </tr>
           </thead>
+
           <tbody>
             {sortedResults.map((item, index) => {
               const highlightClass =
-                sortKey === "rsi" && index === 0
+                sortConfig.key === "rsi" && index === 0
                   ? "highlight-bull"
-                  : sortKey === "rsi" && index === sortedResults.length - 1
-                  ? "highlight-bear"
-                  : "";
+                  : sortConfig.key === "rsi" && index === sortedResults.length - 1
+                    ? "highlight-bear"
+                    : "";
+
               return (
                 <tr key={item.ticker} className={`${item.trend.toLowerCase()} ${highlightClass}`}>
                   <td>{item.ticker}</td>
