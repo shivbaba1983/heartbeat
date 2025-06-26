@@ -71,15 +71,15 @@ const MagnificientSevenTable = ({ data }) => {
     return (
       <tr key={row.id || index} className={rowClassName}>
         <td style={cellStyle}>{row.selectedTicker}</td>
-        <td style={cellStyle}>{row.callVolume.toLocaleString()}</td>
-        <td style={cellStyle}>{row.putVolume.toLocaleString()}</td>
         <td style={cellStyle}>
           {row.lstPrice !== undefined && !isNaN(row.lstPrice)
             ? Number(row.lstPrice).toFixed(2)
             : '-'}
         </td>
-        <td style={cellStyle}>{row.prediction}</td>
         <td style={cellStyle}>{row.ratio}</td>
+        <td style={cellStyle}>{row.prediction}</td>
+        <td style={cellStyle}>{row.callVolume.toLocaleString()}</td>
+        <td style={cellStyle}>{row.putVolume.toLocaleString()}</td>
         <td style={cellStyle}>{row.timestamp}</td>
       </tr>
     );
@@ -102,7 +102,7 @@ const MagnificientSevenTable = ({ data }) => {
               checked={blinkingThreshold === 2}
               onChange={handleThresholdChange}
             />
-           2X
+            2X
           </label>
           <label>
             <input
@@ -112,18 +112,18 @@ const MagnificientSevenTable = ({ data }) => {
               checked={blinkingThreshold === 1.5}
               onChange={handleThresholdChange}
             />
-           1.5X
+            1.5X
           </label>
         </div>
         <table style={{ borderCollapse: 'collapse', width: '100%' }}>
           <thead>
             <tr>
               <th style={cellStyle} onClick={() => handleSort("selectedTicker")}>Ticker{renderSortIcon("selectedTicker")}</th>
+              <th style={cellStyle} onClick={() => handleSort("lstPrice")}>Price{renderSortIcon("lstPrice")}</th>
+              <th style={cellStyle} onClick={() => handleSort("ratio")}>Ratio{renderSortIcon("ratio")}</th>
+              <th style={cellStyle} onClick={() => handleSort("prediction")}>Trend{renderSortIcon("prediction")}</th>
               <th style={cellStyle} onClick={() => handleSort("callVolume")}>Call{renderSortIcon("callVolume")}</th>
               <th style={cellStyle} onClick={() => handleSort("putVolume")}>Put{renderSortIcon("putVolume")}</th>
-              <th style={cellStyle} onClick={() => handleSort("lstPrice")}>Price{renderSortIcon("lstPrice")}</th>
-              <th style={cellStyle} onClick={() => handleSort("prediction")}>Trend{renderSortIcon("prediction")}</th>
-              <th style={cellStyle} onClick={() => handleSort("ratio")}>Ratio{renderSortIcon("ratio")}</th>
               <th style={cellStyle} onClick={() => handleSort("timestamp")}>Time{renderSortIcon("timestamp")}</th>
             </tr>
           </thead>
