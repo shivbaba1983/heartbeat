@@ -1,0 +1,40 @@
+.extreme-bullish-classification {
+  .info-line {
+    font-size: 0.85rem;
+    color: #555;
+    margin: 2px 0 6px;
+  }
+
+  .error-line {
+    font-size: 0.85rem;
+    color: #c62828;
+    margin: 0 0 6px;
+  }
+
+  .bullish-headline {
+    margin: 0.8rem 0 0.4rem;
+    font-weight: 600;
+    color: #006400;
+  }
+
+  .bullish-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 6px 8px;
+      text-align: center;
+    }
+
+    thead {
+      background: #e8f5e9;
+    }
+
+    tbody tr:hover {
+      background: #f1f8f4;
+    }
+  }
+}

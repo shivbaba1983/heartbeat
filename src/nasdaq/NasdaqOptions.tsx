@@ -21,6 +21,9 @@ import YahooQuoteDashboard from './../yahoo/YahooQuoteDashboard';
 import HighVolumeBreakoutStocks from './HighVolumeBreakoutStocks';
 import CboeVolumeChart from './../spx/CboeVolumeChart';
 import TrendListDisplay from './../yahoo/TrendListDisplay';
+import ExtremeBullishClassification from './../sentiments/ExtremeBullishClassification';
+
+
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -45,7 +48,7 @@ const NasdaqOptions = () => {
   const [stockDetails, setStockdetails] = useState({});
   const [yahooDataRows, setStsetYahooDataRows] = useState([]);
   const [isYahooDataDisplay, setIsYahooDataDisplay] = useState(false);
-
+  const [showExtremelyBullishStreak, setExtremelyBullishStreak] = useState(false);
   useEffect(() => {
     const fetchYahooOptionsData = async () => {
       try {
@@ -432,11 +435,21 @@ const NasdaqOptions = () => {
         </label>
       </div>
 
+      <div className="market-data-checkbox">
+        <label className="">
+          <input
+            type="checkbox"
+            checked={showExtremelyBullishStreak}
+            onChange={() => setExtremelyBullishStreak(!showExtremelyBullishStreak)}
+          />
+          <span>Extreme Bullish</span>
+        </label>
+      </div>
 
       <div>
         {showMarketdata && <OptionsChart selectedTicker={selectedTicker} />}
       </div>
-
+      {showExtremelyBullishStreak && <ExtremeBullishClassification />}
       <div className="triend-table-checkbox">
         <label className="">
           <input
