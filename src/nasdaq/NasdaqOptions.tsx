@@ -174,12 +174,12 @@ const NasdaqOptions = () => {
       } else {
         if (selectedDayOrMonth === 'day' && (assetclass === 'ETF')) {
           if (["SPY", "QQQ", "IWM"].includes(selectedTicker))//day validty tickers
-            selectedDate = getEffectiveDate();
+            selectedDate = "2025-07-03";// getEffectiveDate();
           else// weekly validity tickers
             selectedDate = getComingFriday();
         }
         else if (selectedDayOrMonth === 'day' && assetclass === 'stocks') {
-          selectedDate = getComingFriday();//getFridayOfCurrentWeek();
+          selectedDate = "2025-07-03";// getComingFriday();//getFridayOfCurrentWeek();
         }
         setRequestedDate(selectedDate)
       }
