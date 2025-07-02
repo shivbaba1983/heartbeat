@@ -9,7 +9,7 @@ import SentimentToggleChart from '../sentiments/SentimentToggleChart';
 import './ReadSThreeBucket.scss';
 import S3AlertTable from './../components/S3AlertTable';
 import { NASDAQ_TOKEN, IS_AWS_API } from '../constant/HeartbeatConstants';
-const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
+const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker}) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
   const [refreshData, setRefreshData] = useState(false);
@@ -190,7 +190,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName }) => {
       </h2>
 
       {(magnificientSevenTableData.length > 1 && isExpanded) && (
-        <MagnificientSevenTable data={magnificientSevenTableData} />
+        <MagnificientSevenTable data={magnificientSevenTableData} setSelectedTicker={setSelectedTicker}/>
       )}
       {(magnificientSevenTableData.length > 1 && isExpanded) && (
         <SentimentToggleChart completeFileData={completeFileData} selectedTicker={selectedTicker} />

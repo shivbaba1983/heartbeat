@@ -15,7 +15,7 @@ import OwnChart from '../own-chart/OwnChart';
 import PredictionHint from './../components/PredictionHint';
 import './OptionVolumeChart.scss';
 
-const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
+const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelectedTicker}) => {
   const [tempRowData, setTempRowData] = useState(rows);
   const [mergedChartData, setMergedChartData] = useState([]);
   const [chartType, setChartType] = useState('line'); // 'line' or 'bar'
@@ -192,6 +192,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker }) => {
           totalCallVolumeCount={formattedCall}
           totalPutVolumeCount={formattedPut}
           selectedTicker={selectedTicker}
+          setSelectedTicker={setSelectedTicker}
         />
       )}
     </div>

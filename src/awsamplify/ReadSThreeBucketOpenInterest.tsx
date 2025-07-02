@@ -5,7 +5,7 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid
 } from 'recharts';
 import './ReadSThreeBucketOpenInterest.scss';
-const ReadSThreeBucketOpenInterest = ({ selectedTicker, selectedFileNameOpenInterest }) => {
+const ReadSThreeBucketOpenInterest = ({ selectedTicker, selectedFileNameOpenInterest}) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
   const [refreshData, setRefreshData] = useState(false);

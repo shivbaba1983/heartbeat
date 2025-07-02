@@ -387,7 +387,7 @@ const NasdaqOptions = () => {
       </div>}
 
       <div>
-        {!isLoading && <OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} />}
+        {!isLoading && <OptionVolumeChart rows={data} volumeOrInterest={volumeOrInterest} selectedTicker={selectedTicker} setSelectedTicker={setSelectedTicker}/>}
       </div>
 
       {/* <div>

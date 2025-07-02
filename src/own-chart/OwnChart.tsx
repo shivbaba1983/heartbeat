@@ -5,7 +5,7 @@ import { getTodayInEST } from './../common/nasdaq.common';
 import ReadSThreeBucket from './../awsamplify/ReadSThreeBucket';
 import ReadSThreeBucketOpenInterest from './../awsamplify/ReadSThreeBucketOpenInterest';
 import { getAdjustedDate } from './../common/nasdaq.common';
-const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker }) => {
+const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker ,setSelectedTicker}) => {
   const [callVolume, setCallVolume] = useState(totalCallVolumeCount);
   const [putVolume, setPutVolume] = useState(totalPutVolumeCount);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -143,7 +143,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
 
         <VolumeChart selectedTicker={selectedTicker} fileName={selectedFileName} />
       </div>}
-      {!isLoading && <ReadSThreeBucket selectedTicker={selectedTicker} fileName={selectedFileName} />}
+      {!isLoading && <ReadSThreeBucket selectedTicker={selectedTicker} fileName={selectedFileName} setSelectedTicker={setSelectedTicker}/>}
 
       <h2 onClick={toggleExpanded} className="link-like-header">
         {isExpanded
@@ -151,7 +151,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker })
           : "► Open Interest (Click to Expand)"}
       </h2>
 
-      {(!isLoading && isExpanded) && <ReadSThreeBucketOpenInterest selectedTicker={selectedTicker} selectedFileNameOpenInterest={selectedFileNameOpenInterest} />}
+      {(!isLoading && isExpanded) && <ReadSThreeBucketOpenInterest selectedTicker={selectedTicker} selectedFileNameOpenInterest={selectedFileNameOpenInterest}/>}
 
     </div>
   );
