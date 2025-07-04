@@ -9,7 +9,7 @@ import SentimentToggleChart from '../sentiments/SentimentToggleChart';
 import './ReadSThreeBucket.scss';
 import S3AlertTable from './../components/S3AlertTable';
 import { NASDAQ_TOKEN, IS_AWS_API } from '../constant/HeartbeatConstants';
-const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker}) => {
+const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker }) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
   const [refreshData, setRefreshData] = useState(false);
@@ -176,9 +176,13 @@ const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker}) => {
 
       <div className="filename-refresh-button-section">
         <select value={selectedFile} onChange={handleChange}>
-          {files.map((file, idx) => (
-            <option key={idx} value={file}>{file}</option>
-          ))}
+          {files
+            .filter(file => file !== 'OpenInterest' && file !== 'stock-monitor')
+            .map((file, idx) => (
+              <option key={idx} value={file}>
+                {file}
+              </option>
+            ))}
         </select>
         <button onClick={handleRefreshClick} className="refresh-button-sthree">Refresh Data</button>
       </div>
@@ -190,7 +194,7 @@ const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker}) => {
       </h2>
 
       {(magnificientSevenTableData.length > 1 && isExpanded) && (
-        <MagnificientSevenTable data={magnificientSevenTableData} setSelectedTicker={setSelectedTicker}/>
+        <MagnificientSevenTable data={magnificientSevenTableData} setSelectedTicker={setSelectedTicker} />
       )}
       {(magnificientSevenTableData.length > 1 && isExpanded) && (
         <SentimentToggleChart completeFileData={completeFileData} selectedTicker={selectedTicker} />

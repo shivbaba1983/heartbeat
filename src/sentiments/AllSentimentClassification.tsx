@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import {
   LineChart,
   Line,
-  BarChart,
+  ComposedChart,
   Bar,
   XAxis,
   YAxis,
@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { MAG7, INDEXES, LogTickerList } from '../constant/HeartbeatConstants';
-import { isWithinMarketHours } from '../common/nasdaq.common';
+import { isWithinMarketHours } from '../common/nasdaq.common'; // (still unused, left intact)
 import './AllSentimentClassification.scss';
 
 // interface RawRow {
@@ -29,8 +29,6 @@ const AllSentimentClassification = ({ S3JsonFileData = [] }) => {
   /* ------------------------------------------------------------------ */
   /* ---------------------------  STATE  ------------------------------ */
   /* ------------------------------------------------------------------ */
-  //type TickerSet = 'all' | 'indices' | 'stocks';
-
   const [tickerSet, setTickerSet] = useState('all');
   const [bucketMinutes, setBucketMinutes] = useState(5);
   const [timeRangeMinutes, setTimeRangeMinutes] = useState(null);
@@ -40,8 +38,7 @@ const AllSentimentClassification = ({ S3JsonFileData = [] }) => {
   /* ----------------------  INITIAL RANGE LOGIC  --------------------- */
   /* ------------------------------------------------------------------ */
   useEffect(() => {
-    // keep default = all time, but you can change here after-hours logic
-    setTimeRangeMinutes(null);
+    setTimeRangeMinutes(null); // default = all‑time display
   }, []);
 
   /* ------------------------------------------------------------------ */
@@ -70,22 +67,13 @@ const AllSentimentClassification = ({ S3JsonFileData = [] }) => {
     return 'ExtremelyBearish';
   };
 
-  /* ---------- bucketed 5‑series data (for line chart) ---------- */
+  /* ---------- bucketed 5‑series data (for both charts) ---------- */
   const bucketedData = useMemo(() => {
     const now = new Date();
     const cutoff =
       timeRangeMinutes != null
         ? new Date(now.getTime() - timeRangeMinutes * 60 * 1000)
         : null;
-
-    // type Bucket = {
-    //   time: string;
-    //   ExtremelyBullish: number;
-    //   Bullish: number;
-    //   Neutral: number;
-    //   Bearish: number;
-    //   ExtremelyBearish: number;
-    // };
 
     const map = new Map();
 
@@ -98,11 +86,8 @@ const AllSentimentClassification = ({ S3JsonFileData = [] }) => {
       const totalMinutes = date.getHours() * 60 + date.getMinutes();
       const roundedTotal = Math.floor(totalMinutes / bucketMinutes) * bucketMinutes;
 
-      const roundedHour = Math.floor(roundedTotal / 60);
-      const roundedMinute = roundedTotal % 60;
-
       const bucketDate = new Date(date);
-      bucketDate.setHours(roundedHour, roundedMinute, 0, 0);
+      bucketDate.setHours(Math.floor(roundedTotal / 60), roundedTotal % 60, 0, 0);
 
       const timeKey = bucketDate.toLocaleTimeString('en-US', {
         hour12: false,
@@ -122,26 +107,15 @@ const AllSentimentClassification = ({ S3JsonFileData = [] }) => {
       }
 
       const bucket = map.get(timeKey);
-      if (bucket) {
-        const sentiment = classifySentiment(callVolume, putVolume);
-        bucket[sentiment]++;
-      }
+      const sentiment = classifySentiment(callVolume, putVolume);
+      bucket[sentiment]++;
     });
 
     return Array.from(map.values()).sort((a, b) => a.time.localeCompare(b.time));
   }, [S3JsonFileData, selectedTickers, bucketMinutes, timeRangeMinutes]);
 
-  /* ---------- aggregated 3‑series data (for bar chart) ---------- */
-  const aggregatedBarData = useMemo(
-    () =>
-      bucketedData.map((d) => ({
-        time: d.time,
-        Bullish: d.Bullish + d.ExtremelyBullish,
-        Neutral: d.Neutral,
-        Bearish: d.Bearish + d.ExtremelyBearish,
-      })),
-    [bucketedData]
-  );
+  /* ---------- pass‑through data for bar view ---------- */
+  const aggregatedBarData = useMemo(() => bucketedData, [bucketedData]);
 
   /* ================================================================== */
   /* ============================  RENDER  ============================ */
@@ -221,27 +195,49 @@ const AllSentimentClassification = ({ S3JsonFileData = [] }) => {
       {/* -------------------  CHART  --------------------- */}
       <ResponsiveContainer width="100%" height={400}>
         {chartType === 'line' ? (
+          /* ----------------- LINE VIEW ----------------- */
           <LineChart data={bucketedData}>
             <XAxis dataKey="time" />
             <YAxis allowDecimals={false} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="ExtremelyBullish" stroke="#00b300" dot={false} />
+            <Line
+              type="monotone"
+              dataKey="ExtremelyBullish"
+              stroke="#00b300"
+              dot={false}
+              className="extremely-bullish-blink"
+            />
             <Line type="monotone" dataKey="Bullish" stroke="#66cc66" dot={false} />
             <Line type="monotone" dataKey="Neutral" stroke="#999999" dot={false} />
             <Line type="monotone" dataKey="Bearish" stroke="#ff6666" dot={false} />
             <Line type="monotone" dataKey="ExtremelyBearish" stroke="#cc0000" dot={false} />
           </LineChart>
         ) : (
-          <BarChart data={aggregatedBarData}>
+          /* -------------- BAR + LINE VIEW -------------- */
+          <ComposedChart data={aggregatedBarData}>
             <XAxis dataKey="time" />
             <YAxis allowDecimals={false} />
             <Tooltip />
             <Legend />
-            <Bar dataKey="Bullish" stackId="a" fill="#66cc66" />
-            <Bar dataKey="Neutral" stackId="a" fill="#999999" />
-            <Bar dataKey="Bearish" stackId="a" fill="#cc0000" />
-          </BarChart>
+
+            {/* stacked bars */}
+            <Bar dataKey="ExtremelyBullish" stackId="a" fill="#00b300" />
+            <Bar dataKey="Bullish"          stackId="a" fill="#66cc66" />
+            <Bar dataKey="Neutral"          stackId="a" fill="#999999" />
+            <Bar dataKey="Bearish"          stackId="a" fill="#ff6666" />
+            <Bar dataKey="ExtremelyBearish" stackId="a" fill="#cc0000" />
+
+            {/* overlay line connecting ExtremelyBullish bars */}
+            <Line
+              type="monotone"
+              dataKey="ExtremelyBullish"
+              stroke="#007bff"
+              dot={false}
+              strokeWidth={2}
+              className="extremely-bullish-blink"
+            />
+          </ComposedChart>
         )}
       </ResponsiveContainer>
     </div>

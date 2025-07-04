@@ -77,6 +77,15 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(22px);
 }
+/* ---------- blinking effect for the ExtremelyBullish line ---------- */
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }  /* visible */
+  25%, 75%      { opacity: 0; }  /* invisible */
+}
+
+.extremely-bullish-blink path {
+  animation: blink 1s linear infinite;
+}
 @keyframes blinkLine {
   0% { stroke-opacity: 1; }
   50% { stroke-opacity: 0.5; }
