@@ -115,8 +115,18 @@ const AllSentimentClassification = ({ S3JsonFileData = [] }) => {
   }, [S3JsonFileData, selectedTickers, bucketMinutes, timeRangeMinutes]);
 
   /* ---------- pass‑through data for bar view ---------- */
-  const aggregatedBarData = useMemo(() => bucketedData, [bucketedData]);
-
+  //const aggregatedBarData = useMemo(() => bucketedData, [bucketedData]);
+  /* ---------- data for bar view & overlay line ---------- */
+  /* ---------- data for bar view & overlay lines ---------- */
+  const aggregatedBarData = useMemo(
+    () =>
+      bucketedData.map((d) => ({
+        ...d,
+        EBT: d.ExtremelyBullish,                // height of EB segment
+        BT: d.ExtremelyBullish + d.Bullish,             // EB + Bullish
+      })),
+    [bucketedData]
+  );
   /* ================================================================== */
   /* ============================  RENDER  ============================ */
   /* ================================================================== */
@@ -215,6 +225,7 @@ const AllSentimentClassification = ({ S3JsonFileData = [] }) => {
           </LineChart>
         ) : (
           /* -------------- BAR + LINE VIEW -------------- */
+          /* -------------- BAR + LINE VIEW -------------- */
           <ComposedChart data={aggregatedBarData}>
             <XAxis dataKey="time" />
             <YAxis allowDecimals={false} />
@@ -223,19 +234,27 @@ const AllSentimentClassification = ({ S3JsonFileData = [] }) => {
 
             {/* stacked bars */}
             <Bar dataKey="ExtremelyBullish" stackId="a" fill="#00b300" />
-            <Bar dataKey="Bullish"          stackId="a" fill="#66cc66" />
-            <Bar dataKey="Neutral"          stackId="a" fill="#999999" />
-            <Bar dataKey="Bearish"          stackId="a" fill="#ff6666" />
+            <Bar dataKey="Bullish" stackId="a" fill="#66cc66" />
+            <Bar dataKey="Neutral" stackId="a" fill="#999999" />
+            <Bar dataKey="Bearish" stackId="a" fill="#ff6666" />
             <Bar dataKey="ExtremelyBearish" stackId="a" fill="#cc0000" />
 
-            {/* overlay line connecting ExtremelyBullish bars */}
+            {/* overlay line: top of ExtremelyBullish segment */}
             <Line
               type="monotone"
-              dataKey="ExtremelyBullish"
-              stroke="#007bff"
+              dataKey="EBT"
+              stroke="#e6e6e6"   // vivid green
               dot={false}
               strokeWidth={2}
-              className="extremely-bullish-blink"
+            />
+
+            {/* overlay line: top of Bullish stack (EB + Bullish) */}
+            <Line
+              type="monotone"
+              dataKey="BT"
+              stroke="#007bff"   // darker green
+              dot={false}
+              strokeWidth={2}
             />
           </ComposedChart>
         )}
