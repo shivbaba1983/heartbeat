@@ -43,12 +43,12 @@ const JsonUpdater = () => {
                 assetclass = 'ETF'
             if (selectedDayOrMonth === 'day' && (assetclass === 'ETF')) {
                 if (["TQQQ", "SOXL", "TSLL", "SQQQ", 'AAPU'].includes(ticker))
-                    selectedDate ="2025-07-03";// getComingFriday();
+                    selectedDate = getComingFriday();
                 else
                     selectedDate = getEffectiveDate();
             }
             else if (selectedDayOrMonth === 'day' && assetclass === 'stocks') {
-                selectedDate = "2025-07-03";//getComingFriday();
+                selectedDate = getComingFriday();
             }
 
             if (IS_AWS_API) {
