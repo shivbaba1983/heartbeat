@@ -14,11 +14,10 @@ export const ETF_ASSETCLASS = "ETF";
 export const trendTableList = ["AAL", "AAPL", "AMD", "AMZN", "BABA", "COIN", "DAL", "GME", "GOOG", "HUM", "INTC", "IWM", "META", "MSFT", "NVDA", "QQQ", "SMCI", "SOFI", "SOXL", "SPY", "SQQQ", "TQQQ", "TSLA", "TSLL"];
 
 export const tickerListData = [
-    { idx: 1, value: "NVDA" },
     { idx: 1, value: "SPY" },
     { idx: 2, value: "QQQ" },
-    { idx: 4, value: "IWM" },
-
+    { idx: 3, value: "IWM" },
+    { idx: 4, value: "NVDA" },
     { idx: 5, value: "AAPL" },
     { idx: 12, value: "AMZN" },
     { idx: 13, value: "GOOG" },
@@ -50,6 +49,23 @@ export const dayOrMonthData = [
     { idx: 1, value: "day" },
     { idx: 2, value: "month" },
 
+]
+export const expirationDates = [
+     "2025-07-11T00:00:00.000Z",
+    "2025-07-18T00:00:00.000Z",
+     "2025-07-25T00:00:00.000Z",
+    "2025-08-15T00:00:00.000Z",
+    "2025-09-19T00:00:00.000Z",
+    "2025-10-17T00:00:00.000Z",
+    "2025-11-21T00:00:00.000Z",
+    "2025-12-19T00:00:00.000Z",
+    "2026-01-16T00:00:00.000Z",
+    "2026-03-20T00:00:00.000Z",
+    "2026-06-18T00:00:00.000Z",
+    "2026-12-18T00:00:00.000Z",
+    "2027-01-15T00:00:00.000Z",
+    "2027-06-17T00:00:00.000Z",
+    "2027-12-17T00:00:00.000Z"
 ]
 export const TIME_RANGES = {
     '1D': 1,

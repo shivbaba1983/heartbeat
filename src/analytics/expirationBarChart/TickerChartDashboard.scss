@@ -1,0 +1,125 @@
+/* ------------- Layout wrapper ------------- */
+.ticker-dashboard {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+/* ------------- Top control bar ------------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+
+  label,
+  form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+  }
+
+  select {
+    padding: 6px 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    min-width: 90px;
+  }
+
+  /* manual ticker input */
+  input[type='text'] {
+    width: 100px;
+    padding: 6px 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+  }
+
+  button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s;
+
+    &:hover {
+      background: #005ec2;
+    }
+  }
+}
+
+/* ------------- Volume / Open‑Interest switch ------------- */
+.switch-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+
+  span.active {
+    color: #007bff;
+  }
+
+  .switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ccc;
+      border-radius: 26px;
+      transition: background 0.3s;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 3px;
+        top: 3px;
+        background: #fff;
+        border-radius: 50%;
+        transition: transform 0.3s;
+      }
+    }
+    /* checked state */
+    input:checked + .slider {
+      background: #28a745;
+    }
+    input:checked + .slider::before {
+      transform: translateX(24px);
+    }
+  }
+}
+
+/* ------------- Loading text & empty state ------------- */
+.loading-text,
+.ticker-dashboard > p {
+  margin-top: 32px;
+  font-style: italic;
+  color: #666;
+}
+
+/* ------------- Responsive tweaks ------------- */
+@media (max-width: 600px) {
+  .controls {
+    gap: 10px;
+  }
+  .switch-container {
+    font-size: 0.9rem;
+  }
+}

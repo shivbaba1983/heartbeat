@@ -1,17 +1,44 @@
-.complex-main-route-section {
-    .tab-list {
-       // overflow: hidden;
-        .cms-meganav-section{
-            display: inline-flex;
-            list-style-type: none;
-            .meganav-sublist{
-                margin-right: 10px;
-            }
-        }
-    }
+.cms-container {
+  padding: 16px;
+  font-family: Arial, sans-serif;
+}
 
-    .link-button {
-        display: inline-block;
-        margin-right: 10px;
-    }
+/* ---------- navigation ---------- */
+.nav-bar {
+  display: flex;
+  flex-wrap: wrap;          /* allow wrapping on tiny screens */
+  gap: 16px;
+  margin-bottom: 24px;
+  justify-content: center;  /* center buttons */
+     margin-top: 15px;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  background-color: #0066cc;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+
+  &:hover {
+    background-color: #004999;
+    transform: translateY(-2px);
+  }
+}
+
+/* ---------- mobile tweaks (≤ 480 px) ---------- */
+@media (max-width: 480px) {
+  .nav-bar {
+        margin-top: 15px;
+    flex-direction: column;   /* stack buttons vertically */
+    align-items: stretch;
+  }
+
+  .nav-button {
+
+    width: 100%;              /* full‑width buttons */
+    text-align: center;
+  }
 }

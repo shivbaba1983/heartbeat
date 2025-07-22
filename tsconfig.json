@@ -1,35 +1,43 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./",
-        "target": "es6",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "allowJs": true,
-        "checkJs": false,
-        "skipLibCheck": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "strict": false,
-        "forceConsistentCasingInFileNames": true,
-        "noFallthroughCasesInSwitch": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        //"resolveJsonModule": true,
-        //"isolatedModules": true,
-        //"noEmit": true,
-        "jsx": "react-jsx",
-        "outDir": "dist",
-"resolveJsonModule": true,
-"strictNullChecks": false,
-"skipDefaultLibCheck": true,
+  // Root TS config for Vite + React
+  "compilerOptions": {
+    /* === Language & emit === */
+    "target": "ESNext",                       // Match modern browsers
+    "module": "ESNext",                       // Let Vite handle bundling
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx",                       // New JSX transform
+    
+
+    /* === Module resolution === */
+    "moduleResolution": "Node",
+    "baseUrl": "./",
+    "paths": {                                // (optional) example alias
+      "@/*": ["src/*"]
     },
-    "include": [
-        "**/*.ts",
-        "**/*.tsx",
-        "./.src",
-        "src/**/*",
-        "**/*.scss",
-        "vite.config.ts",
-        "src", 
-        "src/env.d.ts"
-    ]
+    "resolveJsonModule": true,
+
+    /* === Interop / compatibility === */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,                     // Skip .d.ts libs for speed
+    "skipDefaultLibCheck": true,
+
+    /* === Type safety === */
+    "strict": true,                           // Flip to false if you prefer
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,                 // keep null‑checks on
+
+    /* === JS coexistence === */
+    "allowJs": true,                          // Let .js / .jsx live beside TS
+    "checkJs": false,                         // Don’t type‑check pure JS
+
+    /* === Build options === */
+    "isolatedModules": true,                  // Needed when Vite uses esbuild
+    "noEmit": true,                           // ts‑loader: emit handled by Vite
+    "outDir": "dist"                          // Only used by `tsc -b`
+  },
+
+  /* === File globs === */
+  "include": ["src", "vite.config.ts"]
 }

@@ -1,0 +1,54 @@
+.trend-list-container {
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+/* ---------- heading bar ---------- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  h2 { margin: 0; font-size: 1.3rem; display: flex; align-items: center; }
+  .chevron { margin-left: 6px; font-size: 1rem; }
+  .count-badge {
+    background: #0066cc;
+    color: #fff;
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ---------- table ---------- */
+.trend-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+
+  th, td {
+    padding: 8px 10px;
+    text-align: right;
+  }
+  th { cursor: pointer; background: #f2f6fc; }
+
+  tr:nth-child(even) { background: #fafafa; }
+
+  tr.bullish { background: #e8f9f0; }
+  tr.bearish { background: #fdeeee; }
+}
+
+/* ---------- mobile tweaks ---------- */
+@media (max-width: 640px) {
+  th:nth-child(5),
+  td:nth-child(5), // SMA
+  th:nth-child(6),
+  td:nth-child(6), // MACD
+  th:nth-child(7),
+  td:nth-child(7)  // Signal
+  { display: none; } /* hide less‑important cols on phones */
+
+  .header h2 { font-size: 1.1rem; }
+}
