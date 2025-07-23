@@ -9,6 +9,7 @@ import SentimentToggleChart from '../sentiments/SentimentToggleChart';
 import './ReadSThreeBucket.scss';
 import S3AlertTable from './../components/S3AlertTable';
 import { NASDAQ_TOKEN, IS_AWS_API } from '../constant/HeartbeatConstants';
+
 const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker }) => {
   const [data, setData] = useState([]);
   const [completeFileData, setCompleteFileData] = useState([]);
@@ -20,7 +21,6 @@ const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker }) => {
   const [totalPutVolume, setTotalPutVolume] = useState(1);
   const [magnificientSevenTableData, setMagnificientSevenTableData] = useState([]);
   const [alertTickers, setAlertTickers] = useState([]);
-  const [showSecondChart, setShowSecondChart] = useState(false); // NEW
 
   useEffect(() => {
     setSelectedFile(fileName);
@@ -28,6 +28,8 @@ const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker }) => {
 
   const now = new Date();
   const formatted = now.toLocaleString();
+
+  // Prediction input for PredictionHint component
   const predectionInput = [
     {
       id: 1,
@@ -37,6 +39,44 @@ const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker }) => {
       selectedTicker,
     },
   ];
+
+  // Function to calculate prediction for each data point
+  const addPredictionToData = (dataArray) => {
+    return dataArray.map(item => {
+      const callVolume = item.callVolume || 0;
+      const putVolume = item.putVolume || 0;
+
+      // Avoid division by zero
+      const ratio = callVolume === 0 ? Infinity : putVolume / callVolume;
+
+      let prediction = '';
+
+      if (ratio < 0.5) prediction = 'ExtremelyBullish';
+      else if (ratio < 0.7) prediction = 'Bullish';
+      else if (ratio <= 1.0) prediction = 'Neutral';
+      else if (ratio <= 1.3) prediction = 'Bearish';
+      else prediction = 'ExtremelyBearish';
+
+      // For plotting on chart, assign numeric value to prediction
+      // You can customize the numeric scale if you want
+      let predictionValue = 0;
+      switch(prediction) {
+        case 'ExtremelyBullish': predictionValue = 5; break;
+        case 'Bullish': predictionValue = 4; break;
+        case 'Neutral': predictionValue = 3; break;
+        case 'Bearish': predictionValue = 2; break;
+        case 'ExtremelyBearish': predictionValue = 1; break;
+        default: predictionValue = 3;
+      }
+
+      return {
+        ...item,
+        predictionText: prediction,
+        predictionValue,
+        ratio: +ratio.toFixed(2),
+      };
+    });
+  };
 
   useEffect(() => {
     async function fetchFiles() {
@@ -101,9 +141,13 @@ const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker }) => {
             ...item,
             time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
           }));
-        setTotalCallVolume(filteredData.reduce((sum, item) => sum + item.callVolume, 0));
-        setTotalPutVolume(filteredData.reduce((sum, item) => sum + item.putVolume, 0));
-        setData(filteredData);
+
+        // Add prediction info to filteredData
+        const dataWithPrediction = addPredictionToData(filteredData);
+
+        setTotalCallVolume(dataWithPrediction.reduce((sum, item) => sum + item.callVolume, 0));
+        setTotalPutVolume(dataWithPrediction.reduce((sum, item) => sum + item.putVolume, 0));
+        setData(dataWithPrediction);
         setRefreshData(false);
       } catch (err) {
         console.log('Fetched err:', err);
@@ -138,38 +182,28 @@ const ReadSThreeBucket = ({ selectedTicker, fileName, setSelectedTicker }) => {
             <XAxis dataKey="timestamp" tickFormatter={(t) => t.slice(11, 16)} />
             <YAxis yAxisId="left" />
             <YAxis yAxisId="right" orientation="right" domain={[lowerBound, upperBound]} />
-            <Tooltip />
+            <Tooltip 
+              formatter={(value, name, props) => {
+                if(name === 'predictionValue') {
+                  // convert numeric prediction back to text in tooltip
+                  const predTextMap = {
+                    5: 'ExtremelyBullish',
+                    4: 'Bullish',
+                    3: 'Neutral',
+                    2: 'Bearish',
+                    1: 'ExtremelyBearish'
+                  };
+                  return predTextMap[value] || 'Unknown';
+                }
+                return value;
+              }}
+            />
             <Legend />
             <Line yAxisId="left" type="monotone" dataKey="callVolume" stroke="#008000" name="Call Volume" />
             <Line yAxisId="left" type="monotone" dataKey="putVolume" stroke="#FF2C2C" name="Put Volume" />
             <Line yAxisId="right" type="monotone" dataKey="lstPrice" stroke="#00008B" name="Last Price" dot={false} />
-          </LineChart>
-        </ResponsiveContainer>
-      )}
-
-      {/* Toggle Button */}
-      <div className="toggle-container">
-        <label className="switch">
-          <input
-            type="checkbox"
-            checked={showSecondChart}
-            onChange={() => setShowSecondChart(prev => !prev)}
-          />
-          <span className="slider round"></span>
-        </label>
-        <span className="toggle-label">Show Last Price Only Chart</span>
-      </div>
-
-      {/* Conditionally Rendered Second Chart */}
-      {data && showSecondChart && (
-        <ResponsiveContainer width="100%" height={250}>
-          <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="timestamp" tickFormatter={(t) => t.slice(11, 16)} />
-            <YAxis domain={['auto', 'auto']} />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="lstPrice" stroke="#00008B" name="Last Price Movement" dot={false} />
+            {/* New line for prediction */}
+            <Line yAxisId="left" type="monotone" dataKey="predictionValue" stroke="#FFA500" name="Prediction" dot={{ r: 4 }} />
           </LineChart>
         </ResponsiveContainer>
       )}

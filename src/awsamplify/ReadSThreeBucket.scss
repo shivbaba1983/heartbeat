@@ -1,93 +1,80 @@
+// ReadSThreeBucket.scss
+
 .S3readSection {
-    .s3-volumechart-title {
-        background-color: greenyellow;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+
+  .s3-volumechart-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .filename-refresh-button-section {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    select {
+      padding: 6px 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: white;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+        border-color: #008000;
+      }
     }
 
     .refresh-button-sthree {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        margin-left: 10px;
+      padding: 7px 14px;
+      background-color: #008000;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #006400;
+      }
     }
+  }
 
-    .link-like-header {
-        color: #007bff;
-        cursor: pointer;
-        user-select: none;
-        transition: color 0.2s;
+  .link-like-header {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #007acc;
+
+    &:hover {
+      text-decoration: underline;
     }
+  }
+}
 
-    .link-like-header:hover {
-        text-decoration: underline;
-    }
+.custom-tooltip {
+  background-color: #ffffffcc; // Slightly transparent white
+  padding: 10px 15px;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  font-size: 0.9rem;
+  color: #222;
+  line-height: 1.4;
 
-    .filename-refresh-button-section {
-        display: inline;
-    }
+  p {
+    margin: 4px 0;
+  }
 
-    .toggle-container {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin: 12px 0;
-
-        .toggle-label {
-            font-size: 14px;
-            color: #333;
-            user-select: none;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 46px;
-            height: 24px;
-
-            input {
-                opacity: 0;
-                width: 0;
-                height: 0;
-            }
-
-            .slider {
-                position: absolute;
-                cursor: pointer;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: #ccc;
-                transition: 0.4s;
-                border-radius: 34px;
-
-                &::before {
-                    position: absolute;
-                    content: "";
-                    height: 18px;
-                    width: 18px;
-                    left: 3px;
-                    bottom: 3px;
-                    background-color: white;
-                    transition: 0.4s;
-                    border-radius: 50%;
-                }
-            }
-
-            input:checked+.slider {
-                background-color: #4CAF50;
-            }
-
-            input:checked+.slider:before {
-                transform: translateX(22px);
-            }
-
-            &.round .slider {
-                border-radius: 34px;
-
-                &::before {
-                    border-radius: 50%;
-                }
-            }
-        }
-    }
-
+  strong {
+    color: #FFA500; // Match prediction line color
+  }
 }
