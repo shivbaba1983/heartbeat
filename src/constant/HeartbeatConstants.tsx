@@ -12,7 +12,7 @@ export const MAG7 = ["TSLA", "AAPL", "NVDA", "GOOG", "AMZN", "MSFT", "META"];
 export const STOCKS_ASSETCLASS = "stocks";
 export const ETF_ASSETCLASS = "ETF";
 export const trendTableList = ["AAL", "AAPL", "AMD", "AMZN", "BABA", "COIN", "DAL", "GME", "GOOG", "HUM", "INTC", "IWM", "META", "MSFT", "NVDA", "QQQ", "SMCI", "SOFI", "SOXL", "SPY", "SQQQ", "TQQQ", "TSLA", "TSLL"];
-
+export const DAY_CHECKER_STOCKS_LIST = ["AAL", "NIO", "AMD", "BABA", "COIN", "DAL", "GME","INTC",  "SMCI", "SOFI"];
 export const tickerListData = [
     { idx: 1, value: "SPY" },
     { idx: 2, value: "QQQ" },

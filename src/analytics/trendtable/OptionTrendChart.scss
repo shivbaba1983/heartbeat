@@ -1,0 +1,71 @@
+.prediction-table {
+  margin-bottom: 20px;
+
+  h3 {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 1.3rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    thead {
+      background-color: #282c34;
+      color: #ffffff;
+
+      th {
+        padding: 10px 15px;
+        text-align: left;
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        border-bottom: 2px solid #444;
+
+        &:hover {
+          background-color: #3a3f4b;
+        }
+
+        &.sort-asc::after {
+          content: '▲';
+          position: absolute;
+          right: 10px;
+          font-size: 0.7rem;
+          color: #fff;
+        }
+
+        &.sort-desc::after {
+          content: '▼';
+          position: absolute;
+          right: 10px;
+          font-size: 0.7rem;
+          color: #fff;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #ddd;
+
+        &:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+
+        &:hover {
+          background-color: #eef3f7;
+        }
+
+        td {
+          padding: 8px 15px;
+          font-size: 0.9rem;
+          color: #333;
+        }
+      }
+    }
+  }
+}

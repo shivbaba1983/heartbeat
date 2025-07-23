@@ -3,13 +3,15 @@ import SequentialTickerCharts from './../analytics/expirationBarChart/Sequential
 import { expirationDates, LogTickerList } from './../constant/HeartbeatConstants'
 import TickerChartDashboard from './../analytics/expirationBarChart/TickerChartDashboard'
 import TrendListDisplay from './trendtable/TrendListDisplay';
+import OptionTrendChart from './trendtable/OptionTrendChart';
 const AnalyticsDashboard = ({ }) => {
 
   return (<div>
     <p> Welcome, This Analytics Dashboard page</p>
-        <div>
-          <TickerChartDashboard     />
-<TrendListDisplay/>
+    <div>
+      <TickerChartDashboard />
+      <TrendListDisplay />
+      <OptionTrendChart />
     </div>
 
   </div>)
