@@ -30,7 +30,7 @@ const TickerChartDashboard: React.FC = () => {
   const [manual, setManual] = useState('');
   const [metric, setMetric] = useState<'volume' | 'openInterest'>('volume');
   const [loading, setLoading] = useState(false);
-
+  const [showFutureData, setShowFutureData] = useState(false);
   /** cache: ticker → rows */
   const [cache, setCache] = useState<Record<string, Point[]>>({});
 
@@ -49,46 +49,48 @@ const TickerChartDashboard: React.FC = () => {
         futures.map(async (iso) => {
           const ymd = iso.slice(0, 10);
           try {
-            const res = await getNasdaqOptionData(selected, asset, 'day', ymd);
-            const json = await res.json();
-            const tbl = json?.data?.table?.rows ?? [];
+            if (showFutureData) {
+              const res = await getNasdaqOptionData(selected, asset, 'day', ymd);
+              const json = await res.json();
+              const tbl = json?.data?.table?.rows ?? [];
 
-            let callVol = 0,
-              putVol = 0,
-              callOI = 0,
-              putOI = 0,
-              topStrike = '',
-              topSum = 0;
+              let callVol = 0,
+                putVol = 0,
+                callOI = 0,
+                putOI = 0,
+                topStrike = '',
+                topSum = 0;
 
-            tbl.forEach((r: any) => {
-              if (!r.strike) return;
-              const cv = +r.c_Volume || 0,
-                pv = +r.p_Volume || 0,
-                coi = +r.c_Openinterest || 0,
-                poi = +r.p_Openinterest || 0;
+              tbl.forEach((r: any) => {
+                if (!r.strike) return;
+                const cv = +r.c_Volume || 0,
+                  pv = +r.p_Volume || 0,
+                  coi = +r.c_Openinterest || 0,
+                  poi = +r.p_Openinterest || 0;
 
-              callVol += cv;
-              putVol += pv;
-              callOI += coi;
-              putOI += poi;
+                callVol += cv;
+                putVol += pv;
+                callOI += coi;
+                putOI += poi;
 
-              const tot = cv + pv;
-              if (tot > topSum) {
-                topSum = tot;
-                topStrike = r.strike.replace(/\.00$/, '');
-              }
-            });
+                const tot = cv + pv;
+                if (tot > topSum) {
+                  topSum = tot;
+                  topStrike = r.strike.replace(/\.00$/, '');
+                }
+              });
 
-            return {
-              expiration: ymd,
-              callVol,
-              putVol,
-              callOI,
-              putOI,
-              strike: topStrike || '—',
-              callVal: callVol,
-              putVal: putVol,
-            } as Point;
+              return {
+                expiration: ymd,
+                callVol,
+                putVol,
+                callOI,
+                putOI,
+                strike: topStrike || '—',
+                callVal: callVol,
+                putVal: putVol,
+              } as Point;
+            }
           } catch {
             return null;
           }
@@ -106,7 +108,7 @@ const TickerChartDashboard: React.FC = () => {
     return () => {
       cancelled = true;
     };
-  }, [selected]);
+  }, [selected, showFutureData]);
 
   /* -------- transform for metric toggle -------- */
   const chartData =
@@ -131,6 +133,14 @@ const TickerChartDashboard: React.FC = () => {
   /* -------- render -------- */
   return (
     <div className="ticker-dashboard">
+      <label>
+        <input
+          type="checkbox"
+          checked={showFutureData}
+          onChange={(e) => setShowFutureData(e.target.checked)}
+        />
+        {' '}Show Future Data
+      </label>
       {/* controls */}
       <div className="controls">
         {/* dropdown */}

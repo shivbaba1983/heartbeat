@@ -36,7 +36,7 @@ const TrendListDisplay: React.FC = () => {
     dir: 'asc',
   });
   const [isOpen, setIsOpen] = useState(false);
-
+  const [showFutureData, setShowFutureData] = useState(false);
   /* ---------- helpers ---------- */
   const getPastDate = (days: number) =>
     new Date(Date.now() - days * 86_400_000).toISOString();
@@ -81,8 +81,10 @@ const TrendListDisplay: React.FC = () => {
       setLoading(true);
       const out: TrendRow[] = [];
       for (const t of trendTableList) {
-        const row = await fetchTrend(t);
-        if (row) out.push(row);
+        if (showFutureData) {
+          const row = await fetchTrend(t);
+          if (row) out.push(row);
+        }
       }
       setRows(out);
       setLoading(false);
@@ -129,6 +131,15 @@ const TrendListDisplay: React.FC = () => {
   /* ---------- render ---------- */
   return (
     <div className="trend-list-container">
+      <label>
+        <input
+          type="checkbox"
+          checked={showFutureData}
+          onChange={(e) => setShowFutureData(e.target.checked)}
+        />
+        {' '}Show Future Data
+      </label>
+
       {/* heading / toggle */}
       <div className="header" onClick={() => setIsOpen((o) => !o)}>
         <h2>

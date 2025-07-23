@@ -37,15 +37,14 @@ const getPrediction = (callVolume = 0, putVolume = 0) => {
 const OptionTrendChart = () => {
   const [allChartData, setAllChartData] = useState<Record<string, any[]>>({});
   const [chartType, setChartType] = useState<'line' | 'bar'>('line');
-  const [volumes, setVolumes] = useState<Record<string, { call: string; put: string }>>({});
+  const [volumes, setVolumes] = useState<Record<string, { call: string; put: string; lastPrice: number }>>({});
   const [showGraphs, setShowGraphs] = useState(false);
-
+  const [showOptionPrediction, setShowOptionPrediction] = useState(false);
   const assetclass = STOCKS_ASSETCLASS;
   const selectedDayOrMonth = 'Month';
   const selectedDate = '2025-07-25';
   const volumeOrInterest = 'volume';
 
-  // Sorting state: default by 'ratio' ascending
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' }>({
     key: 'ratio',
     direction: 'asc',
@@ -54,7 +53,7 @@ const OptionTrendChart = () => {
   useEffect(() => {
     const fetchAllData = async () => {
       const result: Record<string, any[]> = {};
-      const volumeMap: Record<string, { call: string; put: string }> = {};
+      const volumeMap: Record<string, { call: string; put: string; lastPrice: number }> = {};
 
       for (const ticker of DAY_CHECKER_STOCKS_LIST) {
         try {
@@ -132,6 +131,7 @@ const OptionTrendChart = () => {
           volumeMap[ticker] = {
             call: new Intl.NumberFormat('en-IN').format(totalCall),
             put: new Intl.NumberFormat('en-IN').format(totalPut),
+            lastPrice: lstPrice,
           };
 
         } catch (err) {
@@ -142,13 +142,13 @@ const OptionTrendChart = () => {
       setAllChartData(result);
       setVolumes(volumeMap);
     };
-
-    fetchAllData();
-  }, []);
+    if (showOptionPrediction) {
+      fetchAllData();
+    }
+  }, [showOptionPrediction]);
 
   const colors = ['#8884d8', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb', '#ff0000'];
 
-  // Prepare predictionRows with numeric values for sorting
   const predictionRows = useMemo(() => {
     return DAY_CHECKER_STOCKS_LIST.map(ticker => {
       const callNum = parseInt(volumes[ticker]?.call.replace(/,/g, '') || '0');
@@ -166,7 +166,6 @@ const OptionTrendChart = () => {
     });
   }, [volumes]);
 
-  // Sorting logic
   const sortedRows = useMemo(() => {
     const sortableItems = [...predictionRows];
     if (sortConfig !== null) {
@@ -174,31 +173,24 @@ const OptionTrendChart = () => {
         let aValue = a[sortConfig.key];
         let bValue = b[sortConfig.key];
 
-        // Convert strings with commas to numbers for sorting
         if (typeof aValue === 'string' && !isNaN(parseFloat(aValue.replace(/,/g, '')))) {
           aValue = parseFloat(aValue.replace(/,/g, ''));
           bValue = parseFloat(bValue.replace(/,/g, ''));
         }
 
-        // For ticker and prediction which are strings, do case-insensitive compare
-        if (typeof aValue === 'string' && sortConfig.key !== 'prediction' && sortConfig.key !== 'ticker') {
+        if (typeof aValue === 'string') {
           aValue = aValue.toLowerCase();
           bValue = bValue.toLowerCase();
         }
 
-        if (aValue < bValue) {
-          return sortConfig.direction === 'asc' ? -1 : 1;
-        }
-        if (aValue > bValue) {
-          return sortConfig.direction === 'asc' ? 1 : -1;
-        }
+        if (aValue < bValue) return sortConfig.direction === 'asc' ? -1 : 1;
+        if (aValue > bValue) return sortConfig.direction === 'asc' ? 1 : -1;
         return 0;
       });
     }
     return sortableItems;
   }, [predictionRows, sortConfig]);
 
-  // Change sort on header click
   const requestSort = (key: string) => {
     let direction: 'asc' | 'desc' = 'asc';
     if (sortConfig.key === key && sortConfig.direction === 'asc') {
@@ -207,11 +199,8 @@ const OptionTrendChart = () => {
     setSortConfig({ key, direction });
   };
 
-  // Add arrow indicator CSS class for sorted column
   const getClassNamesFor = (name: string) => {
-    if (!sortConfig) {
-      return;
-    }
+    if (!sortConfig) return;
     return sortConfig.key === name ? (sortConfig.direction === 'asc' ? 'sort-asc' : 'sort-desc') : undefined;
   };
 
@@ -221,10 +210,16 @@ const OptionTrendChart = () => {
         <label>
           <input
             type="checkbox"
+            checked={showOptionPrediction}
+            onChange={(e) => setShowOptionPrediction(e.target.checked)}
+          /> Show Prediction
+        </label>
+        <label>
+          <input
+            type="checkbox"
             checked={showGraphs}
             onChange={(e) => setShowGraphs(e.target.checked)}
-          />
-          {' '}Show Graphs
+          /> Show Graphs
         </label>
       </div>
 
@@ -271,25 +266,36 @@ const OptionTrendChart = () => {
             <div key={ticker} className="ticker-chart">
               <h2>{ticker} Total Call {volumeOrInterest}: {volumes[ticker]?.call || '-'}</h2>
               <h2>{ticker} Total Put {volumeOrInterest}: {volumes[ticker]?.put || '-'}</h2>
+              <h2>{ticker} Last Price: {volumes[ticker]?.lastPrice || '-'}</h2>
 
               <ResponsiveContainer width="100%" height={500}>
                 {chartType === 'line' ? (
                   <LineChart data={allChartData[ticker] || []}>
                     <CartesianGrid strokeDasharray="2 2" />
                     <XAxis dataKey="strike" type="number" domain={["auto", "auto"]} />
-                    <YAxis />
+                    <YAxis yAxisId="left" />
+                    <YAxis yAxisId="right" orientation="right" />
                     <Tooltip />
                     <Legend />
                     {Object.keys(allChartData[ticker]?.[0] || {})
                       .filter(k => k.startsWith('call_'))
                       .map((k, idx) => (
-                        <Line key={k} type="monotone" dataKey={k} stroke={colors[idx % colors.length]} dot={false} strokeWidth={2} />
+                        <Line key={k} type="monotone" yAxisId="left" dataKey={k} stroke={colors[idx % colors.length]} dot={false} strokeWidth={2} />
                       ))}
                     {Object.keys(allChartData[ticker]?.[0] || {})
                       .filter(k => k.startsWith('put_'))
                       .map((k, idx) => (
-                        <Line key={k} type="monotone" dataKey={k} stroke={colors[(idx + 3) % colors.length]} dot={false} strokeWidth={2} />
+                        <Line key={k} type="monotone" yAxisId="left" dataKey={k} stroke={colors[(idx + 3) % colors.length]} dot={false} strokeWidth={2} />
                       ))}
+                    <Line
+                      type="monotone"
+                      yAxisId="right"
+                      dataKey={() => volumes[ticker]?.lastPrice}
+                      stroke="#000000"
+                      dot={false}
+                      strokeWidth={2}
+                      name="Last Price"
+                    />
                   </LineChart>
                 ) : (
                   <BarChart data={allChartData[ticker] || []}>
