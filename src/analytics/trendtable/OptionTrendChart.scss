@@ -7,63 +7,69 @@
     font-size: 1.3rem;
   }
 
-  table {
+  .table-wrapper {
     width: 100%;
-    border-collapse: collapse;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: auto;
 
-    thead {
-      background-color: #282c34;
-      color: #ffffff;
+    table {
+      width: 100%;
+      border-collapse: collapse; // important for clean lines
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      table-layout: auto;
 
-      th {
-        padding: 10px 15px;
-        text-align: left;
-        cursor: pointer;
-        position: relative;
-        user-select: none;
-        font-weight: 600;
-        font-size: 0.9rem;
-        border-bottom: 2px solid #444;
+      thead {
+        background-color: #282c34;
+        color: #ffffff;
 
-        &:hover {
-          background-color: #3a3f4b;
-        }
+        th {
+          padding: 10px 12px;
+          font-size: 0.9rem;
+          white-space: nowrap;
+          border: 1px solid #ccc; // border for header cells
 
-        &.sort-asc::after {
-          content: '▲';
-          position: absolute;
-          right: 10px;
-          font-size: 0.7rem;
-          color: #fff;
-        }
-
-        &.sort-desc::after {
-          content: '▼';
-          position: absolute;
-          right: 10px;
-          font-size: 0.7rem;
-          color: #fff;
+          &.sort-asc::after,
+          &.sort-desc::after {
+            right: 6px;
+            font-size: 0.7rem;
+          }
         }
       }
-    }
 
-    tbody {
-      tr {
-        border-bottom: 1px solid #ddd;
+      tbody {
+        tr {
+          &:nth-child(even) {
+            background-color: #f9f9f9;
+          }
 
-        &:nth-child(even) {
-          background-color: #f9f9f9;
-        }
-
-        &:hover {
-          background-color: #eef3f7;
+          &:hover {
+            background-color: #eef3f7;
+          }
         }
 
         td {
-          padding: 8px 15px;
+          padding: 8px 12px;
           font-size: 0.9rem;
           color: #333;
+          border: 1px solid #ddd; // border for data cells
+          word-break: break-word;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    h3 {
+      font-size: 1rem;
+    }
+
+    .table-wrapper {
+      table {
+        font-size: 0.75rem;
+
+        thead th,
+        tbody td {
+          padding: 2px 6px;
+          font-size: 0.75rem;
         }
       }
     }

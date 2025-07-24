@@ -225,6 +225,7 @@ const OptionTrendChart = () => {
 
       <div className="prediction-table">
         <h3>Prediction Summary</h3>
+          <div className="table-wrapper">
         <table>
           <thead>
             <tr>
@@ -247,6 +248,7 @@ const OptionTrendChart = () => {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
 
       {showGraphs && (
