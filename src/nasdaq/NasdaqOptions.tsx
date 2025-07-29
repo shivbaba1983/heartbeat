@@ -33,6 +33,7 @@ const NasdaqOptions = () => {
   const [data, setData] = useState([]);
   const [lastTrade, setLastTrade] = useState('');
   const [requestedDate, setRequestedDate] = useState('');
+  const [inputTickerText, setInputTickerText] = useState('');
 
   const [showBarChart, setShowBarChart] = useState(true);
   const [showMarketdata, setShowMarketdata] = useState(false);
@@ -240,6 +241,19 @@ const NasdaqOptions = () => {
 
   };
 
+  const handleInputTickerText = async (e) => {
+    e.preventDefault();
+    const ticker = e.target.value.toUpperCase();
+    let selectedAsset = "ETF"
+    setInputTickerText(ticker);
+    if (ETF_List.includes(ticker)) {
+      selectedAsset = 'ETF';
+    }
+    else {
+      selectedAsset = 'stocks';
+    }
+    setAssetclass(selectedAsset);
+  };
 
   const handleTickerChange = async (e) => {
     e.preventDefault();
@@ -262,9 +276,9 @@ const NasdaqOptions = () => {
     let selectedAsset = "ETF"
     setData([]);
     setAssetclass('');
-    //setSelectedTicker(ticker);
+    setSelectedTicker(inputTickerText);
 
-    if (ETF_List.includes(selectedTicker)) {
+    if (ETF_List.includes(inputTickerText)) {
       selectedAsset = 'ETF';
     }
     else {
@@ -326,7 +340,7 @@ const NasdaqOptions = () => {
           <div className="common-left-margin">
             <input
               type="text"
-              onChange={(e) => handleTickerChange(e)}
+              onChange={(e) => handleInputTickerText(e)}
               placeholder="Ticker..."
             />
           </div>
