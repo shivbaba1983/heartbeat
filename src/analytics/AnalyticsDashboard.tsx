@@ -4,6 +4,7 @@ import { expirationDates, LogTickerList } from './../constant/HeartbeatConstants
 import TickerChartDashboard from './../analytics/expirationBarChart/TickerChartDashboard'
 import TrendListDisplay from './trendtable/TrendListDisplay';
 import OptionTrendChart from './trendtable/OptionTrendChart';
+import  RSIChart from "./../analytics/rsi/RSIChart";
 const AnalyticsDashboard = ({ }) => {
 
   return (<div>
@@ -12,6 +13,7 @@ const AnalyticsDashboard = ({ }) => {
       <TickerChartDashboard />
       <TrendListDisplay />
       <OptionTrendChart />
+      <RSIChart/>
     </div>
 
   </div>)

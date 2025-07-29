@@ -1,0 +1,46 @@
+.rsi-chart-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin: 20px auto;
+  max-width: auto;
+
+  h2 {
+    margin-bottom: 16px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+
+  .rsi-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    margin-bottom: 16px;
+
+    input[type='checkbox'] {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    label {
+      cursor: pointer;
+      color: #444;
+    }
+  }
+
+  .recharts-wrapper {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .recharts-cartesian-grid line {
+    stroke: #eee;
+  }
+
+  .recharts-tooltip-wrapper {
+    font-size: 0.85rem;
+  }
+}

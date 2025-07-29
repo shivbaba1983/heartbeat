@@ -90,7 +90,7 @@ const TrendListDisplay: React.FC = () => {
       setLoading(false);
       setDataLoaded(true);
     })();
-  }, [isOpen, dataLoaded]);
+  }, [isOpen, dataLoaded, showFutureData]);
 
   /* ---------- counts for bar‑chart ---------- */
   const trendCounts = useMemo(() => {
