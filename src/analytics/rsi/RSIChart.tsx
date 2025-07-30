@@ -26,6 +26,20 @@ const RSIChart = () => {
     fetchRSIData();
   }, [showFRSIData]);
 
+//delet it just added for testing
+  //   useEffect(() => {
+  //   const checkRSIData = async () => {
+  //     try {
+  //       const response = await fetch(`http://localhost:3000/api/checkrsi`);
+  //       const json = await response.json();
+  //       setData(json);
+  //     } catch (error) {
+  //       console.error('Failed to fetch RSI data:', error);
+  //     }
+  //   };
+  //   checkRSIData();
+  // }, []);
+
   return (
     <div className="rsi-chart-container">
       <div className="rsi-toggle">

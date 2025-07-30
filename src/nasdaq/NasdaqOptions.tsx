@@ -246,13 +246,13 @@ const NasdaqOptions = () => {
     const ticker = e.target.value.toUpperCase();
     let selectedAsset = "ETF"
     setInputTickerText(ticker);
-    if (ETF_List.includes(ticker)) {
-      selectedAsset = 'ETF';
-    }
-    else {
-      selectedAsset = 'stocks';
-    }
-    setAssetclass(selectedAsset);
+    // if (ETF_List.includes(ticker)) {
+    //   selectedAsset = 'ETF';
+    // }
+    // else {
+    //   selectedAsset = 'stocks';
+    // }
+    // setAssetclass(selectedAsset);
   };
 
   const handleTickerChange = async (e) => {
