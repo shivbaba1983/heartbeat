@@ -97,35 +97,35 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
     setMergedChartData(data);
   }, [tempRowData, volumeOrInterest]);
 
-  const formattedCall = new Intl.NumberFormat('en-IN').format(
+  const formattedCall =
     mergedChartData.reduce(
       (sum, item) => sum + Object.keys(item)
         .filter(k => k.startsWith('call_'))
         .reduce((s, key) => s + (item[key] || 0), 0),
       0
     )
-  );
 
-  const formattedPut = new Intl.NumberFormat('en-IN').format(
+  const formattedPut =
     mergedChartData.reduce(
       (sum, item) => sum + Object.keys(item)
         .filter(k => k.startsWith('put_'))
         .reduce((s, key) => s + (item[key] || 0), 0),
       0
     )
-  );
+  const callDisplay = new Intl.NumberFormat('en-IN').format(formattedPut)
+  const putDisplay = new Intl.NumberFormat('en-IN').format(formattedPut)
 
   const colors = ['#8884d8', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb', '#ff0000'];
 
   return (
     <div className="option-volume-chart">
-      <PredictionHint
+      {<PredictionHint
         selectedTicker={selectedTicker}
         predectionInput={[{ id: 1, callVolume: formattedCall, putVolume: formattedPut, timestamp: new Date().toLocaleString() }]}
-      />
+      />}
 
-      <h2>{`${selectedTicker} Total Call ${volumeOrInterest}: ${formattedCall}`}</h2>
-      <h2>{`${selectedTicker} Total Put ${volumeOrInterest}: ${formattedPut}`}</h2>
+      <h2>{`${selectedTicker} Total ${volumeOrInterest}: Call ${callDisplay}, Put ${putDisplay}`}</h2>
+
 
       <div className="chart-type-toggle">
         <label className={chartType === 'line' ? 'active' : ''}>
