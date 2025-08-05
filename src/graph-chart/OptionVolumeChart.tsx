@@ -15,10 +15,29 @@ import OwnChart from '../own-chart/OwnChart';
 import PredictionHint from './../components/PredictionHint';
 import './OptionVolumeChart.scss';
 
-const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelectedTicker}) => {
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    const allData = payload[0].payload;
+    return (
+      <div className="custom-tooltip" style={{ background: '#fff', border: '1px solid #ccc', padding: '10px' }}>
+        <p><strong>Strike:</strong> {label}</p>
+        {payload.map((entry, idx) => (
+          <p key={idx} style={{ color: entry.color }}>
+            {entry.name}: {entry.value}
+          </p>
+        ))}
+        <p><strong>Call Last:</strong> {allData.c_Last ?? 'N/A'}</p>
+        <p><strong>Put Last:</strong> {allData.p_Last ?? 'N/A'}</p>
+      </div>
+    );
+  }
+  return null;
+};
+
+const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelectedTicker }) => {
   const [tempRowData, setTempRowData] = useState(rows);
   const [mergedChartData, setMergedChartData] = useState([]);
-  const [chartType, setChartType] = useState('line'); // 'line' or 'bar'
+  const [chartType, setChartType] = useState('bar');
 
   useEffect(() => {
     setTempRowData(rows);
@@ -27,26 +46,36 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
   useEffect(() => {
     const callGroupedData = {};
     const putGroupedData = {};
+    const lastPriceMap = {};
 
     tempRowData.forEach((row) => {
       const strike = parseFloat(row.strike);
       if (isNaN(strike)) return;
 
+      const exp = row.expiryDate || 'Unknown';
+
       if (row.c_Volume != null) {
         const vol = volumeOrInterest === 'volume'
           ? parseInt(row.c_Volume.replace(/,/g, '')) || 0
           : parseInt(row.c_Openinterest.replace(/,/g, '')) || 0;
-        const exp = row.expiryDate || 'Unknown';
         callGroupedData[exp] = callGroupedData[exp] || {};
         callGroupedData[exp][strike] = vol;
       }
+
       if (row.p_Volume != null) {
         const vol = volumeOrInterest === 'volume'
           ? parseInt(row.p_Volume.replace(/,/g, '')) || 0
           : parseInt(row.p_Openinterest.replace(/,/g, '')) || 0;
-        const exp = row.expiryDate || 'Unknown';
         putGroupedData[exp] = putGroupedData[exp] || {};
         putGroupedData[exp][strike] = vol;
+      }
+
+      // Store latest c_Last and p_Last per strike (only first encountered or latest)
+      if (!lastPriceMap[strike]) {
+        lastPriceMap[strike] = {
+          c_Last: row.c_Last,
+          p_Last: row.p_Last,
+        };
       }
     });
 
@@ -55,7 +84,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
     ).sort((a, b) => a - b);
 
     const data = strikes.map(strike => {
-      const entry = { strike };
+      const entry = { strike, ...lastPriceMap[strike] };
       Object.keys(callGroupedData).forEach(exp => {
         entry[`call_${exp}`] = callGroupedData[exp][strike] || 0;
       });
@@ -76,6 +105,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
       0
     )
   );
+
   const formattedPut = new Intl.NumberFormat('en-IN').format(
     mergedChartData.reduce(
       (sum, item) => sum + Object.keys(item)
@@ -97,7 +127,6 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
       <h2>{`${selectedTicker} Total Call ${volumeOrInterest}: ${formattedCall}`}</h2>
       <h2>{`${selectedTicker} Total Put ${volumeOrInterest}: ${formattedPut}`}</h2>
 
-      {/* Chart Type Toggle */}
       <div className="chart-type-toggle">
         <label className={chartType === 'line' ? 'active' : ''}>
           <input
@@ -127,7 +156,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
             <CartesianGrid strokeDasharray="2 2" />
             <XAxis dataKey="strike" type="number" domain={["auto", "auto"]} />
             <YAxis />
-            <Tooltip />
+            <Tooltip content={<CustomTooltip />} />
             <Legend />
             {Object.keys(mergedChartData[0] || {})
               .filter(key => key.startsWith('call_'))
@@ -161,7 +190,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
             <CartesianGrid strokeDasharray="2 2" />
             <XAxis dataKey="strike" type="number" domain={["auto", "auto"]} />
             <YAxis />
-            <Tooltip />
+            <Tooltip content={<CustomTooltip />} />
             <Legend />
             {Object.keys(mergedChartData[0] || {})
               .filter(key => key.startsWith('call_'))

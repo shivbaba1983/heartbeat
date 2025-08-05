@@ -64,8 +64,29 @@ const OptionTrendChart = () => {
             const response = await getNasdaqOptionData(ticker, assetclass, selectedDayOrMonth, selectedDate);
             const latestData = await response.json();
             rows = latestData?.data?.table?.rows || [];
-            const match = latestData?.data?.lastTrade?.match(/\$([\d.]+)/);
-            lstPrice = match ? parseFloat(match[1]) : 0;
+            let highestVolume = 0;
+            let optionLastPrice = 0;
+
+            rows.forEach((row) => {
+              const cVolume = parseInt(row.c_Volume?.replace(/,/g, '') || '0');
+              const cLast = parseFloat(row.c_Last || '0');
+
+              if (cVolume > highestVolume && !isNaN(cLast)) {
+                highestVolume = cVolume;
+                optionLastPrice = cLast;
+              }
+
+              const pVolume = parseInt(row.p_Volume?.replace(/,/g, '') || '0');
+              const pLast = parseFloat(row.p_Last || '0');
+
+              if (pVolume > highestVolume && !isNaN(pLast)) {
+                highestVolume = pVolume;
+                optionLastPrice = pLast;
+              }
+            });
+
+            lstPrice = optionLastPrice;
+
           } else {
             const tempToken = import.meta.env.VITE_STOCK_API_URL;
             const res = await axios.get(`${tempToken}/api/options/${ticker}/${assetclass}/${selectedDayOrMonth}`);
@@ -225,29 +246,29 @@ const OptionTrendChart = () => {
 
       <div className="prediction-table">
         <h3>Prediction Summary</h3>
-          <div className="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th onClick={() => requestSort('ticker')} className={getClassNamesFor('ticker')}>Ticker</th>
-              <th onClick={() => requestSort('callNum')} className={getClassNamesFor('callNum')}>Call Volume</th>
-              <th onClick={() => requestSort('putNum')} className={getClassNamesFor('putNum')}>Put Volume</th>
-              <th onClick={() => requestSort('ratio')} className={getClassNamesFor('ratio')}>Ratio</th>
-              <th onClick={() => requestSort('prediction')} className={getClassNamesFor('prediction')}>Prediction</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedRows.map((row) => (
-              <tr key={row.ticker}>
-                <td>{row.ticker}</td>
-                <td>{row.callVolume}</td>
-                <td>{row.putVolume}</td>
-                <td>{row.ratio}</td>
-                <td>{row.prediction}</td>
+        <div className="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th onClick={() => requestSort('ticker')} className={getClassNamesFor('ticker')}>Ticker</th>
+                <th onClick={() => requestSort('callNum')} className={getClassNamesFor('callNum')}>Call Volume</th>
+                <th onClick={() => requestSort('putNum')} className={getClassNamesFor('putNum')}>Put Volume</th>
+                <th onClick={() => requestSort('ratio')} className={getClassNamesFor('ratio')}>Ratio</th>
+                <th onClick={() => requestSort('prediction')} className={getClassNamesFor('prediction')}>Prediction</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {sortedRows.map((row) => (
+                <tr key={row.ticker}>
+                  <td>{row.ticker}</td>
+                  <td>{row.callVolume}</td>
+                  <td>{row.putVolume}</td>
+                  <td>{row.ratio}</td>
+                  <td>{row.prediction}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
 
