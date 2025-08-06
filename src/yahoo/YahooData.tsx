@@ -132,6 +132,9 @@ const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay,
 
     ]
 
+    const localCall = new Intl.NumberFormat('en-IN').format(totalCallVolume)
+    const localPut = new Intl.NumberFormat('en-IN').format(totalPutVolume)
+
     return (
         <div>
             {!isLoading && <LoadingIndicator />}
@@ -140,8 +143,8 @@ const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay,
                 <div className="yahoo-chart-section">
                     <h3>
                         Yahoo-{volumeOrInterest}-Call-
-                        <span className={predectionInput[0].customClassName}>{totalCallVolume} </span>,
-                        Put-{totalPutVolume} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}
+                        <span className={predectionInput[0].customClassName}>{localCall} </span>,
+                        Put-{localPut} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}
                     </h3>
 
                     {totalCallVolume > 0 && (

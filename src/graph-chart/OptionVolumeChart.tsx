@@ -112,7 +112,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
         .reduce((s, key) => s + (item[key] || 0), 0),
       0
     )
-  const callDisplay = new Intl.NumberFormat('en-IN').format(formattedPut)
+  const callDisplay = new Intl.NumberFormat('en-IN').format(formattedCall)
   const putDisplay = new Intl.NumberFormat('en-IN').format(formattedPut)
 
   const colors = ['#8884d8', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb', '#ff0000'];
