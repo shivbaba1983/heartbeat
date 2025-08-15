@@ -19,7 +19,10 @@ import {
   IS_AWS_API,
   STOCKS_ASSETCLASS,
 } from '@/constant/HeartbeatConstants';
+import { getComingFriday } from './../../common/nasdaq.common';
 import { getNasdaqOptionData } from '@/services/NasdaqDataService';
+
+const ALL_TICKERS =DAY_CHECKER_STOCKS_LIST;// ['AAPL', 'MSFT', 'GOOGL', 'TSLA', 'AMZN', 'NVDA', 'META', 'NFLX'];
 
 const getPrediction = (callVolume = 0, putVolume = 0) => {
   const ratio = callVolume === 0 ? Infinity : putVolume / callVolume;
@@ -35,6 +38,9 @@ const getPrediction = (callVolume = 0, putVolume = 0) => {
 };
 
 const OptionTrendChart = () => {
+  const [availableTickers, setAvailableTickers] = useState<string[]>(ALL_TICKERS);
+  const [selectedTickers, setSelectedTickers] = useState<string[]>([]);
+
   const [rawRowsMap, setRawRowsMap] = useState<Record<string, any[]>>({});
   const [allChartData, setAllChartData] = useState<Record<string, any[]>>({});
   const [volumes, setVolumes] = useState<Record<string, { call: string; put: string; lastPrice: number }>>({});
@@ -42,22 +48,23 @@ const OptionTrendChart = () => {
   const [showGraphs, setShowGraphs] = useState(false);
   const [showOptionPrediction, setShowOptionPrediction] = useState(false);
   const [volumeOrInterest, setVolumeOrInterest] = useState<'volume' | 'openInterest'>('volume');
+  const [selectedDayOrMonth, setSelectedDayOrMonth] = useState<'Day' | 'Month'>('Day');
+
+  const selectedDate = getComingFriday();
   const assetclass = STOCKS_ASSETCLASS;
-  const selectedDayOrMonth = 'Month';
-  const selectedDate = '2025-07-25';
 
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' }>({
     key: 'ratio',
     direction: 'asc',
   });
 
-  // FETCH raw data only ONCE when showOptionPrediction enabled
+  // Fetch data
   useEffect(() => {
     const fetchData = async () => {
       const rawData: Record<string, any[]> = {};
       const volumeMap: Record<string, { call: string; put: string; lastPrice: number }> = {};
 
-      for (const ticker of DAY_CHECKER_STOCKS_LIST) {
+      for (const ticker of selectedTickers) {
         try {
           let rows: any[] = [];
           let lastPrice = 0;
@@ -69,7 +76,6 @@ const OptionTrendChart = () => {
 
             let highestVolume = 0;
             let optionLastPrice = 0;
-
             rows.forEach(row => {
               const cVolume = parseInt(row.c_Volume?.replace(/,/g, '') || '0');
               const pVolume = parseInt(row.p_Volume?.replace(/,/g, '') || '0');
@@ -84,11 +90,9 @@ const OptionTrendChart = () => {
                 optionLastPrice = pLast;
               }
             });
-
             lastPrice = optionLastPrice;
           } else {
-            const tempToken = import.meta.env.VITE_STOCK_API_URL;
-            const res = await axios.get(`${tempToken}/api/options/${ticker}/${assetclass}/${selectedDayOrMonth}`);
+            const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${ticker}/${assetclass}/${selectedDayOrMonth}`);
             rows = res.data?.data?.table?.rows || [];
             const match = res.data?.data?.lastTrade?.match(/\$([\d.]+)/);
             lastPrice = match ? parseFloat(match[1]) : 0;
@@ -105,17 +109,17 @@ const OptionTrendChart = () => {
       setVolumes(volumeMap);
     };
 
-    if (showOptionPrediction) {
+    if (showOptionPrediction && selectedTickers.length > 0) {
       fetchData();
     }
-  }, [showOptionPrediction]);
+  }, [showOptionPrediction, selectedDayOrMonth, selectedTickers]);
 
-  // Process chart data from raw rows based on volumeOrInterest
+  // Process chart data
   useEffect(() => {
     const result: Record<string, any[]> = {};
     const volumeMap: Record<string, { call: string; put: string; lastPrice: number }> = { ...volumes };
 
-    for (const ticker of DAY_CHECKER_STOCKS_LIST) {
+    for (const ticker of selectedTickers) {
       const rows = rawRowsMap[ticker] || [];
       const callGrouped: any = {};
       const putGrouped: any = {};
@@ -147,13 +151,11 @@ const OptionTrendChart = () => {
         const entry: any = { strike };
         Object.keys(callGrouped).forEach(exp => {
           entry[`call_${exp}`] = callGrouped[exp][strike] || 0;
-          // Add c_Last
           const row = rows.find(r => parseFloat(r.strike) === strike && r.expiryDate === exp);
           entry[`cLast_${exp}`] = row ? parseFloat(row.c_Last || '0') : null;
         });
         Object.keys(putGrouped).forEach(exp => {
           entry[`put_${exp}`] = putGrouped[exp][strike] || 0;
-          // Add p_Last
           const row = rows.find(r => parseFloat(r.strike) === strike && r.expiryDate === exp);
           entry[`pLast_${exp}`] = row ? parseFloat(row.p_Last || '0') : null;
         });
@@ -181,7 +183,7 @@ const OptionTrendChart = () => {
   const colors = ['#8884d8', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb', '#ff0000'];
 
   const predictionRows = useMemo(() => {
-    return DAY_CHECKER_STOCKS_LIST.map(ticker => {
+    return selectedTickers.map(ticker => {
       const callNum = parseInt(volumes[ticker]?.call.replace(/,/g, '') || '0');
       const putNum = parseInt(volumes[ticker]?.put.replace(/,/g, '') || '0');
       const { ratio, prediction } = getPrediction(callNum, putNum);
@@ -195,7 +197,7 @@ const OptionTrendChart = () => {
         putNum,
       };
     });
-  }, [volumes]);
+  }, [volumes, selectedTickers]);
 
   const sortedRows = useMemo(() => {
     const sortableItems = [...predictionRows];
@@ -203,17 +205,14 @@ const OptionTrendChart = () => {
       sortableItems.sort((a, b) => {
         let aValue = a[sortConfig.key];
         let bValue = b[sortConfig.key];
-
         if (typeof aValue === 'string' && !isNaN(parseFloat(aValue.replace(/,/g, '')))) {
           aValue = parseFloat(aValue.replace(/,/g, ''));
           bValue = parseFloat(bValue.replace(/,/g, ''));
         }
-
         if (typeof aValue === 'string') {
           aValue = aValue.toLowerCase();
           bValue = bValue.toLowerCase();
         }
-
         if (aValue < bValue) return sortConfig.direction === 'asc' ? -1 : 1;
         if (aValue > bValue) return sortConfig.direction === 'asc' ? 1 : -1;
         return 0;
@@ -237,184 +236,124 @@ const OptionTrendChart = () => {
 
   return (
     <div className="option-volume-chart">
-      <div style={{ marginBottom: '10px' }}>
-        <label>
-          <input
-            type="checkbox"
-            checked={showOptionPrediction}
-            onChange={(e) => setShowOptionPrediction(e.target.checked)}
-          /> Show Prediction
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={showGraphs}
-            onChange={(e) => setShowGraphs(e.target.checked)}
-          /> Show Graphs
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="volumeOrInterest"
-            value="volume"
-            checked={volumeOrInterest === 'volume'}
-            onChange={() => setVolumeOrInterest('volume')}
-          /> Volume
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="volumeOrInterest"
-            value="openInterest"
-            checked={volumeOrInterest === 'openInterest'}
-            onChange={() => setVolumeOrInterest('openInterest')}
-          /> Open Interest
-        </label>
-      </div>
-      {/* ...remaining code unchanged... */}
-      <div className="prediction-table">
-        <h3>Prediction Summary</h3>
-        <div className="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th onClick={() => requestSort('ticker')} className={getClassNamesFor('ticker')}>Ticker</th>
-                <th onClick={() => requestSort('callNum')} className={getClassNamesFor('callNum')}>Call {volumeOrInterest}</th>
-                <th onClick={() => requestSort('putNum')} className={getClassNamesFor('putNum')}>Put {volumeOrInterest}</th>
-                <th onClick={() => requestSort('ratio')} className={getClassNamesFor('ratio')}>Ratio</th>
-                <th onClick={() => requestSort('prediction')} className={getClassNamesFor('prediction')}>Prediction</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedRows.map((row) => (
-                <tr key={row.ticker}>
-                  <td>{row.ticker}</td>
-                  <td>{row.callVolume}</td>
-                  <td>{row.putVolume}</td>
-                  <td>{row.ratio}</td>
-                  <td>{row.prediction}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      {showGraphs && (
-        <>
-          <div className="chart-type-toggle">
-            <label className={chartType === 'line' ? 'active' : ''}>
-              <input type="radio" value="line" checked={chartType === 'line'} onChange={() => setChartType('line')} />
-              Line Chart
-            </label>
-            <label className={chartType === 'bar' ? 'active' : ''}>
-              <input type="radio" value="bar" checked={chartType === 'bar'} onChange={() => setChartType('bar')} />
-              Bar Chart
-            </label>
-          </div>
-
-          {DAY_CHECKER_STOCKS_LIST.map((ticker) => (
-            <div key={ticker} className="ticker-chart">
-              <h2>{ticker} Total Call {volumeOrInterest}: {volumes[ticker]?.call || '-'} | Total Put {volumeOrInterest}: {volumes[ticker]?.put || '-'} | Last Price: {volumes[ticker]?.lastPrice || '-'}</h2>
-
-
-              <ResponsiveContainer width="100%" height={500}>
-                {chartType === 'line' ? (
-                  <LineChart data={allChartData[ticker] || []}>
-                    <CartesianGrid strokeDasharray="2 2" />
-                    <XAxis dataKey="strike" type="number" domain={["auto", "auto"]} />
-                    <YAxis yAxisId="left" />
-                    <YAxis yAxisId="right" orientation="right" />
-                    {/* Tool tip display on mouse hoer */}
-                    <Tooltip
-                      content={({ active, payload, label }) => {
-                        if (active && payload && payload.length) {
-                          return (
-                            <div className="custom-tooltip" style={{ background: 'white', padding: '10px', border: '1px solid #ccc' }}>
-                              <p><strong>Strike:</strong> {label}</p>
-                              {payload.map((item, index) => {
-                                const exp = item.dataKey.split('_')[1];
-                                const isCall = item.dataKey.startsWith('call_');
-                                const lastKey = isCall ? `cLast_${exp}` : `pLast_${exp}`;
-                                const lastVal = item.payload[lastKey];
-
-                                return (
-                                  <div key={index}>
-                                    <p style={{ color: item.color, margin: 0 }}>
-                                      {isCall ? 'Call' : 'Put'} ({exp}): {item.value} | Last: {lastVal ?? '-'}
-                                    </p>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          );
-                        }
-                        return null;
-                      }}
-                    />
-
-                    <Legend />
-                    {Object.keys(allChartData[ticker]?.[0] || {})
-                      .filter(k => k.startsWith('call_'))
-                      .map((k, idx) => (
-                        <Line key={k} type="monotone" yAxisId="left" dataKey={k} stroke={colors[idx % colors.length]} dot={false} strokeWidth={2} />
-                      ))}
-                    {Object.keys(allChartData[ticker]?.[0] || {})
-                      .filter(k => k.startsWith('put_'))
-                      .map((k, idx) => (
-                        <Line key={k} type="monotone" yAxisId="left" dataKey={k} stroke={colors[(idx + 3) % colors.length]} dot={false} strokeWidth={2} />
-                      ))}
-                  </LineChart>
-                ) : (
-                  <BarChart data={allChartData[ticker] || []}>
-                    <CartesianGrid strokeDasharray="2 2" />
-                    <XAxis dataKey="strike" type="number" domain={["auto", "auto"]} />
-                    <YAxis />
-                    {/* Tool tip display on mouse hoer */}
-                    <Tooltip
-                      content={({ active, payload, label }) => {
-                        if (active && payload && payload.length) {
-                          return (
-                            <div className="custom-tooltip" style={{ background: 'white', padding: '10px', border: '1px solid #ccc' }}>
-                              <p><strong>Strike:</strong> {label}</p>
-                              {payload.map((item, index) => {
-                                const exp = item.dataKey.split('_')[1];
-                                const isCall = item.dataKey.startsWith('call_');
-                                const lastKey = isCall ? `cLast_${exp}` : `pLast_${exp}`;
-                                const lastVal = item.payload[lastKey];
-
-                                return (
-                                  <div key={index}>
-                                    <p style={{ color: item.color, margin: 0 }}>
-                                      {isCall ? 'Call' : 'Put'} ({exp}): {item.value} | Last: {lastVal ?? '-'}
-                                    </p>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          );
-                        }
-                        return null;
-                      }}
-                    />
-
-                    <Legend />
-                    {Object.keys(allChartData[ticker]?.[0] || {})
-                      .filter(k => k.startsWith('call_'))
-                      .map((k, idx) => (
-                        <Bar key={k} dataKey={k} fill={colors[idx % colors.length]} />
-                      ))}
-                    {Object.keys(allChartData[ticker]?.[0] || {})
-                      .filter(k => k.startsWith('put_'))
-                      .map((k, idx) => (
-                        <Bar key={k} dataKey={k} fill={colors[(idx + 3) % colors.length]} />
-                      ))}
-                  </BarChart>
-                )}
-              </ResponsiveContainer>
+      {/* Dual list selector */}
+      <div className="ticker-selector">
+        <div className="list-box">
+          <h4>Available</h4>
+          {availableTickers.map(t => (
+            <div key={t} className="list-item">
+              {t}
+              <button onClick={() => {
+                setAvailableTickers(prev => prev.filter(x => x !== t));
+                setSelectedTickers(prev => [...prev, t]);
+              }}> + </button>
             </div>
           ))}
-        </>
+        </div>
+        <div className="list-box">
+          <h4>Selected</h4>
+          {selectedTickers.map(t => (
+            <div key={t} className="list-item">
+              <button onClick={() => {
+                setSelectedTickers(prev => prev.filter(x => x !== t));
+                setAvailableTickers(prev => [...prev, t]);
+              }}> - </button>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Controls */}
+      <div className="controls">
+        <label>
+          <input type="checkbox" checked={showOptionPrediction} onChange={(e) => setShowOptionPrediction(e.target.checked)} /> Show Prediction
+        </label>
+        <label>
+          <input type="checkbox" checked={showGraphs} onChange={(e) => setShowGraphs(e.target.checked)} /> Show Graphs
+        </label>
+        <label>
+          <input type="radio" name="volumeOrInterest" value="volume" checked={volumeOrInterest === 'volume'} onChange={() => setVolumeOrInterest('volume')} /> Volume
+        </label>
+        <label>
+          <input type="radio" name="volumeOrInterest" value="openInterest" checked={volumeOrInterest === 'openInterest'} onChange={() => setVolumeOrInterest('openInterest')} /> Open Interest
+        </label>
+        <label>
+          <input type="radio" name="dayOrMonth" value="Day" checked={selectedDayOrMonth === 'Day'} onChange={() => setSelectedDayOrMonth('Day')} /> Day
+        </label>
+        <label>
+          <input type="radio" name="dayOrMonth" value="Month" checked={selectedDayOrMonth === 'Month'} onChange={() => setSelectedDayOrMonth('Month')} /> Month
+        </label>
+      </div>
+
+      {/* Prediction table */}
+      {showOptionPrediction && (
+        <div className="prediction-table">
+          <h3>Prediction Summary</h3>
+          <div className="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th onClick={() => requestSort('ticker')} className={getClassNamesFor('ticker')}>Ticker</th>
+                  <th onClick={() => requestSort('callNum')} className={getClassNamesFor('callNum')}>Call {volumeOrInterest}</th>
+                  <th onClick={() => requestSort('putNum')} className={getClassNamesFor('putNum')}>Put {volumeOrInterest}</th>
+                  <th onClick={() => requestSort('ratio')} className={getClassNamesFor('ratio')}>Ratio</th>
+                  <th onClick={() => requestSort('prediction')} className={getClassNamesFor('prediction')}>Prediction</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortedRows.map((row) => (
+                  <tr key={row.ticker}>
+                    <td>{row.ticker}</td>
+                    <td>{row.callVolume}</td>
+                    <td>{row.putVolume}</td>
+                    <td>{row.ratio}</td>
+                    <td>{row.prediction}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       )}
+
+      {/* Graphs */}
+      {showGraphs && selectedTickers.map((ticker) => (
+        <div key={ticker} className="ticker-chart">
+          <h2>{ticker} Total Call {volumeOrInterest}: {volumes[ticker]?.call || '-'} | Total Put {volumeOrInterest}: {volumes[ticker]?.put || '-'} | Last Price: {volumes[ticker]?.lastPrice || '-'}</h2>
+          <ResponsiveContainer width="100%" height={500}>
+            {chartType === 'line' ? (
+              <LineChart data={allChartData[ticker] || []}>
+                <CartesianGrid strokeDasharray="2 2" />
+                <XAxis dataKey="strike" type="number" domain={["auto", "auto"]} />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('call_')).map((k, idx) => (
+                  <Line key={k} type="monotone" dataKey={k} stroke={colors[idx % colors.length]} dot={false} strokeWidth={2} />
+                ))}
+                {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('put_')).map((k, idx) => (
+                  <Line key={k} type="monotone" dataKey={k} stroke={colors[(idx + 3) % colors.length]} dot={false} strokeWidth={2} />
+                ))}
+              </LineChart>
+            ) : (
+              <BarChart data={allChartData[ticker] || []}>
+                <CartesianGrid strokeDasharray="2 2" />
+                <XAxis dataKey="strike" type="number" domain={["auto", "auto"]} />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('call_')).map((k, idx) => (
+                  <Bar key={k} dataKey={k} fill={colors[idx % colors.length]} />
+                ))}
+                {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('put_')).map((k, idx) => (
+                  <Bar key={k} dataKey={k} fill={colors[(idx + 3) % colors.length]} />
+                ))}
+              </BarChart>
+            )}
+          </ResponsiveContainer>
+        </div>
+      ))}
     </div>
   );
 };

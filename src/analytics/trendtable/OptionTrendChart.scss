@@ -1,77 +1,310 @@
-.prediction-table {
-  margin-bottom: 20px;
+/* OptionTrendChart.scss */
 
-  h3 {
-    margin-bottom: 10px;
-    font-weight: 600;
-    font-size: 1.3rem;
-  }
+.option-volume-chart {
+  padding: 16px;
+  box-sizing: border-box;
 
-  .table-wrapper {
-    width: 100%;
-    overflow-x: auto;
+  /* -------- Dual List (Available ↔ Selected) -------- */
+  .ticker-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
 
-    table {
-      width: 100%;
-      border-collapse: collapse; // important for clean lines
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      table-layout: auto;
+    .list-box {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      max-height: 320px;
+      overflow: auto;
 
-      thead {
-        background-color: #282c34;
-        color: #ffffff;
+      h4 {
+        margin: 0 0 10px 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: #111827;
+        position: sticky;
+        top: 0;
+        background: #ffffff;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #eef2f7;
+        z-index: 1;
+      }
 
-        th {
-          padding: 10px 12px;
-          font-size: 0.9rem;
-          white-space: nowrap;
-          border: 1px solid #ccc; // border for header cells
+      .list-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        transition: background 0.15s ease;
+        border: 1px solid transparent;
 
-          &.sort-asc::after,
-          &.sort-desc::after {
-            right: 6px;
-            font-size: 0.7rem;
+        &:hover {
+          background: #f8fafc;
+          border-color: #eef2f7;
+        }
+
+        button {
+          appearance: none;
+          border: 1px solid #e5e7eb;
+          background: #111827;
+          color: #ffffff;
+          padding: 4px 8px;
+          border-radius: 8px;
+          font-size: 12px;
+          cursor: pointer;
+          line-height: 1;
+
+          &:hover {
+            filter: brightness(1.05);
+          }
+
+          &:active {
+            transform: translateY(1px);
           }
         }
       }
 
-      tbody {
-        tr {
-          &:nth-child(even) {
-            background-color: #f9f9f9;
-          }
-
-          &:hover {
-            background-color: #eef3f7;
-          }
-        }
-
-        td {
-          padding: 8px 12px;
-          font-size: 0.9rem;
-          color: #333;
-          border: 1px solid #ddd; // border for data cells
-          word-break: break-word;
-        }
+      /* scrollbars */
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #f1f5f9;
       }
     }
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 900px) {
+    .ticker-selector {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* -------- Controls row -------- */
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+
+    label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      cursor: pointer;
+
+      input[type='checkbox'],
+      input[type='radio'] {
+        transform: translateY(1px);
+      }
+    }
+  }
+
+  /* -------- Sort indicators for table headers -------- */
+  .sort-asc::after {
+    content: ' ▲';
+    font-size: 11px;
+  }
+  .sort-desc::after {
+    content: ' ▼';
+    font-size: 11px;
+  }
+
+  /* -------- Prediction table -------- */
+  .prediction-table {
+    margin-top: 12px;
+
     h3 {
-      font-size: 1rem;
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: #111827;
     }
 
     .table-wrapper {
-      table {
-        font-size: 0.75rem;
+      overflow: auto;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
 
-        thead th,
+      table {
+        width: 100%;
+        //min-width: 720px;
+        border-collapse: collapse;
+        font-size: 14px;
+
+        thead th {
+          position: sticky;
+          top: 0;
+          background: #f8fafc;
+          color: #0f172a;
+          text-align: left;
+          font-weight: 700;
+          padding: 10px 12px;
+          border-bottom: 1px solid #e5e7eb;
+          user-select: none;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+
         tbody td {
-          padding: 2px 6px;
-          font-size: 0.75rem;
+          padding: 10px 12px;
+          border-bottom: 1px solid #f1f5f9;
+          color: #111827;
+        }
+
+        tbody tr:nth-child(even) {
+          background: #fcfcfd;
+        }
+
+        tbody tr:hover {
+          background: #f1f5f9;
         }
       }
+    }
+  }
+
+  /* -------- Chart type toggle (if you add it) -------- */
+  .chart-type-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0;
+
+    label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      cursor: pointer;
+      user-select: none;
+      background: #ffffff;
+
+      input {
+        display: none;
+      }
+
+      &.active {
+        background: #111827;
+        color: #ffffff;
+        border-color: #111827;
+      }
+    }
+  }
+
+  /* -------- Chart card -------- */
+  .ticker-chart {
+    margin-top: 20px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 14px;
+
+    h2 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.3;
+    }
+
+    /* Make Recharts labels a bit crisper */
+    .recharts-wrapper {
+      font-size: 12px;
+    }
+  }
+
+  /* -------- Tooltips (default + custom) -------- */
+  .custom-tooltip,
+  .recharts-default-tooltip {
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  /* -------- Light/Dark support (optional) -------- */
+  @media (prefers-color-scheme: dark) {
+    .ticker-selector .list-box,
+    .controls,
+    .prediction-table .table-wrapper,
+    .ticker-chart {
+      background: #0b1220;
+      border-color: #1f2937;
+    }
+
+    .ticker-selector .list-box h4,
+    .prediction-table h3,
+    .ticker-chart h2 {
+      color: #e5e7eb;
+      border-color: #1f2937;
+      background: #0b1220;
+    }
+
+    .ticker-selector .list-box .list-item:hover {
+      background: #0f172a;
+      border-color: #1f2937;
+    }
+
+    .controls label {
+      color: #e5e7eb;
+    }
+
+    .prediction-table .table-wrapper table thead th {
+      background: #111827;
+      color: #e5e7eb;
+      border-color: #1f2937;
+    }
+
+    .prediction-table .table-wrapper table tbody td {
+      color: #e5e7eb;
+      border-color: #111827;
+    }
+
+    .prediction-table .table-wrapper table tbody tr:nth-child(even) {
+      background: #0c1220;
+    }
+
+    .prediction-table .table-wrapper table tbody tr:hover {
+      background: #111827;
+    }
+
+    .chart-type-toggle label {
+      background: #0b1220;
+      border-color: #1f2937;
+      color: #e5e7eb;
+
+      &.active {
+        background: #e5e7eb;
+        color: #0b1220;
+        border-color: #e5e7eb;
+      }
+    }
+
+    .custom-tooltip,
+    .recharts-default-tooltip {
+      background: #0b1220 !important;
+      border-color: #1f2937 !important;
+      color: #e5e7eb !important;
     }
   }
 }
