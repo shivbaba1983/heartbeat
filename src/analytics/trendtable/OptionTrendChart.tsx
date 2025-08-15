@@ -22,7 +22,7 @@ import {
 import { getComingFriday } from './../../common/nasdaq.common';
 import { getNasdaqOptionData } from '@/services/NasdaqDataService';
 
-const ALL_TICKERS =DAY_CHECKER_STOCKS_LIST;// ['AAPL', 'MSFT', 'GOOGL', 'TSLA', 'AMZN', 'NVDA', 'META', 'NFLX'];
+const ALL_TICKERS = DAY_CHECKER_STOCKS_LIST;// ['AAPL', 'MSFT', 'GOOGL', 'TSLA', 'AMZN', 'NVDA', 'META', 'NFLX'];
 
 const getPrediction = (callVolume = 0, putVolume = 0) => {
   const ratio = callVolume === 0 ? Infinity : putVolume / callVolume;
@@ -233,13 +233,40 @@ const OptionTrendChart = () => {
     if (!sortConfig) return;
     return sortConfig.key === name ? (sortConfig.direction === 'asc' ? 'sort-asc' : 'sort-desc') : undefined;
   };
+  const [selectAll, setSelectAll] = useState<boolean>(false);
+  // Handle select all toggle
+  const handleSelectAll = () => {
+    if (!selectAll) {
+      // Select all
+      setSelectedTickers([...availableTickers]);
+    } else {
+      // Clear all
+      setSelectedTickers([]);
+    }
+    setSelectAll(!selectAll);
+  };
 
+  // Toggle single ticker
+  // const toggleTicker = (ticker: string) => {
+  //   if (selectedTickers.includes(ticker)) {
+  //     setSelectedTickers(selectedTickers.filter(t => t !== ticker));
+  //   } else {
+  //     setSelectedTickers([...selectedTickers, ticker]);
+  //   }
+  // };
   return (
     <div className="option-volume-chart">
       {/* Dual list selector */}
       <div className="ticker-selector">
+
         <div className="list-box">
-          <h4>Available</h4>
+          <div className="ccccl">
+            <label>
+              <input type="checkbox" checked={selectAll} onChange={handleSelectAll} />
+              Select All
+            </label>
+          </div>
+    
           {availableTickers.map(t => (
             <div key={t} className="list-item">
               {t}
@@ -263,6 +290,36 @@ const OptionTrendChart = () => {
           ))}
         </div>
       </div>
+
+      {/* <div className="ticker-selection">
+        <div className="available-tickers">
+          <div className="select-all">
+            <label>
+              <input type="checkbox" checked={selectAll} onChange={handleSelectAll} />
+              Select All
+            </label>
+          </div>
+          {availableTickers.map(ticker => (
+            <div key={ticker} className="ticker-item">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={selectedTickers.includes(ticker)}
+                  onChange={() => toggleTicker(ticker)}
+                />
+                {ticker}
+              </label>
+            </div>
+          ))}
+        </div>
+        <div className="selected-tickers">
+          <h4>Selected Tickers</h4>
+          {selectedTickers.length === 0 && <p>No tickers selected</p>}
+          {selectedTickers.map(ticker => (
+            <span key={ticker} className="ticker-tag">{ticker}</span>
+          ))}
+        </div>
+      </div> */}
 
       {/* Controls */}
       <div className="controls">

@@ -84,6 +84,50 @@
     }
   }
 
+   .ticker-selection {
+    display: flex;
+    gap: 2rem;
+
+    .available-tickers {
+      background: #f7f9fc;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      min-width: 200px;
+
+      .select-all {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        input {
+          margin-right: 5px;
+        }
+      }
+
+      .ticker-item {
+        padding: 0.3rem 0;
+        label {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .selected-tickers {
+      flex: 1;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+
+      .ticker-tag {
+        background: #4cafef;
+        color: white;
+        padding: 0.3rem 0.6rem;
+        margin: 0.2rem;
+        border-radius: 4px;
+        display: inline-block;
+      }
+    }
+  }
   @media (max-width: 900px) {
     .ticker-selector {
       grid-template-columns: 1fr;
