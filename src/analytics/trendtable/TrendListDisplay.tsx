@@ -30,13 +30,13 @@ interface TrendRow {
 const TrendListDisplay: React.FC = () => {
   const [rows, setRows] = useState<TrendRow[]>([]);
   const [loading, setLoading] = useState(false);
-  const [dataLoaded, setDataLoaded] = useState(false);
+  //const [dataLoaded, setDataLoaded] = useState(false);
   const [sort, setSort] = useState<{ key: keyof TrendRow | 'trend'; dir: 'asc' | 'desc' }>({
     key: 'trend',
     dir: 'asc',
   });
   const [isOpen, setIsOpen] = useState(false);
-  const [showFutureData, setShowFutureData] = useState(false);
+  const [showStockTrendData, setShowStockTrendData] = useState(false);
   /* ---------- helpers ---------- */
   const getPastDate = (days: number) =>
     new Date(Date.now() - days * 86_400_000).toISOString();
@@ -75,22 +75,22 @@ const TrendListDisplay: React.FC = () => {
 
   /* ---------- lazy fetch on first expand ---------- */
   useEffect(() => {
-    if (!isOpen || dataLoaded) return;
+    //if (!isOpen || dataLoaded) return;
 
     (async () => {
       setLoading(true);
       const out: TrendRow[] = [];
       for (const t of trendTableList) {
-        if (showFutureData) {
+        if (showStockTrendData) {
           const row = await fetchTrend(t);
           if (row) out.push(row);
         }
       }
       setRows(out);
       setLoading(false);
-      setDataLoaded(true);
+      //setDataLoaded(true);
     })();
-  }, [isOpen, dataLoaded, showFutureData]);
+  }, [showStockTrendData]);
 
   /* ---------- counts for bar‑chart ---------- */
   const trendCounts = useMemo(() => {
@@ -134,10 +134,10 @@ const TrendListDisplay: React.FC = () => {
       <label>
         <input
           type="checkbox"
-          checked={showFutureData}
-          onChange={(e) => setShowFutureData(e.target.checked)}
+          checked={showStockTrendData}
+          onChange={(e) => setShowStockTrendData(e.target.checked)}
         />
-        {' '}Show Future Data
+        {' '}Show Stock Trend Data
       </label>
 
       {/* heading / toggle */}
@@ -145,63 +145,64 @@ const TrendListDisplay: React.FC = () => {
         <h2>
           Stock Trend Summary <span className="chevron">{isOpen ? '▼' : '►'}</span>
         </h2>
-        {dataLoaded && <span className="count-badge">{rows.length}</span>}
+        {/* {dataLoaded && <span className="count-badge">{rows.length}</span>} */}
       </div>
 
-      {isOpen && (
-        loading ? (
-          <div className="loading-spinner">Loading trend data…</div>
-        ) : (
-          <>
-            {/* bar‑chart of Bullish / Neutral / Bearish counts */}
-            <div style={{ width: '100%', height: 220, margin: '20px 0' }}>
-              <ResponsiveContainer>
-                <BarChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis allowDecimals={false} />
-                  <Tooltip />
-                  <Bar dataKey="value">
-                    {chartData.map((entry, idx) => (
-                      <Cell key={entry.name} fill={entry.color} />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
+      {(isOpen && loading) &&
+        <div className="loading-spinner">Loading trend data…</div>
+      }
 
-            {/* table */}
-            <table className="trend-table">
-              <thead>
-                <tr>
-                  <th onClick={() => onSort('ticker')}>Ticker{arrow('ticker')}</th>
-                  <th onClick={() => onSort('trend')}>Trend{arrow('trend')}</th>
-                  <th onClick={() => onSort('price')}>Price{arrow('price')}</th>
-                  <th onClick={() => onSort('rsi')}>RSI{arrow('rsi')}</th>
-                  <th onClick={() => onSort('sma')}>SMA 50{arrow('sma')}</th>
-                  <th onClick={() => onSort('macd')}>MACD Diff{arrow('macd')}</th>
-                  <th onClick={() => onSort('signal')}>Signal{arrow('signal')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sorted.map((r) => (
-                  <tr key={r.ticker} className={r.trend.toLowerCase()}>
-                    <td>{r.ticker}</td>
-                    <td>{r.trend}</td>
-                    <td>${r.price.toFixed(2)}</td>
-                    <td>{r.rsi.toFixed(2)}</td>
-                    <td>{r.sma.toFixed(2)}</td>
-                    <td>{r.macd.toFixed(2)}</td>
-                    <td>{r.signal.toFixed(2)}</td>
-                  </tr>
+      <div>
+        {/* bar‑chart of Bullish / Neutral / Bearish counts */}
+        {sorted?.length > 0 && <div style={{ width: '100%', height: 220, margin: '20px 0' }}>
+          <ResponsiveContainer>
+            <BarChart data={chartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis allowDecimals={false} />
+              <Tooltip />
+              <Bar dataKey="value">
+                {chartData.map((entry, idx) => (
+                  <Cell key={entry.name} fill={entry.color} />
                 ))}
-              </tbody>
-            </table>
-          </>
-        )
-      )}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>}
+
+        {/* table */}
+        {sorted?.length > 0 && <table className="trend-table">
+          <thead>
+            <tr>
+              <th onClick={() => onSort('ticker')}>Ticker{arrow('ticker')}</th>
+              <th onClick={() => onSort('trend')}>Trend{arrow('trend')}</th>
+              <th onClick={() => onSort('price')}>Price{arrow('price')}</th>
+              <th onClick={() => onSort('rsi')}>RSI{arrow('rsi')}</th>
+              <th onClick={() => onSort('sma')}>SMA 50{arrow('sma')}</th>
+              <th onClick={() => onSort('macd')}>MACD Diff{arrow('macd')}</th>
+              <th onClick={() => onSort('signal')}>Signal{arrow('signal')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((r) => (
+              <tr key={r.ticker} className={r.trend.toLowerCase()}>
+                <td>{r.ticker}</td>
+                <td>{r.trend}</td>
+                <td>${r.price.toFixed(2)}</td>
+                <td>{r.rsi.toFixed(2)}</td>
+                <td>{r.sma.toFixed(2)}</td>
+                <td>{r.macd.toFixed(2)}</td>
+                <td>{r.signal.toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        }
+        <div />
+      </div>
+
     </div>
   );
-};
+}
 
 export default TrendListDisplay;
