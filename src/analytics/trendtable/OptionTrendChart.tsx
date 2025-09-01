@@ -260,13 +260,17 @@ const OptionTrendChart = () => {
       <div className="ticker-selector">
 
         <div className="list-box">
-          <div className="ccccl">
+          <div className="select-all">
             <label>
-              <input type="checkbox" checked={selectAll} onChange={handleSelectAll} />
+              <input
+                type="checkbox"
+                checked={selectAll}
+                onChange={handleSelectAll}
+              />
               Select All
             </label>
           </div>
-    
+
           {availableTickers.map(t => (
             <div key={t} className="list-item">
               {t}
