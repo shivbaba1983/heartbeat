@@ -1,0 +1,7786 @@
+[
+  {
+    "id": "mek10unedqh1dmf4gz",
+    "timestamp": "2025-08-20 09:46:45",
+    "callVolume": 26097,
+    "putVolume": 24917,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.73
+  },
+  {
+    "id": "mek10w5ktm9ed1sk4",
+    "timestamp": "2025-08-20 09:46:47",
+    "callVolume": 14323,
+    "putVolume": 22528,
+    "selectedTicker": "QQQ",
+    "lstPrice": 565
+  },
+  {
+    "id": "mek10wu1ootj8icxu",
+    "timestamp": "2025-08-20 09:46:48",
+    "callVolume": 2716,
+    "putVolume": 5375,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.455
+  },
+  {
+    "id": "mek10x83hfce7n7v76s",
+    "timestamp": "2025-08-20 09:46:49",
+    "callVolume": 4227,
+    "putVolume": 5176,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.76
+  },
+  {
+    "id": "mek10xh8jsp9n93pd1q",
+    "timestamp": "2025-08-20 09:46:49",
+    "callVolume": 19158,
+    "putVolume": 10566,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.005
+  },
+  {
+    "id": "mek10xr7vb1r9s5kvib",
+    "timestamp": "2025-08-20 09:46:49",
+    "callVolume": 1528,
+    "putVolume": 2110,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.97
+  },
+  {
+    "id": "mek10y2uhcv3taew45u",
+    "timestamp": "2025-08-20 09:46:50",
+    "callVolume": 563,
+    "putVolume": 221,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.86
+  },
+  {
+    "id": "mek10ycbp1dxeg664s",
+    "timestamp": "2025-08-20 09:46:50",
+    "callVolume": 12112,
+    "putVolume": 5654,
+    "selectedTicker": "TSLA",
+    "lstPrice": 324.975
+  },
+  {
+    "id": "mek10yt3zfxfaw6n4ri",
+    "timestamp": "2025-08-20 09:46:51",
+    "callVolume": 1992,
+    "putVolume": 7358,
+    "selectedTicker": "META",
+    "lstPrice": 738.7
+  },
+  {
+    "id": "mek10zfjp13151wqu59",
+    "timestamp": "2025-08-20 09:46:51",
+    "callVolume": 1831,
+    "putVolume": 1074,
+    "selectedTicker": "MSFT",
+    "lstPrice": 510.26
+  },
+  {
+    "id": "mek10zr6g3rsx3b1iwe",
+    "timestamp": "2025-08-20 09:46:52",
+    "callVolume": 649,
+    "putVolume": 735,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.2235
+  },
+  {
+    "id": "mek10zyyupyifi9k1b",
+    "timestamp": "2025-08-20 09:46:52",
+    "callVolume": 380,
+    "putVolume": 295,
+    "selectedTicker": "COIN",
+    "lstPrice": 297.0741
+  },
+  {
+    "id": "mek110boevmrasgad1",
+    "timestamp": "2025-08-20 09:46:53",
+    "callVolume": 6931,
+    "putVolume": 5588,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.19
+  },
+  {
+    "id": "mek179870b5382s0uod",
+    "timestamp": "2025-08-20 09:51:44",
+    "callVolume": 86112,
+    "putVolume": 92443,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.53
+  },
+  {
+    "id": "mek17a4q6es8eczlm4v",
+    "timestamp": "2025-08-20 09:51:45",
+    "callVolume": 55002,
+    "putVolume": 67849,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.28
+  },
+  {
+    "id": "mek17ap1uhr4t766du",
+    "timestamp": "2025-08-20 09:51:46",
+    "callVolume": 7860,
+    "putVolume": 16532,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.67
+  },
+  {
+    "id": "mek17b0o5h3bnsfze1y",
+    "timestamp": "2025-08-20 09:51:46",
+    "callVolume": 11271,
+    "putVolume": 17380,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.94
+  },
+  {
+    "id": "mek17bagoyjj34s3vwa",
+    "timestamp": "2025-08-20 09:51:47",
+    "callVolume": 54874,
+    "putVolume": 44463,
+    "selectedTicker": "NVDA",
+    "lstPrice": 171.505
+  },
+  {
+    "id": "mek17bnd76tygye1xk3",
+    "timestamp": "2025-08-20 09:51:47",
+    "callVolume": 6564,
+    "putVolume": 5296,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.9
+  },
+  {
+    "id": "mek17by7yxqdyjhjaw",
+    "timestamp": "2025-08-20 09:51:48",
+    "callVolume": 1709,
+    "putVolume": 2610,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.34
+  },
+  {
+    "id": "mek17cayvbcwwqiqniq",
+    "timestamp": "2025-08-20 09:51:48",
+    "callVolume": 34138,
+    "putVolume": 22171,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.8307
+  },
+  {
+    "id": "mek17cqkak31gs0hn1k",
+    "timestamp": "2025-08-20 09:51:49",
+    "callVolume": 7384,
+    "putVolume": 19202,
+    "selectedTicker": "META",
+    "lstPrice": 733.36
+  },
+  {
+    "id": "mek17d4g3upjo0uhlhw",
+    "timestamp": "2025-08-20 09:51:49",
+    "callVolume": 4868,
+    "putVolume": 2332,
+    "selectedTicker": "MSFT",
+    "lstPrice": 509.19
+  },
+  {
+    "id": "mek17dm9qaxncfhrug8",
+    "timestamp": "2025-08-20 09:51:50",
+    "callVolume": 2173,
+    "putVolume": 1439,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.7001
+  },
+  {
+    "id": "mek17dy1nbh7ajtxuth",
+    "timestamp": "2025-08-20 09:51:50",
+    "callVolume": 1437,
+    "putVolume": 1410,
+    "selectedTicker": "COIN",
+    "lstPrice": 293.39
+  },
+  {
+    "id": "mek17edzhepk5prqr39",
+    "timestamp": "2025-08-20 09:51:51",
+    "callVolume": 16674,
+    "putVolume": 14861,
+    "selectedTicker": "AMD",
+    "lstPrice": 160.905
+  },
+  {
+    "id": "mek1dottkgkiiz4ex8k",
+    "timestamp": "2025-08-20 09:56:44",
+    "callVolume": 130294,
+    "putVolume": 161050,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.35
+  },
+  {
+    "id": "mek1dpz42kjmo50mudm",
+    "timestamp": "2025-08-20 09:56:46",
+    "callVolume": 86038,
+    "putVolume": 124507,
+    "selectedTicker": "QQQ",
+    "lstPrice": 562.13
+  },
+  {
+    "id": "mek1dqlot0x5g8fp8mc",
+    "timestamp": "2025-08-20 09:56:46",
+    "callVolume": 13843,
+    "putVolume": 27083,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.365
+  },
+  {
+    "id": "mek1dqtphrj7jujgbvg",
+    "timestamp": "2025-08-20 09:56:47",
+    "callVolume": 19479,
+    "putVolume": 29181,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.04
+  },
+  {
+    "id": "mek1dr4uxplaeymt1yf",
+    "timestamp": "2025-08-20 09:56:47",
+    "callVolume": 93027,
+    "putVolume": 79563,
+    "selectedTicker": "NVDA",
+    "lstPrice": 170.74
+  },
+  {
+    "id": "mek1drft9hz8fzy936c",
+    "timestamp": "2025-08-20 09:56:48",
+    "callVolume": 9606,
+    "putVolume": 8362,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.155
+  },
+  {
+    "id": "mek1drp7q56wdt7sh0k",
+    "timestamp": "2025-08-20 09:56:48",
+    "callVolume": 5109,
+    "putVolume": 4320,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.65
+  },
+  {
+    "id": "mek1drytbi9vw2v466p",
+    "timestamp": "2025-08-20 09:56:48",
+    "callVolume": 47379,
+    "putVolume": 33241,
+    "selectedTicker": "TSLA",
+    "lstPrice": 319.84
+  },
+  {
+    "id": "mek1dsbm57bndk0tc09",
+    "timestamp": "2025-08-20 09:56:49",
+    "callVolume": 14544,
+    "putVolume": 26083,
+    "selectedTicker": "META",
+    "lstPrice": 734.355
+  },
+  {
+    "id": "mek1dsnmi89a28u4tta",
+    "timestamp": "2025-08-20 09:56:49",
+    "callVolume": 6865,
+    "putVolume": 3459,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.995
+  },
+  {
+    "id": "mek1dszl9syxit9qul",
+    "timestamp": "2025-08-20 09:56:50",
+    "callVolume": 2465,
+    "putVolume": 3144,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.495
+  },
+  {
+    "id": "mek1dt9aa1edkj9nkv",
+    "timestamp": "2025-08-20 09:56:50",
+    "callVolume": 2395,
+    "putVolume": 2632,
+    "selectedTicker": "COIN",
+    "lstPrice": 293.285
+  },
+  {
+    "id": "mek1dtljwvyasu3qqx",
+    "timestamp": "2025-08-20 09:56:50",
+    "callVolume": 22271,
+    "putVolume": 27685,
+    "selectedTicker": "AMD",
+    "lstPrice": 160.97
+  },
+  {
+    "id": "mek1m7qasdjcxxcl8b9",
+    "timestamp": "2025-08-20 10:03:22",
+    "callVolume": 210851,
+    "putVolume": 314561,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.16
+  },
+  {
+    "id": "mek1m8p67wqrizq1r9k",
+    "timestamp": "2025-08-20 10:03:23",
+    "callVolume": 141677,
+    "putVolume": 210619,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.03
+  },
+  {
+    "id": "mek1m9e5vqfaxeodp8",
+    "timestamp": "2025-08-20 10:03:24",
+    "callVolume": 19538,
+    "putVolume": 44126,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.17
+  },
+  {
+    "id": "mek1m9psebidhebc7kt",
+    "timestamp": "2025-08-20 10:03:24",
+    "callVolume": 28461,
+    "putVolume": 35308,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.6315
+  },
+  {
+    "id": "mek1ma4eknoa2fq4kqn",
+    "timestamp": "2025-08-20 10:03:25",
+    "callVolume": 151386,
+    "putVolume": 130855,
+    "selectedTicker": "NVDA",
+    "lstPrice": 171.7801
+  },
+  {
+    "id": "mek1mai9ks8w7nxag2n",
+    "timestamp": "2025-08-20 10:03:26",
+    "callVolume": 17285,
+    "putVolume": 12667,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.92
+  },
+  {
+    "id": "mek1masxog9yuziaa48",
+    "timestamp": "2025-08-20 10:03:26",
+    "callVolume": 7032,
+    "putVolume": 6165,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.82
+  },
+  {
+    "id": "mek1mb3i94r0n5dyjr",
+    "timestamp": "2025-08-20 10:03:26",
+    "callVolume": 69743,
+    "putVolume": 70389,
+    "selectedTicker": "TSLA",
+    "lstPrice": 322.49
+  },
+  {
+    "id": "mek1mbgjs5dt4ccy3ij",
+    "timestamp": "2025-08-20 10:03:27",
+    "callVolume": 23885,
+    "putVolume": 36221,
+    "selectedTicker": "META",
+    "lstPrice": 736.35
+  },
+  {
+    "id": "mek1mbz1zt5n380kfz",
+    "timestamp": "2025-08-20 10:03:27",
+    "callVolume": 10874,
+    "putVolume": 4957,
+    "selectedTicker": "MSFT",
+    "lstPrice": 508.15
+  },
+  {
+    "id": "mek1mcf0zqpmdo7or0s",
+    "timestamp": "2025-08-20 10:03:28",
+    "callVolume": 3959,
+    "putVolume": 6511,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.7499
+  },
+  {
+    "id": "mek1md0xvvg6mwmyiql",
+    "timestamp": "2025-08-20 10:03:29",
+    "callVolume": 4626,
+    "putVolume": 5666,
+    "selectedTicker": "COIN",
+    "lstPrice": 297.41
+  },
+  {
+    "id": "mek1mdad086pzmes1fsg",
+    "timestamp": "2025-08-20 10:03:29",
+    "callVolume": 32149,
+    "putVolume": 44371,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.13
+  },
+  {
+    "id": "mek1sle6vv9nzv5zoy",
+    "timestamp": "2025-08-20 10:08:20",
+    "callVolume": 279351,
+    "putVolume": 454509,
+    "selectedTicker": "SPY",
+    "lstPrice": 634.6342
+  },
+  {
+    "id": "mek1sma4gkz9qn8jme",
+    "timestamp": "2025-08-20 10:08:21",
+    "callVolume": 193198,
+    "putVolume": 286250,
+    "selectedTicker": "QQQ",
+    "lstPrice": 560.88
+  },
+  {
+    "id": "mek1smzqtaz759suki",
+    "timestamp": "2025-08-20 10:08:22",
+    "callVolume": 23931,
+    "putVolume": 58277,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.445
+  },
+  {
+    "id": "mek1sp2n16w5fmdcqz3",
+    "timestamp": "2025-08-20 10:08:24",
+    "callVolume": 33834,
+    "putVolume": 42031,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.04
+  },
+  {
+    "id": "mek1spke654otmbj8dp",
+    "timestamp": "2025-08-20 10:08:25",
+    "callVolume": 185810,
+    "putVolume": 170824,
+    "selectedTicker": "NVDA",
+    "lstPrice": 169.4
+  },
+  {
+    "id": "mek1sq6zc2wksznbq9",
+    "timestamp": "2025-08-20 10:08:26",
+    "callVolume": 21396,
+    "putVolume": 17196,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.4699
+  },
+  {
+    "id": "mek1sqhon526h914t1",
+    "timestamp": "2025-08-20 10:08:26",
+    "callVolume": 13669,
+    "putVolume": 7024,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.6
+  },
+  {
+    "id": "mek1squ3jk7vgzz5xe",
+    "timestamp": "2025-08-20 10:08:27",
+    "callVolume": 91664,
+    "putVolume": 100357,
+    "selectedTicker": "TSLA",
+    "lstPrice": 318.8594
+  },
+  {
+    "id": "mek1sr93tqivevkcqze",
+    "timestamp": "2025-08-20 10:08:27",
+    "callVolume": 31170,
+    "putVolume": 45244,
+    "selectedTicker": "META",
+    "lstPrice": 733.94
+  },
+  {
+    "id": "mek1srsiia8oxvdiz8r",
+    "timestamp": "2025-08-20 10:08:28",
+    "callVolume": 14281,
+    "putVolume": 7012,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.32
+  },
+  {
+    "id": "mek1ss78h267s9cl0o",
+    "timestamp": "2025-08-20 10:08:28",
+    "callVolume": 5337,
+    "putVolume": 8840,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.22
+  },
+  {
+    "id": "mek1ssfa4cmpqbtbidl",
+    "timestamp": "2025-08-20 10:08:29",
+    "callVolume": 5741,
+    "putVolume": 12137,
+    "selectedTicker": "COIN",
+    "lstPrice": 293.91
+  },
+  {
+    "id": "mek1sstopq0mckkvs8m",
+    "timestamp": "2025-08-20 10:08:29",
+    "callVolume": 37806,
+    "putVolume": 56287,
+    "selectedTicker": "AMD",
+    "lstPrice": 159.6726
+  },
+  {
+    "id": "mek1z0tcevqnghvm3a",
+    "timestamp": "2025-08-20 10:13:19",
+    "callVolume": 380321,
+    "putVolume": 580696,
+    "selectedTicker": "SPY",
+    "lstPrice": 634.57
+  },
+  {
+    "id": "mek1z1tqtipmeo47j9j",
+    "timestamp": "2025-08-20 10:13:21",
+    "callVolume": 275350,
+    "putVolume": 359535,
+    "selectedTicker": "QQQ",
+    "lstPrice": 560.49
+  },
+  {
+    "id": "mek1z2ed77hm7mnxok4",
+    "timestamp": "2025-08-20 10:13:22",
+    "callVolume": 28894,
+    "putVolume": 72867,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.54
+  },
+  {
+    "id": "mek1z2xiasmqlyssbe",
+    "timestamp": "2025-08-20 10:13:22",
+    "callVolume": 39449,
+    "putVolume": 49492,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.45
+  },
+  {
+    "id": "mek1z37qja87yry1lo",
+    "timestamp": "2025-08-20 10:13:23",
+    "callVolume": 231724,
+    "putVolume": 200060,
+    "selectedTicker": "NVDA",
+    "lstPrice": 169.78
+  },
+  {
+    "id": "mek1z3j7tupqcrzi45",
+    "timestamp": "2025-08-20 10:13:23",
+    "callVolume": 28952,
+    "putVolume": 19712,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.64
+  },
+  {
+    "id": "mek1z3su3vq3w8wkegh",
+    "timestamp": "2025-08-20 10:13:23",
+    "callVolume": 19202,
+    "putVolume": 7750,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.1299
+  },
+  {
+    "id": "mek1z42cbkrzxssxdzi",
+    "timestamp": "2025-08-20 10:13:24",
+    "callVolume": 115044,
+    "putVolume": 123750,
+    "selectedTicker": "TSLA",
+    "lstPrice": 318.77
+  },
+  {
+    "id": "mek1z4ldwvbhtek7whf",
+    "timestamp": "2025-08-20 10:13:24",
+    "callVolume": 38011,
+    "putVolume": 50716,
+    "selectedTicker": "META",
+    "lstPrice": 732.455
+  },
+  {
+    "id": "mek1z5213jv9u3z1aee",
+    "timestamp": "2025-08-20 10:13:25",
+    "callVolume": 20895,
+    "putVolume": 10743,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.715
+  },
+  {
+    "id": "mek1z5few5t4m9cihb",
+    "timestamp": "2025-08-20 10:13:25",
+    "callVolume": 7523,
+    "putVolume": 10623,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.1699
+  },
+  {
+    "id": "mek1z5nxdgvnadkl71s",
+    "timestamp": "2025-08-20 10:13:26",
+    "callVolume": 7349,
+    "putVolume": 14952,
+    "selectedTicker": "COIN",
+    "lstPrice": 294.11
+  },
+  {
+    "id": "mek1z5y3qq5ttng9t3q",
+    "timestamp": "2025-08-20 10:13:26",
+    "callVolume": 44802,
+    "putVolume": 63732,
+    "selectedTicker": "AMD",
+    "lstPrice": 159.96
+  },
+  {
+    "id": "mek25g2no1r25h9swso",
+    "timestamp": "2025-08-20 10:18:19",
+    "callVolume": 456944,
+    "putVolume": 650513,
+    "selectedTicker": "SPY",
+    "lstPrice": 634.12
+  },
+  {
+    "id": "mek25h02eis4nj5q9jt",
+    "timestamp": "2025-08-20 10:18:20",
+    "callVolume": 328493,
+    "putVolume": 398264,
+    "selectedTicker": "QQQ",
+    "lstPrice": 560.04
+  },
+  {
+    "id": "mek25hqybvqyrscqioj",
+    "timestamp": "2025-08-20 10:18:21",
+    "callVolume": 36632,
+    "putVolume": 83566,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.15
+  },
+  {
+    "id": "mek25i4ev21e98ctlzo",
+    "timestamp": "2025-08-20 10:18:22",
+    "callVolume": 43807,
+    "putVolume": 53479,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.1606
+  },
+  {
+    "id": "mek25ig96v2kp1f3otf",
+    "timestamp": "2025-08-20 10:18:22",
+    "callVolume": 270507,
+    "putVolume": 224728,
+    "selectedTicker": "NVDA",
+    "lstPrice": 169.4258
+  },
+  {
+    "id": "mek25iygih7lufj37a",
+    "timestamp": "2025-08-20 10:18:23",
+    "callVolume": 32020,
+    "putVolume": 21364,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.14
+  },
+  {
+    "id": "mek25j6cc3zs3107xl6",
+    "timestamp": "2025-08-20 10:18:23",
+    "callVolume": 20916,
+    "putVolume": 8036,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.51
+  },
+  {
+    "id": "mek25jhetlf3yjv1jgs",
+    "timestamp": "2025-08-20 10:18:24",
+    "callVolume": 132699,
+    "putVolume": 138652,
+    "selectedTicker": "TSLA",
+    "lstPrice": 317.3
+  },
+  {
+    "id": "mek25jy1coqheapm9bg",
+    "timestamp": "2025-08-20 10:18:24",
+    "callVolume": 42010,
+    "putVolume": 54348,
+    "selectedTicker": "META",
+    "lstPrice": 734.09
+  },
+  {
+    "id": "mek25kd0gthmgln7bl",
+    "timestamp": "2025-08-20 10:18:25",
+    "callVolume": 23293,
+    "putVolume": 13651,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.74
+  },
+  {
+    "id": "mek25kowspwd97pb8vs",
+    "timestamp": "2025-08-20 10:18:25",
+    "callVolume": 8647,
+    "putVolume": 11446,
+    "selectedTicker": "SOXL",
+    "lstPrice": 23.79
+  },
+  {
+    "id": "mek25kz7ihqorytqrs",
+    "timestamp": "2025-08-20 10:18:26",
+    "callVolume": 9848,
+    "putVolume": 16194,
+    "selectedTicker": "COIN",
+    "lstPrice": 292.835
+  },
+  {
+    "id": "mek25lgkm7n9121r8fq",
+    "timestamp": "2025-08-20 10:18:26",
+    "callVolume": 55676,
+    "putVolume": 67872,
+    "selectedTicker": "AMD",
+    "lstPrice": 159.45
+  },
+  {
+    "id": "mek2bvmzvset7rur35",
+    "timestamp": "2025-08-20 10:23:19",
+    "callVolume": 538147,
+    "putVolume": 748910,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.045
+  },
+  {
+    "id": "mek2bwgfdakpkmw3a9k",
+    "timestamp": "2025-08-20 10:23:20",
+    "callVolume": 380338,
+    "putVolume": 455148,
+    "selectedTicker": "QQQ",
+    "lstPrice": 561.425
+  },
+  {
+    "id": "mek2bx3r5cq189p4yqo",
+    "timestamp": "2025-08-20 10:23:21",
+    "callVolume": 40530,
+    "putVolume": 98546,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.685
+  },
+  {
+    "id": "mek2bxbujchmv82gexh",
+    "timestamp": "2025-08-20 10:23:21",
+    "callVolume": 44223,
+    "putVolume": 59459,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.64
+  },
+  {
+    "id": "mek2bxx5q2rimwue2r",
+    "timestamp": "2025-08-20 10:23:22",
+    "callVolume": 282875,
+    "putVolume": 240574,
+    "selectedTicker": "NVDA",
+    "lstPrice": 170.6
+  },
+  {
+    "id": "mek2by8a4fi9ldann9i",
+    "timestamp": "2025-08-20 10:23:23",
+    "callVolume": 34502,
+    "putVolume": 24765,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.79
+  },
+  {
+    "id": "mek2byu1h2xrui0tc5g",
+    "timestamp": "2025-08-20 10:23:23",
+    "callVolume": 23878,
+    "putVolume": 8345,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.15
+  },
+  {
+    "id": "mek2bzaixcockla21aj",
+    "timestamp": "2025-08-20 10:23:24",
+    "callVolume": 145199,
+    "putVolume": 155797,
+    "selectedTicker": "TSLA",
+    "lstPrice": 319.19
+  },
+  {
+    "id": "mek2bzpbwnd65v4ecbn",
+    "timestamp": "2025-08-20 10:23:25",
+    "callVolume": 44644,
+    "putVolume": 56465,
+    "selectedTicker": "META",
+    "lstPrice": 737.225
+  },
+  {
+    "id": "mek2c03seflksh533e",
+    "timestamp": "2025-08-20 10:23:25",
+    "callVolume": 24949,
+    "putVolume": 14439,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.6
+  },
+  {
+    "id": "mek2c0iibarzde3v227",
+    "timestamp": "2025-08-20 10:23:26",
+    "callVolume": 7789,
+    "putVolume": 13259,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.305
+  },
+  {
+    "id": "mek2c0pr2cungjnkqij",
+    "timestamp": "2025-08-20 10:23:26",
+    "callVolume": 9720,
+    "putVolume": 17743,
+    "selectedTicker": "COIN",
+    "lstPrice": 294.8304
+  },
+  {
+    "id": "mek2c0yu883wd50g0v",
+    "timestamp": "2025-08-20 10:23:26",
+    "callVolume": 61625,
+    "putVolume": 85326,
+    "selectedTicker": "AMD",
+    "lstPrice": 160.54
+  },
+  {
+    "id": "mek2ib5oxk8a23mhf2",
+    "timestamp": "2025-08-20 10:28:19",
+    "callVolume": 594361,
+    "putVolume": 823309,
+    "selectedTicker": "SPY",
+    "lstPrice": 634.43
+  },
+  {
+    "id": "mek2ic6z7xy9rooh5o9",
+    "timestamp": "2025-08-20 10:28:21",
+    "callVolume": 428109,
+    "putVolume": 492599,
+    "selectedTicker": "QQQ",
+    "lstPrice": 561.01
+  },
+  {
+    "id": "mek2icsowbo60em4cnj",
+    "timestamp": "2025-08-20 10:28:21",
+    "callVolume": 43845,
+    "putVolume": 108729,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.355
+  },
+  {
+    "id": "mek2id70f9eaeo2km9",
+    "timestamp": "2025-08-20 10:28:22",
+    "callVolume": 48455,
+    "putVolume": 62642,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.2202
+  },
+  {
+    "id": "mek2idj90mcw6wos3sej",
+    "timestamp": "2025-08-20 10:28:22",
+    "callVolume": 327170,
+    "putVolume": 265957,
+    "selectedTicker": "NVDA",
+    "lstPrice": 170.6
+  },
+  {
+    "id": "mek2idz196vootls6g",
+    "timestamp": "2025-08-20 10:28:23",
+    "callVolume": 39797,
+    "putVolume": 27099,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.67
+  },
+  {
+    "id": "mek2iean9otxp55y3q9",
+    "timestamp": "2025-08-20 10:28:23",
+    "callVolume": 24645,
+    "putVolume": 8887,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.7503
+  },
+  {
+    "id": "mek2ielomadvshv7qk",
+    "timestamp": "2025-08-20 10:28:24",
+    "callVolume": 160234,
+    "putVolume": 172503,
+    "selectedTicker": "TSLA",
+    "lstPrice": 317.96
+  },
+  {
+    "id": "mek2if1ygq8eu4fzum9",
+    "timestamp": "2025-08-20 10:28:24",
+    "callVolume": 47057,
+    "putVolume": 58527,
+    "selectedTicker": "META",
+    "lstPrice": 735.99
+  },
+  {
+    "id": "mek2ifi1d9fqmjplmqr",
+    "timestamp": "2025-08-20 10:28:25",
+    "callVolume": 26088,
+    "putVolume": 15694,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.11
+  },
+  {
+    "id": "mek2ifuw4wbh4z9efxl",
+    "timestamp": "2025-08-20 10:28:25",
+    "callVolume": 8512,
+    "putVolume": 14751,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.35
+  },
+  {
+    "id": "mek2ighdsengkxu7kn",
+    "timestamp": "2025-08-20 10:28:26",
+    "callVolume": 10386,
+    "putVolume": 18987,
+    "selectedTicker": "COIN",
+    "lstPrice": 295.4466
+  },
+  {
+    "id": "mek2ihdzsutn3uzrrp8",
+    "timestamp": "2025-08-20 10:28:27",
+    "callVolume": 68049,
+    "putVolume": 95309,
+    "selectedTicker": "AMD",
+    "lstPrice": 160.655
+  },
+  {
+    "id": "mek2oqk2o0d073axhh",
+    "timestamp": "2025-08-20 10:33:19",
+    "callVolume": 662252,
+    "putVolume": 887156,
+    "selectedTicker": "SPY",
+    "lstPrice": 633.97
+  },
+  {
+    "id": "mek2ordh08x0iigqvpna",
+    "timestamp": "2025-08-20 10:33:20",
+    "callVolume": 468499,
+    "putVolume": 525804,
+    "selectedTicker": "QQQ",
+    "lstPrice": 560.31
+  },
+  {
+    "id": "mek2os5ozctgz75a1f8",
+    "timestamp": "2025-08-20 10:33:21",
+    "callVolume": 48235,
+    "putVolume": 115399,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.13
+  },
+  {
+    "id": "mek2osi3pspuztab4a",
+    "timestamp": "2025-08-20 10:33:22",
+    "callVolume": 48133,
+    "putVolume": 64632,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.9001
+  },
+  {
+    "id": "mek2osu7vonxvloocwk",
+    "timestamp": "2025-08-20 10:33:22",
+    "callVolume": 343747,
+    "putVolume": 283487,
+    "selectedTicker": "NVDA",
+    "lstPrice": 170.19
+  },
+  {
+    "id": "mek2ot6stbedt8xpve",
+    "timestamp": "2025-08-20 10:33:23",
+    "callVolume": 43390,
+    "putVolume": 28780,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.5501
+  },
+  {
+    "id": "mek2otfuo5y7jvj4mjn",
+    "timestamp": "2025-08-20 10:33:23",
+    "callVolume": 25959,
+    "putVolume": 9346,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.41
+  },
+  {
+    "id": "mek2otsqvlt335j5bvq",
+    "timestamp": "2025-08-20 10:33:23",
+    "callVolume": 163143,
+    "putVolume": 190842,
+    "selectedTicker": "TSLA",
+    "lstPrice": 317.87
+  },
+  {
+    "id": "mek2ou9twre6ojlpgp",
+    "timestamp": "2025-08-20 10:33:24",
+    "callVolume": 49252,
+    "putVolume": 60195,
+    "selectedTicker": "META",
+    "lstPrice": 735.3
+  },
+  {
+    "id": "mek2ouw6jxk5ky7pon",
+    "timestamp": "2025-08-20 10:33:25",
+    "callVolume": 27709,
+    "putVolume": 16596,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.63
+  },
+  {
+    "id": "mek2ov79g5ivuktuo2",
+    "timestamp": "2025-08-20 10:33:25",
+    "callVolume": 7353,
+    "putVolume": 17615,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.2979
+  },
+  {
+    "id": "mek2ovjxvluvnw67ha",
+    "timestamp": "2025-08-20 10:33:26",
+    "callVolume": 10541,
+    "putVolume": 19750,
+    "selectedTicker": "COIN",
+    "lstPrice": 295.9
+  },
+  {
+    "id": "mek2ovx3p1h34wetbq",
+    "timestamp": "2025-08-20 10:33:26",
+    "callVolume": 72732,
+    "putVolume": 102697,
+    "selectedTicker": "AMD",
+    "lstPrice": 160.225
+  },
+  {
+    "id": "mek2v5wxkfkxkms6vkq",
+    "timestamp": "2025-08-20 10:38:19",
+    "callVolume": 727434,
+    "putVolume": 935922,
+    "selectedTicker": "SPY",
+    "lstPrice": 634.12
+  },
+  {
+    "id": "mek2v6uynuslms691p",
+    "timestamp": "2025-08-20 10:38:20",
+    "callVolume": 515586,
+    "putVolume": 551826,
+    "selectedTicker": "QQQ",
+    "lstPrice": 560.41
+  },
+  {
+    "id": "mek2v7lzp15axvrto8d",
+    "timestamp": "2025-08-20 10:38:21",
+    "callVolume": 54192,
+    "putVolume": 118468,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.37
+  },
+  {
+    "id": "mek2v8690rbejxoi004j",
+    "timestamp": "2025-08-20 10:38:22",
+    "callVolume": 53322,
+    "putVolume": 67377,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.94
+  },
+  {
+    "id": "mek2v8pd7r3j9kpa7ov",
+    "timestamp": "2025-08-20 10:38:23",
+    "callVolume": 394233,
+    "putVolume": 296377,
+    "selectedTicker": "NVDA",
+    "lstPrice": 170.0601
+  },
+  {
+    "id": "mek2v9bmv6y3ficj92",
+    "timestamp": "2025-08-20 10:38:23",
+    "callVolume": 46204,
+    "putVolume": 29396,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.39
+  },
+  {
+    "id": "mek2v9ku6hytclp13cc",
+    "timestamp": "2025-08-20 10:38:24",
+    "callVolume": 26638,
+    "putVolume": 9761,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.4807
+  },
+  {
+    "id": "mek2v9zul46qgspahvm",
+    "timestamp": "2025-08-20 10:38:24",
+    "callVolume": 187783,
+    "putVolume": 199579,
+    "selectedTicker": "TSLA",
+    "lstPrice": 317.36
+  },
+  {
+    "id": "mek2vabjnzkqbswkbqh",
+    "timestamp": "2025-08-20 10:38:25",
+    "callVolume": 52024,
+    "putVolume": 61531,
+    "selectedTicker": "META",
+    "lstPrice": 735.3601
+  },
+  {
+    "id": "mek2var8mnq9aq5k9ya",
+    "timestamp": "2025-08-20 10:38:25",
+    "callVolume": 28468,
+    "putVolume": 17808,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.995
+  },
+  {
+    "id": "mek2vb3t41fst5zlus9",
+    "timestamp": "2025-08-20 10:38:26",
+    "callVolume": 11030,
+    "putVolume": 17210,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.3101
+  },
+  {
+    "id": "mek2vbbbppmy1evx6l",
+    "timestamp": "2025-08-20 10:38:26",
+    "callVolume": 13246,
+    "putVolume": 20058,
+    "selectedTicker": "COIN",
+    "lstPrice": 296.535
+  },
+  {
+    "id": "mek2vbjef74ji6dh6ig",
+    "timestamp": "2025-08-20 10:38:26",
+    "callVolume": 78042,
+    "putVolume": 106037,
+    "selectedTicker": "AMD",
+    "lstPrice": 159.97
+  },
+  {
+    "id": "mek31ljq4vs2c3mm3xl",
+    "timestamp": "2025-08-20 10:43:19",
+    "callVolume": 760632,
+    "putVolume": 967702,
+    "selectedTicker": "SPY",
+    "lstPrice": 633.67
+  },
+  {
+    "id": "mek31mboyfsqsl7yp5b",
+    "timestamp": "2025-08-20 10:43:20",
+    "callVolume": 539065,
+    "putVolume": 570174,
+    "selectedTicker": "QQQ",
+    "lstPrice": 559.83
+  },
+  {
+    "id": "mek31mzpenpyxml5tn",
+    "timestamp": "2025-08-20 10:43:21",
+    "callVolume": 56713,
+    "putVolume": 124141,
+    "selectedTicker": "IWM",
+    "lstPrice": 223.97
+  },
+  {
+    "id": "mek31naa84q0t62asf",
+    "timestamp": "2025-08-20 10:43:22",
+    "callVolume": 52409,
+    "putVolume": 69013,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.775
+  },
+  {
+    "id": "mek31nq94qynzlsfrbf",
+    "timestamp": "2025-08-20 10:43:22",
+    "callVolume": 418045,
+    "putVolume": 306569,
+    "selectedTicker": "NVDA",
+    "lstPrice": 169.82
+  },
+  {
+    "id": "mek31o91qhphzod3bk",
+    "timestamp": "2025-08-20 10:43:23",
+    "callVolume": 47420,
+    "putVolume": 30140,
+    "selectedTicker": "AMZN",
+    "lstPrice": 221.655
+  },
+  {
+    "id": "mek31ohdpty0ykdiga",
+    "timestamp": "2025-08-20 10:43:23",
+    "callVolume": 27119,
+    "putVolume": 9891,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.305
+  },
+  {
+    "id": "mek31oreke83yir46rr",
+    "timestamp": "2025-08-20 10:43:23",
+    "callVolume": 181290,
+    "putVolume": 205328,
+    "selectedTicker": "TSLA",
+    "lstPrice": 316.259
+  },
+  {
+    "id": "mek31pl0r19r8kvi35a",
+    "timestamp": "2025-08-20 10:43:24",
+    "callVolume": 55865,
+    "putVolume": 63791,
+    "selectedTicker": "META",
+    "lstPrice": 736.22
+  },
+  {
+    "id": "mek31qc3np78554sk7",
+    "timestamp": "2025-08-20 10:43:25",
+    "callVolume": 29038,
+    "putVolume": 18186,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.69
+  },
+  {
+    "id": "mek31qr1fixtf7un6qj",
+    "timestamp": "2025-08-20 10:43:26",
+    "callVolume": 11632,
+    "putVolume": 17964,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.1798
+  },
+  {
+    "id": "mek31rjcmgwno76nidb",
+    "timestamp": "2025-08-20 10:43:27",
+    "callVolume": 13671,
+    "putVolume": 20539,
+    "selectedTicker": "COIN",
+    "lstPrice": 295.33
+  },
+  {
+    "id": "mek31rr55almz0iutjx",
+    "timestamp": "2025-08-20 10:43:27",
+    "callVolume": 83023,
+    "putVolume": 108266,
+    "selectedTicker": "AMD",
+    "lstPrice": 159.336
+  },
+  {
+    "id": "mek380ydhku2zmkcipj",
+    "timestamp": "2025-08-20 10:48:19",
+    "callVolume": 805044,
+    "putVolume": 1062956,
+    "selectedTicker": "SPY",
+    "lstPrice": 633.365
+  },
+  {
+    "id": "mek3820dppacpe5pz4s",
+    "timestamp": "2025-08-20 10:48:21",
+    "callVolume": 571563,
+    "putVolume": 594690,
+    "selectedTicker": "QQQ",
+    "lstPrice": 559.5
+  },
+  {
+    "id": "mek382ro60opig2rfyg",
+    "timestamp": "2025-08-20 10:48:22",
+    "callVolume": 58823,
+    "putVolume": 127595,
+    "selectedTicker": "IWM",
+    "lstPrice": 223.96
+  },
+  {
+    "id": "mek3834pm0p23ugb06",
+    "timestamp": "2025-08-20 10:48:22",
+    "callVolume": 55193,
+    "putVolume": 75052,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.32
+  },
+  {
+    "id": "mek383o0almmu2o0p0u",
+    "timestamp": "2025-08-20 10:48:23",
+    "callVolume": 405511,
+    "putVolume": 313133,
+    "selectedTicker": "NVDA",
+    "lstPrice": 169.405
+  },
+  {
+    "id": "mek383z9jc58g6anolf",
+    "timestamp": "2025-08-20 10:48:23",
+    "callVolume": 50272,
+    "putVolume": 30910,
+    "selectedTicker": "AMZN",
+    "lstPrice": 221.75
+  },
+  {
+    "id": "mek3849sdg32xaerig9",
+    "timestamp": "2025-08-20 10:48:23",
+    "callVolume": 27852,
+    "putVolume": 10292,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.22
+  },
+  {
+    "id": "mek384hynp0lz7ag4q",
+    "timestamp": "2025-08-20 10:48:24",
+    "callVolume": 191099,
+    "putVolume": 214272,
+    "selectedTicker": "TSLA",
+    "lstPrice": 316.0632
+  },
+  {
+    "id": "mek384z5pdsus5u764d",
+    "timestamp": "2025-08-20 10:48:24",
+    "callVolume": 60188,
+    "putVolume": 65324,
+    "selectedTicker": "META",
+    "lstPrice": 735.8
+  },
+  {
+    "id": "mek385e33xsdgfpb6uf",
+    "timestamp": "2025-08-20 10:48:25",
+    "callVolume": 29756,
+    "putVolume": 18503,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.376
+  },
+  {
+    "id": "mek385xehm8l1ulsgt6",
+    "timestamp": "2025-08-20 10:48:26",
+    "callVolume": 11854,
+    "putVolume": 18444,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.0499
+  },
+  {
+    "id": "mek386ejqjldgqc1rxf",
+    "timestamp": "2025-08-20 10:48:26",
+    "callVolume": 17092,
+    "putVolume": 20877,
+    "selectedTicker": "COIN",
+    "lstPrice": 294.6675
+  },
+  {
+    "id": "mek386r3smctjib3pds",
+    "timestamp": "2025-08-20 10:48:27",
+    "callVolume": 86220,
+    "putVolume": 114064,
+    "selectedTicker": "AMD",
+    "lstPrice": 158.72
+  },
+  {
+    "id": "mek3eihp5gnxedj46pk",
+    "timestamp": "2025-08-20 10:53:22",
+    "callVolume": 833379,
+    "putVolume": 1090196,
+    "selectedTicker": "SPY",
+    "lstPrice": 633.22
+  },
+  {
+    "id": "mek3ejjz4o69p2kfp6c",
+    "timestamp": "2025-08-20 10:53:23",
+    "callVolume": 589120,
+    "putVolume": 610228,
+    "selectedTicker": "QQQ",
+    "lstPrice": 559.14
+  },
+  {
+    "id": "mek3ekei17ukb288bue",
+    "timestamp": "2025-08-20 10:53:24",
+    "callVolume": 63777,
+    "putVolume": 129513,
+    "selectedTicker": "IWM",
+    "lstPrice": 223.88
+  },
+  {
+    "id": "mek3ekopfwyadbrc56b",
+    "timestamp": "2025-08-20 10:53:25",
+    "callVolume": 56956,
+    "putVolume": 76664,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.63
+  },
+  {
+    "id": "mek3el3n42hflkv5u8",
+    "timestamp": "2025-08-20 10:53:25",
+    "callVolume": 426487,
+    "putVolume": 320866,
+    "selectedTicker": "NVDA",
+    "lstPrice": 169.22
+  },
+  {
+    "id": "mek3elmxsrds6a611n",
+    "timestamp": "2025-08-20 10:53:26",
+    "callVolume": 52847,
+    "putVolume": 31484,
+    "selectedTicker": "AMZN",
+    "lstPrice": 221.245
+  },
+  {
+    "id": "mek3em76d0zafjkmk59",
+    "timestamp": "2025-08-20 10:53:27",
+    "callVolume": 28573,
+    "putVolume": 10435,
+    "selectedTicker": "GOOG",
+    "lstPrice": 197.79
+  },
+  {
+    "id": "mek3emjsfqomxsaq7i",
+    "timestamp": "2025-08-20 10:53:27",
+    "callVolume": 197845,
+    "putVolume": 218724,
+    "selectedTicker": "TSLA",
+    "lstPrice": 316.7429
+  },
+  {
+    "id": "mek3emzy2ijddahmts8",
+    "timestamp": "2025-08-20 10:53:28",
+    "callVolume": 61249,
+    "putVolume": 66758,
+    "selectedTicker": "META",
+    "lstPrice": 733.8165
+  },
+  {
+    "id": "mek3enfgnvrzj2erss",
+    "timestamp": "2025-08-20 10:53:28",
+    "callVolume": 32333,
+    "putVolume": 18724,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.87
+  },
+  {
+    "id": "mek3eny01figfpylezlj",
+    "timestamp": "2025-08-20 10:53:29",
+    "callVolume": 13147,
+    "putVolume": 18867,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24
+  },
+  {
+    "id": "mek3eo81dzw4pcu3b2",
+    "timestamp": "2025-08-20 10:53:29",
+    "callVolume": 17547,
+    "putVolume": 21473,
+    "selectedTicker": "COIN",
+    "lstPrice": 295.8
+  },
+  {
+    "id": "mek3eojf55k53io640w",
+    "timestamp": "2025-08-20 10:53:30",
+    "callVolume": 88638,
+    "putVolume": 116712,
+    "selectedTicker": "AMD",
+    "lstPrice": 159.1101
+  },
+  {
+    "id": "mek3kxoc7h42eifwu3r",
+    "timestamp": "2025-08-20 10:58:21",
+    "callVolume": 872089,
+    "putVolume": 1135407,
+    "selectedTicker": "SPY",
+    "lstPrice": 633.04
+  },
+  {
+    "id": "mek3kymxqor4a27vfgk",
+    "timestamp": "2025-08-20 10:58:23",
+    "callVolume": 616891,
+    "putVolume": 630095,
+    "selectedTicker": "QQQ",
+    "lstPrice": 559.23
+  },
+  {
+    "id": "mek3kzh8g4bauujr2gi",
+    "timestamp": "2025-08-20 10:58:24",
+    "callVolume": 66920,
+    "putVolume": 131650,
+    "selectedTicker": "IWM",
+    "lstPrice": 223.925
+  },
+  {
+    "id": "mek3kzrwbeduleuov6v",
+    "timestamp": "2025-08-20 10:58:24",
+    "callVolume": 58243,
+    "putVolume": 81497,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.46
+  },
+  {
+    "id": "mek3l05fshafoe2l79d",
+    "timestamp": "2025-08-20 10:58:25",
+    "callVolume": 444299,
+    "putVolume": 333318,
+    "selectedTicker": "NVDA",
+    "lstPrice": 169.56
+  },
+  {
+    "id": "mek3l0lwnb5auqwa18g",
+    "timestamp": "2025-08-20 10:58:25",
+    "callVolume": 55478,
+    "putVolume": 33639,
+    "selectedTicker": "AMZN",
+    "lstPrice": 221.38
+  },
+  {
+    "id": "mek3l0zpik7nxi7twta",
+    "timestamp": "2025-08-20 10:58:26",
+    "callVolume": 29002,
+    "putVolume": 10771,
+    "selectedTicker": "GOOG",
+    "lstPrice": 197.8714
+  },
+  {
+    "id": "mek3l1vkj21bbpqgpj",
+    "timestamp": "2025-08-20 10:58:27",
+    "callVolume": 214057,
+    "putVolume": 234619,
+    "selectedTicker": "TSLA",
+    "lstPrice": 315.7882
+  },
+  {
+    "id": "mek3l2d661244825lgu",
+    "timestamp": "2025-08-20 10:58:28",
+    "callVolume": 71552,
+    "putVolume": 67463,
+    "selectedTicker": "META",
+    "lstPrice": 733.9121
+  },
+  {
+    "id": "mek3l2vx30cj4ajc0rs",
+    "timestamp": "2025-08-20 10:58:28",
+    "callVolume": 32945,
+    "putVolume": 19018,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.99
+  },
+  {
+    "id": "mek3l3crurzhyc8ob9i",
+    "timestamp": "2025-08-20 10:58:29",
+    "callVolume": 13601,
+    "putVolume": 19497,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.0799
+  },
+  {
+    "id": "mek3l3qtr08aqyzaisp",
+    "timestamp": "2025-08-20 10:58:29",
+    "callVolume": 14933,
+    "putVolume": 21888,
+    "selectedTicker": "COIN",
+    "lstPrice": 295.895
+  },
+  {
+    "id": "mek3l4344z7y0m3ftqa",
+    "timestamp": "2025-08-20 10:58:30",
+    "callVolume": 92023,
+    "putVolume": 120774,
+    "selectedTicker": "AMD",
+    "lstPrice": 159.7402
+  },
+  {
+    "id": "mek3rc1tmf4k3hfgva",
+    "timestamp": "2025-08-20 11:03:20",
+    "callVolume": 931174,
+    "putVolume": 1194436,
+    "selectedTicker": "SPY",
+    "lstPrice": 633.695
+  },
+  {
+    "id": "mek3rcya7wzf2lq3wgv",
+    "timestamp": "2025-08-20 11:03:21",
+    "callVolume": 644884,
+    "putVolume": 651277,
+    "selectedTicker": "QQQ",
+    "lstPrice": 559.655
+  },
+  {
+    "id": "mek3rdp8s6cn6y8dehf",
+    "timestamp": "2025-08-20 11:03:22",
+    "callVolume": 70998,
+    "putVolume": 136987,
+    "selectedTicker": "IWM",
+    "lstPrice": 223.96
+  },
+  {
+    "id": "mek3re3vmr0qg6cslk9",
+    "timestamp": "2025-08-20 11:03:23",
+    "callVolume": 61230,
+    "putVolume": 85752,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.3
+  },
+  {
+    "id": "mek3redxf8vkwwq6icr",
+    "timestamp": "2025-08-20 11:03:23",
+    "callVolume": 456968,
+    "putVolume": 348525,
+    "selectedTicker": "NVDA",
+    "lstPrice": 169.92
+  },
+  {
+    "id": "mek3reqseeum5hv80rf",
+    "timestamp": "2025-08-20 11:03:24",
+    "callVolume": 57072,
+    "putVolume": 35103,
+    "selectedTicker": "AMZN",
+    "lstPrice": 221.54
+  },
+  {
+    "id": "mek3rf36yzur5k6o7ym",
+    "timestamp": "2025-08-20 11:03:24",
+    "callVolume": 30055,
+    "putVolume": 10847,
+    "selectedTicker": "GOOG",
+    "lstPrice": 197.69
+  },
+  {
+    "id": "mek3rfdgc66nnw7kww",
+    "timestamp": "2025-08-20 11:03:24",
+    "callVolume": 227593,
+    "putVolume": 247328,
+    "selectedTicker": "TSLA",
+    "lstPrice": 316.145
+  },
+  {
+    "id": "mek3rfwmo6kq5dzg7pf",
+    "timestamp": "2025-08-20 11:03:25",
+    "callVolume": 73547,
+    "putVolume": 68809,
+    "selectedTicker": "META",
+    "lstPrice": 735.4185
+  },
+  {
+    "id": "mek3rgiabx0f8brjj9",
+    "timestamp": "2025-08-20 11:03:26",
+    "callVolume": 33961,
+    "putVolume": 19688,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.35
+  },
+  {
+    "id": "mek3rgymq8wtnq2n0i",
+    "timestamp": "2025-08-20 11:03:26",
+    "callVolume": 12016,
+    "putVolume": 19456,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.1299
+  },
+  {
+    "id": "mek3rhhvm53kfkligt",
+    "timestamp": "2025-08-20 11:03:27",
+    "callVolume": 15435,
+    "putVolume": 22215,
+    "selectedTicker": "COIN",
+    "lstPrice": 297.5202
+  },
+  {
+    "id": "mek3rhuftvpgs5zukmj",
+    "timestamp": "2025-08-20 11:03:28",
+    "callVolume": 86691,
+    "putVolume": 129471,
+    "selectedTicker": "AMD",
+    "lstPrice": 160.14
+  },
+  {
+    "id": "mek3xqvux7rnm883loe",
+    "timestamp": "2025-08-20 11:08:19",
+    "callVolume": 962138,
+    "putVolume": 1219632,
+    "selectedTicker": "SPY",
+    "lstPrice": 634.48
+  },
+  {
+    "id": "mek3xrmmv6ks2z406yb",
+    "timestamp": "2025-08-20 11:08:20",
+    "callVolume": 668018,
+    "putVolume": 668059,
+    "selectedTicker": "QQQ",
+    "lstPrice": 560.925
+  },
+  {
+    "id": "mek3xs7t83a96okf1cw",
+    "timestamp": "2025-08-20 11:08:21",
+    "callVolume": 72946,
+    "putVolume": 139051,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.34
+  },
+  {
+    "id": "mek3xsr7wdolwxggde9",
+    "timestamp": "2025-08-20 11:08:22",
+    "callVolume": 72008,
+    "putVolume": 89762,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.6
+  },
+  {
+    "id": "mek3xt1q8rw1is8iefd",
+    "timestamp": "2025-08-20 11:08:22",
+    "callVolume": 471950,
+    "putVolume": 361897,
+    "selectedTicker": "NVDA",
+    "lstPrice": 170.9816
+  },
+  {
+    "id": "mek3xtfuypdv3jgkijd",
+    "timestamp": "2025-08-20 11:08:22",
+    "callVolume": 59881,
+    "putVolume": 35980,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.12
+  },
+  {
+    "id": "mek3xtqgw1eyewmxu6l",
+    "timestamp": "2025-08-20 11:08:23",
+    "callVolume": 31515,
+    "putVolume": 11296,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.515
+  },
+  {
+    "id": "mek3xu3b3c93s219qvm",
+    "timestamp": "2025-08-20 11:08:23",
+    "callVolume": 236968,
+    "putVolume": 252338,
+    "selectedTicker": "TSLA",
+    "lstPrice": 318.05
+  },
+  {
+    "id": "mek3xukqtwzp3eq4eo",
+    "timestamp": "2025-08-20 11:08:24",
+    "callVolume": 74407,
+    "putVolume": 70498,
+    "selectedTicker": "META",
+    "lstPrice": 737.735
+  },
+  {
+    "id": "mek3xv1ytdh25kso6v",
+    "timestamp": "2025-08-20 11:08:25",
+    "callVolume": 34709,
+    "putVolume": 20335,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.01
+  },
+  {
+    "id": "mek3xvmzpwoc9l7l32",
+    "timestamp": "2025-08-20 11:08:25",
+    "callVolume": 12210,
+    "putVolume": 19630,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.3899
+  },
+  {
+    "id": "mek3xw32onsta1fxfz",
+    "timestamp": "2025-08-20 11:08:26",
+    "callVolume": 18968,
+    "putVolume": 22477,
+    "selectedTicker": "COIN",
+    "lstPrice": 299.8
+  },
+  {
+    "id": "mek3xwdmiqu0jd1jakf",
+    "timestamp": "2025-08-20 11:08:26",
+    "callVolume": 100755,
+    "putVolume": 131788,
+    "selectedTicker": "AMD",
+    "lstPrice": 161.0705
+  },
+  {
+    "id": "mek4468w7zm589xg4ov",
+    "timestamp": "2025-08-20 11:13:19",
+    "callVolume": 996697,
+    "putVolume": 1263140,
+    "selectedTicker": "SPY",
+    "lstPrice": 634.66
+  },
+  {
+    "id": "mek4477a4hvu5olobcy",
+    "timestamp": "2025-08-20 11:13:20",
+    "callVolume": 695439,
+    "putVolume": 683186,
+    "selectedTicker": "QQQ",
+    "lstPrice": 561.11
+  },
+  {
+    "id": "mek4481lt6996731i4",
+    "timestamp": "2025-08-20 11:13:21",
+    "callVolume": 75529,
+    "putVolume": 141765,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.335
+  },
+  {
+    "id": "mek448djskx8mlzg5a",
+    "timestamp": "2025-08-20 11:13:22",
+    "callVolume": 73171,
+    "putVolume": 93464,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.76
+  },
+  {
+    "id": "mek448q4yd1oew6ggbk",
+    "timestamp": "2025-08-20 11:13:22",
+    "callVolume": 488329,
+    "putVolume": 368834,
+    "selectedTicker": "NVDA",
+    "lstPrice": 171.3846
+  },
+  {
+    "id": "mek4494vxqitv5z3p9c",
+    "timestamp": "2025-08-20 11:13:23",
+    "callVolume": 63448,
+    "putVolume": 37611,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.22
+  },
+  {
+    "id": "mek449esoow8v4vob9",
+    "timestamp": "2025-08-20 11:13:23",
+    "callVolume": 31999,
+    "putVolume": 11425,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.645
+  },
+  {
+    "id": "mek449qip3ubrfh7ntp",
+    "timestamp": "2025-08-20 11:13:24",
+    "callVolume": 232327,
+    "putVolume": 260230,
+    "selectedTicker": "TSLA",
+    "lstPrice": 318.54
+  },
+  {
+    "id": "mek44a2ficbwqyk40sd",
+    "timestamp": "2025-08-20 11:13:24",
+    "callVolume": 76092,
+    "putVolume": 72562,
+    "selectedTicker": "META",
+    "lstPrice": 737.725
+  },
+  {
+    "id": "mek44af8t0dwt3htyvl",
+    "timestamp": "2025-08-20 11:13:24",
+    "callVolume": 39128,
+    "putVolume": 20959,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.96
+  },
+  {
+    "id": "mek44aokws4sd2gk4f",
+    "timestamp": "2025-08-20 11:13:25",
+    "callVolume": 12655,
+    "putVolume": 19929,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.365
+  },
+  {
+    "id": "mek44axnwuftkeoz7um",
+    "timestamp": "2025-08-20 11:13:25",
+    "callVolume": 19628,
+    "putVolume": 22654,
+    "selectedTicker": "COIN",
+    "lstPrice": 300.59
+  },
+  {
+    "id": "mek44b8y1qnslq0bib1",
+    "timestamp": "2025-08-20 11:13:26",
+    "callVolume": 103459,
+    "putVolume": 133396,
+    "selectedTicker": "AMD",
+    "lstPrice": 161.27
+  },
+  {
+    "id": "mek4allojpsjlurvpb",
+    "timestamp": "2025-08-20 11:18:19",
+    "callVolume": 1034744,
+    "putVolume": 1288251,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.37
+  },
+  {
+    "id": "mek4amgmsy8hq5ekrvg",
+    "timestamp": "2025-08-20 11:18:20",
+    "callVolume": 715472,
+    "putVolume": 694550,
+    "selectedTicker": "QQQ",
+    "lstPrice": 561.99
+  },
+  {
+    "id": "mek4amzqutoj69cfkcj",
+    "timestamp": "2025-08-20 11:18:21",
+    "callVolume": 76880,
+    "putVolume": 148557,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.685
+  },
+  {
+    "id": "mek4andjftbcnx8igku",
+    "timestamp": "2025-08-20 11:18:21",
+    "callVolume": 74206,
+    "putVolume": 95020,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.293
+  },
+  {
+    "id": "mek4ant9x5jjaa54eaa",
+    "timestamp": "2025-08-20 11:18:22",
+    "callVolume": 505458,
+    "putVolume": 376820,
+    "selectedTicker": "NVDA",
+    "lstPrice": 171.555
+  },
+  {
+    "id": "mek4aob0pbry08dpj4",
+    "timestamp": "2025-08-20 11:18:22",
+    "callVolume": 64324,
+    "putVolume": 38349,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.68
+  },
+  {
+    "id": "mek4aorrdoize1hfppp",
+    "timestamp": "2025-08-20 11:18:23",
+    "callVolume": 26900,
+    "putVolume": 11683,
+    "selectedTicker": "GOOG",
+    "lstPrice": 198.74
+  },
+  {
+    "id": "mek4ap1opxiq1dfty6r",
+    "timestamp": "2025-08-20 11:18:23",
+    "callVolume": 249104,
+    "putVolume": 267513,
+    "selectedTicker": "TSLA",
+    "lstPrice": 319.33
+  },
+  {
+    "id": "mek4apl8r7wskzjba4",
+    "timestamp": "2025-08-20 11:18:24",
+    "callVolume": 77251,
+    "putVolume": 73759,
+    "selectedTicker": "META",
+    "lstPrice": 739.345
+  },
+  {
+    "id": "mek4apy6yptclojiz5",
+    "timestamp": "2025-08-20 11:18:24",
+    "callVolume": 40757,
+    "putVolume": 21848,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.985
+  },
+  {
+    "id": "mek4aqb56q6kf9qttwu",
+    "timestamp": "2025-08-20 11:18:25",
+    "callVolume": 16205,
+    "putVolume": 21199,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.61
+  },
+  {
+    "id": "mek4aqqbmp166933c3q",
+    "timestamp": "2025-08-20 11:18:26",
+    "callVolume": 19990,
+    "putVolume": 22789,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.45
+  },
+  {
+    "id": "mek4ar1sg0caccoqs4i",
+    "timestamp": "2025-08-20 11:18:26",
+    "callVolume": 104961,
+    "putVolume": 135072,
+    "selectedTicker": "AMD",
+    "lstPrice": 161.9098
+  },
+  {
+    "id": "mek4h1p4uod1c6q0ir",
+    "timestamp": "2025-08-20 11:23:20",
+    "callVolume": 1093127,
+    "putVolume": 1319872,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.985
+  },
+  {
+    "id": "mek4h2vdevetktf9tt",
+    "timestamp": "2025-08-20 11:23:21",
+    "callVolume": 760091,
+    "putVolume": 713682,
+    "selectedTicker": "QQQ",
+    "lstPrice": 562.73
+  },
+  {
+    "id": "mek4h3l098x10v7aytk",
+    "timestamp": "2025-08-20 11:23:22",
+    "callVolume": 78458,
+    "putVolume": 150677,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.97
+  },
+  {
+    "id": "mek4h43xfuia733tdig",
+    "timestamp": "2025-08-20 11:23:23",
+    "callVolume": 74985,
+    "putVolume": 97284,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.19
+  },
+  {
+    "id": "mek4h4ho2h6563170r4",
+    "timestamp": "2025-08-20 11:23:23",
+    "callVolume": 568798,
+    "putVolume": 386845,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.3
+  },
+  {
+    "id": "mek4h4usfu7638mp3u",
+    "timestamp": "2025-08-20 11:23:24",
+    "callVolume": 66467,
+    "putVolume": 38968,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.77
+  },
+  {
+    "id": "mek4h576luhm11wwfva",
+    "timestamp": "2025-08-20 11:23:24",
+    "callVolume": 33825,
+    "putVolume": 11835,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.295
+  },
+  {
+    "id": "mek4h5gag3q2pwci09h",
+    "timestamp": "2025-08-20 11:23:25",
+    "callVolume": 259746,
+    "putVolume": 269878,
+    "selectedTicker": "TSLA",
+    "lstPrice": 319.6219
+  },
+  {
+    "id": "mek4h5wh5fy3s7wjpu",
+    "timestamp": "2025-08-20 11:23:25",
+    "callVolume": 78967,
+    "putVolume": 74935,
+    "selectedTicker": "META",
+    "lstPrice": 740.4
+  },
+  {
+    "id": "mek4h6a5u62913kdor",
+    "timestamp": "2025-08-20 11:23:26",
+    "callVolume": 43220,
+    "putVolume": 22840,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.16
+  },
+  {
+    "id": "mek4h6y04vn8wsh06ew",
+    "timestamp": "2025-08-20 11:23:26",
+    "callVolume": 16469,
+    "putVolume": 21473,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.86
+  },
+  {
+    "id": "mek4h7934ybqmribcmf",
+    "timestamp": "2025-08-20 11:23:27",
+    "callVolume": 21670,
+    "putVolume": 24976,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.31
+  },
+  {
+    "id": "mek4h7nslxvxiu7nwf",
+    "timestamp": "2025-08-20 11:23:27",
+    "callVolume": 109388,
+    "putVolume": 137801,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.5538
+  },
+  {
+    "id": "mek4ngw07z07fhpmj1j",
+    "timestamp": "2025-08-20 11:28:19",
+    "callVolume": 1141020,
+    "putVolume": 1345114,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.335
+  },
+  {
+    "id": "mek4nhvk6zad147qt5o",
+    "timestamp": "2025-08-20 11:28:21",
+    "callVolume": 783308,
+    "putVolume": 728785,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.32
+  },
+  {
+    "id": "mek4nihrfwrrj2qje95",
+    "timestamp": "2025-08-20 11:28:21",
+    "callVolume": 81393,
+    "putVolume": 154098,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.1399
+  },
+  {
+    "id": "mek4nis2oqu0qsm4jin",
+    "timestamp": "2025-08-20 11:28:22",
+    "callVolume": 76203,
+    "putVolume": 98614,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.52
+  },
+  {
+    "id": "mek4nj1nm1qy3gym0f",
+    "timestamp": "2025-08-20 11:28:22",
+    "callVolume": 583032,
+    "putVolume": 394723,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.22
+  },
+  {
+    "id": "mek4njcvbu1eu13icgt",
+    "timestamp": "2025-08-20 11:28:22",
+    "callVolume": 67717,
+    "putVolume": 39264,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.305
+  },
+  {
+    "id": "mek4njx214mt59823wl",
+    "timestamp": "2025-08-20 11:28:23",
+    "callVolume": 33979,
+    "putVolume": 11972,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.28
+  },
+  {
+    "id": "mek4nk6qikc5hvy6o98",
+    "timestamp": "2025-08-20 11:28:24",
+    "callVolume": 286801,
+    "putVolume": 276126,
+    "selectedTicker": "TSLA",
+    "lstPrice": 319.82
+  },
+  {
+    "id": "mek4nkolr1zirhrebq",
+    "timestamp": "2025-08-20 11:28:24",
+    "callVolume": 80205,
+    "putVolume": 75796,
+    "selectedTicker": "META",
+    "lstPrice": 741.3532
+  },
+  {
+    "id": "mek4nlc3lx8vmzy19eh",
+    "timestamp": "2025-08-20 11:28:25",
+    "callVolume": 44467,
+    "putVolume": 23526,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.95
+  },
+  {
+    "id": "mek4nlmriqi1wtxa3s8",
+    "timestamp": "2025-08-20 11:28:25",
+    "callVolume": 17349,
+    "putVolume": 21782,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.925
+  },
+  {
+    "id": "mek4nly1h1hi8c2wfrm",
+    "timestamp": "2025-08-20 11:28:26",
+    "callVolume": 25065,
+    "putVolume": 19888,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.5964
+  },
+  {
+    "id": "mek4nm9bx0vjmr1b62c",
+    "timestamp": "2025-08-20 11:28:26",
+    "callVolume": 114813,
+    "putVolume": 137354,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.67
+  },
+  {
+    "id": "mek4tw0vd5agzfcmhc6",
+    "timestamp": "2025-08-20 11:33:19",
+    "callVolume": 1202150,
+    "putVolume": 1378778,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.59
+  },
+  {
+    "id": "mek4tx1r1jw81tv95m5",
+    "timestamp": "2025-08-20 11:33:20",
+    "callVolume": 811469,
+    "putVolume": 746712,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.94
+  },
+  {
+    "id": "mek4txne7r4evl6q7r3",
+    "timestamp": "2025-08-20 11:33:21",
+    "callVolume": 85449,
+    "putVolume": 156451,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.2
+  },
+  {
+    "id": "mek4ty0qvxawqr8zmr",
+    "timestamp": "2025-08-20 11:33:21",
+    "callVolume": 81615,
+    "putVolume": 99736,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.15
+  },
+  {
+    "id": "mek4tyihg2u3mq3k7tj",
+    "timestamp": "2025-08-20 11:33:22",
+    "callVolume": 596201,
+    "putVolume": 401570,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.7158
+  },
+  {
+    "id": "mek4tyx5712ygnwswbj",
+    "timestamp": "2025-08-20 11:33:23",
+    "callVolume": 69350,
+    "putVolume": 39169,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.875
+  },
+  {
+    "id": "mek4tz4rzhfgszhvbi",
+    "timestamp": "2025-08-20 11:33:23",
+    "callVolume": 34277,
+    "putVolume": 12092,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.66
+  },
+  {
+    "id": "mek4tzft592prbjqagb",
+    "timestamp": "2025-08-20 11:33:23",
+    "callVolume": 294671,
+    "putVolume": 281387,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.17
+  },
+  {
+    "id": "mek4tzz4fs0smjlnq88",
+    "timestamp": "2025-08-20 11:33:24",
+    "callVolume": 82676,
+    "putVolume": 76946,
+    "selectedTicker": "META",
+    "lstPrice": 741.935
+  },
+  {
+    "id": "mek4u0kcu6kfdar538",
+    "timestamp": "2025-08-20 11:33:25",
+    "callVolume": 46359,
+    "putVolume": 23887,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.83
+  },
+  {
+    "id": "mek4u125sr8ubxkp8zd",
+    "timestamp": "2025-08-20 11:33:25",
+    "callVolume": 21551,
+    "putVolume": 21545,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.1099
+  },
+  {
+    "id": "mek4u1gts01pv5cw6mb",
+    "timestamp": "2025-08-20 11:33:26",
+    "callVolume": 28353,
+    "putVolume": 20286,
+    "selectedTicker": "COIN",
+    "lstPrice": 304.7339
+  },
+  {
+    "id": "mek4u1oydamkaf53ka",
+    "timestamp": "2025-08-20 11:33:26",
+    "callVolume": 122886,
+    "putVolume": 140997,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.5201
+  },
+  {
+    "id": "mek50brb18h7bt9nmbl",
+    "timestamp": "2025-08-20 11:38:19",
+    "callVolume": 1272020,
+    "putVolume": 1412996,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.71
+  },
+  {
+    "id": "mek50cp8ff7utpaj4mn",
+    "timestamp": "2025-08-20 11:38:20",
+    "callVolume": 853621,
+    "putVolume": 769318,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.125
+  },
+  {
+    "id": "mek50dsxl4ul58lo5v",
+    "timestamp": "2025-08-20 11:38:22",
+    "callVolume": 88549,
+    "putVolume": 158460,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.09
+  },
+  {
+    "id": "mek50e4uajb0zbj5vlg",
+    "timestamp": "2025-08-20 11:38:22",
+    "callVolume": 79253,
+    "putVolume": 100709,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.325
+  },
+  {
+    "id": "mek50eq71xr8j19hs1jh",
+    "timestamp": "2025-08-20 11:38:23",
+    "callVolume": 621667,
+    "putVolume": 405100,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.815
+  },
+  {
+    "id": "mek50ezw449lso6a8tq",
+    "timestamp": "2025-08-20 11:38:23",
+    "callVolume": 70858,
+    "putVolume": 39481,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.13
+  },
+  {
+    "id": "mek50fb8lc5249i9tnm",
+    "timestamp": "2025-08-20 11:38:24",
+    "callVolume": 34658,
+    "putVolume": 12195,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.9
+  },
+  {
+    "id": "mek50frnyf1d8hg5lyl",
+    "timestamp": "2025-08-20 11:38:24",
+    "callVolume": 306026,
+    "putVolume": 283758,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.505
+  },
+  {
+    "id": "mek50g4r4exfeo6oztk",
+    "timestamp": "2025-08-20 11:38:25",
+    "callVolume": 84462,
+    "putVolume": 78183,
+    "selectedTicker": "META",
+    "lstPrice": 743
+  },
+  {
+    "id": "mek50h2vdqlma2krmb4",
+    "timestamp": "2025-08-20 11:38:26",
+    "callVolume": 47875,
+    "putVolume": 24537,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.4
+  },
+  {
+    "id": "mek50hjvfoucns98zi",
+    "timestamp": "2025-08-20 11:38:27",
+    "callVolume": 22774,
+    "putVolume": 22527,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.0813
+  },
+  {
+    "id": "mek50i64ef9faurqor",
+    "timestamp": "2025-08-20 11:38:27",
+    "callVolume": 31092,
+    "putVolume": 20585,
+    "selectedTicker": "COIN",
+    "lstPrice": 304.09
+  },
+  {
+    "id": "mek50igdr8j9fksjbnb",
+    "timestamp": "2025-08-20 11:38:28",
+    "callVolume": 129323,
+    "putVolume": 143253,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.41
+  },
+  {
+    "id": "mek56r5j6489fbnr8ky",
+    "timestamp": "2025-08-20 11:43:19",
+    "callVolume": 1330180,
+    "putVolume": 1463691,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.625
+  },
+  {
+    "id": "mek56s1d83v8e9ql9aa",
+    "timestamp": "2025-08-20 11:43:20",
+    "callVolume": 895302,
+    "putVolume": 794264,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.82
+  },
+  {
+    "id": "mek56smv95vugspsh1a",
+    "timestamp": "2025-08-20 11:43:21",
+    "callVolume": 92631,
+    "putVolume": 160143,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.24
+  },
+  {
+    "id": "mek56sy9msovlj829of",
+    "timestamp": "2025-08-20 11:43:21",
+    "callVolume": 84018,
+    "putVolume": 101977,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227.075
+  },
+  {
+    "id": "mek56tavlwbbe8psbw",
+    "timestamp": "2025-08-20 11:43:22",
+    "callVolume": 634000,
+    "putVolume": 415197,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.7778
+  },
+  {
+    "id": "mek56tol77wmx653rl9",
+    "timestamp": "2025-08-20 11:43:22",
+    "callVolume": 73505,
+    "putVolume": 40704,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.8495
+  },
+  {
+    "id": "mek56tzhw2df8mmrln",
+    "timestamp": "2025-08-20 11:43:23",
+    "callVolume": 35371,
+    "putVolume": 12335,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.867
+  },
+  {
+    "id": "mek56ucaaphe6ybrtzu",
+    "timestamp": "2025-08-20 11:43:23",
+    "callVolume": 313233,
+    "putVolume": 289120,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.6
+  },
+  {
+    "id": "mek56uuywyk8a6u8qy",
+    "timestamp": "2025-08-20 11:43:24",
+    "callVolume": 86604,
+    "putVolume": 79197,
+    "selectedTicker": "META",
+    "lstPrice": 742.2499
+  },
+  {
+    "id": "mek56v8i28yev94upo7",
+    "timestamp": "2025-08-20 11:43:24",
+    "callVolume": 50276,
+    "putVolume": 24881,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.85
+  },
+  {
+    "id": "mek56vm82c1og0fvusy",
+    "timestamp": "2025-08-20 11:43:25",
+    "callVolume": 23795,
+    "putVolume": 23108,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25
+  },
+  {
+    "id": "mek56w11wqs5byvjd4k",
+    "timestamp": "2025-08-20 11:43:25",
+    "callVolume": 32163,
+    "putVolume": 21178,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.9092
+  },
+  {
+    "id": "mek56w7bodcdc0deot",
+    "timestamp": "2025-08-20 11:43:26",
+    "callVolume": 131883,
+    "putVolume": 145592,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.97
+  },
+  {
+    "id": "mek5d6ymuisf1y065n",
+    "timestamp": "2025-08-20 11:48:19",
+    "callVolume": 1369139,
+    "putVolume": 1498710,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.1
+  },
+  {
+    "id": "mek5d8ctjf12zo3elgf",
+    "timestamp": "2025-08-20 11:48:21",
+    "callVolume": 965535,
+    "putVolume": 819737,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.29
+  },
+  {
+    "id": "mek5d8zfkqybe5ljj7j",
+    "timestamp": "2025-08-20 11:48:22",
+    "callVolume": 94805,
+    "putVolume": 162942,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.91
+  },
+  {
+    "id": "mek5d9frct07bew04bv",
+    "timestamp": "2025-08-20 11:48:23",
+    "callVolume": 81907,
+    "putVolume": 102702,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.96
+  },
+  {
+    "id": "mek5d9pkl6hs15yapsf",
+    "timestamp": "2025-08-20 11:48:23",
+    "callVolume": 661227,
+    "putVolume": 424641,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.7517
+  },
+  {
+    "id": "mek5d9z5h4jsrp71th6",
+    "timestamp": "2025-08-20 11:48:23",
+    "callVolume": 75973,
+    "putVolume": 41572,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.34
+  },
+  {
+    "id": "mek5da71um1vcd7qpan",
+    "timestamp": "2025-08-20 11:48:24",
+    "callVolume": 35602,
+    "putVolume": 12490,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.61
+  },
+  {
+    "id": "mek5daga9gvf8odqkkf",
+    "timestamp": "2025-08-20 11:48:24",
+    "callVolume": 320100,
+    "putVolume": 291976,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.435
+  },
+  {
+    "id": "mek5db637z06g7dwy7l",
+    "timestamp": "2025-08-20 11:48:25",
+    "callVolume": 88791,
+    "putVolume": 80075,
+    "selectedTicker": "META",
+    "lstPrice": 740.68
+  },
+  {
+    "id": "mek5dbm5ezqmrljt9ru",
+    "timestamp": "2025-08-20 11:48:25",
+    "callVolume": 54537,
+    "putVolume": 25541,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.105
+  },
+  {
+    "id": "mek5dbxkhb90usk0z4a",
+    "timestamp": "2025-08-20 11:48:26",
+    "callVolume": 38892,
+    "putVolume": 22740,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.875
+  },
+  {
+    "id": "mek5dcaxilie5riguv",
+    "timestamp": "2025-08-20 11:48:26",
+    "callVolume": 38163,
+    "putVolume": 21712,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.3472
+  },
+  {
+    "id": "mek5dclpadkae38djf",
+    "timestamp": "2025-08-20 11:48:27",
+    "callVolume": 137429,
+    "putVolume": 145984,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.045
+  },
+  {
+    "id": "mek5jmcsgvw0plx9ror",
+    "timestamp": "2025-08-20 11:53:19",
+    "callVolume": 1422146,
+    "putVolume": 1539023,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.03
+  },
+  {
+    "id": "mek5jn7fxx3jnxy90ro",
+    "timestamp": "2025-08-20 11:53:20",
+    "callVolume": 998146,
+    "putVolume": 851743,
+    "selectedTicker": "QQQ",
+    "lstPrice": 561.99
+  },
+  {
+    "id": "mek5jnm3h3wzafuuxnc",
+    "timestamp": "2025-08-20 11:53:21",
+    "callVolume": 98767,
+    "putVolume": 165592,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.59
+  },
+  {
+    "id": "mek5jnybnr2ii6s1qwb",
+    "timestamp": "2025-08-20 11:53:21",
+    "callVolume": 86719,
+    "putVolume": 103376,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.58
+  },
+  {
+    "id": "mek5jodfd6fgeafk8kl",
+    "timestamp": "2025-08-20 11:53:22",
+    "callVolume": 678714,
+    "putVolume": 430611,
+    "selectedTicker": "NVDA",
+    "lstPrice": 171.9813
+  },
+  {
+    "id": "mek5jolvmmrrn33ox6",
+    "timestamp": "2025-08-20 11:53:22",
+    "callVolume": 78148,
+    "putVolume": 41935,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.83
+  },
+  {
+    "id": "mek5jow6lv25y4lr4fg",
+    "timestamp": "2025-08-20 11:53:23",
+    "callVolume": 35936,
+    "putVolume": 12586,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.4
+  },
+  {
+    "id": "mek5jp7qdhxe67sb0ej",
+    "timestamp": "2025-08-20 11:53:23",
+    "callVolume": 328652,
+    "putVolume": 297319,
+    "selectedTicker": "TSLA",
+    "lstPrice": 317.9536
+  },
+  {
+    "id": "mek5jpoc1vn3txvjegsh",
+    "timestamp": "2025-08-20 11:53:24",
+    "callVolume": 90088,
+    "putVolume": 81383,
+    "selectedTicker": "META",
+    "lstPrice": 738.5342
+  },
+  {
+    "id": "mek5jq5z0wo50s5yxms",
+    "timestamp": "2025-08-20 11:53:24",
+    "callVolume": 55203,
+    "putVolume": 26073,
+    "selectedTicker": "MSFT",
+    "lstPrice": 504.58
+  },
+  {
+    "id": "mek5jqgwd9vazcwmbo",
+    "timestamp": "2025-08-20 11:53:25",
+    "callVolume": 40716,
+    "putVolume": 23277,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.6
+  },
+  {
+    "id": "mek5jqqbc2hdb0rawz",
+    "timestamp": "2025-08-20 11:53:25",
+    "callVolume": 34338,
+    "putVolume": 22008,
+    "selectedTicker": "COIN",
+    "lstPrice": 300.87
+  },
+  {
+    "id": "mek5jqzkq4miofaz9e",
+    "timestamp": "2025-08-20 11:53:25",
+    "callVolume": 142232,
+    "putVolume": 150552,
+    "selectedTicker": "AMD",
+    "lstPrice": 161.995
+  },
+  {
+    "id": "mek5q1m9rxr6ko1uck",
+    "timestamp": "2025-08-20 11:58:19",
+    "callVolume": 1453049,
+    "putVolume": 1567103,
+    "selectedTicker": "SPY",
+    "lstPrice": 634.935
+  },
+  {
+    "id": "mek5q2qx3aeacfjv2nl",
+    "timestamp": "2025-08-20 11:58:21",
+    "callVolume": 1018934,
+    "putVolume": 873283,
+    "selectedTicker": "QQQ",
+    "lstPrice": 561.93
+  },
+  {
+    "id": "mek5q3s7kwxpfxn7k7g",
+    "timestamp": "2025-08-20 11:58:22",
+    "callVolume": 100252,
+    "putVolume": 166688,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.38
+  },
+  {
+    "id": "mek5q440xpo7jlbaty8",
+    "timestamp": "2025-08-20 11:58:22",
+    "callVolume": 84253,
+    "putVolume": 103765,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.46
+  },
+  {
+    "id": "mek5q4rkvq22aqpfiqr",
+    "timestamp": "2025-08-20 11:58:23",
+    "callVolume": 687662,
+    "putVolume": 437548,
+    "selectedTicker": "NVDA",
+    "lstPrice": 171.98
+  },
+  {
+    "id": "mek5q52jqi7rjkdw47",
+    "timestamp": "2025-08-20 11:58:24",
+    "callVolume": 79382,
+    "putVolume": 43236,
+    "selectedTicker": "AMZN",
+    "lstPrice": 222.7738
+  },
+  {
+    "id": "mek5q5hl8um6094gq6g",
+    "timestamp": "2025-08-20 11:58:24",
+    "callVolume": 36335,
+    "putVolume": 12721,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.46
+  },
+  {
+    "id": "mek5q5tx8sgaiixxard",
+    "timestamp": "2025-08-20 11:58:25",
+    "callVolume": 333157,
+    "putVolume": 300339,
+    "selectedTicker": "TSLA",
+    "lstPrice": 317.81
+  },
+  {
+    "id": "mek5q6bmp76qsuxajz",
+    "timestamp": "2025-08-20 11:58:25",
+    "callVolume": 91002,
+    "putVolume": 82558,
+    "selectedTicker": "META",
+    "lstPrice": 738.7677
+  },
+  {
+    "id": "mek5q6nzy9b426xn4ge",
+    "timestamp": "2025-08-20 11:58:26",
+    "callVolume": 55842,
+    "putVolume": 26433,
+    "selectedTicker": "MSFT",
+    "lstPrice": 504.78
+  },
+  {
+    "id": "mek5q6zhqe4i7ygyofg",
+    "timestamp": "2025-08-20 11:58:26",
+    "callVolume": 41062,
+    "putVolume": 23402,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.61
+  },
+  {
+    "id": "mek5q7a62zf9hwlz02g",
+    "timestamp": "2025-08-20 11:58:26",
+    "callVolume": 35504,
+    "putVolume": 22351,
+    "selectedTicker": "COIN",
+    "lstPrice": 301
+  },
+  {
+    "id": "mek5q7j5bvpbkyj9csd",
+    "timestamp": "2025-08-20 11:58:27",
+    "callVolume": 146134,
+    "putVolume": 155004,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.48
+  },
+  {
+    "id": "mek5wh3tdj2u03rl2yj",
+    "timestamp": "2025-08-20 12:03:19",
+    "callVolume": 1474262,
+    "putVolume": 1590123,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.8142
+  },
+  {
+    "id": "mek5wi0yd5kr4f61ls7",
+    "timestamp": "2025-08-20 12:03:20",
+    "callVolume": 1034229,
+    "putVolume": 884723,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.08
+  },
+  {
+    "id": "mek5winy80hd34ndcuw",
+    "timestamp": "2025-08-20 12:03:21",
+    "callVolume": 101336,
+    "putVolume": 167988,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.6881
+  },
+  {
+    "id": "mek5wiy22i49f420lsn",
+    "timestamp": "2025-08-20 12:03:21",
+    "callVolume": 85025,
+    "putVolume": 104098,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.8
+  },
+  {
+    "id": "mek5wj7wf9gim3s0lx8",
+    "timestamp": "2025-08-20 12:03:22",
+    "callVolume": 694715,
+    "putVolume": 441878,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.6
+  },
+  {
+    "id": "mek5wjllz4ae5f56q6l",
+    "timestamp": "2025-08-20 12:03:22",
+    "callVolume": 80115,
+    "putVolume": 44767,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.1586
+  },
+  {
+    "id": "mek5wjxwl321xoxvpxe",
+    "timestamp": "2025-08-20 12:03:23",
+    "callVolume": 36538,
+    "putVolume": 12772,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.835
+  },
+  {
+    "id": "mek5wkags4xc5ftm91m",
+    "timestamp": "2025-08-20 12:03:23",
+    "callVolume": 335399,
+    "putVolume": 302620,
+    "selectedTicker": "TSLA",
+    "lstPrice": 319.34
+  },
+  {
+    "id": "mek5wkr6d0xhullgiaj",
+    "timestamp": "2025-08-20 12:03:24",
+    "callVolume": 91335,
+    "putVolume": 84216,
+    "selectedTicker": "META",
+    "lstPrice": 740.805
+  },
+  {
+    "id": "mek5wl4y91k71qe5zpv",
+    "timestamp": "2025-08-20 12:03:24",
+    "callVolume": 58192,
+    "putVolume": 27399,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.39
+  },
+  {
+    "id": "mek5wlf43z62h2f4qbv",
+    "timestamp": "2025-08-20 12:03:25",
+    "callVolume": 26398,
+    "putVolume": 24240,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.825
+  },
+  {
+    "id": "mek5wlnqlkb4pgpiow",
+    "timestamp": "2025-08-20 12:03:25",
+    "callVolume": 35986,
+    "putVolume": 22516,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.02
+  },
+  {
+    "id": "mek5wlvbkxxe1ug2tz",
+    "timestamp": "2025-08-20 12:03:25",
+    "callVolume": 148911,
+    "putVolume": 156157,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.095
+  },
+  {
+    "id": "mek62wkwgots54mexkv",
+    "timestamp": "2025-08-20 12:08:19",
+    "callVolume": 1511400,
+    "putVolume": 1654162,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.515
+  },
+  {
+    "id": "mek62xcq9434i10zepf",
+    "timestamp": "2025-08-20 12:08:20",
+    "callVolume": 1057856,
+    "putVolume": 917779,
+    "selectedTicker": "QQQ",
+    "lstPrice": 562.9
+  },
+  {
+    "id": "mek62ze71qda0f8uwu3h",
+    "timestamp": "2025-08-20 12:08:23",
+    "callVolume": 105075,
+    "putVolume": 170373,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.56
+  },
+  {
+    "id": "mek62zlqno2zaiwhi6j",
+    "timestamp": "2025-08-20 12:08:23",
+    "callVolume": 86140,
+    "putVolume": 104828,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.81
+  },
+  {
+    "id": "mek62zy28yvshlupa07",
+    "timestamp": "2025-08-20 12:08:23",
+    "callVolume": 689476,
+    "putVolume": 456734,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.4942
+  },
+  {
+    "id": "mek630ds2qwdgtd9o07",
+    "timestamp": "2025-08-20 12:08:24",
+    "callVolume": 80670,
+    "putVolume": 45763,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.245
+  },
+  {
+    "id": "mek630n0z9tkp9la29",
+    "timestamp": "2025-08-20 12:08:24",
+    "callVolume": 36758,
+    "putVolume": 12831,
+    "selectedTicker": "GOOG",
+    "lstPrice": 199.865
+  },
+  {
+    "id": "mek630ypsakl3mivyin",
+    "timestamp": "2025-08-20 12:08:25",
+    "callVolume": 322278,
+    "putVolume": 312830,
+    "selectedTicker": "TSLA",
+    "lstPrice": 319.38
+  },
+  {
+    "id": "mek631rkw8q2fin1qj",
+    "timestamp": "2025-08-20 12:08:26",
+    "callVolume": 92586,
+    "putVolume": 86105,
+    "selectedTicker": "META",
+    "lstPrice": 741.1299
+  },
+  {
+    "id": "mek632hbwbtxyokq08",
+    "timestamp": "2025-08-20 12:08:27",
+    "callVolume": 60074,
+    "putVolume": 28042,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.0922
+  },
+  {
+    "id": "mek632ukps5ejjwjo9j",
+    "timestamp": "2025-08-20 12:08:27",
+    "callVolume": 27050,
+    "putVolume": 24569,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.7812
+  },
+  {
+    "id": "mek6336psfdx48tx7o",
+    "timestamp": "2025-08-20 12:08:28",
+    "callVolume": 36217,
+    "putVolume": 23243,
+    "selectedTicker": "COIN",
+    "lstPrice": 301.805
+  },
+  {
+    "id": "mek633emymksv7ojymg",
+    "timestamp": "2025-08-20 12:08:28",
+    "callVolume": 154720,
+    "putVolume": 159228,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.61
+  },
+  {
+    "id": "mek69ceqa3pbxkqzxjj",
+    "timestamp": "2025-08-20 12:13:20",
+    "callVolume": 1543498,
+    "putVolume": 1719218,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.99
+  },
+  {
+    "id": "mek69d745c9fclyg9km",
+    "timestamp": "2025-08-20 12:13:21",
+    "callVolume": 1076644,
+    "putVolume": 945284,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.53
+  },
+  {
+    "id": "mek69ds7k4utbspo6fo",
+    "timestamp": "2025-08-20 12:13:21",
+    "callVolume": 106203,
+    "putVolume": 175350,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.68
+  },
+  {
+    "id": "mek69e4njitsyv6x2p",
+    "timestamp": "2025-08-20 12:13:22",
+    "callVolume": 89245,
+    "putVolume": 106652,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.85
+  },
+  {
+    "id": "mek69ekdwxc98e8cln",
+    "timestamp": "2025-08-20 12:13:22",
+    "callVolume": 696854,
+    "putVolume": 463609,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.85
+  },
+  {
+    "id": "mek69ewyarmnn5ze61q",
+    "timestamp": "2025-08-20 12:13:23",
+    "callVolume": 81712,
+    "putVolume": 47089,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.425
+  },
+  {
+    "id": "mek69f6r8tlormeoda4",
+    "timestamp": "2025-08-20 12:13:23",
+    "callVolume": 36937,
+    "putVolume": 12918,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.22
+  },
+  {
+    "id": "mek69fgel4rrmaugzxi",
+    "timestamp": "2025-08-20 12:13:23",
+    "callVolume": 328293,
+    "putVolume": 319215,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.3122
+  },
+  {
+    "id": "mek69fyhed4m28zhss9",
+    "timestamp": "2025-08-20 12:13:24",
+    "callVolume": 93646,
+    "putVolume": 87351,
+    "selectedTicker": "META",
+    "lstPrice": 742.125
+  },
+  {
+    "id": "mek69gbb9v2z6d7cxab",
+    "timestamp": "2025-08-20 12:13:25",
+    "callVolume": 62041,
+    "putVolume": 28620,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.8
+  },
+  {
+    "id": "mek69grflss0h89iz6o",
+    "timestamp": "2025-08-20 12:13:25",
+    "callVolume": 27361,
+    "putVolume": 24780,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.91
+  },
+  {
+    "id": "mek69h27e2rzprrh0e5",
+    "timestamp": "2025-08-20 12:13:26",
+    "callVolume": 37229,
+    "putVolume": 28067,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.93
+  },
+  {
+    "id": "mek69hbmk13dbxsx3",
+    "timestamp": "2025-08-20 12:13:26",
+    "callVolume": 158845,
+    "putVolume": 160530,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.11
+  },
+  {
+    "id": "mek6frrx7vin6uxxsrc",
+    "timestamp": "2025-08-20 12:18:19",
+    "callVolume": 1575510,
+    "putVolume": 1746655,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.69
+  },
+  {
+    "id": "mek6fsvqtx8f3m7lkyo",
+    "timestamp": "2025-08-20 12:18:21",
+    "callVolume": 1093936,
+    "putVolume": 963803,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.24
+  },
+  {
+    "id": "mek6ftn3zy0ephv35z",
+    "timestamp": "2025-08-20 12:18:22",
+    "callVolume": 107093,
+    "putVolume": 176247,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.99
+  },
+  {
+    "id": "mek6fu0zw8tecy4mjna",
+    "timestamp": "2025-08-20 12:18:22",
+    "callVolume": 90503,
+    "putVolume": 107055,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.9199
+  },
+  {
+    "id": "mek6fubiefl0l5jen4",
+    "timestamp": "2025-08-20 12:18:23",
+    "callVolume": 702040,
+    "putVolume": 461332,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.3722
+  },
+  {
+    "id": "mek6fukruq7s99sy4j",
+    "timestamp": "2025-08-20 12:18:23",
+    "callVolume": 82033,
+    "putVolume": 48221,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.7314
+  },
+  {
+    "id": "mek6fux6l4y64tvu1zk",
+    "timestamp": "2025-08-20 12:18:23",
+    "callVolume": 37232,
+    "putVolume": 12981,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.45
+  },
+  {
+    "id": "mek6fv5u0co2z9rj4vdv",
+    "timestamp": "2025-08-20 12:18:24",
+    "callVolume": 352437,
+    "putVolume": 325090,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.17
+  },
+  {
+    "id": "mek6fvlldps762n6b9",
+    "timestamp": "2025-08-20 12:18:24",
+    "callVolume": 94287,
+    "putVolume": 88122,
+    "selectedTicker": "META",
+    "lstPrice": 742.57
+  },
+  {
+    "id": "mek6fvzcnoiybk59vxo",
+    "timestamp": "2025-08-20 12:18:25",
+    "callVolume": 63366,
+    "putVolume": 28941,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.64
+  },
+  {
+    "id": "mek6fwf96duqd1e3v1b",
+    "timestamp": "2025-08-20 12:18:25",
+    "callVolume": 27445,
+    "putVolume": 24988,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.04
+  },
+  {
+    "id": "mek6fwod3wls1t8bf37",
+    "timestamp": "2025-08-20 12:18:26",
+    "callVolume": 37511,
+    "putVolume": 28236,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.7045
+  },
+  {
+    "id": "mek6fx4eewoyklnrsal",
+    "timestamp": "2025-08-20 12:18:26",
+    "callVolume": 160339,
+    "putVolume": 161912,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.395
+  },
+  {
+    "id": "mek6m6x0do00s8o7voi",
+    "timestamp": "2025-08-20 12:23:19",
+    "callVolume": 1595059,
+    "putVolume": 1764912,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.855
+  },
+  {
+    "id": "mek6m7xkh7sbg4trzkh",
+    "timestamp": "2025-08-20 12:23:20",
+    "callVolume": 1106327,
+    "putVolume": 973292,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.42
+  },
+  {
+    "id": "mek6m8n8iqasrmazog",
+    "timestamp": "2025-08-20 12:23:21",
+    "callVolume": 108173,
+    "putVolume": 176904,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.02
+  },
+  {
+    "id": "mek6m9cpu7dl2zexswk",
+    "timestamp": "2025-08-20 12:23:22",
+    "callVolume": 91040,
+    "putVolume": 107809,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.9
+  },
+  {
+    "id": "mek6m9ptkeemgdacbfp",
+    "timestamp": "2025-08-20 12:23:23",
+    "callVolume": 707039,
+    "putVolume": 466689,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.4217
+  },
+  {
+    "id": "mek6ma6l5c1d6mj4yfl",
+    "timestamp": "2025-08-20 12:23:23",
+    "callVolume": 82291,
+    "putVolume": 48547,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.95
+  },
+  {
+    "id": "mek6mag7hfiumpltfp8",
+    "timestamp": "2025-08-20 12:23:24",
+    "callVolume": 37361,
+    "putVolume": 13024,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.6788
+  },
+  {
+    "id": "mek6mazmoo6xa8t7npa",
+    "timestamp": "2025-08-20 12:23:24",
+    "callVolume": 355588,
+    "putVolume": 328772,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.26
+  },
+  {
+    "id": "mek6mbl9jssql42tmp",
+    "timestamp": "2025-08-20 12:23:25",
+    "callVolume": 95194,
+    "putVolume": 88439,
+    "selectedTicker": "META",
+    "lstPrice": 743.08
+  },
+  {
+    "id": "mek6mbyud12o5p8gamk",
+    "timestamp": "2025-08-20 12:23:25",
+    "callVolume": 63858,
+    "putVolume": 29232,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.94
+  },
+  {
+    "id": "mek6mckhfhdshp091d",
+    "timestamp": "2025-08-20 12:23:26",
+    "callVolume": 27760,
+    "putVolume": 25131,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.1001
+  },
+  {
+    "id": "mek6mctku8lyty6bw2",
+    "timestamp": "2025-08-20 12:23:27",
+    "callVolume": 37832,
+    "putVolume": 28364,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.7666
+  },
+  {
+    "id": "mek6md14bjiwyvr0pq",
+    "timestamp": "2025-08-20 12:23:27",
+    "callVolume": 161335,
+    "putVolume": 164174,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.62
+  },
+  {
+    "id": "mek6smo4mzaeauvcuj",
+    "timestamp": "2025-08-20 12:28:19",
+    "callVolume": 1627204,
+    "putVolume": 1793125,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.315
+  },
+  {
+    "id": "mek6snl2hvgw36mty5a",
+    "timestamp": "2025-08-20 12:28:20",
+    "callVolume": 1121606,
+    "putVolume": 986395,
+    "selectedTicker": "QQQ",
+    "lstPrice": 565.09
+  },
+  {
+    "id": "mek6so71smb794wgg",
+    "timestamp": "2025-08-20 12:28:21",
+    "callVolume": 109052,
+    "putVolume": 178198,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.12
+  },
+  {
+    "id": "mek6sokko9rmmnsxvcm",
+    "timestamp": "2025-08-20 12:28:22",
+    "callVolume": 91853,
+    "putVolume": 108911,
+    "selectedTicker": "AAPL",
+    "lstPrice": 227
+  },
+  {
+    "id": "mek6sowakn6i4bwr5i",
+    "timestamp": "2025-08-20 12:28:22",
+    "callVolume": 724407,
+    "putVolume": 469941,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.805
+  },
+  {
+    "id": "mek6sphe5keey8mzlb6",
+    "timestamp": "2025-08-20 12:28:23",
+    "callVolume": 84197,
+    "putVolume": 48682,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.1332
+  },
+  {
+    "id": "mek6sq31mudrx1ycf7l",
+    "timestamp": "2025-08-20 12:28:24",
+    "callVolume": 37989,
+    "putVolume": 12791,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.8
+  },
+  {
+    "id": "mek6sqnsaqwk3u5xshg",
+    "timestamp": "2025-08-20 12:28:24",
+    "callVolume": 359772,
+    "putVolume": 330234,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.9968
+  },
+  {
+    "id": "mek6sr0cir01r375rh",
+    "timestamp": "2025-08-20 12:28:25",
+    "callVolume": 96105,
+    "putVolume": 88913,
+    "selectedTicker": "META",
+    "lstPrice": 744.1498
+  },
+  {
+    "id": "mek6srcmststl4x2d2m",
+    "timestamp": "2025-08-20 12:28:25",
+    "callVolume": 64617,
+    "putVolume": 29481,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.05
+  },
+  {
+    "id": "mek6srw5kbfgirme7qc",
+    "timestamp": "2025-08-20 12:28:26",
+    "callVolume": 28258,
+    "putVolume": 25211,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.24
+  },
+  {
+    "id": "mek6ss6wsessdfbv0fl",
+    "timestamp": "2025-08-20 12:28:26",
+    "callVolume": 38505,
+    "putVolume": 28361,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.9599
+  },
+  {
+    "id": "mek6ssfiurdikz9tc1a",
+    "timestamp": "2025-08-20 12:28:27",
+    "callVolume": 163177,
+    "putVolume": 166015,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.8598
+  },
+  {
+    "id": "mek6z27mdqnjjdab9eg",
+    "timestamp": "2025-08-20 12:33:19",
+    "callVolume": 1658486,
+    "putVolume": 1815872,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.1
+  },
+  {
+    "id": "mek6z3d2nvl2altf35j",
+    "timestamp": "2025-08-20 12:33:21",
+    "callVolume": 1136226,
+    "putVolume": 999655,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.87
+  },
+  {
+    "id": "mek6z4ca5plbw9cpocb",
+    "timestamp": "2025-08-20 12:33:22",
+    "callVolume": 110397,
+    "putVolume": 179534,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.11
+  },
+  {
+    "id": "mek6z4qb4xr5jzn8hge",
+    "timestamp": "2025-08-20 12:33:23",
+    "callVolume": 93036,
+    "putVolume": 111348,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.9538
+  },
+  {
+    "id": "mek6z58o20hy6efkyck",
+    "timestamp": "2025-08-20 12:33:23",
+    "callVolume": 736229,
+    "putVolume": 473498,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.8642
+  },
+  {
+    "id": "mek6z5m1n7kz3nbgfsj",
+    "timestamp": "2025-08-20 12:33:24",
+    "callVolume": 84637,
+    "putVolume": 48755,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.13
+  },
+  {
+    "id": "mek6z5u13fztzjs637h",
+    "timestamp": "2025-08-20 12:33:24",
+    "callVolume": 38301,
+    "putVolume": 12853,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.715
+  },
+  {
+    "id": "mek6z67aj9wnce9vu2k",
+    "timestamp": "2025-08-20 12:33:25",
+    "callVolume": 367173,
+    "putVolume": 332673,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.3
+  },
+  {
+    "id": "mek6z6lk8zb2q2wvyzk",
+    "timestamp": "2025-08-20 12:33:25",
+    "callVolume": 96536,
+    "putVolume": 89488,
+    "selectedTicker": "META",
+    "lstPrice": 744
+  },
+  {
+    "id": "mek6z6wpkaaqe7m2uzn",
+    "timestamp": "2025-08-20 12:33:25",
+    "callVolume": 65329,
+    "putVolume": 29667,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.9125
+  },
+  {
+    "id": "mek6z79r82yaqmarqt4",
+    "timestamp": "2025-08-20 12:33:26",
+    "callVolume": 43514,
+    "putVolume": 24501,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.19
+  },
+  {
+    "id": "mek6z7jwrxtoj232rd",
+    "timestamp": "2025-08-20 12:33:26",
+    "callVolume": 39273,
+    "putVolume": 28503,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.5127
+  },
+  {
+    "id": "mek6z7u4gktgakzvv9c",
+    "timestamp": "2025-08-20 12:33:27",
+    "callVolume": 164047,
+    "putVolume": 165230,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.47
+  },
+  {
+    "id": "mek75holoz94o06l3jf",
+    "timestamp": "2025-08-20 12:38:19",
+    "callVolume": 1699470,
+    "putVolume": 1846245,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.78
+  },
+  {
+    "id": "mek75iu77t2pg22dzlq",
+    "timestamp": "2025-08-20 12:38:21",
+    "callVolume": 1159530,
+    "putVolume": 1013360,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.42
+  },
+  {
+    "id": "mek75je02ce62t8mta3",
+    "timestamp": "2025-08-20 12:38:22",
+    "callVolume": 112048,
+    "putVolume": 180418,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.885
+  },
+  {
+    "id": "mek75jlnkynz97x4nzb",
+    "timestamp": "2025-08-20 12:38:22",
+    "callVolume": 93907,
+    "putVolume": 111825,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.7141
+  },
+  {
+    "id": "mek75jxj3rozvf8cfrp",
+    "timestamp": "2025-08-20 12:38:22",
+    "callVolume": 751697,
+    "putVolume": 478211,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.5378
+  },
+  {
+    "id": "mek75k7yqr52hls3fo",
+    "timestamp": "2025-08-20 12:38:23",
+    "callVolume": 85176,
+    "putVolume": 49211,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.88
+  },
+  {
+    "id": "mek75kgtncqibw118zh",
+    "timestamp": "2025-08-20 12:38:23",
+    "callVolume": 38734,
+    "putVolume": 12929,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.6699
+  },
+  {
+    "id": "mek75kpuxqhsgckioj",
+    "timestamp": "2025-08-20 12:38:23",
+    "callVolume": 376007,
+    "putVolume": 336693,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.94
+  },
+  {
+    "id": "mek75l8wan9lflm0ok8",
+    "timestamp": "2025-08-20 12:38:24",
+    "callVolume": 97948,
+    "putVolume": 89863,
+    "selectedTicker": "META",
+    "lstPrice": 744.0001
+  },
+  {
+    "id": "mek75ll4tr4szzr0d5p",
+    "timestamp": "2025-08-20 12:38:24",
+    "callVolume": 66300,
+    "putVolume": 29780,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.295
+  },
+  {
+    "id": "mek75m0bi3xyzfa8wyk",
+    "timestamp": "2025-08-20 12:38:25",
+    "callVolume": 44513,
+    "putVolume": 24862,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.04
+  },
+  {
+    "id": "mek75mj76ksd0mt2reh",
+    "timestamp": "2025-08-20 12:38:26",
+    "callVolume": 39472,
+    "putVolume": 28587,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.125
+  },
+  {
+    "id": "mek75mrm6b808mn4e0j",
+    "timestamp": "2025-08-20 12:38:26",
+    "callVolume": 165554,
+    "putVolume": 166964,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.13
+  },
+  {
+    "id": "mek7bxlyk9t4ao7jai9",
+    "timestamp": "2025-08-20 12:43:20",
+    "callVolume": 1743960,
+    "putVolume": 1897004,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.76
+  },
+  {
+    "id": "mek7bypyfjyeo154dza",
+    "timestamp": "2025-08-20 12:43:21",
+    "callVolume": 1180874,
+    "putVolume": 1038116,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.2981
+  },
+  {
+    "id": "mek7bzyxtdw8zqawam",
+    "timestamp": "2025-08-20 12:43:23",
+    "callVolume": 112947,
+    "putVolume": 181177,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.99
+  },
+  {
+    "id": "mek7c0hajap23lum8b",
+    "timestamp": "2025-08-20 12:43:24",
+    "callVolume": 94736,
+    "putVolume": 112249,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.6299
+  },
+  {
+    "id": "mek7c0x5duw4ahe6ryk",
+    "timestamp": "2025-08-20 12:43:24",
+    "callVolume": 758417,
+    "putVolume": 481399,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.22
+  },
+  {
+    "id": "mek7c192u5ghoyg6fj",
+    "timestamp": "2025-08-20 12:43:25",
+    "callVolume": 85736,
+    "putVolume": 49764,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.1
+  },
+  {
+    "id": "mek7c1khd0tq2scc4la",
+    "timestamp": "2025-08-20 12:43:25",
+    "callVolume": 39042,
+    "putVolume": 12996,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.69
+  },
+  {
+    "id": "mek7c1xs6gto9891s8g",
+    "timestamp": "2025-08-20 12:43:26",
+    "callVolume": 383836,
+    "putVolume": 340360,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.27
+  },
+  {
+    "id": "mek7c29l93r0x686tvt",
+    "timestamp": "2025-08-20 12:43:26",
+    "callVolume": 98993,
+    "putVolume": 90341,
+    "selectedTicker": "META",
+    "lstPrice": 743.95
+  },
+  {
+    "id": "mek7c2o6d4cihbxmqlk",
+    "timestamp": "2025-08-20 12:43:26",
+    "callVolume": 66758,
+    "putVolume": 30033,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.575
+  },
+  {
+    "id": "mek7c2xp6j4xjoh7t28",
+    "timestamp": "2025-08-20 12:43:27",
+    "callVolume": 45810,
+    "putVolume": 24923,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.0165
+  },
+  {
+    "id": "mek7c39na4zwkmvrbb7",
+    "timestamp": "2025-08-20 12:43:27",
+    "callVolume": 39693,
+    "putVolume": 28748,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.7127
+  },
+  {
+    "id": "mek7c3s7y8tcyie9tzf",
+    "timestamp": "2025-08-20 12:43:28",
+    "callVolume": 176480,
+    "putVolume": 168357,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.0532
+  },
+  {
+    "id": "mek7icghpigljvsdjb",
+    "timestamp": "2025-08-20 12:48:19",
+    "callVolume": 1775593,
+    "putVolume": 1946876,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.79
+  },
+  {
+    "id": "mek7id5bogj22tmi3p",
+    "timestamp": "2025-08-20 12:48:20",
+    "callVolume": 1198536,
+    "putVolume": 1065323,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.229
+  },
+  {
+    "id": "mek7ie1v4mac3zdtws",
+    "timestamp": "2025-08-20 12:48:21",
+    "callVolume": 113568,
+    "putVolume": 181857,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.99
+  },
+  {
+    "id": "mek7iee07je7ne2wawk",
+    "timestamp": "2025-08-20 12:48:22",
+    "callVolume": 95503,
+    "putVolume": 112528,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.47
+  },
+  {
+    "id": "mek7ieovhula6ekf4zh",
+    "timestamp": "2025-08-20 12:48:22",
+    "callVolume": 769182,
+    "putVolume": 487215,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.215
+  },
+  {
+    "id": "mek7iexiguy8n7x2ghd",
+    "timestamp": "2025-08-20 12:48:22",
+    "callVolume": 86362,
+    "putVolume": 49919,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.08
+  },
+  {
+    "id": "mek7if5imqtr8f2cdy",
+    "timestamp": "2025-08-20 12:48:23",
+    "callVolume": 39216,
+    "putVolume": 13155,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.52
+  },
+  {
+    "id": "mek7ifd8mgcugevgqm",
+    "timestamp": "2025-08-20 12:48:23",
+    "callVolume": 387792,
+    "putVolume": 343213,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.8758
+  },
+  {
+    "id": "mek7ift3nymxgg44vhp",
+    "timestamp": "2025-08-20 12:48:23",
+    "callVolume": 100148,
+    "putVolume": 90951,
+    "selectedTicker": "META",
+    "lstPrice": 743.49
+  },
+  {
+    "id": "mek7ig3la1oyl4utrcl",
+    "timestamp": "2025-08-20 12:48:24",
+    "callVolume": 67157,
+    "putVolume": 30375,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.31
+  },
+  {
+    "id": "mek7ige2puhdl0tqzab",
+    "timestamp": "2025-08-20 12:48:24",
+    "callVolume": 46012,
+    "putVolume": 25127,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.975
+  },
+  {
+    "id": "mek7igmjhepf6lcp39",
+    "timestamp": "2025-08-20 12:48:25",
+    "callVolume": 40046,
+    "putVolume": 29139,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.15
+  },
+  {
+    "id": "mek7igxjr5dva5gxjp",
+    "timestamp": "2025-08-20 12:48:25",
+    "callVolume": 168016,
+    "putVolume": 170049,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.185
+  },
+  {
+    "id": "mek7os1pudlw8h38rw9",
+    "timestamp": "2025-08-20 12:53:19",
+    "callVolume": 1796055,
+    "putVolume": 1991735,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.495
+  },
+  {
+    "id": "mek7oszld0qktlsifgh",
+    "timestamp": "2025-08-20 12:53:20",
+    "callVolume": 1213487,
+    "putVolume": 1084881,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.965
+  },
+  {
+    "id": "mek7ottlf6gb5i8iqh",
+    "timestamp": "2025-08-20 12:53:22",
+    "callVolume": 113976,
+    "putVolume": 182668,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.83
+  },
+  {
+    "id": "mek7ou7kzyo40g5yt0j",
+    "timestamp": "2025-08-20 12:53:22",
+    "callVolume": 96140,
+    "putVolume": 113271,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.45
+  },
+  {
+    "id": "mek7oukpingqig94cgr",
+    "timestamp": "2025-08-20 12:53:23",
+    "callVolume": 776626,
+    "putVolume": 491834,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.12
+  },
+  {
+    "id": "mek7ov492jpeqbewc3y",
+    "timestamp": "2025-08-20 12:53:23",
+    "callVolume": 86712,
+    "putVolume": 50128,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.52
+  },
+  {
+    "id": "mek7ovouvqkhthfqiuh",
+    "timestamp": "2025-08-20 12:53:24",
+    "callVolume": 39423,
+    "putVolume": 13204,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.42
+  },
+  {
+    "id": "mek7ow14uhvu1j6uvq",
+    "timestamp": "2025-08-20 12:53:24",
+    "callVolume": 390220,
+    "putVolume": 346766,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.92
+  },
+  {
+    "id": "mek7owex3bpm807kjc5",
+    "timestamp": "2025-08-20 12:53:25",
+    "callVolume": 101047,
+    "putVolume": 91268,
+    "selectedTicker": "META",
+    "lstPrice": 742.219
+  },
+  {
+    "id": "mek7owwopbcctz98ac",
+    "timestamp": "2025-08-20 12:53:26",
+    "callVolume": 69749,
+    "putVolume": 30870,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.73
+  },
+  {
+    "id": "mek7oxa16chrb16ozc2",
+    "timestamp": "2025-08-20 12:53:26",
+    "callVolume": 46329,
+    "putVolume": 25176,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.8499
+  },
+  {
+    "id": "mek7oxnm1bee75clner",
+    "timestamp": "2025-08-20 12:53:27",
+    "callVolume": 40126,
+    "putVolume": 29310,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.18
+  },
+  {
+    "id": "mek7oxxvnl25sqcs4rj",
+    "timestamp": "2025-08-20 12:53:27",
+    "callVolume": 168877,
+    "putVolume": 172871,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.94
+  },
+  {
+    "id": "mek7v9p1g8tc56ggpa",
+    "timestamp": "2025-08-20 12:58:22",
+    "callVolume": 1814162,
+    "putVolume": 2021751,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.15
+  },
+  {
+    "id": "mek7vaokalpn68v7ry",
+    "timestamp": "2025-08-20 12:58:23",
+    "callVolume": 1223750,
+    "putVolume": 1101328,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.51
+  },
+  {
+    "id": "mek7vb8dz87nj8d27x",
+    "timestamp": "2025-08-20 12:58:24",
+    "callVolume": 114932,
+    "putVolume": 183779,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.735
+  },
+  {
+    "id": "mek7vbl7p04ny0uq5eg",
+    "timestamp": "2025-08-20 12:58:25",
+    "callVolume": 96953,
+    "putVolume": 113583,
+    "selectedTicker": "AAPL",
+    "lstPrice": 225.945
+  },
+  {
+    "id": "mek7vc06u3z376jclqn",
+    "timestamp": "2025-08-20 12:58:25",
+    "callVolume": 781824,
+    "putVolume": 497398,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.89
+  },
+  {
+    "id": "mek7vccquoo0o6lcv",
+    "timestamp": "2025-08-20 12:58:25",
+    "callVolume": 87054,
+    "putVolume": 50194,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.43
+  },
+  {
+    "id": "mek7vcrs1t1wafzfubbi",
+    "timestamp": "2025-08-20 12:58:26",
+    "callVolume": 39674,
+    "putVolume": 13384,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.155
+  },
+  {
+    "id": "mek7vd21ljmo0suigz",
+    "timestamp": "2025-08-20 12:58:26",
+    "callVolume": 392243,
+    "putVolume": 348714,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.42
+  },
+  {
+    "id": "mek7vdjwdzjv1qway8p",
+    "timestamp": "2025-08-20 12:58:27",
+    "callVolume": 101894,
+    "putVolume": 91582,
+    "selectedTicker": "META",
+    "lstPrice": 742.51
+  },
+  {
+    "id": "mek7vdvcy9vi74s98e",
+    "timestamp": "2025-08-20 12:58:27",
+    "callVolume": 71042,
+    "putVolume": 30996,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.1
+  },
+  {
+    "id": "mek7ve77i350lnpy4s",
+    "timestamp": "2025-08-20 12:58:28",
+    "callVolume": 46626,
+    "putVolume": 25408,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.8399
+  },
+  {
+    "id": "mek7vej8h4fxvp2k9le",
+    "timestamp": "2025-08-20 12:58:28",
+    "callVolume": 40617,
+    "putVolume": 29489,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.8
+  },
+  {
+    "id": "mek7veu4z537f0ntdd",
+    "timestamp": "2025-08-20 12:58:29",
+    "callVolume": 170125,
+    "putVolume": 173885,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.93
+  },
+  {
+    "id": "mek81n4t5bzurx17nmb",
+    "timestamp": "2025-08-20 13:03:19",
+    "callVolume": 1842536,
+    "putVolume": 2040972,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.77
+  },
+  {
+    "id": "mek81o1s5dvs76pd32",
+    "timestamp": "2025-08-20 13:03:21",
+    "callVolume": 1234728,
+    "putVolume": 1108608,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.25
+  },
+  {
+    "id": "mek81opzfstecgg1dyp",
+    "timestamp": "2025-08-20 13:03:21",
+    "callVolume": 115422,
+    "putVolume": 185117,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.9
+  },
+  {
+    "id": "mek81oz5kmso4bthvuf",
+    "timestamp": "2025-08-20 13:03:22",
+    "callVolume": 98305,
+    "putVolume": 117108,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.53
+  },
+  {
+    "id": "mek81pdpvqdluk5014k",
+    "timestamp": "2025-08-20 13:03:22",
+    "callVolume": 785190,
+    "putVolume": 499862,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.3699
+  },
+  {
+    "id": "mek81png50fv0nm15yp",
+    "timestamp": "2025-08-20 13:03:23",
+    "callVolume": 87344,
+    "putVolume": 50309,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.81
+  },
+  {
+    "id": "mek81riclt899f4go3",
+    "timestamp": "2025-08-20 13:03:25",
+    "callVolume": 39972,
+    "putVolume": 13416,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.355
+  },
+  {
+    "id": "mek81s0vfprqrrpx7dw",
+    "timestamp": "2025-08-20 13:03:26",
+    "callVolume": 393912,
+    "putVolume": 349643,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.46
+  },
+  {
+    "id": "mek81t408fsd0ft4pqo",
+    "timestamp": "2025-08-20 13:03:27",
+    "callVolume": 102350,
+    "putVolume": 91914,
+    "selectedTicker": "META",
+    "lstPrice": 743.8975
+  },
+  {
+    "id": "mek81teepi5c2a8mlm",
+    "timestamp": "2025-08-20 13:03:28",
+    "callVolume": 71249,
+    "putVolume": 31102,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.6
+  },
+  {
+    "id": "mek81u5w9rxddqpbbmi",
+    "timestamp": "2025-08-20 13:03:29",
+    "callVolume": 31769,
+    "putVolume": 26230,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.9301
+  },
+  {
+    "id": "mek81ufs56tjg2yz0l",
+    "timestamp": "2025-08-20 13:03:29",
+    "callVolume": 40917,
+    "putVolume": 29469,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.5599
+  },
+  {
+    "id": "mek81uofkt6wwkoj1k9",
+    "timestamp": "2025-08-20 13:03:29",
+    "callVolume": 170999,
+    "putVolume": 177192,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.395
+  },
+  {
+    "id": "mek882kgqvfk4no4i8",
+    "timestamp": "2025-08-20 13:08:19",
+    "callVolume": 1859065,
+    "putVolume": 2064630,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.74
+  },
+  {
+    "id": "mek883l5wyaj6xukjx",
+    "timestamp": "2025-08-20 13:08:21",
+    "callVolume": 1249503,
+    "putVolume": 1120194,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.21
+  },
+  {
+    "id": "mek884jn66xwz4bhq79",
+    "timestamp": "2025-08-20 13:08:22",
+    "callVolume": 116049,
+    "putVolume": 185961,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.94
+  },
+  {
+    "id": "mek8852v5xydbtb4tbc",
+    "timestamp": "2025-08-20 13:08:23",
+    "callVolume": 99363,
+    "putVolume": 119662,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.6798
+  },
+  {
+    "id": "mek885ipawqvjqb7i2c",
+    "timestamp": "2025-08-20 13:08:23",
+    "callVolume": 789091,
+    "putVolume": 503084,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.39
+  },
+  {
+    "id": "mek8862zpfm8ckdjf3",
+    "timestamp": "2025-08-20 13:08:24",
+    "callVolume": 87530,
+    "putVolume": 50718,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224
+  },
+  {
+    "id": "mek886c49dm79109rio",
+    "timestamp": "2025-08-20 13:08:24",
+    "callVolume": 40928,
+    "putVolume": 13518,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.45
+  },
+  {
+    "id": "mek886ld4hxbo9a293k",
+    "timestamp": "2025-08-20 13:08:25",
+    "callVolume": 399088,
+    "putVolume": 354399,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.7415
+  },
+  {
+    "id": "mek88737cqshu1wy70k",
+    "timestamp": "2025-08-20 13:08:25",
+    "callVolume": 102836,
+    "putVolume": 92398,
+    "selectedTicker": "META",
+    "lstPrice": 743.79
+  },
+  {
+    "id": "mek887dqesobv17wr9",
+    "timestamp": "2025-08-20 13:08:26",
+    "callVolume": 71827,
+    "putVolume": 31202,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.235
+  },
+  {
+    "id": "mek887x4i5e17ughrld",
+    "timestamp": "2025-08-20 13:08:26",
+    "callVolume": 32004,
+    "putVolume": 26304,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.9599
+  },
+  {
+    "id": "mek888cifhakpt81l6k",
+    "timestamp": "2025-08-20 13:08:27",
+    "callVolume": 41379,
+    "putVolume": 29547,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.83
+  },
+  {
+    "id": "mek888ybptswl6uqor",
+    "timestamp": "2025-08-20 13:08:28",
+    "callVolume": 171645,
+    "putVolume": 177888,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.653
+  },
+  {
+    "id": "mek8ehspuf8pqxcbk48",
+    "timestamp": "2025-08-20 13:13:19",
+    "callVolume": 1878255,
+    "putVolume": 2088229,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.74
+  },
+  {
+    "id": "mek8eiojwhr0kbj1j6",
+    "timestamp": "2025-08-20 13:13:20",
+    "callVolume": 1260017,
+    "putVolume": 1135557,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.1
+  },
+  {
+    "id": "mek8eja0v6je0uvmq2g",
+    "timestamp": "2025-08-20 13:13:21",
+    "callVolume": 116715,
+    "putVolume": 187745,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.06
+  },
+  {
+    "id": "mek8ejomm4oagbfujt9",
+    "timestamp": "2025-08-20 13:13:21",
+    "callVolume": 100892,
+    "putVolume": 121138,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.777
+  },
+  {
+    "id": "mek8ejyrt4gcv8xn3k9",
+    "timestamp": "2025-08-20 13:13:22",
+    "callVolume": 794203,
+    "putVolume": 506303,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.2335
+  },
+  {
+    "id": "mek8ekc6eki94n376w",
+    "timestamp": "2025-08-20 13:13:22",
+    "callVolume": 87738,
+    "putVolume": 50892,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.335
+  },
+  {
+    "id": "mek8ekpsff87qvy1vee",
+    "timestamp": "2025-08-20 13:13:23",
+    "callVolume": 42611,
+    "putVolume": 13876,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.43
+  },
+  {
+    "id": "mek8ekyp1ur2s1n7go8j",
+    "timestamp": "2025-08-20 13:13:23",
+    "callVolume": 398071,
+    "putVolume": 356224,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.65
+  },
+  {
+    "id": "mek8elmi7b5fbitoxm7",
+    "timestamp": "2025-08-20 13:13:24",
+    "callVolume": 103173,
+    "putVolume": 93006,
+    "selectedTicker": "META",
+    "lstPrice": 744.0901
+  },
+  {
+    "id": "mek8emn4ebptb4zd3sf",
+    "timestamp": "2025-08-20 13:13:25",
+    "callVolume": 72677,
+    "putVolume": 31288,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.19
+  },
+  {
+    "id": "mek8emz615qqhmz9mut",
+    "timestamp": "2025-08-20 13:13:26",
+    "callVolume": 32330,
+    "putVolume": 26346,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.8999
+  },
+  {
+    "id": "mek8en9h31m7iv9ok4v",
+    "timestamp": "2025-08-20 13:13:26",
+    "callVolume": 41592,
+    "putVolume": 29610,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.35
+  },
+  {
+    "id": "mek8eniqmr1vdmr9xt8",
+    "timestamp": "2025-08-20 13:13:26",
+    "callVolume": 172435,
+    "putVolume": 178866,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.5296
+  },
+  {
+    "id": "mek8kxpnpnwupm66z5",
+    "timestamp": "2025-08-20 13:18:20",
+    "callVolume": 1902396,
+    "putVolume": 2117387,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.455
+  },
+  {
+    "id": "mek8kynmzwfv6ffiy2",
+    "timestamp": "2025-08-20 13:18:21",
+    "callVolume": 1276751,
+    "putVolume": 1151631,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.82
+  },
+  {
+    "id": "mek8kzkf6ipccr9ru5w",
+    "timestamp": "2025-08-20 13:18:22",
+    "callVolume": 117566,
+    "putVolume": 188495,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.9077
+  },
+  {
+    "id": "mek8kzu87pa5hps5qtl",
+    "timestamp": "2025-08-20 13:18:22",
+    "callVolume": 102156,
+    "putVolume": 122490,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.53
+  },
+  {
+    "id": "mek8l06lc2ofucbsa6k",
+    "timestamp": "2025-08-20 13:18:23",
+    "callVolume": 803958,
+    "putVolume": 511606,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.1642
+  },
+  {
+    "id": "mek8l0j4kxzt4nf38yo",
+    "timestamp": "2025-08-20 13:18:23",
+    "callVolume": 88031,
+    "putVolume": 51253,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.26
+  },
+  {
+    "id": "mek8l0s3pym81v2929b",
+    "timestamp": "2025-08-20 13:18:24",
+    "callVolume": 42883,
+    "putVolume": 13915,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.41
+  },
+  {
+    "id": "mek8l13azlmnk2hv5ij",
+    "timestamp": "2025-08-20 13:18:24",
+    "callVolume": 404529,
+    "putVolume": 360045,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.9812
+  },
+  {
+    "id": "mek8l1hs2x6hlwqjrgo",
+    "timestamp": "2025-08-20 13:18:24",
+    "callVolume": 103715,
+    "putVolume": 93236,
+    "selectedTicker": "META",
+    "lstPrice": 743.43
+  },
+  {
+    "id": "mek8l1scfwhrjs4yc0m",
+    "timestamp": "2025-08-20 13:18:25",
+    "callVolume": 72822,
+    "putVolume": 31471,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.81
+  },
+  {
+    "id": "mek8l269bieekx3ugqu",
+    "timestamp": "2025-08-20 13:18:25",
+    "callVolume": 32505,
+    "putVolume": 26618,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.8301
+  },
+  {
+    "id": "mek8l2dxk6ji568i4e",
+    "timestamp": "2025-08-20 13:18:26",
+    "callVolume": 41750,
+    "putVolume": 29701,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.74
+  },
+  {
+    "id": "mek8l2moo87cagoflrg",
+    "timestamp": "2025-08-20 13:18:26",
+    "callVolume": 173405,
+    "putVolume": 177794,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.18
+  },
+  {
+    "id": "mek8rd2p3j7d2zg15g3",
+    "timestamp": "2025-08-20 13:23:19",
+    "callVolume": 1920806,
+    "putVolume": 2130685,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.845
+  },
+  {
+    "id": "mek8re260ob5o8lo4byf",
+    "timestamp": "2025-08-20 13:23:21",
+    "callVolume": 1289947,
+    "putVolume": 1165128,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.12
+  },
+  {
+    "id": "mek8rgreqxdsah8a4q9",
+    "timestamp": "2025-08-20 13:23:24",
+    "callVolume": 102869,
+    "putVolume": 122710,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.5069
+  },
+  {
+    "id": "mek8rik9a6bd0uxqwf",
+    "timestamp": "2025-08-20 13:23:27",
+    "callVolume": 808010,
+    "putVolume": 513081,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.39
+  },
+  {
+    "id": "mek8rizeftqlb4oqsvs",
+    "timestamp": "2025-08-20 13:23:27",
+    "callVolume": 88313,
+    "putVolume": 51350,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.3
+  },
+  {
+    "id": "mek8rjc2js0dpgclkd",
+    "timestamp": "2025-08-20 13:23:28",
+    "callVolume": 42954,
+    "putVolume": 14044,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.58
+  },
+  {
+    "id": "mek8rjtae9z0lwn8zj9",
+    "timestamp": "2025-08-20 13:23:28",
+    "callVolume": 409326,
+    "putVolume": 362356,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.0799
+  },
+  {
+    "id": "mek8rkkfseib1ztbld",
+    "timestamp": "2025-08-20 13:23:29",
+    "callVolume": 104037,
+    "putVolume": 93422,
+    "selectedTicker": "META",
+    "lstPrice": 743.15
+  },
+  {
+    "id": "mek8rl1bxxkovsrsv2",
+    "timestamp": "2025-08-20 13:23:30",
+    "callVolume": 73033,
+    "putVolume": 31739,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.12
+  },
+  {
+    "id": "mek8rlgur9xi3zdfhq",
+    "timestamp": "2025-08-20 13:23:30",
+    "callVolume": 32953,
+    "putVolume": 25890,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.93
+  },
+  {
+    "id": "mek8rlz2zvpywoskk6",
+    "timestamp": "2025-08-20 13:23:31",
+    "callVolume": 42133,
+    "putVolume": 29794,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.85
+  },
+  {
+    "id": "mek8rmci5hg61c4an9m",
+    "timestamp": "2025-08-20 13:23:31",
+    "callVolume": 184349,
+    "putVolume": 178743,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.295
+  },
+  {
+    "id": "mek8xsguehqakse2x5",
+    "timestamp": "2025-08-20 13:28:19",
+    "callVolume": 1940056,
+    "putVolume": 2145271,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.37
+  },
+  {
+    "id": "mek8xtsxmf8lxsx0hi",
+    "timestamp": "2025-08-20 13:28:21",
+    "callVolume": 1304658,
+    "putVolume": 1180284,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.745
+  },
+  {
+    "id": "mek8xue2zse0ohejcda",
+    "timestamp": "2025-08-20 13:28:22",
+    "callVolume": 119698,
+    "putVolume": 191140,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.8301
+  },
+  {
+    "id": "mek8xuzzifb0r00u69",
+    "timestamp": "2025-08-20 13:28:23",
+    "callVolume": 103626,
+    "putVolume": 122930,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.2299
+  },
+  {
+    "id": "mek8xvgakj74oza89ek",
+    "timestamp": "2025-08-20 13:28:23",
+    "callVolume": 813684,
+    "putVolume": 513884,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.365
+  },
+  {
+    "id": "mek8xvuuudmmy156z4h",
+    "timestamp": "2025-08-20 13:28:24",
+    "callVolume": 89015,
+    "putVolume": 51512,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.14
+  },
+  {
+    "id": "mek8xw8c2k50jutyrdw",
+    "timestamp": "2025-08-20 13:28:24",
+    "callVolume": 43328,
+    "putVolume": 14062,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.55
+  },
+  {
+    "id": "mek8xwhijh247hb1a6e",
+    "timestamp": "2025-08-20 13:28:25",
+    "callVolume": 411954,
+    "putVolume": 363607,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.88
+  },
+  {
+    "id": "mek8xx0iv5nnm1vn5y",
+    "timestamp": "2025-08-20 13:28:25",
+    "callVolume": 104581,
+    "putVolume": 93556,
+    "selectedTicker": "META",
+    "lstPrice": 743.125
+  },
+  {
+    "id": "mek8xxcyzjx3tttgjjh",
+    "timestamp": "2025-08-20 13:28:26",
+    "callVolume": 73749,
+    "putVolume": 32221,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.81
+  },
+  {
+    "id": "mek8xxwdjkj4rlsdze",
+    "timestamp": "2025-08-20 13:28:26",
+    "callVolume": 33067,
+    "putVolume": 26948,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.855
+  },
+  {
+    "id": "mek8xy7ji655z0xo2c",
+    "timestamp": "2025-08-20 13:28:27",
+    "callVolume": 42289,
+    "putVolume": 29880,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.986
+  },
+  {
+    "id": "mek8xyhfo6rtyosehun",
+    "timestamp": "2025-08-20 13:28:27",
+    "callVolume": 176980,
+    "putVolume": 178856,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.2874
+  },
+  {
+    "id": "mek94801scgpf47rrn",
+    "timestamp": "2025-08-20 13:33:19",
+    "callVolume": 1963289,
+    "putVolume": 2170928,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.26
+  },
+  {
+    "id": "mek949e9mezke5oe0f",
+    "timestamp": "2025-08-20 13:33:21",
+    "callVolume": 1315715,
+    "putVolume": 1193230,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.78
+  },
+  {
+    "id": "mek949zk1r9qcrsn1vj",
+    "timestamp": "2025-08-20 13:33:22",
+    "callVolume": 120068,
+    "putVolume": 191735,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.16
+  },
+  {
+    "id": "mek94a970qzfk73ldoi",
+    "timestamp": "2025-08-20 13:33:22",
+    "callVolume": 104351,
+    "putVolume": 123265,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.545
+  },
+  {
+    "id": "mek94ahqmtqca65k7qo",
+    "timestamp": "2025-08-20 13:33:23",
+    "callVolume": 817471,
+    "putVolume": 515352,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.905
+  },
+  {
+    "id": "mek94at9ejxe6ujtdbn",
+    "timestamp": "2025-08-20 13:33:23",
+    "callVolume": 89589,
+    "putVolume": 52423,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.55
+  },
+  {
+    "id": "mek94b1qe3sre1nv1zu",
+    "timestamp": "2025-08-20 13:33:23",
+    "callVolume": 43561,
+    "putVolume": 14085,
+    "selectedTicker": "GOOG",
+    "lstPrice": 201.11
+  },
+  {
+    "id": "mek94bcgfb7dss5cf36",
+    "timestamp": "2025-08-20 13:33:24",
+    "callVolume": 414086,
+    "putVolume": 365856,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.88
+  },
+  {
+    "id": "mek94bru2ujiiekmpu1",
+    "timestamp": "2025-08-20 13:33:24",
+    "callVolume": 105077,
+    "putVolume": 93902,
+    "selectedTicker": "META",
+    "lstPrice": 744.7901
+  },
+  {
+    "id": "mek94c4j395mxry9xbv",
+    "timestamp": "2025-08-20 13:33:25",
+    "callVolume": 74077,
+    "putVolume": 32313,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.4
+  },
+  {
+    "id": "mek94ce3laxjrfdkvte",
+    "timestamp": "2025-08-20 13:33:25",
+    "callVolume": 33281,
+    "putVolume": 27018,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.0802
+  },
+  {
+    "id": "mek94cv0pvv1kndinug",
+    "timestamp": "2025-08-20 13:33:26",
+    "callVolume": 42386,
+    "putVolume": 30224,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.67
+  },
+  {
+    "id": "mek94da7i709ku8e2kf",
+    "timestamp": "2025-08-20 13:33:26",
+    "callVolume": 177692,
+    "putVolume": 181284,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.79
+  },
+  {
+    "id": "mek9anagw6eygmovpdp",
+    "timestamp": "2025-08-20 13:38:19",
+    "callVolume": 1982090,
+    "putVolume": 2188277,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.22
+  },
+  {
+    "id": "mek9ao7ec215h2vicc",
+    "timestamp": "2025-08-20 13:38:20",
+    "callVolume": 1322644,
+    "putVolume": 1200845,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.8501
+  },
+  {
+    "id": "mek9aovhgtpaj0858be",
+    "timestamp": "2025-08-20 13:38:21",
+    "callVolume": 121572,
+    "putVolume": 192898,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.23
+  },
+  {
+    "id": "mek9ap666vx0sw0v5k4",
+    "timestamp": "2025-08-20 13:38:22",
+    "callVolume": 104755,
+    "putVolume": 123682,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.57
+  },
+  {
+    "id": "mek9apfsif2bdh6lcgg",
+    "timestamp": "2025-08-20 13:38:22",
+    "callVolume": 819110,
+    "putVolume": 516496,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.02
+  },
+  {
+    "id": "mek9aprbtvpuordwapo",
+    "timestamp": "2025-08-20 13:38:22",
+    "callVolume": 89901,
+    "putVolume": 52705,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.57
+  },
+  {
+    "id": "mek9aq5u9kcmrfgxvjr",
+    "timestamp": "2025-08-20 13:38:23",
+    "callVolume": 44131,
+    "putVolume": 14141,
+    "selectedTicker": "GOOG",
+    "lstPrice": 201.21
+  },
+  {
+    "id": "mek9aqffzl6zudb89ik",
+    "timestamp": "2025-08-20 13:38:23",
+    "callVolume": 416113,
+    "putVolume": 367304,
+    "selectedTicker": "TSLA",
+    "lstPrice": 322.445
+  },
+  {
+    "id": "mek9aqyg0vjxo7er66ll",
+    "timestamp": "2025-08-20 13:38:24",
+    "callVolume": 105171,
+    "putVolume": 94186,
+    "selectedTicker": "META",
+    "lstPrice": 745.605
+  },
+  {
+    "id": "mek9arbux47833x7qyk",
+    "timestamp": "2025-08-20 13:38:24",
+    "callVolume": 74791,
+    "putVolume": 32380,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.57
+  },
+  {
+    "id": "mek9arl47eqb9awz537",
+    "timestamp": "2025-08-20 13:38:25",
+    "callVolume": 33337,
+    "putVolume": 27083,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.16
+  },
+  {
+    "id": "mek9arxnoug5bswxxa",
+    "timestamp": "2025-08-20 13:38:25",
+    "callVolume": 42477,
+    "putVolume": 30139,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.675
+  },
+  {
+    "id": "mek9asccnc26kesqo9",
+    "timestamp": "2025-08-20 13:38:26",
+    "callVolume": 177891,
+    "putVolume": 179749,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.085
+  },
+  {
+    "id": "mek9h2vp0e52w00fvjv",
+    "timestamp": "2025-08-20 13:43:19",
+    "callVolume": 1998375,
+    "putVolume": 2206559,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.55
+  },
+  {
+    "id": "mek9h3t7m0njowawhc",
+    "timestamp": "2025-08-20 13:43:20",
+    "callVolume": 1329696,
+    "putVolume": 1207264,
+    "selectedTicker": "QQQ",
+    "lstPrice": 565.075
+  },
+  {
+    "id": "mek9h4k9867szrgfvay",
+    "timestamp": "2025-08-20 13:43:21",
+    "callVolume": 122320,
+    "putVolume": 193872,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.27
+  },
+  {
+    "id": "mek9h4tpcpx7r80izy7",
+    "timestamp": "2025-08-20 13:43:22",
+    "callVolume": 105311,
+    "putVolume": 123997,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.59
+  },
+  {
+    "id": "mek9h585hw4yz9cdwhc",
+    "timestamp": "2025-08-20 13:43:22",
+    "callVolume": 820985,
+    "putVolume": 517474,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.205
+  },
+  {
+    "id": "mek9h5jay7p8za6835",
+    "timestamp": "2025-08-20 13:43:23",
+    "callVolume": 90285,
+    "putVolume": 53421,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.51
+  },
+  {
+    "id": "mek9h5s4f0p0bugmlfc",
+    "timestamp": "2025-08-20 13:43:23",
+    "callVolume": 44286,
+    "putVolume": 14148,
+    "selectedTicker": "GOOG",
+    "lstPrice": 201.07
+  },
+  {
+    "id": "mek9h66ic1nc19tgh6f",
+    "timestamp": "2025-08-20 13:43:24",
+    "callVolume": 418971,
+    "putVolume": 368648,
+    "selectedTicker": "TSLA",
+    "lstPrice": 323.0758
+  },
+  {
+    "id": "mek9h6glzhbygqveba",
+    "timestamp": "2025-08-20 13:43:24",
+    "callVolume": 105315,
+    "putVolume": 94411,
+    "selectedTicker": "META",
+    "lstPrice": 745.2091
+  },
+  {
+    "id": "mek9h6vtvbxufo4bqr",
+    "timestamp": "2025-08-20 13:43:24",
+    "callVolume": 75199,
+    "putVolume": 32459,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.4285
+  },
+  {
+    "id": "mek9h7es5u0zm1om0f",
+    "timestamp": "2025-08-20 13:43:25",
+    "callVolume": 33365,
+    "putVolume": 27189,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.2212
+  },
+  {
+    "id": "mek9h7r1vgtgpkrhnv",
+    "timestamp": "2025-08-20 13:43:26",
+    "callVolume": 44273,
+    "putVolume": 30271,
+    "selectedTicker": "COIN",
+    "lstPrice": 304.03
+  },
+  {
+    "id": "mek9h818whojd9i3ym",
+    "timestamp": "2025-08-20 13:43:26",
+    "callVolume": 179751,
+    "putVolume": 181952,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.1
+  },
+  {
+    "id": "mek9niaedniuy087y9c",
+    "timestamp": "2025-08-20 13:48:19",
+    "callVolume": 2030648,
+    "putVolume": 2229048,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.66
+  },
+  {
+    "id": "mek9njb4dl2qoctm2i8",
+    "timestamp": "2025-08-20 13:48:20",
+    "callVolume": 1341835,
+    "putVolume": 1219348,
+    "selectedTicker": "QQQ",
+    "lstPrice": 565.28
+  },
+  {
+    "id": "mek9nk5pdn3wjj75qjl",
+    "timestamp": "2025-08-20 13:48:22",
+    "callVolume": 122769,
+    "putVolume": 195030,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.2901
+  },
+  {
+    "id": "mek9nkpgcykhgxn53nb",
+    "timestamp": "2025-08-20 13:48:22",
+    "callVolume": 105932,
+    "putVolume": 125105,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.73
+  },
+  {
+    "id": "mek9nkybys7hy2rm7mc",
+    "timestamp": "2025-08-20 13:48:23",
+    "callVolume": 825410,
+    "putVolume": 519952,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.2897
+  },
+  {
+    "id": "mek9nl7w098sn9817vuc",
+    "timestamp": "2025-08-20 13:48:23",
+    "callVolume": 90648,
+    "putVolume": 53562,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.375
+  },
+  {
+    "id": "mek9nlgqlqdx4d22khd",
+    "timestamp": "2025-08-20 13:48:23",
+    "callVolume": 44415,
+    "putVolume": 14178,
+    "selectedTicker": "GOOG",
+    "lstPrice": 201.16
+  },
+  {
+    "id": "mek9nlqqbhz29xg9ec",
+    "timestamp": "2025-08-20 13:48:24",
+    "callVolume": 420854,
+    "putVolume": 370614,
+    "selectedTicker": "TSLA",
+    "lstPrice": 323.6935
+  },
+  {
+    "id": "mek9nm8umztrqn3ibho",
+    "timestamp": "2025-08-20 13:48:24",
+    "callVolume": 105910,
+    "putVolume": 94482,
+    "selectedTicker": "META",
+    "lstPrice": 745.965
+  },
+  {
+    "id": "mek9nmt40eup3jul3a7b",
+    "timestamp": "2025-08-20 13:48:25",
+    "callVolume": 75893,
+    "putVolume": 32700,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.45
+  },
+  {
+    "id": "mek9nn4a2fqgdrde2uf",
+    "timestamp": "2025-08-20 13:48:25",
+    "callVolume": 48777,
+    "putVolume": 26462,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.2636
+  },
+  {
+    "id": "mek9nnfw3wdilhs3j7y",
+    "timestamp": "2025-08-20 13:48:26",
+    "callVolume": 44453,
+    "putVolume": 30720,
+    "selectedTicker": "COIN",
+    "lstPrice": 304.25
+  },
+  {
+    "id": "mek9nnw2075iny2f3ar7",
+    "timestamp": "2025-08-20 13:48:26",
+    "callVolume": 192392,
+    "putVolume": 180765,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.095
+  },
+  {
+    "id": "mek9txs9gjl2vdbhprn",
+    "timestamp": "2025-08-20 13:53:19",
+    "callVolume": 2066205,
+    "putVolume": 2259497,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.5
+  },
+  {
+    "id": "mek9tyrjickyzgjzjjs",
+    "timestamp": "2025-08-20 13:53:20",
+    "callVolume": 1358712,
+    "putVolume": 1234267,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.86
+  },
+  {
+    "id": "mek9tzi6cglsh4y7iuj",
+    "timestamp": "2025-08-20 13:53:21",
+    "callVolume": 123608,
+    "putVolume": 196408,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.3
+  },
+  {
+    "id": "mek9tzvhkic1i486z3p",
+    "timestamp": "2025-08-20 13:53:22",
+    "callVolume": 106811,
+    "putVolume": 126054,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.64
+  },
+  {
+    "id": "mek9u0cmp10ibynhcsk",
+    "timestamp": "2025-08-20 13:53:23",
+    "callVolume": 833478,
+    "putVolume": 522254,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.87
+  },
+  {
+    "id": "mek9u0nlgi2yuqqshte",
+    "timestamp": "2025-08-20 13:53:23",
+    "callVolume": 91695,
+    "putVolume": 54005,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.915
+  },
+  {
+    "id": "mek9u0wji9ribrczgo",
+    "timestamp": "2025-08-20 13:53:23",
+    "callVolume": 44660,
+    "putVolume": 14442,
+    "selectedTicker": "GOOG",
+    "lstPrice": 201.055
+  },
+  {
+    "id": "mek9u18xnd31i23510o",
+    "timestamp": "2025-08-20 13:53:24",
+    "callVolume": 425895,
+    "putVolume": 371455,
+    "selectedTicker": "TSLA",
+    "lstPrice": 323.16
+  },
+  {
+    "id": "mek9u1uhs50zk3ls0zj",
+    "timestamp": "2025-08-20 13:53:24",
+    "callVolume": 107655,
+    "putVolume": 95218,
+    "selectedTicker": "META",
+    "lstPrice": 745.285
+  },
+  {
+    "id": "mek9u27y4buew2sf779",
+    "timestamp": "2025-08-20 13:53:25",
+    "callVolume": 77399,
+    "putVolume": 32867,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.425
+  },
+  {
+    "id": "mek9u2guaylzxo9fdi",
+    "timestamp": "2025-08-20 13:53:25",
+    "callVolume": 49150,
+    "putVolume": 26688,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.145
+  },
+  {
+    "id": "mek9u2rrv6quv0gp7p",
+    "timestamp": "2025-08-20 13:53:26",
+    "callVolume": 44619,
+    "putVolume": 30788,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.955
+  },
+  {
+    "id": "mek9u31csh9fq4evcip",
+    "timestamp": "2025-08-20 13:53:26",
+    "callVolume": 194108,
+    "putVolume": 183750,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.65
+  },
+  {
+    "id": "meka0dd65gwlgljwjt3",
+    "timestamp": "2025-08-20 13:58:19",
+    "callVolume": 2079554,
+    "putVolume": 2274034,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.08
+  },
+  {
+    "id": "meka0e9zllajhe38brj",
+    "timestamp": "2025-08-20 13:58:20",
+    "callVolume": 1366018,
+    "putVolume": 1240602,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.23
+  },
+  {
+    "id": "meka0f0d80mzez5tgfg",
+    "timestamp": "2025-08-20 13:58:21",
+    "callVolume": 125096,
+    "putVolume": 197183,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.28
+  },
+  {
+    "id": "meka0frjqt3a4hm1bb",
+    "timestamp": "2025-08-20 13:58:22",
+    "callVolume": 107107,
+    "putVolume": 126122,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.4
+  },
+  {
+    "id": "meka0g5dylf0y86hz99",
+    "timestamp": "2025-08-20 13:58:23",
+    "callVolume": 836183,
+    "putVolume": 524023,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.655
+  },
+  {
+    "id": "meka0gpyuk73wjfjnyr",
+    "timestamp": "2025-08-20 13:58:24",
+    "callVolume": 92213,
+    "putVolume": 54223,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.66
+  },
+  {
+    "id": "meka0h06uxbirggjj7j",
+    "timestamp": "2025-08-20 13:58:24",
+    "callVolume": 44812,
+    "putVolume": 14525,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.825
+  },
+  {
+    "id": "meka0hd7v2dbbrcbueg",
+    "timestamp": "2025-08-20 13:58:25",
+    "callVolume": 440358,
+    "putVolume": 374279,
+    "selectedTicker": "TSLA",
+    "lstPrice": 322.6999
+  },
+  {
+    "id": "meka0hwflgtrl5my74g",
+    "timestamp": "2025-08-20 13:58:25",
+    "callVolume": 107884,
+    "putVolume": 95357,
+    "selectedTicker": "META",
+    "lstPrice": 745.1199
+  },
+  {
+    "id": "meka0icigpvsfg415t5",
+    "timestamp": "2025-08-20 13:58:26",
+    "callVolume": 78234,
+    "putVolume": 33015,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.461
+  },
+  {
+    "id": "meka0ir6wwlmyyg64m",
+    "timestamp": "2025-08-20 13:58:26",
+    "callVolume": 49318,
+    "putVolume": 26805,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.0801
+  },
+  {
+    "id": "meka0j4uakra4otuynj",
+    "timestamp": "2025-08-20 13:58:27",
+    "callVolume": 44883,
+    "putVolume": 30896,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.69
+  },
+  {
+    "id": "meka0jom1ky36931r24",
+    "timestamp": "2025-08-20 13:58:28",
+    "callVolume": 195614,
+    "putVolume": 184917,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.3
+  },
+  {
+    "id": "meka6sr6iwsfonoj1nl",
+    "timestamp": "2025-08-20 14:03:19",
+    "callVolume": 2116368,
+    "putVolume": 2302042,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.88
+  },
+  {
+    "id": "meka6toik6j0zmhasms",
+    "timestamp": "2025-08-20 14:03:20",
+    "callVolume": 1383396,
+    "putVolume": 1255164,
+    "selectedTicker": "QQQ",
+    "lstPrice": 562.92
+  },
+  {
+    "id": "meka6ue4l4wqd85kf5",
+    "timestamp": "2025-08-20 14:03:21",
+    "callVolume": 126240,
+    "putVolume": 198117,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.7204
+  },
+  {
+    "id": "meka6v0untrkk43az2",
+    "timestamp": "2025-08-20 14:03:22",
+    "callVolume": 107914,
+    "putVolume": 126451,
+    "selectedTicker": "AAPL",
+    "lstPrice": 225.8
+  },
+  {
+    "id": "meka6veimzuw0xopao",
+    "timestamp": "2025-08-20 14:03:23",
+    "callVolume": 842222,
+    "putVolume": 525833,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.8416
+  },
+  {
+    "id": "meka6w3rieobcvoxoe",
+    "timestamp": "2025-08-20 14:03:24",
+    "callVolume": 92616,
+    "putVolume": 54474,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.365
+  },
+  {
+    "id": "meka6wmwiqvnf25i85k",
+    "timestamp": "2025-08-20 14:03:24",
+    "callVolume": 45232,
+    "putVolume": 14541,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.67
+  },
+  {
+    "id": "meka6wyk11fy4r8e9qt8",
+    "timestamp": "2025-08-20 14:03:25",
+    "callVolume": 450660,
+    "putVolume": 379030,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.9873
+  },
+  {
+    "id": "meka6xfwi3s1q4yjqi",
+    "timestamp": "2025-08-20 14:03:25",
+    "callVolume": 110437,
+    "putVolume": 95711,
+    "selectedTicker": "META",
+    "lstPrice": 743.6
+  },
+  {
+    "id": "meka6xzc1dlxfc6v9cl",
+    "timestamp": "2025-08-20 14:03:26",
+    "callVolume": 79251,
+    "putVolume": 34867,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.65
+  },
+  {
+    "id": "meka6yk1d99xtdq74zh",
+    "timestamp": "2025-08-20 14:03:27",
+    "callVolume": 49764,
+    "putVolume": 27327,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.83
+  },
+  {
+    "id": "meka6z5p20o1392dn5j",
+    "timestamp": "2025-08-20 14:03:27",
+    "callVolume": 45194,
+    "putVolume": 31127,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.29
+  },
+  {
+    "id": "meka6zsag24bvqgol",
+    "timestamp": "2025-08-20 14:03:28",
+    "callVolume": 196715,
+    "putVolume": 185859,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.84
+  },
+  {
+    "id": "mekad8f5yprqj78c30g",
+    "timestamp": "2025-08-20 14:08:19",
+    "callVolume": 2131544,
+    "putVolume": 2323472,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.25
+  },
+  {
+    "id": "mekad9ho9audelxf7mv",
+    "timestamp": "2025-08-20 14:08:21",
+    "callVolume": 1397057,
+    "putVolume": 1270668,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.5759
+  },
+  {
+    "id": "mekada38p1wkqtzgqv7",
+    "timestamp": "2025-08-20 14:08:22",
+    "callVolume": 127732,
+    "putVolume": 198725,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.61
+  },
+  {
+    "id": "mekadafqos5ebx347bk",
+    "timestamp": "2025-08-20 14:08:22",
+    "callVolume": 108993,
+    "putVolume": 127022,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.27
+  },
+  {
+    "id": "mekadb1jqa0659n73h",
+    "timestamp": "2025-08-20 14:08:23",
+    "callVolume": 846189,
+    "putVolume": 528922,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.1699
+  },
+  {
+    "id": "mekadbihonn6f92afy9",
+    "timestamp": "2025-08-20 14:08:23",
+    "callVolume": 93069,
+    "putVolume": 54675,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.64
+  },
+  {
+    "id": "mekadbv0vuvz8cvm6tr",
+    "timestamp": "2025-08-20 14:08:24",
+    "callVolume": 45448,
+    "putVolume": 14588,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.79
+  },
+  {
+    "id": "mekadcbtr6gqrd19we",
+    "timestamp": "2025-08-20 14:08:25",
+    "callVolume": 453986,
+    "putVolume": 382375,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.405
+  },
+  {
+    "id": "mekadd03g2n9ac0f2v9",
+    "timestamp": "2025-08-20 14:08:25",
+    "callVolume": 110009,
+    "putVolume": 96002,
+    "selectedTicker": "META",
+    "lstPrice": 744.705
+  },
+  {
+    "id": "mekadddz1xcy4to1r2hi",
+    "timestamp": "2025-08-20 14:08:26",
+    "callVolume": 80025,
+    "putVolume": 35070,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.99
+  },
+  {
+    "id": "mekaddwgoau0jj7q2o9",
+    "timestamp": "2025-08-20 14:08:27",
+    "callVolume": 49968,
+    "putVolume": 27840,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.925
+  },
+  {
+    "id": "mekadebz65lnyyqrn4u",
+    "timestamp": "2025-08-20 14:08:27",
+    "callVolume": 45339,
+    "putVolume": 31220,
+    "selectedTicker": "COIN",
+    "lstPrice": 301.75
+  },
+  {
+    "id": "mekadennt3vndeqmfna",
+    "timestamp": "2025-08-20 14:08:28",
+    "callVolume": 197789,
+    "putVolume": 186831,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.19
+  },
+  {
+    "id": "mekajo005kt52wvgqis",
+    "timestamp": "2025-08-20 14:13:20",
+    "callVolume": 2149045,
+    "putVolume": 2355435,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.69
+  },
+  {
+    "id": "mekajp1h4g0s3myhrsb",
+    "timestamp": "2025-08-20 14:13:21",
+    "callVolume": 1411268,
+    "putVolume": 1284961,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.1
+  },
+  {
+    "id": "mekajpp4fpd49zuh9zu",
+    "timestamp": "2025-08-20 14:13:22",
+    "callVolume": 142480,
+    "putVolume": 199501,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.405
+  },
+  {
+    "id": "mekajpz1h670fvaiwl",
+    "timestamp": "2025-08-20 14:13:22",
+    "callVolume": 109723,
+    "putVolume": 127571,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.2
+  },
+  {
+    "id": "mekajqkmabe0qr36n75",
+    "timestamp": "2025-08-20 14:13:23",
+    "callVolume": 851385,
+    "putVolume": 530554,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.9101
+  },
+  {
+    "id": "mekajqz5oqq84ipnsrc",
+    "timestamp": "2025-08-20 14:13:23",
+    "callVolume": 93347,
+    "putVolume": 54880,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.49
+  },
+  {
+    "id": "mekajr987r1n1w8bl2b",
+    "timestamp": "2025-08-20 14:13:24",
+    "callVolume": 45636,
+    "putVolume": 14631,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.54
+  },
+  {
+    "id": "mekajrnsm7t9ih2sike",
+    "timestamp": "2025-08-20 14:13:24",
+    "callVolume": 447033,
+    "putVolume": 385697,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.3
+  },
+  {
+    "id": "mekajs0o62dwblwv6xq",
+    "timestamp": "2025-08-20 14:13:25",
+    "callVolume": 110338,
+    "putVolume": 96324,
+    "selectedTicker": "META",
+    "lstPrice": 743.962
+  },
+  {
+    "id": "mekajsjno2sk1fe8yea",
+    "timestamp": "2025-08-20 14:13:25",
+    "callVolume": 81867,
+    "putVolume": 35171,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.09
+  },
+  {
+    "id": "mekajt0jee6pmlkzpnn",
+    "timestamp": "2025-08-20 14:13:26",
+    "callVolume": 50103,
+    "putVolume": 29992,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.8801
+  },
+  {
+    "id": "mekajtdwncgu0ozjk6o",
+    "timestamp": "2025-08-20 14:13:27",
+    "callVolume": 45465,
+    "putVolume": 31290,
+    "selectedTicker": "COIN",
+    "lstPrice": 301.33
+  },
+  {
+    "id": "mekajts1id8w0k64n1i",
+    "timestamp": "2025-08-20 14:13:27",
+    "callVolume": 186873,
+    "putVolume": 189501,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.3065
+  },
+  {
+    "id": "mekaq30b6v4cu871r05",
+    "timestamp": "2025-08-20 14:18:19",
+    "callVolume": 2189495,
+    "putVolume": 2409068,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.995
+  },
+  {
+    "id": "mekaq3t72113p4i9wwk",
+    "timestamp": "2025-08-20 14:18:20",
+    "callVolume": 1430771,
+    "putVolume": 1308593,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.3093
+  },
+  {
+    "id": "mekaq4n1w8z1ll73ayg",
+    "timestamp": "2025-08-20 14:18:21",
+    "callVolume": 160087,
+    "putVolume": 203311,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.44
+  },
+  {
+    "id": "mekaq4va3cep026i80e",
+    "timestamp": "2025-08-20 14:18:21",
+    "callVolume": 112224,
+    "putVolume": 128472,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.2
+  },
+  {
+    "id": "mekaq54spu0avgcgrq",
+    "timestamp": "2025-08-20 14:18:22",
+    "callVolume": 859127,
+    "putVolume": 535362,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.9199
+  },
+  {
+    "id": "mekaq5pyqo7s75cy6h",
+    "timestamp": "2025-08-20 14:18:22",
+    "callVolume": 94146,
+    "putVolume": 55181,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.5599
+  },
+  {
+    "id": "mekaq5za2eq0sbal23q",
+    "timestamp": "2025-08-20 14:18:23",
+    "callVolume": 45716,
+    "putVolume": 14653,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.53
+  },
+  {
+    "id": "mekaq6b2c5m2gttfe4",
+    "timestamp": "2025-08-20 14:18:23",
+    "callVolume": 451013,
+    "putVolume": 394203,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.475
+  },
+  {
+    "id": "mekaq6pn1or62d4di93",
+    "timestamp": "2025-08-20 14:18:24",
+    "callVolume": 110649,
+    "putVolume": 96924,
+    "selectedTicker": "META",
+    "lstPrice": 744.45
+  },
+  {
+    "id": "mekaq74w23ny9nkivap",
+    "timestamp": "2025-08-20 14:18:24",
+    "callVolume": 83629,
+    "putVolume": 35375,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.31
+  },
+  {
+    "id": "mekaq7mwrpwsfiah91q",
+    "timestamp": "2025-08-20 14:18:25",
+    "callVolume": 34769,
+    "putVolume": 31429,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.8675
+  },
+  {
+    "id": "mekaq805jtmfs1jn4f",
+    "timestamp": "2025-08-20 14:18:25",
+    "callVolume": 45348,
+    "putVolume": 31664,
+    "selectedTicker": "COIN",
+    "lstPrice": 301.215
+  },
+  {
+    "id": "mekaq8cyrbrlpit5o0f",
+    "timestamp": "2025-08-20 14:18:26",
+    "callVolume": 188373,
+    "putVolume": 190619,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.0768
+  },
+  {
+    "id": "mekawio2cumt9fb86th",
+    "timestamp": "2025-08-20 14:23:19",
+    "callVolume": 2227769,
+    "putVolume": 2482263,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.58
+  },
+  {
+    "id": "mekawjedqhlbq03aamn",
+    "timestamp": "2025-08-20 14:23:20",
+    "callVolume": 1452944,
+    "putVolume": 1338400,
+    "selectedTicker": "QQQ",
+    "lstPrice": 562.985
+  },
+  {
+    "id": "mekawk1p0l3h0j28e3wr",
+    "timestamp": "2025-08-20 14:23:21",
+    "callVolume": 162552,
+    "putVolume": 211446,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.355
+  },
+  {
+    "id": "mekawkqvjqjl29u75vq",
+    "timestamp": "2025-08-20 14:23:22",
+    "callVolume": 114963,
+    "putVolume": 130585,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.02
+  },
+  {
+    "id": "mekawlavmff2g08vs9b",
+    "timestamp": "2025-08-20 14:23:23",
+    "callVolume": 863535,
+    "putVolume": 538174,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.83
+  },
+  {
+    "id": "mekawlonwc25qd5hbyn",
+    "timestamp": "2025-08-20 14:23:23",
+    "callVolume": 95820,
+    "putVolume": 55784,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.3568
+  },
+  {
+    "id": "mekawlxogerncq5gm7n",
+    "timestamp": "2025-08-20 14:23:23",
+    "callVolume": 45815,
+    "putVolume": 14691,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.34
+  },
+  {
+    "id": "mekawm7pjxz9poworh",
+    "timestamp": "2025-08-20 14:23:24",
+    "callVolume": 455928,
+    "putVolume": 397987,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.2075
+  },
+  {
+    "id": "mekawn0k41xhou5fhsc",
+    "timestamp": "2025-08-20 14:23:25",
+    "callVolume": 110926,
+    "putVolume": 97197,
+    "selectedTicker": "META",
+    "lstPrice": 743.43
+  },
+  {
+    "id": "mekawng9n6l0krmy4nj",
+    "timestamp": "2025-08-20 14:23:25",
+    "callVolume": 84139,
+    "putVolume": 35416,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.46
+  },
+  {
+    "id": "mekawnr1kxemb5xodm",
+    "timestamp": "2025-08-20 14:23:26",
+    "callVolume": 34920,
+    "putVolume": 31534,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.89
+  },
+  {
+    "id": "mekawo04k1uvb3u67fl",
+    "timestamp": "2025-08-20 14:23:26",
+    "callVolume": 45639,
+    "putVolume": 31781,
+    "selectedTicker": "COIN",
+    "lstPrice": 300.67
+  },
+  {
+    "id": "mekawob4wrfbl81t08n",
+    "timestamp": "2025-08-20 14:23:26",
+    "callVolume": 189162,
+    "putVolume": 192512,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.25
+  },
+  {
+    "id": "mekb2y8qgl7ide9144q",
+    "timestamp": "2025-08-20 14:28:19",
+    "callVolume": 2257941,
+    "putVolume": 2509137,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.84
+  },
+  {
+    "id": "mekb2z13dkacqpi7mys",
+    "timestamp": "2025-08-20 14:28:20",
+    "callVolume": 1469653,
+    "putVolume": 1351818,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.15
+  },
+  {
+    "id": "mekb2zof7vqjzdvzniy",
+    "timestamp": "2025-08-20 14:28:21",
+    "callVolume": 163551,
+    "putVolume": 214834,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.51
+  },
+  {
+    "id": "mekb300x6oq9rwppbxp",
+    "timestamp": "2025-08-20 14:28:22",
+    "callVolume": 116729,
+    "putVolume": 132165,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.05
+  },
+  {
+    "id": "mekb30ebeda37mtaz47",
+    "timestamp": "2025-08-20 14:28:22",
+    "callVolume": 867756,
+    "putVolume": 540916,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.86
+  },
+  {
+    "id": "mekb30rameaeccrlvlc",
+    "timestamp": "2025-08-20 14:28:23",
+    "callVolume": 96188,
+    "putVolume": 56391,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.3
+  },
+  {
+    "id": "mekb310wi7uxkyyiukh",
+    "timestamp": "2025-08-20 14:28:23",
+    "callVolume": 45997,
+    "putVolume": 14847,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.2907
+  },
+  {
+    "id": "mekb31f6vm8fdyd9qsk",
+    "timestamp": "2025-08-20 14:28:23",
+    "callVolume": 458640,
+    "putVolume": 401306,
+    "selectedTicker": "TSLA",
+    "lstPrice": 319.5701
+  },
+  {
+    "id": "mekb31szh9v27s0uhj",
+    "timestamp": "2025-08-20 14:28:24",
+    "callVolume": 111303,
+    "putVolume": 97777,
+    "selectedTicker": "META",
+    "lstPrice": 743.23
+  },
+  {
+    "id": "mekb3282nc7mm0kpkq",
+    "timestamp": "2025-08-20 14:28:24",
+    "callVolume": 85347,
+    "putVolume": 35629,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.39
+  },
+  {
+    "id": "mekb32zmjxz9ct1gsf",
+    "timestamp": "2025-08-20 14:28:25",
+    "callVolume": 35063,
+    "putVolume": 31668,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.875
+  },
+  {
+    "id": "mekb33d6oych9b5eoei",
+    "timestamp": "2025-08-20 14:28:26",
+    "callVolume": 46039,
+    "putVolume": 32030,
+    "selectedTicker": "COIN",
+    "lstPrice": 299.87
+  },
+  {
+    "id": "mekb33pkxb2fo9n6sfp",
+    "timestamp": "2025-08-20 14:28:26",
+    "callVolume": 189971,
+    "putVolume": 193234,
+    "selectedTicker": "AMD",
+    "lstPrice": 162.9526
+  },
+  {
+    "id": "mekb9dl99cgn1hiapoi",
+    "timestamp": "2025-08-20 14:33:19",
+    "callVolume": 2279355,
+    "putVolume": 2537623,
+    "selectedTicker": "SPY",
+    "lstPrice": 635.86
+  },
+  {
+    "id": "mekb9ennzj6uaj1lykc",
+    "timestamp": "2025-08-20 14:33:21",
+    "callVolume": 1476422,
+    "putVolume": 1359519,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.1849
+  },
+  {
+    "id": "mekb9fdx5581gsyctsv",
+    "timestamp": "2025-08-20 14:33:21",
+    "callVolume": 164663,
+    "putVolume": 217931,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.43
+  },
+  {
+    "id": "mekb9fxbdw98sa3i1fv",
+    "timestamp": "2025-08-20 14:33:22",
+    "callVolume": 117454,
+    "putVolume": 132861,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.0316
+  },
+  {
+    "id": "mekb9g8ycymu42unc3q",
+    "timestamp": "2025-08-20 14:33:23",
+    "callVolume": 869844,
+    "putVolume": 542777,
+    "selectedTicker": "NVDA",
+    "lstPrice": 172.9154
+  },
+  {
+    "id": "mekb9giegb1xz1vwadv",
+    "timestamp": "2025-08-20 14:33:23",
+    "callVolume": 96659,
+    "putVolume": 56624,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.2657
+  },
+  {
+    "id": "mekb9gx2zf2p6fxfbg9",
+    "timestamp": "2025-08-20 14:33:23",
+    "callVolume": 46140,
+    "putVolume": 15105,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.245
+  },
+  {
+    "id": "mekb9h9lumg5y0sxch",
+    "timestamp": "2025-08-20 14:33:24",
+    "callVolume": 460445,
+    "putVolume": 402975,
+    "selectedTicker": "TSLA",
+    "lstPrice": 320.1606
+  },
+  {
+    "id": "mekb9hwz7lu1ac1zq9h",
+    "timestamp": "2025-08-20 14:33:25",
+    "callVolume": 111608,
+    "putVolume": 97895,
+    "selectedTicker": "META",
+    "lstPrice": 742.805
+  },
+  {
+    "id": "mekb9icz3ecynzn6ckf",
+    "timestamp": "2025-08-20 14:33:25",
+    "callVolume": 87971,
+    "putVolume": 36094,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.23
+  },
+  {
+    "id": "mekb9iu9y552e0eef4g",
+    "timestamp": "2025-08-20 14:33:26",
+    "callVolume": 35189,
+    "putVolume": 31711,
+    "selectedTicker": "SOXL",
+    "lstPrice": 24.9402
+  },
+  {
+    "id": "mekb9j4bai60wikzaqn",
+    "timestamp": "2025-08-20 14:33:26",
+    "callVolume": 46284,
+    "putVolume": 32220,
+    "selectedTicker": "COIN",
+    "lstPrice": 299.9
+  },
+  {
+    "id": "mekb9jh0c3tofydxpii",
+    "timestamp": "2025-08-20 14:33:27",
+    "callVolume": 190842,
+    "putVolume": 193820,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.26
+  },
+  {
+    "id": "mekbftelvcjxsh4nr",
+    "timestamp": "2025-08-20 14:38:20",
+    "callVolume": 2317811,
+    "putVolume": 2580930,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.455
+  },
+  {
+    "id": "mekbfud06m9flstoasr",
+    "timestamp": "2025-08-20 14:38:21",
+    "callVolume": 1492083,
+    "putVolume": 1376687,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.8501
+  },
+  {
+    "id": "mekbfv34n23bu0lv16",
+    "timestamp": "2025-08-20 14:38:22",
+    "callVolume": 165740,
+    "putVolume": 220215,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.77
+  },
+  {
+    "id": "mekbfvpfuhf5lhy516",
+    "timestamp": "2025-08-20 14:38:23",
+    "callVolume": 117862,
+    "putVolume": 133772,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.1751
+  },
+  {
+    "id": "mekbfw2jnyxrce0d7sk",
+    "timestamp": "2025-08-20 14:38:23",
+    "callVolume": 873925,
+    "putVolume": 546362,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.25
+  },
+  {
+    "id": "mekbfwksuo42g0u382",
+    "timestamp": "2025-08-20 14:38:24",
+    "callVolume": 97041,
+    "putVolume": 56954,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.555
+  },
+  {
+    "id": "mekbfx1759yry1skuxb",
+    "timestamp": "2025-08-20 14:38:24",
+    "callVolume": 46199,
+    "putVolume": 15152,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.54
+  },
+  {
+    "id": "mekbfxad4mwgqmkzwmg",
+    "timestamp": "2025-08-20 14:38:25",
+    "callVolume": 462314,
+    "putVolume": 408879,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.17
+  },
+  {
+    "id": "mekbfxpkh28sjzm3su",
+    "timestamp": "2025-08-20 14:38:25",
+    "callVolume": 112068,
+    "putVolume": 98499,
+    "selectedTicker": "META",
+    "lstPrice": 743.84
+  },
+  {
+    "id": "mekbfy2xf3gwuf6b7ef",
+    "timestamp": "2025-08-20 14:38:26",
+    "callVolume": 88595,
+    "putVolume": 36192,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.34
+  },
+  {
+    "id": "mekbfyl8kp1ajh6x52o",
+    "timestamp": "2025-08-20 14:38:26",
+    "callVolume": 35369,
+    "putVolume": 31828,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.03
+  },
+  {
+    "id": "mekbfyyxwi1qptweek",
+    "timestamp": "2025-08-20 14:38:27",
+    "callVolume": 46601,
+    "putVolume": 32519,
+    "selectedTicker": "COIN",
+    "lstPrice": 301.09
+  },
+  {
+    "id": "mekbfz9kp2z1nnhojqr",
+    "timestamp": "2025-08-20 14:38:27",
+    "callVolume": 191344,
+    "putVolume": 194860,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.35
+  },
+  {
+    "id": "mekbm8libfh69r0e1tv",
+    "timestamp": "2025-08-20 14:43:19",
+    "callVolume": 2342015,
+    "putVolume": 2606425,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.72
+  },
+  {
+    "id": "mekbm9g50wqs1i9fpd3k",
+    "timestamp": "2025-08-20 14:43:20",
+    "callVolume": 1501089,
+    "putVolume": 1385957,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.14
+  },
+  {
+    "id": "mekbma2ez21sb5v79u",
+    "timestamp": "2025-08-20 14:43:21",
+    "callVolume": 166103,
+    "putVolume": 222538,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.85
+  },
+  {
+    "id": "mekbmaf5zqs2bmp5ci",
+    "timestamp": "2025-08-20 14:43:22",
+    "callVolume": 119150,
+    "putVolume": 134644,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.27
+  },
+  {
+    "id": "mekbmaswtwal7r2wrkc",
+    "timestamp": "2025-08-20 14:43:22",
+    "callVolume": 878743,
+    "putVolume": 548462,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.47
+  },
+  {
+    "id": "mekbmbaut0ffneg958g",
+    "timestamp": "2025-08-20 14:43:23",
+    "callVolume": 97565,
+    "putVolume": 57207,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.588
+  },
+  {
+    "id": "mekbmbo8dslh6m1ocje",
+    "timestamp": "2025-08-20 14:43:23",
+    "callVolume": 46217,
+    "putVolume": 15302,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.4494
+  },
+  {
+    "id": "mekbmc9na944iv1rc7i",
+    "timestamp": "2025-08-20 14:43:24",
+    "callVolume": 465949,
+    "putVolume": 412418,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.925
+  },
+  {
+    "id": "mekbmd4sopyn6qpz1oi",
+    "timestamp": "2025-08-20 14:43:25",
+    "callVolume": 112578,
+    "putVolume": 98846,
+    "selectedTicker": "META",
+    "lstPrice": 744.74
+  },
+  {
+    "id": "mekbmdjttt8j0sple4",
+    "timestamp": "2025-08-20 14:43:26",
+    "callVolume": 88811,
+    "putVolume": 36250,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.265
+  },
+  {
+    "id": "mekbme2d6ut7txt3sif",
+    "timestamp": "2025-08-20 14:43:26",
+    "callVolume": 35475,
+    "putVolume": 31877,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.105
+  },
+  {
+    "id": "mekbmeelob4uve3i2yh",
+    "timestamp": "2025-08-20 14:43:27",
+    "callVolume": 42772,
+    "putVolume": 39321,
+    "selectedTicker": "COIN",
+    "lstPrice": 301.745
+  },
+  {
+    "id": "mekbmepf5lvf12sorcj",
+    "timestamp": "2025-08-20 14:43:27",
+    "callVolume": 192812,
+    "putVolume": 195679,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.55
+  },
+  {
+    "id": "mekbsnv6gg4oqefn8rp",
+    "timestamp": "2025-08-20 14:48:19",
+    "callVolume": 2362422,
+    "putVolume": 2625218,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.11
+  },
+  {
+    "id": "mekbsour1ak1bn9046u",
+    "timestamp": "2025-08-20 14:48:20",
+    "callVolume": 1508161,
+    "putVolume": 1392885,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.5
+  },
+  {
+    "id": "mekbspojk7bcbr4h3ho",
+    "timestamp": "2025-08-20 14:48:21",
+    "callVolume": 166588,
+    "putVolume": 223999,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.99
+  },
+  {
+    "id": "mekbsq5e7p97t6s75tm",
+    "timestamp": "2025-08-20 14:48:22",
+    "callVolume": 120351,
+    "putVolume": 136264,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.305
+  },
+  {
+    "id": "mekbsqi7xp1n0eaqbks",
+    "timestamp": "2025-08-20 14:48:22",
+    "callVolume": 881442,
+    "putVolume": 550212,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.625
+  },
+  {
+    "id": "mekbsqtfhy8aqs61tvu",
+    "timestamp": "2025-08-20 14:48:23",
+    "callVolume": 97913,
+    "putVolume": 57384,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.59
+  },
+  {
+    "id": "mekbsr217vgw33ix7rg",
+    "timestamp": "2025-08-20 14:48:23",
+    "callVolume": 46464,
+    "putVolume": 15334,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.47
+  },
+  {
+    "id": "mekbsrlzf6tbitas7e8",
+    "timestamp": "2025-08-20 14:48:24",
+    "callVolume": 469501,
+    "putVolume": 416494,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.97
+  },
+  {
+    "id": "mekbsryp8bpss2thttg",
+    "timestamp": "2025-08-20 14:48:24",
+    "callVolume": 112881,
+    "putVolume": 99071,
+    "selectedTicker": "META",
+    "lstPrice": 745.5
+  },
+  {
+    "id": "mekbsshounsajn1sbj",
+    "timestamp": "2025-08-20 14:48:25",
+    "callVolume": 90069,
+    "putVolume": 36387,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.4627
+  },
+  {
+    "id": "mekbsswc2t5bn1xpnsf",
+    "timestamp": "2025-08-20 14:48:25",
+    "callVolume": 35759,
+    "putVolume": 31937,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.1701
+  },
+  {
+    "id": "mekbst7xl5s6sloxju",
+    "timestamp": "2025-08-20 14:48:26",
+    "callVolume": 42912,
+    "putVolume": 39525,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.0018
+  },
+  {
+    "id": "mekbstm6tg5fx3k59wj",
+    "timestamp": "2025-08-20 14:48:26",
+    "callVolume": 193470,
+    "putVolume": 196506,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.63
+  },
+  {
+    "id": "mekbz429z2zswj81k9",
+    "timestamp": "2025-08-20 14:53:20",
+    "callVolume": 2391234,
+    "putVolume": 2654103,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.24
+  },
+  {
+    "id": "mekbz56utny3n7p33o",
+    "timestamp": "2025-08-20 14:53:21",
+    "callVolume": 1520589,
+    "putVolume": 1408768,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.6142
+  },
+  {
+    "id": "mekbz61db1i5x7rvovm",
+    "timestamp": "2025-08-20 14:53:22",
+    "callVolume": 167112,
+    "putVolume": 225175,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.03
+  },
+  {
+    "id": "mekbz6dqoun1k0ctb5k",
+    "timestamp": "2025-08-20 14:53:23",
+    "callVolume": 120956,
+    "putVolume": 136644,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.28
+  },
+  {
+    "id": "mekbz6rpadyoryr5iv",
+    "timestamp": "2025-08-20 14:53:23",
+    "callVolume": 889811,
+    "putVolume": 553071,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.7982
+  },
+  {
+    "id": "mekbz77yt708j1qv02",
+    "timestamp": "2025-08-20 14:53:24",
+    "callVolume": 98078,
+    "putVolume": 57624,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.695
+  },
+  {
+    "id": "mekbz7uacbnbnn2u50d",
+    "timestamp": "2025-08-20 14:53:25",
+    "callVolume": 47109,
+    "putVolume": 15580,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.56
+  },
+  {
+    "id": "mekbz8blswsbtbuiomb",
+    "timestamp": "2025-08-20 14:53:25",
+    "callVolume": 475235,
+    "putVolume": 419319,
+    "selectedTicker": "TSLA",
+    "lstPrice": 322.1
+  },
+  {
+    "id": "mekbz8yrcbzsrcprvwh",
+    "timestamp": "2025-08-20 14:53:26",
+    "callVolume": 113209,
+    "putVolume": 99377,
+    "selectedTicker": "META",
+    "lstPrice": 745.5588
+  },
+  {
+    "id": "mekbz9pyuv3c6088tdd",
+    "timestamp": "2025-08-20 14:53:27",
+    "callVolume": 92752,
+    "putVolume": 36734,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.405
+  },
+  {
+    "id": "mekbza9jwqc8agv88g",
+    "timestamp": "2025-08-20 14:53:28",
+    "callVolume": 51406,
+    "putVolume": 31129,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.215
+  },
+  {
+    "id": "mekbzasvgxi86wskf6i",
+    "timestamp": "2025-08-20 14:53:29",
+    "callVolume": 47213,
+    "putVolume": 33113,
+    "selectedTicker": "COIN",
+    "lstPrice": 301.9775
+  },
+  {
+    "id": "mekbzb8gslwiidk1fk8",
+    "timestamp": "2025-08-20 14:53:29",
+    "callVolume": 195004,
+    "putVolume": 194881,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.78
+  },
+  {
+    "id": "mekc5j6g2bdleifyral",
+    "timestamp": "2025-08-20 14:58:19",
+    "callVolume": 2413144,
+    "putVolume": 2678388,
+    "selectedTicker": "SPY",
+    "lstPrice": 636.74
+  },
+  {
+    "id": "mekc5kcd9e4uzc9a7ed",
+    "timestamp": "2025-08-20 14:58:21",
+    "callVolume": 1534569,
+    "putVolume": 1422220,
+    "selectedTicker": "QQQ",
+    "lstPrice": 563.96
+  },
+  {
+    "id": "mekc5ky6vncl5rkuvp",
+    "timestamp": "2025-08-20 14:58:22",
+    "callVolume": 167733,
+    "putVolume": 226417,
+    "selectedTicker": "IWM",
+    "lstPrice": 224.875
+  },
+  {
+    "id": "mekc5le3ep7niuzfar",
+    "timestamp": "2025-08-20 14:58:22",
+    "callVolume": 121354,
+    "putVolume": 138488,
+    "selectedTicker": "AAPL",
+    "lstPrice": 225.905
+  },
+  {
+    "id": "mekc5lrm0ili3bequz5",
+    "timestamp": "2025-08-20 14:58:23",
+    "callVolume": 896823,
+    "putVolume": 554148,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.445
+  },
+  {
+    "id": "mekc5m21pb1pvgd917o",
+    "timestamp": "2025-08-20 14:58:23",
+    "callVolume": 98223,
+    "putVolume": 57778,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.4385
+  },
+  {
+    "id": "mekc5mansc0r3698vjg",
+    "timestamp": "2025-08-20 14:58:23",
+    "callVolume": 47129,
+    "putVolume": 15613,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.24
+  },
+  {
+    "id": "mekc5mlhpxxdask6aeg",
+    "timestamp": "2025-08-20 14:58:24",
+    "callVolume": 479007,
+    "putVolume": 421862,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.28
+  },
+  {
+    "id": "mekc5n2ffadj4tkpxfe",
+    "timestamp": "2025-08-20 14:58:24",
+    "callVolume": 113815,
+    "putVolume": 99615,
+    "selectedTicker": "META",
+    "lstPrice": 745.0899
+  },
+  {
+    "id": "mekc5nf015lhn130h4q",
+    "timestamp": "2025-08-20 14:58:25",
+    "callVolume": 93480,
+    "putVolume": 36756,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.07
+  },
+  {
+    "id": "mekc5o1q9030cmjvh4k",
+    "timestamp": "2025-08-20 14:58:26",
+    "callVolume": 51689,
+    "putVolume": 31170,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.1098
+  },
+  {
+    "id": "mekc5ocanhrya5u1f9",
+    "timestamp": "2025-08-20 14:58:26",
+    "callVolume": 47541,
+    "putVolume": 33336,
+    "selectedTicker": "COIN",
+    "lstPrice": 301.14
+  },
+  {
+    "id": "mekc5oq2ngbttwakk5q",
+    "timestamp": "2025-08-20 14:58:27",
+    "callVolume": 196035,
+    "putVolume": 195249,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.48
+  },
+  {
+    "id": "mekcbyhncox6ytuqrsj",
+    "timestamp": "2025-08-20 15:03:19",
+    "callVolume": 2433867,
+    "putVolume": 2701104,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.02
+  },
+  {
+    "id": "mekcbzcrambxeo6ggg",
+    "timestamp": "2025-08-20 15:03:20",
+    "callVolume": 1541403,
+    "putVolume": 1431133,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.19
+  },
+  {
+    "id": "mekcbzxgqe3difr5n1",
+    "timestamp": "2025-08-20 15:03:21",
+    "callVolume": 168595,
+    "putVolume": 228129,
+    "selectedTicker": "IWM",
+    "lstPrice": 225
+  },
+  {
+    "id": "mekcc078n6ticgbuzgl",
+    "timestamp": "2025-08-20 15:03:21",
+    "callVolume": 121791,
+    "putVolume": 138718,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.04
+  },
+  {
+    "id": "mekcc0i88en8tbd36dc",
+    "timestamp": "2025-08-20 15:03:22",
+    "callVolume": 904066,
+    "putVolume": 557210,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.61
+  },
+  {
+    "id": "mekcc0unu0zdk7lbfml",
+    "timestamp": "2025-08-20 15:03:22",
+    "callVolume": 98441,
+    "putVolume": 59788,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.42
+  },
+  {
+    "id": "mekcc12gcj57slptc15",
+    "timestamp": "2025-08-20 15:03:22",
+    "callVolume": 47195,
+    "putVolume": 15644,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.39
+  },
+  {
+    "id": "mekcc1b1ujrftjg30i",
+    "timestamp": "2025-08-20 15:03:23",
+    "callVolume": 481892,
+    "putVolume": 423676,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.635
+  },
+  {
+    "id": "mekcc1qwe09nhbapddb",
+    "timestamp": "2025-08-20 15:03:23",
+    "callVolume": 115044,
+    "putVolume": 100165,
+    "selectedTicker": "META",
+    "lstPrice": 744.8
+  },
+  {
+    "id": "mekcc23xnyktguwh13e",
+    "timestamp": "2025-08-20 15:03:24",
+    "callVolume": 94780,
+    "putVolume": 36976,
+    "selectedTicker": "MSFT",
+    "lstPrice": 504.87
+  },
+  {
+    "id": "mekcc2je7x0w0mq6k6t",
+    "timestamp": "2025-08-20 15:03:24",
+    "callVolume": 51847,
+    "putVolume": 31201,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.1377
+  },
+  {
+    "id": "mekcc2tkf8kcg9vq3ei",
+    "timestamp": "2025-08-20 15:03:25",
+    "callVolume": 47826,
+    "putVolume": 33474,
+    "selectedTicker": "COIN",
+    "lstPrice": 301.41
+  },
+  {
+    "id": "mekcc31jslu9o72pbp",
+    "timestamp": "2025-08-20 15:03:25",
+    "callVolume": 209909,
+    "putVolume": 196923,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.56
+  },
+  {
+    "id": "mekcidvxq60elsifnq",
+    "timestamp": "2025-08-20 15:08:19",
+    "callVolume": 2459944,
+    "putVolume": 2724510,
+    "selectedTicker": "SPY",
+    "lstPrice": 637.42
+  },
+  {
+    "id": "mekcieuhprek2ieit8j",
+    "timestamp": "2025-08-20 15:08:20",
+    "callVolume": 1553327,
+    "putVolume": 1443460,
+    "selectedTicker": "QQQ",
+    "lstPrice": 564.68
+  },
+  {
+    "id": "mekcifm5etln9azgi49",
+    "timestamp": "2025-08-20 15:08:21",
+    "callVolume": 168976,
+    "putVolume": 230456,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.16
+  },
+  {
+    "id": "mekcifygrw31imsiycj",
+    "timestamp": "2025-08-20 15:08:22",
+    "callVolume": 122234,
+    "putVolume": 139499,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.24
+  },
+  {
+    "id": "mekcigfnzqeifo8rca",
+    "timestamp": "2025-08-20 15:08:22",
+    "callVolume": 912122,
+    "putVolume": 558874,
+    "selectedTicker": "NVDA",
+    "lstPrice": 173.8722
+  },
+  {
+    "id": "mekcigo330ocaganbkv",
+    "timestamp": "2025-08-20 15:08:23",
+    "callVolume": 98940,
+    "putVolume": 60025,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.646
+  },
+  {
+    "id": "mekcigvrr9bmglc5n6l",
+    "timestamp": "2025-08-20 15:08:23",
+    "callVolume": 47255,
+    "putVolume": 15665,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.52
+  },
+  {
+    "id": "mekcih8vwhe5konjgn",
+    "timestamp": "2025-08-20 15:08:23",
+    "callVolume": 484359,
+    "putVolume": 425368,
+    "selectedTicker": "TSLA",
+    "lstPrice": 321.475
+  },
+  {
+    "id": "mekcihm1vohkn00f3li",
+    "timestamp": "2025-08-20 15:08:24",
+    "callVolume": 115620,
+    "putVolume": 100525,
+    "selectedTicker": "META",
+    "lstPrice": 745.478
+  },
+  {
+    "id": "mekcihxo6qqx29abvjm",
+    "timestamp": "2025-08-20 15:08:24",
+    "callVolume": 95444,
+    "putVolume": 38249,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.755
+  },
+  {
+    "id": "mekciicv19sbhesioer",
+    "timestamp": "2025-08-20 15:08:25",
+    "callVolume": 52329,
+    "putVolume": 31253,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.245
+  },
+  {
+    "id": "mekciircp7aablsn6cr",
+    "timestamp": "2025-08-20 15:08:25",
+    "callVolume": 48034,
+    "putVolume": 33560,
+    "selectedTicker": "COIN",
+    "lstPrice": 301.8499
+  },
+  {
+    "id": "mekcij5seygcmx0di7c",
+    "timestamp": "2025-08-20 15:08:26",
+    "callVolume": 210489,
+    "putVolume": 198266,
+    "selectedTicker": "AMD",
+    "lstPrice": 163.99
+  },
+  {
+    "id": "mekcotcqfpksnw965aw",
+    "timestamp": "2025-08-20 15:13:19",
+    "callVolume": 2481112,
+    "putVolume": 2747289,
+    "selectedTicker": "SPY",
+    "lstPrice": 638.19
+  },
+  {
+    "id": "mekcowjerayzrllxs1s",
+    "timestamp": "2025-08-20 15:13:23",
+    "callVolume": 169166,
+    "putVolume": 231988,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.375
+  },
+  {
+    "id": "mekcox0fi42qf0r7lw7",
+    "timestamp": "2025-08-20 15:13:24",
+    "callVolume": 123124,
+    "putVolume": 141150,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.57
+  },
+  {
+    "id": "mekcoyt8uetquxw80n",
+    "timestamp": "2025-08-20 15:13:26",
+    "callVolume": 919729,
+    "putVolume": 562719,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.335
+  },
+  {
+    "id": "mekcoz3526jbo10r7uf",
+    "timestamp": "2025-08-20 15:13:26",
+    "callVolume": 99120,
+    "putVolume": 60105,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224
+  },
+  {
+    "id": "mekcozdwkzof8y69k5l",
+    "timestamp": "2025-08-20 15:13:27",
+    "callVolume": 47446,
+    "putVolume": 15814,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.88
+  },
+  {
+    "id": "mekcozugflrfj8cnd3s",
+    "timestamp": "2025-08-20 15:13:27",
+    "callVolume": 486233,
+    "putVolume": 427144,
+    "selectedTicker": "TSLA",
+    "lstPrice": 322.885
+  },
+  {
+    "id": "mekcp07wkper9o1dqjn",
+    "timestamp": "2025-08-20 15:13:28",
+    "callVolume": 114938,
+    "putVolume": 100866,
+    "selectedTicker": "META",
+    "lstPrice": 746.46
+  },
+  {
+    "id": "mekcp0ntf7ai3t4ozwo",
+    "timestamp": "2025-08-20 15:13:28",
+    "callVolume": 95767,
+    "putVolume": 38313,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.485
+  },
+  {
+    "id": "mekcp0znlk4iyqpcdi",
+    "timestamp": "2025-08-20 15:13:29",
+    "callVolume": 52568,
+    "putVolume": 31570,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.377
+  },
+  {
+    "id": "mekcp1i0ux7817dblj8",
+    "timestamp": "2025-08-20 15:13:30",
+    "callVolume": 48371,
+    "putVolume": 33623,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.42
+  },
+  {
+    "id": "mekcp1zpmtb1pb3u6we",
+    "timestamp": "2025-08-20 15:13:30",
+    "callVolume": 197833,
+    "putVolume": 198610,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.295
+  },
+  {
+    "id": "mekcvb00t6bkofviyq",
+    "timestamp": "2025-08-20 15:18:22",
+    "callVolume": 2495382,
+    "putVolume": 2769743,
+    "selectedTicker": "SPY",
+    "lstPrice": 638.24
+  },
+  {
+    "id": "mekcvbwri5sm88dltnl",
+    "timestamp": "2025-08-20 15:18:23",
+    "callVolume": 1572406,
+    "putVolume": 1464586,
+    "selectedTicker": "QQQ",
+    "lstPrice": 565.72
+  },
+  {
+    "id": "mekcvclhoc8rt2y686j",
+    "timestamp": "2025-08-20 15:18:24",
+    "callVolume": 171206,
+    "putVolume": 232480,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.33
+  },
+  {
+    "id": "mekcvd0x2wh2r9hr0g2",
+    "timestamp": "2025-08-20 15:18:24",
+    "callVolume": 124183,
+    "putVolume": 142116,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.51
+  },
+  {
+    "id": "mekcvd9yoimkdnpgax",
+    "timestamp": "2025-08-20 15:18:25",
+    "callVolume": 928073,
+    "putVolume": 564236,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.515
+  },
+  {
+    "id": "mekcvdubwfiiv0bidh",
+    "timestamp": "2025-08-20 15:18:26",
+    "callVolume": 99605,
+    "putVolume": 60148,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.01
+  },
+  {
+    "id": "mekcve8yt6uzs1lbcy",
+    "timestamp": "2025-08-20 15:18:26",
+    "callVolume": 47557,
+    "putVolume": 15856,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.91
+  },
+  {
+    "id": "mekcveoimong88wi3be",
+    "timestamp": "2025-08-20 15:18:27",
+    "callVolume": 487797,
+    "putVolume": 428761,
+    "selectedTicker": "TSLA",
+    "lstPrice": 322.73
+  },
+  {
+    "id": "mekcvf7mb58zjl9ctwd",
+    "timestamp": "2025-08-20 15:18:27",
+    "callVolume": 115367,
+    "putVolume": 101011,
+    "selectedTicker": "META",
+    "lstPrice": 746.5182
+  },
+  {
+    "id": "mekcvflls1d81x14p3e",
+    "timestamp": "2025-08-20 15:18:28",
+    "callVolume": 96356,
+    "putVolume": 38557,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.497
+  },
+  {
+    "id": "mekcvg0wavwbsw4ekbf",
+    "timestamp": "2025-08-20 15:18:28",
+    "callVolume": 52800,
+    "putVolume": 31611,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.3999
+  },
+  {
+    "id": "mekcvg99jexznzyqx4",
+    "timestamp": "2025-08-20 15:18:29",
+    "callVolume": 48560,
+    "putVolume": 33716,
+    "selectedTicker": "COIN",
+    "lstPrice": 302.5
+  },
+  {
+    "id": "mekcvghqmi7idvz4pqo",
+    "timestamp": "2025-08-20 15:18:29",
+    "callVolume": 198557,
+    "putVolume": 199297,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.41
+  },
+  {
+    "id": "mekd1oc7erj4emsk7x",
+    "timestamp": "2025-08-20 15:23:19",
+    "callVolume": 2520889,
+    "putVolume": 2790331,
+    "selectedTicker": "SPY",
+    "lstPrice": 638.585
+  },
+  {
+    "id": "mekd1pkurpexk6aa8em",
+    "timestamp": "2025-08-20 15:23:21",
+    "callVolume": 1577591,
+    "putVolume": 1474169,
+    "selectedTicker": "QQQ",
+    "lstPrice": 566.2
+  },
+  {
+    "id": "mekd1q7ypmm28bgvngj",
+    "timestamp": "2025-08-20 15:23:21",
+    "callVolume": 171712,
+    "putVolume": 233722,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.46
+  },
+  {
+    "id": "mekd1qjukc29961pxu",
+    "timestamp": "2025-08-20 15:23:22",
+    "callVolume": 124609,
+    "putVolume": 142782,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.59
+  },
+  {
+    "id": "mekd1qx3d8hw7bw2i9g",
+    "timestamp": "2025-08-20 15:23:22",
+    "callVolume": 934722,
+    "putVolume": 565402,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.71
+  },
+  {
+    "id": "mekd1r6cstirryack6",
+    "timestamp": "2025-08-20 15:23:23",
+    "callVolume": 99790,
+    "putVolume": 60224,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.14
+  },
+  {
+    "id": "mekd1rexxxpxi1igezj",
+    "timestamp": "2025-08-20 15:23:23",
+    "callVolume": 47597,
+    "putVolume": 15953,
+    "selectedTicker": "GOOG",
+    "lstPrice": 201.13
+  },
+  {
+    "id": "mekd1rui8tx5be6e09q",
+    "timestamp": "2025-08-20 15:23:24",
+    "callVolume": 488831,
+    "putVolume": 429686,
+    "selectedTicker": "TSLA",
+    "lstPrice": 323.2899
+  },
+  {
+    "id": "mekd1sncoukoq2y24y",
+    "timestamp": "2025-08-20 15:23:25",
+    "callVolume": 116638,
+    "putVolume": 101144,
+    "selectedTicker": "META",
+    "lstPrice": 747.6327
+  },
+  {
+    "id": "mekd1t7no6cl8skf0t",
+    "timestamp": "2025-08-20 15:23:25",
+    "callVolume": 97091,
+    "putVolume": 38999,
+    "selectedTicker": "MSFT",
+    "lstPrice": 507.195
+  },
+  {
+    "id": "mekd1tj1j5wl62ziyj",
+    "timestamp": "2025-08-20 15:23:26",
+    "callVolume": 52911,
+    "putVolume": 31640,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.52
+  },
+  {
+    "id": "mekd1trqezvmt9s413",
+    "timestamp": "2025-08-20 15:23:26",
+    "callVolume": 48630,
+    "putVolume": 33745,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.26
+  },
+  {
+    "id": "mekd1u4vw4w8gzknrfc",
+    "timestamp": "2025-08-20 15:23:27",
+    "callVolume": 212964,
+    "putVolume": 200524,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.66
+  },
+  {
+    "id": "mekd83quplz0imomof9",
+    "timestamp": "2025-08-20 15:28:19",
+    "callVolume": 2559337,
+    "putVolume": 2818085,
+    "selectedTicker": "SPY",
+    "lstPrice": 638.2
+  },
+  {
+    "id": "mekd84mvagtxuf6kus",
+    "timestamp": "2025-08-20 15:28:20",
+    "callVolume": 1598509,
+    "putVolume": 1495641,
+    "selectedTicker": "QQQ",
+    "lstPrice": 565.64
+  },
+  {
+    "id": "mekd85bcmxvovxs5xa9",
+    "timestamp": "2025-08-20 15:28:21",
+    "callVolume": 172645,
+    "putVolume": 234621,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.23
+  },
+  {
+    "id": "mekd85q2mkg5fpmsga",
+    "timestamp": "2025-08-20 15:28:22",
+    "callVolume": 125734,
+    "putVolume": 143910,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.46
+  },
+  {
+    "id": "mekd85zosg8gpkydna",
+    "timestamp": "2025-08-20 15:28:22",
+    "callVolume": 943554,
+    "putVolume": 572498,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.51
+  },
+  {
+    "id": "mekd86a9dqhutswtrr5",
+    "timestamp": "2025-08-20 15:28:22",
+    "callVolume": 100403,
+    "putVolume": 60437,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.88
+  },
+  {
+    "id": "mekd86khz1pbbyboz1",
+    "timestamp": "2025-08-20 15:28:23",
+    "callVolume": 48017,
+    "putVolume": 16083,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.74
+  },
+  {
+    "id": "mekd874wpuocmsg52eh",
+    "timestamp": "2025-08-20 15:28:23",
+    "callVolume": 501883,
+    "putVolume": 427858,
+    "selectedTicker": "TSLA",
+    "lstPrice": 322.9499
+  },
+  {
+    "id": "mekd87ir7ol2sbqw2fo",
+    "timestamp": "2025-08-20 15:28:24",
+    "callVolume": 117063,
+    "putVolume": 102266,
+    "selectedTicker": "META",
+    "lstPrice": 746.62
+  },
+  {
+    "id": "mekd87ultw50ov3e7ks",
+    "timestamp": "2025-08-20 15:28:24",
+    "callVolume": 97830,
+    "putVolume": 39115,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.809
+  },
+  {
+    "id": "mekd88aeonwkxpltx7o",
+    "timestamp": "2025-08-20 15:28:25",
+    "callVolume": 53500,
+    "putVolume": 31773,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.3923
+  },
+  {
+    "id": "mekd88lbk7q5xh0937",
+    "timestamp": "2025-08-20 15:28:25",
+    "callVolume": 49335,
+    "putVolume": 33849,
+    "selectedTicker": "COIN",
+    "lstPrice": 303
+  },
+  {
+    "id": "mekd88t4ehm6beutvd",
+    "timestamp": "2025-08-20 15:28:26",
+    "callVolume": 215261,
+    "putVolume": 201733,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.43
+  },
+  {
+    "id": "mekdejdahyll9ricjl",
+    "timestamp": "2025-08-20 15:33:19",
+    "callVolume": 2592202,
+    "putVolume": 2842529,
+    "selectedTicker": "SPY",
+    "lstPrice": 638.535
+  },
+  {
+    "id": "mekdekfsx827iammaq",
+    "timestamp": "2025-08-20 15:33:21",
+    "callVolume": 1617073,
+    "putVolume": 1510871,
+    "selectedTicker": "QQQ",
+    "lstPrice": 565.99
+  },
+  {
+    "id": "mekdel3ir9243sv54wg",
+    "timestamp": "2025-08-20 15:33:21",
+    "callVolume": 173303,
+    "putVolume": 235141,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.455
+  },
+  {
+    "id": "mekdeldibtwtnug8v7",
+    "timestamp": "2025-08-20 15:33:22",
+    "callVolume": 126779,
+    "putVolume": 144676,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.525
+  },
+  {
+    "id": "mekdeltt4ylsm5ga0h7",
+    "timestamp": "2025-08-20 15:33:22",
+    "callVolume": 952225,
+    "putVolume": 575434,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.6372
+  },
+  {
+    "id": "mekdem54oqm7lxnpxrk",
+    "timestamp": "2025-08-20 15:33:23",
+    "callVolume": 101178,
+    "putVolume": 60578,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.105
+  },
+  {
+    "id": "mekdemgnmsahvodmd7",
+    "timestamp": "2025-08-20 15:33:23",
+    "callVolume": 48081,
+    "putVolume": 16138,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.695
+  },
+  {
+    "id": "mekdems26s2kewvq0p5",
+    "timestamp": "2025-08-20 15:33:24",
+    "callVolume": 506182,
+    "putVolume": 429835,
+    "selectedTicker": "TSLA",
+    "lstPrice": 323.21
+  },
+  {
+    "id": "mekdengjo1q2wcs2tqj",
+    "timestamp": "2025-08-20 15:33:24",
+    "callVolume": 117565,
+    "putVolume": 102939,
+    "selectedTicker": "META",
+    "lstPrice": 747.081
+  },
+  {
+    "id": "mekdenu9qniusk8ntv",
+    "timestamp": "2025-08-20 15:33:25",
+    "callVolume": 98334,
+    "putVolume": 39510,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.88
+  },
+  {
+    "id": "mekdeoglr8g74aznma",
+    "timestamp": "2025-08-20 15:33:26",
+    "callVolume": 53755,
+    "putVolume": 31931,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.45
+  },
+  {
+    "id": "mekdeos4xbc1tbwg4e",
+    "timestamp": "2025-08-20 15:33:26",
+    "callVolume": 49678,
+    "putVolume": 33997,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.48
+  },
+  {
+    "id": "mekdep351srd35vh8hq",
+    "timestamp": "2025-08-20 15:33:27",
+    "callVolume": 218544,
+    "putVolume": 205411,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.73
+  },
+  {
+    "id": "mekdkywceh10wo09yjc",
+    "timestamp": "2025-08-20 15:38:19",
+    "callVolume": 2628739,
+    "putVolume": 2862226,
+    "selectedTicker": "SPY",
+    "lstPrice": 638.6
+  },
+  {
+    "id": "mekdkzx5owja29a78w",
+    "timestamp": "2025-08-20 15:38:21",
+    "callVolume": 1632072,
+    "putVolume": 1524804,
+    "selectedTicker": "QQQ",
+    "lstPrice": 566.03
+  },
+  {
+    "id": "mekdl0v753rbsnz8s9",
+    "timestamp": "2025-08-20 15:38:22",
+    "callVolume": 174101,
+    "putVolume": 235286,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.525
+  },
+  {
+    "id": "mekdl18l2qhinyiwrtg",
+    "timestamp": "2025-08-20 15:38:22",
+    "callVolume": 127078,
+    "putVolume": 144912,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.545
+  },
+  {
+    "id": "mekdl1jqgym30h4v2x7",
+    "timestamp": "2025-08-20 15:38:23",
+    "callVolume": 961327,
+    "putVolume": 578071,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.645
+  },
+  {
+    "id": "mekdl1xbdudgw83nlra",
+    "timestamp": "2025-08-20 15:38:23",
+    "callVolume": 102132,
+    "putVolume": 60701,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.25
+  },
+  {
+    "id": "mekdl27rq2nes2a2c5k",
+    "timestamp": "2025-08-20 15:38:23",
+    "callVolume": 50615,
+    "putVolume": 16228,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.57
+  },
+  {
+    "id": "mekdl2w08eyg7shb65p",
+    "timestamp": "2025-08-20 15:38:24",
+    "callVolume": 509298,
+    "putVolume": 431667,
+    "selectedTicker": "TSLA",
+    "lstPrice": 323.725
+  },
+  {
+    "id": "mekdl3i02povwu5ffxl",
+    "timestamp": "2025-08-20 15:38:25",
+    "callVolume": 119429,
+    "putVolume": 102911,
+    "selectedTicker": "META",
+    "lstPrice": 747.21
+  },
+  {
+    "id": "mekdl3y29kb5z0q9z7",
+    "timestamp": "2025-08-20 15:38:26",
+    "callVolume": 99155,
+    "putVolume": 40054,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.565
+  },
+  {
+    "id": "mekdl47s3b8wcvfuctu",
+    "timestamp": "2025-08-20 15:38:26",
+    "callVolume": 60044,
+    "putVolume": 32391,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.435
+  },
+  {
+    "id": "mekdl4hmxvakej0m4rb",
+    "timestamp": "2025-08-20 15:38:26",
+    "callVolume": 50477,
+    "putVolume": 33836,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.69
+  },
+  {
+    "id": "mekdl4y9tjjy1g1awf",
+    "timestamp": "2025-08-20 15:38:27",
+    "callVolume": 220942,
+    "putVolume": 205782,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.55
+  },
+  {
+    "id": "mekdrejgmpoy8itq77r",
+    "timestamp": "2025-08-20 15:43:19",
+    "callVolume": 2667540,
+    "putVolume": 2911304,
+    "selectedTicker": "SPY",
+    "lstPrice": 638.695
+  },
+  {
+    "id": "mekdrfgzgavvv8rkjqu",
+    "timestamp": "2025-08-20 15:43:21",
+    "callVolume": 1665477,
+    "putVolume": 1544040,
+    "selectedTicker": "QQQ",
+    "lstPrice": 566.01
+  },
+  {
+    "id": "mekdrgk7h3h7e94d0c",
+    "timestamp": "2025-08-20 15:43:22",
+    "callVolume": 175080,
+    "putVolume": 236573,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.6
+  },
+  {
+    "id": "mekdrh6uz5j4nisgqq",
+    "timestamp": "2025-08-20 15:43:23",
+    "callVolume": 127882,
+    "putVolume": 145571,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.53
+  },
+  {
+    "id": "mekdrhkdptj661hscl",
+    "timestamp": "2025-08-20 15:43:23",
+    "callVolume": 971075,
+    "putVolume": 582358,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.615
+  },
+  {
+    "id": "mekdrhtxddhi7rphffb",
+    "timestamp": "2025-08-20 15:43:24",
+    "callVolume": 102861,
+    "putVolume": 61326,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.205
+  },
+  {
+    "id": "mekdric8zvs6urf0lc",
+    "timestamp": "2025-08-20 15:43:24",
+    "callVolume": 51281,
+    "putVolume": 16505,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.65
+  },
+  {
+    "id": "mekdrirek27bwgxlbdr",
+    "timestamp": "2025-08-20 15:43:25",
+    "callVolume": 514268,
+    "putVolume": 435620,
+    "selectedTicker": "TSLA",
+    "lstPrice": 323.68
+  },
+  {
+    "id": "mekdrj5c6hgzy43w2hc",
+    "timestamp": "2025-08-20 15:43:25",
+    "callVolume": 120998,
+    "putVolume": 104319,
+    "selectedTicker": "META",
+    "lstPrice": 747.89
+  },
+  {
+    "id": "mekdrje5oahwoqjxo2",
+    "timestamp": "2025-08-20 15:43:26",
+    "callVolume": 100516,
+    "putVolume": 40343,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.31
+  },
+  {
+    "id": "mekdrjnakan67trz8fb",
+    "timestamp": "2025-08-20 15:43:26",
+    "callVolume": 54629,
+    "putVolume": 32213,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.47
+  },
+  {
+    "id": "mekdrk0zkxshki1qcrs",
+    "timestamp": "2025-08-20 15:43:27",
+    "callVolume": 50829,
+    "putVolume": 33888,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.585
+  },
+  {
+    "id": "mekdrk90rrd4r1oavbr",
+    "timestamp": "2025-08-20 15:43:27",
+    "callVolume": 223316,
+    "putVolume": 207376,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.71
+  },
+  {
+    "id": "mekdxtullo1d5usnfj",
+    "timestamp": "2025-08-20 15:48:19",
+    "callVolume": 2708279,
+    "putVolume": 2953389,
+    "selectedTicker": "SPY",
+    "lstPrice": 638.75
+  },
+  {
+    "id": "mekdxuqgf8s8tatvn1",
+    "timestamp": "2025-08-20 15:48:20",
+    "callVolume": 1677448,
+    "putVolume": 1559284,
+    "selectedTicker": "QQQ",
+    "lstPrice": 566.185
+  },
+  {
+    "id": "mekdxvc6xxjorwy9fo",
+    "timestamp": "2025-08-20 15:48:21",
+    "callVolume": 176727,
+    "putVolume": 237468,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.64
+  },
+  {
+    "id": "mekdxvsu8s1xpn7e0kp",
+    "timestamp": "2025-08-20 15:48:22",
+    "callVolume": 128470,
+    "putVolume": 146383,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.5797
+  },
+  {
+    "id": "mekdxw65e8vq0xvjua5",
+    "timestamp": "2025-08-20 15:48:22",
+    "callVolume": 977584,
+    "putVolume": 587067,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.665
+  },
+  {
+    "id": "mekdxwlctui1qo91lz",
+    "timestamp": "2025-08-20 15:48:23",
+    "callVolume": 103183,
+    "putVolume": 61885,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.365
+  },
+  {
+    "id": "mekdxwynuiml6csqdxa",
+    "timestamp": "2025-08-20 15:48:23",
+    "callVolume": 51344,
+    "putVolume": 16551,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.7316
+  },
+  {
+    "id": "mekdxxcdnw8djznxylp",
+    "timestamp": "2025-08-20 15:48:24",
+    "callVolume": 516881,
+    "putVolume": 437457,
+    "selectedTicker": "TSLA",
+    "lstPrice": 323.655
+  },
+  {
+    "id": "mekdxxuvj4lrjpcxg4",
+    "timestamp": "2025-08-20 15:48:24",
+    "callVolume": 121639,
+    "putVolume": 104838,
+    "selectedTicker": "META",
+    "lstPrice": 747.75
+  },
+  {
+    "id": "mekdxyafd34lrb5lumc",
+    "timestamp": "2025-08-20 15:48:25",
+    "callVolume": 102008,
+    "putVolume": 40757,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.77
+  },
+  {
+    "id": "mekdxyp44mqeiecxrju",
+    "timestamp": "2025-08-20 15:48:25",
+    "callVolume": 61179,
+    "putVolume": 32735,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.54
+  },
+  {
+    "id": "mekdxyys1o2npcesjuw",
+    "timestamp": "2025-08-20 15:48:26",
+    "callVolume": 51137,
+    "putVolume": 33980,
+    "selectedTicker": "COIN",
+    "lstPrice": 303.84
+  },
+  {
+    "id": "mekdxz7sovfbsh8t7",
+    "timestamp": "2025-08-20 15:48:26",
+    "callVolume": 225413,
+    "putVolume": 208243,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.8401
+  },
+  {
+    "id": "meke49e2tne84hcekij",
+    "timestamp": "2025-08-20 15:53:19",
+    "callVolume": 2726718,
+    "putVolume": 2976893,
+    "selectedTicker": "SPY",
+    "lstPrice": 638.43
+  },
+  {
+    "id": "meke4ae6zdtp3tg8tq",
+    "timestamp": "2025-08-20 15:53:21",
+    "callVolume": 1686503,
+    "putVolume": 1567262,
+    "selectedTicker": "QQQ",
+    "lstPrice": 566.01
+  },
+  {
+    "id": "meke4avw4fl749d777f",
+    "timestamp": "2025-08-20 15:53:21",
+    "callVolume": 177116,
+    "putVolume": 237751,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.655
+  },
+  {
+    "id": "meke4b45pmj35hzqrrh",
+    "timestamp": "2025-08-20 15:53:21",
+    "callVolume": 128988,
+    "putVolume": 147658,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.3916
+  },
+  {
+    "id": "meke4bg45ajbtm6d81m",
+    "timestamp": "2025-08-20 15:53:22",
+    "callVolume": 985560,
+    "putVolume": 592691,
+    "selectedTicker": "NVDA",
+    "lstPrice": 174.7425
+  },
+  {
+    "id": "meke4bqh5l8vib8mlxh",
+    "timestamp": "2025-08-20 15:53:22",
+    "callVolume": 103680,
+    "putVolume": 61939,
+    "selectedTicker": "AMZN",
+    "lstPrice": 224.385
+  },
+  {
+    "id": "meke4c5fhy6c15fzelp",
+    "timestamp": "2025-08-20 15:53:23",
+    "callVolume": 51655,
+    "putVolume": 16660,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.6475
+  },
+  {
+    "id": "meke4cdqbubt6oe8uc7",
+    "timestamp": "2025-08-20 15:53:23",
+    "callVolume": 525288,
+    "putVolume": 440082,
+    "selectedTicker": "TSLA",
+    "lstPrice": 323.41
+  },
+  {
+    "id": "meke4czdfkucnk74z0i",
+    "timestamp": "2025-08-20 15:53:24",
+    "callVolume": 122278,
+    "putVolume": 105174,
+    "selectedTicker": "META",
+    "lstPrice": 748.12
+  },
+  {
+    "id": "meke4dbklbwe72jned",
+    "timestamp": "2025-08-20 15:53:24",
+    "callVolume": 102438,
+    "putVolume": 40940,
+    "selectedTicker": "MSFT",
+    "lstPrice": 506.18
+  },
+  {
+    "id": "meke4dlo92q0iwef9h",
+    "timestamp": "2025-08-20 15:53:25",
+    "callVolume": 55033,
+    "putVolume": 32399,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.5566
+  },
+  {
+    "id": "meke4e67vei039g8lw",
+    "timestamp": "2025-08-20 15:53:25",
+    "callVolume": 51490,
+    "putVolume": 34088,
+    "selectedTicker": "COIN",
+    "lstPrice": 304.68
+  },
+  {
+    "id": "meke4enrpsrmfqt0qab",
+    "timestamp": "2025-08-20 15:53:26",
+    "callVolume": 227879,
+    "putVolume": 208772,
+    "selectedTicker": "AMD",
+    "lstPrice": 164.94
+  },
+  {
+    "id": "mekeaoptugsn5lac2l",
+    "timestamp": "2025-08-20 15:58:19",
+    "callVolume": 2733230,
+    "putVolume": 2990942,
+    "selectedTicker": "SPY",
+    "lstPrice": 638.1
+  },
+  {
+    "id": "mekeapv1fpktq0bcli9",
+    "timestamp": "2025-08-20 15:58:21",
+    "callVolume": 1694446,
+    "putVolume": 1572575,
+    "selectedTicker": "QQQ",
+    "lstPrice": 566.065
+  },
+  {
+    "id": "mekeaqsyhg3tvnxim0p",
+    "timestamp": "2025-08-20 15:58:22",
+    "callVolume": 177457,
+    "putVolume": 237877,
+    "selectedTicker": "IWM",
+    "lstPrice": 225.465
+  },
+  {
+    "id": "mekeared89jg5le4b3n",
+    "timestamp": "2025-08-20 15:58:23",
+    "callVolume": 130060,
+    "putVolume": 148040,
+    "selectedTicker": "AAPL",
+    "lstPrice": 226.245
+  },
+  {
+    "id": "mekeas3cc7dhuxpm5xw",
+    "timestamp": "2025-08-20 15:58:23",
+    "callVolume": 992676,
+    "putVolume": 598265,
+    "selectedTicker": "NVDA",
+    "lstPrice": 175.4101
+  },
+  {
+    "id": "mekeasgsan7ye99o9xl",
+    "timestamp": "2025-08-20 15:58:24",
+    "callVolume": 104165,
+    "putVolume": 62128,
+    "selectedTicker": "AMZN",
+    "lstPrice": 223.805
+  },
+  {
+    "id": "mekeaspqyjv1dc73yfo",
+    "timestamp": "2025-08-20 15:58:24",
+    "callVolume": 51818,
+    "putVolume": 16756,
+    "selectedTicker": "GOOG",
+    "lstPrice": 200.28
+  },
+  {
+    "id": "mekeat4owawfbecppn",
+    "timestamp": "2025-08-20 15:58:25",
+    "callVolume": 528508,
+    "putVolume": 441862,
+    "selectedTicker": "TSLA",
+    "lstPrice": 324.265
+  },
+  {
+    "id": "mekeatifiq6tsr4cu8",
+    "timestamp": "2025-08-20 15:58:25",
+    "callVolume": 123801,
+    "putVolume": 104626,
+    "selectedTicker": "META",
+    "lstPrice": 747.52
+  },
+  {
+    "id": "mekeatxl0m63a8d59nwg",
+    "timestamp": "2025-08-20 15:58:26",
+    "callVolume": 102928,
+    "putVolume": 41194,
+    "selectedTicker": "MSFT",
+    "lstPrice": 505.45
+  },
+  {
+    "id": "mekeau6ut2oufsrxdg",
+    "timestamp": "2025-08-20 15:58:26",
+    "callVolume": 61720,
+    "putVolume": 33063,
+    "selectedTicker": "SOXL",
+    "lstPrice": 25.855
+  },
+  {
+    "id": "mekeaujocvutjm9tidc",
+    "timestamp": "2025-08-20 15:58:27",
+    "callVolume": 52112,
+    "putVolume": 34279,
+    "selectedTicker": "COIN",
+    "lstPrice": 304.15
+  },
+  {
+    "id": "mekeav108aswwlao4",
+    "timestamp": "2025-08-20 15:58:27",
+    "callVolume": 231253,
+    "putVolume": 209409,
+    "selectedTicker": "AMD",
+    "lstPrice": 165.39
+  }
+]
