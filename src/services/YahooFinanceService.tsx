@@ -10,3 +10,38 @@ export async function getYahooFinanceData(selectedTicker) {
     }
     return resp;
 }
+
+export async function getYahooFinanceQuaterlyOptionData() {
+    const url = "http://localhost:3000/api/fetchDailyOptions";
+    let resp;
+    try {
+        resp =  await fetch(url)
+    } catch (err) {
+        console.error('Failed to fetch yahoo finace  data:', err);
+    }
+    return resp;
+}
+
+export async function getServerSavedData(ticker: string) {
+  const url = `http://localhost:3000/api/ticker`;
+
+  let resp;
+  try {
+    resp = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ticker }),
+    });
+
+    if (!resp.ok) {
+      throw new Error(`Server error: ${resp.status}`);
+    }
+  } catch (err) {
+    console.error('Failed to fetch yahoo finance data:', err);
+    throw err;
+  }
+
+  return resp;
+}

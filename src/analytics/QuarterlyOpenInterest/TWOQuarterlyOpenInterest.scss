@@ -1,0 +1,128 @@
+.qo-container {
+  padding: 20px 40px;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: #f9fafb;
+  color: #222;
+
+  h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #1a237e;
+    font-weight: 600;
+  }
+
+  .qo-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+
+    button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background: #1565c0;
+        transform: translateY(-1px);
+      }
+
+      &:disabled {
+        background: #90caf9;
+        cursor: not-allowed;
+        transform: none;
+      }
+    }
+  }
+
+  .qo-message {
+    text-align: center;
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
+
+  .qo-error {
+    text-align: center;
+    background: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
+
+  .qo-hint {
+    text-align: center;
+    color: #777;
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  .qo-chart-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #0d47a1;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .custom-tooltip {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    font-size: 0.85rem;
+    line-height: 1.4;
+
+    p {
+      margin: 4px 0;
+    }
+
+    b {
+      color: #0d47a1;
+    }
+
+    .expiry-group {
+      margin-top: 6px;
+      border-top: 1px dashed #ddd;
+      padding-top: 4px;
+
+      p:first-child {
+        font-weight: 600;
+        text-decoration: underline;
+        margin-bottom: 3px;
+      }
+    }
+  }
+}
