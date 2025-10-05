@@ -1,44 +1,82 @@
 .cms-container {
-  padding: 16px;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+  background: #f5f7fb;
+  min-height: 100vh;
 }
 
 /* ---------- navigation ---------- */
 .nav-bar {
   display: flex;
-  flex-wrap: wrap;          /* allow wrapping on tiny screens */
-  gap: 16px;
-  margin-bottom: 24px;
-  justify-content: center;  /* center buttons */
-     margin-top: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  background: #ffffff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 700px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .nav-button {
-  padding: 10px 20px;
-  background-color: #0066cc;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #0078d4, #005fa3);
   color: #fff;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.15s ease;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: #004999;
+    background: linear-gradient(135deg, #005fa3, #004080);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  &.active {
+    background: linear-gradient(135deg, #28a745, #1f8f3a);
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
     transform: translateY(-2px);
   }
 }
 
-/* ---------- mobile tweaks (≤ 480 px) ---------- */
+/* ---------- main content area ---------- */
+.route-content {
+  width: 100%;
+  max-width: 1200px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+}
+
+/* ---------- mobile tweaks (≤ 480 px) ---------- */
 @media (max-width: 480px) {
   .nav-bar {
-        margin-top: 15px;
-    flex-direction: column;   /* stack buttons vertically */
-    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
   }
 
   .nav-button {
-
-    width: 100%;              /* full‑width buttons */
+    width: 100%;
     text-align: center;
+    font-size: 15px;
+    padding: 12px 16px;
+  }
+
+  .route-content {
+    padding: 14px;
   }
 }
