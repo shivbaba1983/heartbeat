@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import './DynamicTickerOptionTable.scss';
-
+import {NASDAQ_TOKEN} from './../../constant/HeartbeatConstants';
 interface OptionData {
   expiry: string;
   expiryMonth: string;
@@ -39,8 +39,8 @@ export const DynamicTickerOptionTable: React.FC = () => {
         setLoading(false);
         return;
       }
-
-      const resp = await fetch('http://localhost:3000/api/fetchQuaterOptionData', {
+      const url= `${NASDAQ_TOKEN}/api/fetchQuaterOptionData`;
+      const resp = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ticker: cleanTicker }),
