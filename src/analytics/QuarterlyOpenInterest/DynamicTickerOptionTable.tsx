@@ -39,7 +39,7 @@ export const DynamicTickerOptionTable: React.FC = () => {
         setLoading(false);
         return;
       }
-      const url= `${NASDAQ_TOKEN}/api/fetchQuaterOptionData`;
+      const url= "https://main.d1rin969pdam05.amplifyapp.com/api/fetchQuaterOptionData";
       const resp = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -141,7 +141,7 @@ export const DynamicTickerOptionTable: React.FC = () => {
           <table className="option-table">
             <thead>
               <tr>
-                {['Date', 'Expiry', 'Month', 'Strike', 'Open Interest', 'Last Price', 'Type'].map((header) => (
+                {['Date', 'Expiry', 'Month', 'Strike', 'Open Interest', 'Last Price'].map((header) => (
                   <th
                     key={header}
                     onClick={() => handleSort(header.replace(' ', '').toLowerCase())}
@@ -166,7 +166,6 @@ export const DynamicTickerOptionTable: React.FC = () => {
                       <td>{row.strike}</td>
                       <td>{row.openInterest.toLocaleString()}</td>
                       <td>{row.lastPrice}</td>
-                      <td>{row.type}</td>
                     </tr>
                   ))}
                 </React.Fragment>
