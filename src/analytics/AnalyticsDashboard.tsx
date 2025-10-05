@@ -6,7 +6,7 @@ import TrendListDisplay from './trendtable/TrendListDisplay';
 import OptionTrendChart from './trendtable/OptionTrendChart';
 import RSIChart from "./../analytics/rsi/RSIChart";
 import { TWOQuarterlyOpenInterest } from './QuarterlyOpenInterest/TWOQuarterlyOpenInterest';
-
+import { DynamicTickerOptionTable } from './QuarterlyOpenInterest/DynamicTickerOptionTable'
 const AnalyticsDashboard = () => {
   const [showQuarterly, setShowQuarterly] = useState(false);
 
@@ -36,6 +36,8 @@ const AnalyticsDashboard = () => {
         </div>
 
         {showQuarterly && <TWOQuarterlyOpenInterest showQuarterly={showQuarterly} />}
+
+        <DynamicTickerOptionTable/>
       </div>
     </div>
   );

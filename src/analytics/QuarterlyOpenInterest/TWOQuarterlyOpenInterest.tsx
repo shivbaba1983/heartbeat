@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import './TWOQuarterlyOpenInterest.scss';
-
+import QuarterlyOpenInterestTable from './QuarterlyOpenInterestTable';
 interface OptionData {
   expiry: string;
   strike: number;
@@ -29,13 +29,13 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
-
+  const [displayTable, setDisplayTable] = useState<boolean>(false); // ✅ control table d
   // ✅ Function to trigger daily data fetch
   const handlePullNewData = async () => {
     try {
       setLoading(true);
       setMessage('Fetching new data from Yahoo Finance...');
-      const resp = await getYahooFinanceQuaterlyOptionData();//fetch('http://localhost:3000/api/fetchDailyOptions');
+      const resp = await getYahooFinanceQuaterlyOptionData(QuarterlyTickerList);//fetch('http://localhost:3000/api/fetchDailyOptions');
       if (!resp?.ok) throw new Error('Failed to fetch daily options');
       setMessage('✅ New data pulled successfully.');
     } catch (err: any) {
@@ -110,12 +110,10 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
     return null;
   };
 
-
   return (
     <div className="qo-container">
       <h2>Quarterly Options Open Interest Trend</h2>
 
-      {/* ✅ Buttons for manual trigger */}
       <div className="qo-controls">
         <button onClick={handlePullNewData} disabled={loading}>
           {loading ? 'Fetching...' : 'Pull New Data'}
@@ -132,7 +130,6 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
         <p className="qo-hint">Click “Load Data from API” to view charts.</p>
       )}
 
-      {/* ✅ Chart rendering */}
       {QuarterlyTickerList.map((ticker) => {
         const history = data[ticker];
         if (!history) return null;
@@ -141,28 +138,31 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
           new Set(
             Object.values(history)
               .flat()
-              .filter((o) => o.type === 'CALL' && o.openInterest > 5000)
-              .map((o) => o.strike)
+              .filter((o: any) => o.type === 'CALL' && o.openInterest > 5000)
+              .map((o: any) => o.strike)
           )
         ).sort((a, b) => a - b);
+
+        const today = new Date();
 
         const chartData = Object.keys(history)
           .sort()
           .map((date) => {
-            const dayData = history[date] as OptionData[];
+            const dayData = history[date];
             const obj: any = { date };
 
-            // ✅ Only take strikes that are multiples of 5 or 10 (no decimals)
             const validStrikes = strikes.filter(
               (s) => Number.isInteger(s) && (s % 5 === 0 || s % 10 === 0)
             );
 
             validStrikes.forEach((strike) => {
-              const option = dayData.find(
-                (o) => o.strike === strike && o.type === 'CALL'
-              );
+              const option = dayData.find((o: any) => o.strike === strike && o.type === 'CALL');
 
-              if (option && option.openInterest > 5000) {
+              if (
+                option &&
+                option.openInterest > 5000 &&
+                new Date(option.expiry) >= today // ✅ only include if expiry >= today
+              ) {
                 obj[strike] = option.openInterest;
                 obj[`${strike}_expiry`] = option.expiry;
               } else {
@@ -172,11 +172,27 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
             });
 
             return obj;
-          });
-
+          })
+          // ✅ remove rows that have no valid (non-zero) data after filtering
+          .filter((row) => Object.values(row).some((v) => typeof v === 'number' && v > 0));
         return (
           <div key={ticker} className="qo-chart-card">
             <h3>{ticker}</h3>
+
+            {/* ✅ Checkbox for this ticker only */}
+            <div className="qo-display-table-checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={displayTable[ticker] || false}
+                  onChange={(e) =>
+                    setDisplayTable((prev) => ({ ...prev, [ticker]: e.target.checked }))
+                  }
+                />
+                Display Table
+              </label>
+            </div>
+
             {chartData.length > 0 ? (
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={chartData}>
@@ -200,6 +216,9 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
             ) : (
               <p>No data available for {ticker}</p>
             )}
+
+            {/* ✅ Display table only if checkbox for this ticker is checked */}
+            {displayTable[ticker] && <QuarterlyOpenInterestTable data={{ [ticker]: history }} />}
           </div>
         );
       })}
