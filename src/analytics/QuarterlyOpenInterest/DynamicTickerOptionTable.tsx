@@ -1,6 +1,15 @@
 import React, { useState, useMemo } from 'react';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  ResponsiveContainer,
+} from 'recharts';
 import './DynamicTickerOptionTable.scss';
-import {NASDAQ_TOKEN} from './../../constant/HeartbeatConstants';
+
 interface OptionData {
   expiry: string;
   expiryMonth: string;
@@ -26,6 +35,7 @@ export const DynamicTickerOptionTable: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null);
+  const [showTable, setShowTable] = useState<boolean>(true);
 
   const handleFetchData = async () => {
     setLoading(true);
@@ -39,7 +49,8 @@ export const DynamicTickerOptionTable: React.FC = () => {
         setLoading(false);
         return;
       }
-      const url= "https://main.d1rin969pdam05.amplifyapp.com/api/fetchQuaterOptionData";
+
+      const url = 'https://main.d1rin969pdam05.amplifyapp.com/api/fetchQuaterOptionData';
       const resp = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -57,23 +68,23 @@ export const DynamicTickerOptionTable: React.FC = () => {
     }
   };
 
-  // Generate soft color per expiry group
+  // Generate color per expiry
   const getColorForExpiry = (expiry: string): string => {
     let hash = 0;
-    for (let i = 0; i < expiry.length; i++) hash = expiry.charCodeAt(i) + ((hash << 5) - hash);
+    for (let i = 0; i < expiry.length; i++) {
+      hash = expiry.charCodeAt(i) + ((hash << 5) - hash);
+    }
     const hue = hash % 360;
-    return `hsla(${hue}, 70%, 92%, 0.6)`;
+    return `hsla(${hue}, 70%, 92%, 0.5)`;
   };
 
-  // Flatten data
+  // Flatten data (no grouping by date)
   const rows = useMemo(() => {
     const allRows: any[] = [];
     Object.entries(data).forEach(([ticker, history]) => {
       Object.entries(history).forEach(([date, options]) => {
         options.forEach((opt) => {
           allRows.push({
-            ticker,
-            date,
             expiry: opt.expiry,
             expiryMonth: opt.expiryMonth,
             strike: opt.strike,
@@ -87,15 +98,14 @@ export const DynamicTickerOptionTable: React.FC = () => {
     return allRows;
   }, [data]);
 
-  // Sorting logic
+  // Sorting
   const sortedRows = useMemo(() => {
     if (!sortConfig) return rows;
-    const sorted = [...rows].sort((a, b) => {
+    return [...rows].sort((a, b) => {
       if (a[sortConfig.key] < b[sortConfig.key]) return sortConfig.direction === 'asc' ? -1 : 1;
       if (a[sortConfig.key] > b[sortConfig.key]) return sortConfig.direction === 'asc' ? 1 : -1;
       return 0;
     });
-    return sorted;
   }, [rows, sortConfig]);
 
   const handleSort = (key: string) => {
@@ -107,7 +117,23 @@ export const DynamicTickerOptionTable: React.FC = () => {
     });
   };
 
-  // Group rows by expiry
+  // Custom Tooltip for chart
+  const CustomTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      const d = payload[0].payload;
+      return (
+        <div className="custom-tooltip">
+          <p><b>Expiry:</b> {d.expiry}</p>
+          <p><b>Strike:</b> {d.strike}</p>
+          <p><b>Last Price:</b> {d.lastPrice}</p>
+          <p><b>Open Interest:</b> {d.openInterest.toLocaleString()}</p>
+        </div>
+      );
+    }
+    return null;
+  };
+
+  // Group rows by expiry for table background styling
   const groupedByExpiry = useMemo(() => {
     const groups: Record<string, any[]> = {};
     sortedRows.forEach((row) => {
@@ -137,44 +163,75 @@ export const DynamicTickerOptionTable: React.FC = () => {
       {error && <div className="error-msg">⚠️ {error}</div>}
 
       {Object.keys(data).length > 0 && (
-        <div className="table-wrapper">
-          <table className="option-table">
-            <thead>
-              <tr>
-                {['Date', 'Expiry', 'Month', 'Strike', 'Open Interest', 'Last Price'].map((header) => (
-                  <th
-                    key={header}
-                    onClick={() => handleSort(header.replace(' ', '').toLowerCase())}
-                    className={sortConfig?.key === header.replace(' ', '').toLowerCase() ? 'active' : ''}
-                  >
-                    {header}
-                    {sortConfig?.key === header.replace(' ', '').toLowerCase() && (
-                      <span>{sortConfig.direction === 'asc' ? ' ▲' : ' ▼'}</span>
-                    )}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(groupedByExpiry).map(([expiry, groupRows]) => (
-                <React.Fragment key={expiry}>
-                  {groupRows.map((row, idx) => (
-                    <tr key={`${expiry}-${idx}`} style={{ backgroundColor: getColorForExpiry(expiry) }}>
-                      <td>{row.date}</td>
-                      <td><b>{row.expiry}</b></td>
-                      <td>{row.expiryMonth}</td>
-                      <td>{row.strike}</td>
-                      <td>{row.openInterest.toLocaleString()}</td>
-                      <td>{row.lastPrice}</td>
-                    </tr>
+        <>
+          {/* Chart */}
+          <div className="chart-container">
+            <h3>Open Interest by Expiry</h3>
+            <ResponsiveContainer width="100%" height={400}>
+              <BarChart data={sortedRows}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="expiry" angle={-45} textAnchor="end" height={80} interval={0} />
+                <YAxis />
+                <Tooltip content={<CustomTooltip />} />
+                <Bar dataKey="openInterest" fill="#007bff" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Checkbox */}
+          <div className="checkbox-container">
+            <label>
+              <input
+                type="checkbox"
+                checked={showTable}
+                onChange={() => setShowTable((prev) => !prev)}
+              />
+              Show Table
+            </label>
+          </div>
+
+          {/* Table */}
+          {showTable && (
+            <div className="table-wrapper">
+              <table className="option-table">
+                <thead>
+                  <tr>
+                    {['Expiry', 'Strike', 'Open Interest', 'Last Price'].map((header) => (
+                      <th
+                        key={header}
+                        onClick={() => handleSort(header.replace(' ', '').toLowerCase())}
+                        className={sortConfig?.key === header.replace(' ', '').toLowerCase() ? 'active' : ''}
+                      >
+                        {header}
+                        {sortConfig?.key === header.replace(' ', '').toLowerCase() && (
+                          <span>{sortConfig.direction === 'asc' ? ' ▲' : ' ▼'}</span>
+                        )}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(groupedByExpiry).map(([expiry, groupRows], idx) => (
+                    <React.Fragment key={expiry}>
+                      {groupRows.map((row, i) => (
+                        <tr
+                          key={`${expiry}-${i}`}
+                          style={{ backgroundColor: getColorForExpiry(expiry) }}
+                        >
+                          <td><b>{row.expiry}</b></td>
+                          <td>{row.strike}</td>
+                          <td>{row.openInterest.toLocaleString()}</td>
+                          <td>{row.lastPrice}</td>
+                        </tr>
+                      ))}
+                    </React.Fragment>
                   ))}
-                </React.Fragment>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
 };
-
