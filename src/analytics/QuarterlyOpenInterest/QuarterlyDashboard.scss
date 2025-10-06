@@ -1,0 +1,34 @@
+.quarterly-dashboard-container {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.checkbox-section {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+  font-size: 15px;
+}
+
+.toggle-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-label input {
+  transform: scale(1.2);
+  cursor: pointer;
+}
