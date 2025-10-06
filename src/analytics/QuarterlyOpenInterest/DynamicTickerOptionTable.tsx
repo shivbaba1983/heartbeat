@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from 'recharts';
+import { getYahooFinanceQuaterlyDynamicData } from './../../services/YahooFinanceService';
 import './DynamicTickerOptionTable.scss';
 
 interface OptionData {
@@ -49,16 +50,8 @@ export const DynamicTickerOptionTable: React.FC = () => {
         setLoading(false);
         return;
       }
-
-      const url = 'https://main.d1rin969pdam05.amplifyapp.com/api/fetchQuaterOptionData';
-      const resp = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ticker: cleanTicker }),
-      });
-
+      const resp = await getYahooFinanceQuaterlyDynamicData(ticker);
       if (!resp.ok) throw new Error('Failed to fetch option data');
-
       const json: ApiResponse = await resp.json();
       setData(json.data);
     } catch (err: any) {

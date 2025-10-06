@@ -4,16 +4,16 @@ export const NASDAQ_TOKEN = 'https://main.d1rin969pdam05.amplifyapp.com';
 export const IS_AWS_API = true;
 export const JSON_UPDATE_TIME = 10;//in minutes
 export const YAHOO_VOLUME_LIMIT = 1000;
-export const QuarterlyTickerList = ['AAPL', 'NVDA', 'AMZN', 'TSLA', 'TTD', 'TGT','NIO','SOFI','INTC'];
-export const LogTickerList = ['AAPL', 'NVDA', 'SPY', 'QQQ', 'IWM', 'AMZN', 'TSLA', 'MSFT', 'SOXL', 'COIN', 'AMD','TTD', 'NIO'];
+export const QuarterlyTickerList = ['AAPL', 'NVDA', 'AMZN', 'TSLA', 'TTD', 'TGT', 'NIO', 'SOFI', 'INTC', 'TSLL', 'AAPU', 'AMZU', 'SOXL', 'SMCI'];
+export const LogTickerList = ['AAPL', 'NVDA', 'SPY', 'QQQ', 'IWM', 'AMZN', 'TSLA', 'MSFT', 'SOXL', 'COIN', 'AMD', 'TTD', 'NIO'];
 //export const LogTickerList = ['NVDA'];
 export const ETF_List = ['SPY', 'QQQ', 'IWM', 'TQQQ', 'SOXL', 'TSLL', 'SQQQQ', 'AAPU', 'NVDL', 'AMDL', 'BITX', 'AMZU', 'GGLL'];
 export const INDEXES = ["IWM", "SPY", "QQQ"];
 export const MAG7 = ["TSLA", "AAPL", "NVDA", "GOOG", "AMZN", "MSFT", "META"];
 export const STOCKS_ASSETCLASS = "stocks";
 export const ETF_ASSETCLASS = "ETF";
-export const trendTableList = ["AAL", "AAPL", "AMD", "AMZN", "BABA", "COIN", "DAL", "GME", "GOOG", "HUM", "INTC", "IWM", "META", "MSFT", "NVDA", "QQQ", "SMCI", "SOFI", "SOXL", "SPY", "SQQQ", "TQQQ", "TSLA", "TSLL", "TTD","TGT","VSCO",];
-export const DAY_CHECKER_STOCKS_LIST = ["AAL", "NIO", "AMD", "BABA", "COIN", "DAL","TTD","TGT","VSCO", "GME","INTC",  "SMCI", "SOFI"];
+export const trendTableList = ["AAL", "AAPL", "AMD", "AMZN", "BABA", "COIN", "DAL", "GME", "GOOG", "HUM", "INTC", "IWM", "META", "MSFT", "NVDA", "QQQ", "SMCI", "SOFI", "SOXL", "SPY", "SQQQ", "TQQQ", "TSLA", "TSLL", "TTD", "TGT", "VSCO",];
+export const DAY_CHECKER_STOCKS_LIST = ["AAL", "NIO", "AMD", "BABA", "COIN", "DAL", "TTD", "TGT", "VSCO", "GME", "INTC", "SMCI", "SOFI"];
 export const tickerListData = [
     { idx: 1, value: "SPY" },
     { idx: 2, value: "QQQ" },
@@ -40,8 +40,8 @@ export const tickerListData = [
     { idx: 1105, value: "SOFI" },
     { idx: 1106, value: "HUM" },
     { idx: 1107, value: "INTC" },
-     { idx: 1108, value: "NIO" },
-      { idx: 1109, value: "TTD" },
+    { idx: 1108, value: "NIO" },
+    { idx: 1109, value: "TTD" },
 ]
 export const volumeOrOpenInterest = [
     { idx: 1, value: "volume" },
@@ -54,9 +54,9 @@ export const dayOrMonthData = [
 
 ]
 export const expirationDates = [
-     "2025-07-11T00:00:00.000Z",
+    "2025-07-11T00:00:00.000Z",
     "2025-07-18T00:00:00.000Z",
-     "2025-07-25T00:00:00.000Z",
+    "2025-07-25T00:00:00.000Z",
     "2025-08-15T00:00:00.000Z",
     "2025-09-19T00:00:00.000Z",
     "2025-10-17T00:00:00.000Z",

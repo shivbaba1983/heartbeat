@@ -1,7 +1,8 @@
 import React from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import MainResponsiveLayout from './main-responsive-layout/MainResponsiveLayout';
-import AnalyticsDashboard from './../src/analytics/AnalyticsDashboard';
+import AnalyticsDashboard from './analytics/AnalyticsDashboard';
+import QuarterlyDashboard from './analytics/QuarterlyOpenInterest/QuarterlyDashboard';
 import './CMSRoute.scss';
 
 const CMSRoute = () => (
@@ -13,12 +14,16 @@ const CMSRoute = () => (
       <NavLink to="/analyticsdashboard" className={({ isActive }) => `nav-button ${isActive ? 'active' : ''}`}>
         Analytics Dashboard
       </NavLink>
+      <NavLink to="/quarterlydashboard" className={({ isActive }) => `nav-button ${isActive ? 'active' : ''}`}>
+        Quarterly Dashboard
+      </NavLink>
     </nav>
 
     <div className="route-content">
       <Routes>
         <Route path="/" element={<MainResponsiveLayout />} />
         <Route path="/analyticsdashboard" element={<AnalyticsDashboard />} />
+        <Route path="/quarterlydashboard" element={<QuarterlyDashboard />} />
       </Routes>
     </div>
   </div>
