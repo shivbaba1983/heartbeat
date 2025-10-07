@@ -34,7 +34,7 @@ export async function getYahooFinanceQuaterlyDynamicData(ticker: string) {
 }
 
 export async function getYahooFinanceQuaterlyOptionData(QuarterlyTickerList: string[]) {
-  const url = `http://localhost:3000/api/fetchDailyOptions`;
+  const url = `${NASDAQ_TOKEN}/api/fetchDailyOptions`;
   let resp;
   try {
     resp = await fetch(url, {
@@ -56,7 +56,7 @@ export async function getYahooFinanceQuaterlyOptionData(QuarterlyTickerList: str
 }
 
 export async function getServerSavedData(ticker: string) {
-  const url = `http://localhost:3000/api/ticker`;
+  const url = `${NASDAQ_TOKEN}/api/ticker`;
   let resp;
   try {
     resp = await fetch(url, {
