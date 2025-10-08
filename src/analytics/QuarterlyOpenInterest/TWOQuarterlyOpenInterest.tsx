@@ -17,6 +17,7 @@ interface OptionData {
   expiry: string;
   strike: number;
   openInterest: number;
+  lastPrice: string;
   type: string;
 }
 
@@ -29,13 +30,14 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
-  const [displayTable, setDisplayTable] = useState<boolean>(false); // ✅ control table d
+  const [displayTable, setDisplayTable] = useState<Record<string, boolean>>({});
+
   // ✅ Function to trigger daily data fetch
   const handlePullNewData = async () => {
     try {
       setLoading(true);
       setMessage('Fetching new data from Yahoo Finance...');
-      const resp = await getYahooFinanceQuaterlyOptionData(QuarterlyTickerList);//fetch('http://localhost:3000/api/fetchDailyOptions');
+      const resp = await getYahooFinanceQuaterlyOptionData(QuarterlyTickerList);
       if (!resp?.ok) throw new Error('Failed to fetch daily options');
       setMessage('✅ New data pulled successfully.');
     } catch (err: any) {
@@ -47,8 +49,7 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
 
   useEffect(() => {
     handleLoadData();
-  }, [])
-
+  }, []);
 
   // ✅ Function to load ticker data from API
   const handleLoadData = async () => {
@@ -73,34 +74,43 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
     }
   };
 
-  // ✅ Custom tooltip grouped by expiry
+  // ✅ Custom tooltip grouped by expiry with lastPrice included
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
-      // Group payload items by expiry
       const groupedByExpiry: Record<string, any[]> = {};
 
       payload.forEach((p: any) => {
         const expiry = p?.payload?.[`${p.name}_expiry`] || 'Unknown Expiry';
         const oi = p?.value ?? 0;
+        const lastPrice = p?.payload?.[`${p.name}_lastPrice`] ?? 'N/A';
 
-        // ✅ Only include if OI > 5000
         if (oi > 5000) {
           if (!groupedByExpiry[expiry]) groupedByExpiry[expiry] = [];
-          groupedByExpiry[expiry].push(p);
+          groupedByExpiry[expiry].push({ ...p, lastPrice });
         }
       });
 
       return (
-        <div className="custom-tooltip" style={{ background: '#fff', padding: 10, borderRadius: 8, border: '1px solid #ccc' }}>
+        <div
+          className="custom-tooltip"
+          style={{
+            background: '#fff',
+            padding: 10,
+            borderRadius: 8,
+            border: '1px solid #ccc',
+          }}
+        >
           <p><b>Date:</b> {label}</p>
 
           {Object.keys(groupedByExpiry).map((expiry, i) => (
             <div key={i} style={{ marginTop: 6 }}>
-              <p style={{ textDecoration: 'underline', fontWeight: 600 }}>Expiry: {expiry}</p>
+              <p style={{ textDecoration: 'underline', fontWeight: 600 }}>
+                Expiry: {expiry}
+              </p>
               {groupedByExpiry[expiry].map((p, j) => (
-                <p key={j} style={{ marginLeft: 10 }}>
-                  <b>{p.name}</b> {'=>'} <b>{p.value}</b>
-                </p>
+                <div key={j} style={{ marginLeft: 10 }}>
+                  <b>{p.name}</b>{"=>"}<b>{p.value}</b>{"=>"}<b>{p.lastPrice}</b>
+                </div>
               ))}
             </div>
           ))}
@@ -161,25 +171,26 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
               if (
                 option &&
                 option.openInterest > 5000 &&
-                new Date(option.expiry) >= today // ✅ only include if expiry >= today
+                new Date(option.expiry) >= today
               ) {
                 obj[strike] = option.openInterest;
                 obj[`${strike}_expiry`] = option.expiry;
+                obj[`${strike}_lastPrice`] = option.lastPrice; // ✅ added
               } else {
                 obj[strike] = 0;
                 obj[`${strike}_expiry`] = null;
+                obj[`${strike}_lastPrice`] = null; // ✅ added
               }
             });
 
             return obj;
           })
-          // ✅ remove rows that have no valid (non-zero) data after filtering
           .filter((row) => Object.values(row).some((v) => typeof v === 'number' && v > 0));
+
         return (
           <div key={ticker} className="qo-chart-card">
             <h3>{ticker}</h3>
 
-            {/* ✅ Checkbox for this ticker only */}
             <div className="qo-display-table-checkbox">
               <label>
                 <input
@@ -217,8 +228,9 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
               <p>No data available for {ticker}</p>
             )}
 
-            {/* ✅ Display table only if checkbox for this ticker is checked */}
-            {displayTable[ticker] && <QuarterlyOpenInterestTable data={{ [ticker]: history }} />}
+            {displayTable[ticker] && (
+              <QuarterlyOpenInterestTable data={{ [ticker]: history }} />
+            )}
           </div>
         );
       })}
