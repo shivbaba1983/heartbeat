@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { QuarterlyTickerList } from '../../constant/HeartbeatConstants';
-import { getYahooFinanceQuaterlyOptionData, getServerSavedData } from './../../services/YahooFinanceService';
+import {
+  getYahooFinanceQuaterlyOptionData,
+  getServerSavedData,
+} from './../../services/YahooFinanceService';
 import {
   LineChart,
   Line,
@@ -13,6 +16,7 @@ import {
 } from 'recharts';
 import './TWOQuarterlyOpenInterest.scss';
 import QuarterlyOpenInterestTable from './QuarterlyOpenInterestTable';
+
 interface OptionData {
   expiry: string;
   strike: number;
@@ -31,6 +35,16 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [displayTable, setDisplayTable] = useState<Record<string, boolean>>({});
+
+  // ✅ Persistent color map (stable across renders)
+  const colorMapRef = useRef<Record<number, string>>({});
+  const getColorForStrike = (strike: number) => {
+    if (!colorMapRef.current[strike]) {
+      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      colorMapRef.current[strike] = randomColor;
+    }
+    return colorMapRef.current[strike];
+  };
 
   // ✅ Function to trigger daily data fetch
   const handlePullNewData = async () => {
@@ -74,7 +88,7 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
     }
   };
 
-  // ✅ Custom tooltip grouped by expiry with lastPrice included
+  // ✅ Custom tooltip grouped by expiry with color identification
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       const groupedByExpiry: Record<string, any[]> = {};
@@ -98,6 +112,7 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
             padding: 10,
             borderRadius: 8,
             border: '1px solid #ccc',
+            maxWidth: 300,
           }}
         >
           <p><b>Date:</b> {label}</p>
@@ -107,11 +122,37 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
               <p style={{ textDecoration: 'underline', fontWeight: 600 }}>
                 Expiry: {expiry}
               </p>
-              {groupedByExpiry[expiry].map((p, j) => (
-                <div key={j} style={{ marginLeft: 10 }}>
-                  <b>{p.name}</b>{"=>"}<b>{p.value}</b>{"=>"}<b>{p.lastPrice}</b>
-                </div>
-              ))}
+              {groupedByExpiry[expiry].map((p, j) => {
+                const strikeNum = Number(p.name);
+                const color = getColorForStrike(strikeNum);
+                return (
+                  <div
+                    key={j}
+                    style={{
+                      marginLeft: 10,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 6,
+                    }}
+                  >
+                    {/* ✅ color indicator same as line */}
+                    <span
+                      style={{
+                        display: 'inline-block',
+                        width: 10,
+                        height: 10,
+                        borderRadius: '50%',
+                        backgroundColor: color,
+                      }}
+                    />
+                    <span>
+                      <b style={{ color }}>{p.name}</b> →{' '}
+                      <span style={{ color }}>{p.value}</span> →{' '}
+                      <span style={{ color }}>{p.lastPrice}</span>
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>
@@ -166,7 +207,9 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
             );
 
             validStrikes.forEach((strike) => {
-              const option = dayData.find((o: any) => o.strike === strike && o.type === 'CALL');
+              const option = dayData.find(
+                (o: any) => o.strike === strike && o.type === 'CALL'
+              );
 
               if (
                 option &&
@@ -175,17 +218,19 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
               ) {
                 obj[strike] = option.openInterest;
                 obj[`${strike}_expiry`] = option.expiry;
-                obj[`${strike}_lastPrice`] = option.lastPrice; // ✅ added
+                obj[`${strike}_lastPrice`] = option.lastPrice;
               } else {
                 obj[strike] = 0;
                 obj[`${strike}_expiry`] = null;
-                obj[`${strike}_lastPrice`] = null; // ✅ added
+                obj[`${strike}_lastPrice`] = null;
               }
             });
 
             return obj;
           })
-          .filter((row) => Object.values(row).some((v) => typeof v === 'number' && v > 0));
+          .filter((row) =>
+            Object.values(row).some((v) => typeof v === 'number' && v > 0)
+          );
 
         return (
           <div key={ticker} className="qo-chart-card">
@@ -197,7 +242,10 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
                   type="checkbox"
                   checked={displayTable[ticker] || false}
                   onChange={(e) =>
-                    setDisplayTable((prev) => ({ ...prev, [ticker]: e.target.checked }))
+                    setDisplayTable((prev) => ({
+                      ...prev,
+                      [ticker]: e.target.checked,
+                    }))
                   }
                 />
                 Display Table
@@ -218,7 +266,8 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
                       type="monotone"
                       dataKey={strike.toString()}
                       name={`${strike}`}
-                      stroke={'#' + ((Math.random() * 0xffffff) << 0).toString(16)}
+                      stroke={getColorForStrike(strike)} // ✅ consistent with tooltip
+                      strokeWidth={2}
                       connectNulls
                     />
                   ))}
