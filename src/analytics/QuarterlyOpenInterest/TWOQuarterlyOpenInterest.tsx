@@ -4,6 +4,7 @@ import {
   getYahooFinanceQuaterlyOptionData,
   getServerSavedData,
 } from './../../services/YahooFinanceService';
+import RecentOpenInterestChange from './RecentOpenInterestChange';
 import {
   LineChart,
   Line,
@@ -276,7 +277,7 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
             ) : (
               <p>No data available for {ticker}</p>
             )}
-
+            <RecentOpenInterestChange ticker={ticker} history={history} />
             {displayTable[ticker] && (
               <QuarterlyOpenInterestTable data={{ [ticker]: history }} />
             )}
