@@ -42,11 +42,19 @@ const RecentOpenInterestChange: React.FC<Props> = ({ ticker, history }) => {
     lastPrice: string;
   }[] = [];
 
+  // ✅ Include expiry in matching logic
   lastData.forEach((item) => {
     if (item.type === 'CALL') {
-      const prev = prevData.find((p) => p.strike === item.strike && p.type === 'CALL');
+      const prev = prevData.find(
+        (p) =>
+          p.strike === item.strike &&
+          p.type === 'CALL' &&
+          p.expiry === item.expiry // ✅ Match expiry as well
+      );
+
       const prevOI = prev?.openInterest ?? 0;
       const diff = item.openInterest - prevOI;
+
       if (diff >= 1000) {
         changeList.push({
           strike: item.strike,
@@ -77,7 +85,6 @@ const RecentOpenInterestChange: React.FC<Props> = ({ ticker, history }) => {
   // ✅ Improved sorting toggle behavior
   const handleSort = (key: string) => {
     setSortConfig((prev) => {
-      // Toggle direction if same column, otherwise default to descending
       if (prev.key === key) {
         return { key, direction: prev.direction === 'asc' ? 'desc' : 'asc' };
       } else {
