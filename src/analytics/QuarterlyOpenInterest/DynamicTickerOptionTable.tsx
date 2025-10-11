@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import {
   BarChart,
   Bar,
+  Cell,
   XAxis,
   YAxis,
   Tooltip,
@@ -135,7 +136,24 @@ export const DynamicTickerOptionTable: React.FC = () => {
     });
     return groups;
   }, [sortedRows]);
-
+  // Darker color per expiry (used for chart)
+  const getDarkColorForExpiry = (expiry: string): string => {
+    let hash = 0;
+    for (let i = 0; i < expiry.length; i++) {
+      hash = expiry.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const hue = hash % 360;
+    return `hsl(${hue}, 70%, 45%)`; // darker, richer hue for bars
+  };
+  // Generate light color per expiry (for table)
+  const getLightColorForExpiry = (expiry: string): string => {
+    let hash = 0;
+    for (let i = 0; i < expiry.length; i++) {
+      hash = expiry.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const hue = hash % 360;
+    return `hsl(${hue}, 70%, 90%)`;
+  };
   return (
     <div className="quarterly-viewer-container">
       <h2>Fetch Quarterly Option Data</h2>
@@ -163,12 +181,50 @@ export const DynamicTickerOptionTable: React.FC = () => {
             <ResponsiveContainer width="100%" height={400}>
               <BarChart data={sortedRows}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="expiry" angle={-45} textAnchor="end" height={80} interval={0} />
+                <XAxis dataKey="strike" />
                 <YAxis />
                 <Tooltip content={<CustomTooltip />} />
-                <Bar dataKey="openInterest" fill="#007bff" />
+                <Bar dataKey="openInterest">
+                  {sortedRows.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={getDarkColorForExpiry(entry.expiry)}
+                    />
+                  ))}
+                </Bar>
               </BarChart>
             </ResponsiveContainer>
+
+            {/* Color legend */}
+            {sortedRows && sortedRows.length > 0 && (
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: '8px',
+                  flexWrap: 'wrap',
+                  gap: '8px',
+                }}
+              >
+                {Array.from(new Set(sortedRows.map(item => item.expiry))).map((expiry, index) => (
+                  <div
+                    key={index}
+                    style={{ display: 'flex', alignItems: 'center', marginRight: '12px' }}
+                  >
+                    <div
+                      style={{
+                        width: '14px',
+                        height: '14px',
+                        backgroundColor: getDarkColorForExpiry(expiry),
+                        borderRadius: '3px',
+                        marginRight: '6px',
+                      }}
+                    ></div>
+                    <span style={{ fontSize: '13px', color: '#444' }}>{expiry}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Checkbox */}
@@ -207,10 +263,7 @@ export const DynamicTickerOptionTable: React.FC = () => {
                   {Object.entries(groupedByExpiry).map(([expiry, groupRows], idx) => (
                     <React.Fragment key={expiry}>
                       {groupRows.map((row, i) => (
-                        <tr
-                          key={`${expiry}-${i}`}
-                          style={{ backgroundColor: getColorForExpiry(expiry) }}
-                        >
+                        <tr key={`${expiry}-${i}`} style={{ backgroundColor: getLightColorForExpiry(expiry) }}>
                           <td><b>{row.expiry}</b></td>
                           <td>{row.strike}</td>
                           <td>{row.openInterest.toLocaleString()}</td>
