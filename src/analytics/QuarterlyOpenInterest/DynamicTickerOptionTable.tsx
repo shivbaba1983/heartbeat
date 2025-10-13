@@ -138,13 +138,16 @@ export const DynamicTickerOptionTable: React.FC = () => {
   }, [sortedRows]);
   // Darker color per expiry (used for chart)
   const getDarkColorForExpiry = (expiry: string): string => {
-    let hash = 0;
-    for (let i = 0; i < expiry.length; i++) {
-      hash = expiry.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    const hue = hash % 360;
+    // Cache to ensure consistent unique colors
+    const expiries = Array.from(new Set(sortedRows.map((item) => item.expiry)));
+    const index = expiries.indexOf(expiry);
+
+    // Evenly space hues to avoid repetition
+    const hue = Math.round((360 / expiries.length) * index);
+
     return `hsl(${hue}, 70%, 45%)`; // darker, richer hue for bars
   };
+
   // Generate light color per expiry (for table)
   const getLightColorForExpiry = (expiry: string): string => {
     let hash = 0;
@@ -154,6 +157,8 @@ export const DynamicTickerOptionTable: React.FC = () => {
     const hue = hash % 360;
     return `hsl(${hue}, 70%, 90%)`;
   };
+
+  
   return (
     <div className="quarterly-viewer-container">
       <h2>Fetch Quarterly Option Data</h2>
@@ -263,7 +268,7 @@ export const DynamicTickerOptionTable: React.FC = () => {
                   {Object.entries(groupedByExpiry).map(([expiry, groupRows], idx) => (
                     <React.Fragment key={expiry}>
                       {groupRows.map((row, i) => (
-                        <tr key={`${expiry}-${i}`} style={{ backgroundColor: getLightColorForExpiry(expiry) }}>
+                        <tr key={`${expiry}-${i}`} style={{ backgroundColor: getDarkColorForExpiry(expiry) }}>
                           <td><b>{row.expiry}</b></td>
                           <td>{row.strike}</td>
                           <td>{row.openInterest.toLocaleString()}</td>
