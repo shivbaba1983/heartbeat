@@ -143,7 +143,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker ,s
 
         <VolumeChart selectedTicker={selectedTicker} fileName={selectedFileName} />
       </div>}
-      {!isLoading && <ReadSThreeBucket selectedTicker={selectedTicker} fileName={selectedFileName} setSelectedTicker={setSelectedTicker}/>}
+      {(!isLoading &&IS_AWS_API) && <ReadSThreeBucket selectedTicker={selectedTicker} fileName={selectedFileName} setSelectedTicker={setSelectedTicker}/>}
 
       <h2 onClick={toggleExpanded} className="link-like-header">
         {isExpanded
@@ -151,7 +151,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker ,s
           : "► Open Interest (Click to Expand)"}
       </h2>
 
-      {(!isLoading && isExpanded) && <ReadSThreeBucketOpenInterest selectedTicker={selectedTicker} selectedFileNameOpenInterest={selectedFileNameOpenInterest}/>}
+      {(!isLoading && isExpanded && IS_AWS_API) && <ReadSThreeBucketOpenInterest selectedTicker={selectedTicker} selectedFileNameOpenInterest={selectedFileNameOpenInterest}/>}
 
     </div>
   );

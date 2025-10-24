@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NASDAQ_TOKEN, ETF_List, LogTickerList, JSON_UPDATE_TIME, IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
+import { NASDAQ_TOKEN, ETF_List, LogTickerList, JSON_UPDATE_TIME,IS_AWS_API, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 import { isWithinMarketHours, isMarketOpenNow, getFridayOfCurrentWeek, getTodayInEST, getEffectiveDate, getComingFriday } from './../common/nasdaq.common';
 import { writeS3JsonFile, writeS3JsonFileOpenInterest, writeToS3Bucket, writeToS3BucketOpenInterest } from '../services/WriteS3Service';
 import { getNasdaqOptionData } from './../services/NasdaqDataService';
@@ -60,8 +60,8 @@ const JsonUpdater = () => {
                 rows = latestData?.data?.table?.rows || [];
             } else {
                 //***********to call local api end point*************
-                const tempToken = import.meta.env.VITE_STOCK_API_URL;
-                const res = await axios.get(`${tempToken}/api/options/${ticker}/${assetclass}/${selectedDayOrMonth}`);
+                //const tempToken = import.meta.env.VITE_STOCK_API_URL;
+                const res = await axios.get(`${NASDAQ_TOKEN}/api/options/${ticker}/${assetclass}/${selectedDayOrMonth}`);
                 rows = res.data?.data?.table?.rows || [];
                 lstPrice = res.data?.data?.lastTrade;
                 const match = lstPrice.match(/\$\d+(\.\d+)?/);
@@ -76,10 +76,10 @@ const JsonUpdater = () => {
                     }
                 } else {
                     await writeS3JsonFile(total, ticker, lstPrice);// calling the local express service
-                    if (firstTimeWriteOpenInterest) {//call only one time for LogTickerList to wrote open interest only
-                        console.log('calling----writeS3JsonFileOpenInterest')
-                        await writeS3JsonFileOpenInterest(total, ticker, lstPrice) //calling local
-                    }
+                    // if (firstTimeWriteOpenInterest) {//call only one time for LogTickerList to wrote open interest only
+                    //     console.log('calling----writeS3JsonFileOpenInterest')
+                    //     await writeS3JsonFileOpenInterest(total, ticker, lstPrice) //calling local
+                    // }
                 }
             } else {
                 console.error(`observer 0 call or put volume for ${ticker} hence not write to s3 bucket`);

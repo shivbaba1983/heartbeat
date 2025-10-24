@@ -18,11 +18,13 @@ const VolumeChart = ({ selectedTicker, fileName }) => {
       try {
         const res = await fetch(`${NASDAQ_TOKEN}/api/volume/${fileName}`);
         const responseJson = await res.json();
+
         const formatted = responseJson
           ?.filter(item => item.selectedTicker === selectedTicker)
           ?.map(item => ({
             ...item,
-            time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
+            time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),
+            lstPrice: parseFloat(item?.lstPrice?.replace(/[^0-9.-]+/g, "")) || 0 // ✅ convert "$120.21" → 120.21
           }));
 
         setData(formatted);
@@ -39,45 +41,27 @@ const VolumeChart = ({ selectedTicker, fileName }) => {
     setRefreshData(true);
   };
 
-  // Filter valid lstPrice values > 0
-  const priceValues = data.map(d => d.lstPrice).filter(p => p > 0);
-  const hasValidPrice = priceValues.length > 0;
-  const lowerBound = hasValidPrice ? Math.floor(Math.min(...priceValues) - 2) : undefined;
-  const upperBound = hasValidPrice ? Math.ceil(Math.max(...priceValues) + 2) : undefined;
-
   return (
     <div>
       <h2>{selectedTicker} Options Volume Chart</h2>
 
-      {data && (
+      {data.length > 0 && (
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="time" />
             <YAxis yAxisId="left" />
-            {hasValidPrice && (
-              <YAxis
-                yAxisId="right"
-                orientation="right"
-                domain={[lowerBound, upperBound]}
-                tickFormatter={(val) => `$${val}`}
-              />
-            )}
+            <YAxis yAxisId="right" orientation="right" />
+
             <Tooltip />
             <Legend />
-            <Line yAxisId="left" type="monotone" dataKey="callVolume" stroke="#008000" name="Call Volume" />
-            <Line yAxisId="left" type="monotone" dataKey="putVolume" stroke="#FF0000" name="Put Volume" />
-            {hasValidPrice && (
-              <Line
-                yAxisId="right"
-                type="monotone"
-                dataKey="lstPrice"
-                stroke="#00008B"
-                name="Last Price"
-                dot={false}
-                strokeWidth={2}
-              />
-            )}
+
+            {/* Volume Lines */}
+            <Line yAxisId="left" type="monotone" dataKey="callVolume" stroke="#008000" name="Call Volume" dot={false} />
+            <Line yAxisId="left" type="monotone" dataKey="putVolume" stroke="#FF2C2C" name="Put Volume" dot={false} />
+
+            {/* ✅ Last Price Line (Right Axis) */}
+            <Line yAxisId="right" type="monotone" dataKey="lstPrice" stroke="#00008B" name="Last Price" dot={false} />
           </LineChart>
         </ResponsiveContainer>
       )}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { NASDAQ_TOKEN } from './../constant/HeartbeatConstants';
 function SPXOptionsData() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -8,7 +8,7 @@ function SPXOptionsData() {
 
     useEffect(() => {
         const fetchMyData = async () => {
-            const tempToken = import.meta.env.VITE_STOCK_API_URL;
+            const tempToken =NASDAQ_TOKEN;// import.meta.env.VITE_STOCK_API_URL;
             // await fetch(`${tempToken}/api/spxoption?symbol=SPX`)
             //     .then(res => res.json())
             //     .then(json => {

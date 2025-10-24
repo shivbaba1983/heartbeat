@@ -1,8 +1,10 @@
 import { NASDAQ_TOKEN, LogTickerList, JSON_UPDATE_TIME, tickerListData, volumeOrOpenInterest, dayOrMonthData } from '../constant/HeartbeatConstants';
 
 export async function writeS3JsonFile(total, ticker, lstPrice) {
+
+    console.log('----------------lstPrice-----', lstPrice)
     try {
-        await fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
+        await fetch(`${NASDAQ_TOKEN}/api/volume`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
