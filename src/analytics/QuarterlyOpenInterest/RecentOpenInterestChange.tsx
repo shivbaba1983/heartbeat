@@ -19,7 +19,6 @@ interface Props {
 }
 
 const RecentOpenInterestChange: React.FC<Props> = ({ ticker, history }) => {
-  // ✅ Default sort by Δ OI in descending order
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' }>({
     key: 'diff',
     direction: 'desc',
@@ -42,20 +41,20 @@ const RecentOpenInterestChange: React.FC<Props> = ({ ticker, history }) => {
     lastPrice: string;
   }[] = [];
 
-  // ✅ Include expiry in matching logic
+  // ✅ Include both positive and negative large changes (≥ +1000 or ≤ -1000)
   lastData.forEach((item) => {
     if (item.type === 'CALL') {
       const prev = prevData.find(
         (p) =>
           p.strike === item.strike &&
           p.type === 'CALL' &&
-          p.expiry === item.expiry // ✅ Match expiry as well
+          p.expiry === item.expiry
       );
 
       const prevOI = prev?.openInterest ?? 0;
       const diff = item.openInterest - prevOI;
 
-      if (diff >= 1000) {
+      if (Math.abs(diff) >= 1000) {
         changeList.push({
           strike: item.strike,
           expiry: item.expiry,
@@ -82,7 +81,6 @@ const RecentOpenInterestChange: React.FC<Props> = ({ ticker, history }) => {
     return String(a[key as keyof typeof a]).localeCompare(String(b[key as keyof typeof a])) * order;
   });
 
-  // ✅ Improved sorting toggle behavior
   const handleSort = (key: string) => {
     setSortConfig((prev) => {
       if (prev.key === key) {
@@ -101,7 +99,7 @@ const RecentOpenInterestChange: React.FC<Props> = ({ ticker, history }) => {
   return (
     <div className="recent-oi-change">
       <h4>
-        {ticker} — OI change ≥ +1000 ({prevDate} → {lastDate})
+        {ticker} — OI Change ≥ ±1000 ({prevDate} → {lastDate})
       </h4>
       <table>
         <thead>
@@ -121,7 +119,9 @@ const RecentOpenInterestChange: React.FC<Props> = ({ ticker, history }) => {
               <td>{row.expiry}</td>
               <td>{row.prevOI.toLocaleString()}</td>
               <td>{row.lastOI.toLocaleString()}</td>
-              <td className="diff-positive">+{row.diff.toLocaleString()}</td>
+              <td className={row.diff >= 1000 ? 'diff-positive' : 'diff-negative'}>
+                {row.diff >= 0 ? '+' : ''}{row.diff.toLocaleString()}
+              </td>
               <td>{row.lastPrice}</td>
             </tr>
           ))}
