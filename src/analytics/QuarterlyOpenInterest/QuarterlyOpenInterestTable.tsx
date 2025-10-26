@@ -93,7 +93,7 @@ const QuarterlyOpenInterestTable: React.FC<QuarterlyOpenInterestTableProps> = ({
       <table className="qoi-table">
         <thead>
           <tr>
-            {['Ticker', 'Date', 'Expiry', 'Strike', 'lastPrice', 'Open Interest'].map((header) => (
+            {['Ticker', 'Expiry', 'Strike', 'lastPrice', 'Open Interest'].map((header) => (
               <th
                 key={header}
                 onClick={() => handleSort(header.replace(' ', '').toLowerCase())}
@@ -113,7 +113,6 @@ const QuarterlyOpenInterestTable: React.FC<QuarterlyOpenInterestTableProps> = ({
               {groupRows.map((row, idx) => (
                 <tr key={`${expiry}-${idx}`} style={{ backgroundColor: getColorForExpiry(expiry) }}>
                   <td>{row.ticker}</td>
-                  <td>{row.date}</td>
                   <td><b>{row.expiry}</b></td>
                   <td>{row.strike}</td>
                   <td>{row.lastPrice}</td>

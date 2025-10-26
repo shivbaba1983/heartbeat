@@ -44,7 +44,7 @@ const OptionTrendChart = () => {
   const [rawRowsMap, setRawRowsMap] = useState<Record<string, any[]>>({});
   const [allChartData, setAllChartData] = useState<Record<string, any[]>>({});
   const [volumes, setVolumes] = useState<Record<string, { call: string; put: string; lastPrice: number }>>({});
-  const [chartType, setChartType] = useState<'line' | 'bar'>('line');
+  const [chartType, setChartType] = useState<'line' | 'bar'>('bar');
   const [showGraphs, setShowGraphs] = useState(false);
   const [showOptionPrediction, setShowOptionPrediction] = useState(false);
   const [volumeOrInterest, setVolumeOrInterest] = useState<'volume' | 'openInterest'>('volume');
@@ -345,6 +345,12 @@ const OptionTrendChart = () => {
         <label>
           <input type="radio" name="dayOrMonth" value="Month" checked={selectedDayOrMonth === 'Month'} onChange={() => setSelectedDayOrMonth('Month')} /> Month
         </label>
+        <label>
+          <input type="radio" name="chartType" value="line" checked={chartType === 'line'} onChange={() => setChartType('line')} /> Line
+        </label>
+        <label>
+          <input type="radio" name="chartType" value="bar" checked={chartType === 'bar'} onChange={() => setChartType('bar')} /> Bar
+        </label>
       </div>
 
       {/* Prediction table */}
@@ -393,7 +399,13 @@ const OptionTrendChart = () => {
                 {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('call_')).map((k, idx) => (
                   <Line key={k} type="monotone" dataKey={k} stroke={colors[idx % colors.length]} dot={false} strokeWidth={2} />
                 ))}
+                {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('cLast_')).map((k, idx) => (
+                  <Line key={k} type="monotone" dataKey={k} stroke={colors[idx % colors.length]} dot={false} strokeWidth={2} />
+                ))}
                 {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('put_')).map((k, idx) => (
+                  <Line key={k} type="monotone" dataKey={k} stroke={colors[(idx + 3) % colors.length]} dot={false} strokeWidth={2} />
+                ))}
+                {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('pLast')).map((k, idx) => (
                   <Line key={k} type="monotone" dataKey={k} stroke={colors[(idx + 3) % colors.length]} dot={false} strokeWidth={2} />
                 ))}
               </LineChart>
@@ -407,7 +419,13 @@ const OptionTrendChart = () => {
                 {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('call_')).map((k, idx) => (
                   <Bar key={k} dataKey={k} fill={colors[idx % colors.length]} />
                 ))}
+                {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('cLast')).map((k, idx) => (
+                  <Bar key={k} dataKey={k} fill={colors[idx % colors.length]} />
+                ))}
                 {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('put_')).map((k, idx) => (
+                  <Bar key={k} dataKey={k} fill={colors[(idx + 3) % colors.length]} />
+                ))}
+                {Object.keys(allChartData[ticker]?.[0] || {}).filter(k => k.startsWith('pLast')).map((k, idx) => (
                   <Bar key={k} dataKey={k} fill={colors[(idx + 3) % colors.length]} />
                 ))}
               </BarChart>
