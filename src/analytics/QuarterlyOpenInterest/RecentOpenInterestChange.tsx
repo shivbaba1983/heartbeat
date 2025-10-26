@@ -24,11 +24,14 @@ const RecentOpenInterestChange: React.FC<Props> = ({ ticker, history }) => {
     direction: 'desc',
   });
 
+  // 🆕 State to choose how many days before to compare
+  const [daysBefore, setDaysBefore] = useState<number>(1);
+
   const dates = Object.keys(history).sort();
-  if (dates.length < 2) return null;
+  if (dates.length < daysBefore + 1) return null;
 
   const lastDate = dates[dates.length - 1];
-  const prevDate = dates[dates.length - 2];
+  const prevDate = dates[dates.length - 1 - daysBefore];
   const lastData = history[lastDate];
   const prevData = history[prevDate];
 
@@ -98,9 +101,27 @@ const RecentOpenInterestChange: React.FC<Props> = ({ ticker, history }) => {
 
   return (
     <div className="recent-oi-change">
-      <h4>
-        {ticker} — OI Change ≥ ±1000 ({prevDate} → {lastDate})
-      </h4>
+      <div className="header-row">
+        <h4>
+          {ticker} — OI Change ≥ ±1000 ({prevDate} → {lastDate})
+        </h4>
+
+        {/* 🆕 Days selector */}
+        <div className="days-selector">
+          <label>Compare with: </label>
+          <select
+            value={daysBefore}
+            onChange={(e) => setDaysBefore(parseInt(e.target.value))}
+          >
+            {[1, 2, 3, 4, 5, 6, 7].map((d) => (
+              <option key={d} value={d}>
+                {d} day{d > 1 ? 's' : ''} before
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       <table>
         <thead>
           <tr>
