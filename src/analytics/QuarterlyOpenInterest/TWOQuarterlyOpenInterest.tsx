@@ -3,6 +3,7 @@ import { QuarterlyTickerList } from '../../constant/HeartbeatConstants';
 import {
   getYahooFinanceQuaterlyOptionData,
   getServerSavedData,
+  clearExpiredData
 } from './../../services/YahooFinanceService';
 import RecentOpenInterestChange from './RecentOpenInterestChange';
 import {
@@ -89,6 +90,29 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
     }
   };
 
+  
+  // ✅ Function to clear expire ticker data from API
+  const handleClearData = async () => {
+    try {
+      setLoading(true);
+      setMessage('Clearing data from API...');
+      const allData: Record<string, HistoryData> = {};
+
+      //for (const ticker of QuarterlyTickerList) {
+        const resp = await clearExpiredData();
+        if (!resp.ok) throw new Error(`Failed to clear data }`);
+        //const history: HistoryData = await resp.json();
+        //allData[ticker] = history;
+      //}
+
+      setData(allData);
+      setMessage('✅ Data clear successfully.');
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   // ✅ Custom tooltip grouped by expiry with color identification
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
@@ -172,6 +196,9 @@ export const TWOQuarterlyOpenInterest = ({ showQuarterly }: any) => {
         </button>
         <button onClick={handleLoadData} disabled={loading}>
           {loading ? 'Loading...' : 'Load Data from API'}
+        </button>
+         <button onClick={handleClearData} disabled={loading}>
+          {loading ? 'Loading...' : 'Clear expired Data'}
         </button>
       </div>
 
