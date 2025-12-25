@@ -153,7 +153,7 @@ const SpyYahooChart = ({ selectedTicker, volumeOrInterest , setAverageDailyVolum
             </div>}
 
             {!isLoading && <div className="yahoo-chart-section">
-                <h3>Yahoo-{volumeOrInterest}-Call-<span className={predectionInput[0].customClassName}>{totalCallVolume} </span>, Put-{totalPutVolume} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}</h3>
+                <h3>Yahoo-{volumeOrInterest}-Call-<span className={predectionInput[0].customClassName}>{totalCallVolume} </span>, Put-{totalPutVolume} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating} </h3>
                 {totalCallVolume > 0 && <PredictionHint selectedTicker={selectedTicker} predectionInput={predectionInput} />}
                 {volumeOrInterest === 'volume' && <div>
                     {data && <ResponsiveContainer width="100%" height={400}>

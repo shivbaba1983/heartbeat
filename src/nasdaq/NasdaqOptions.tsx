@@ -23,7 +23,6 @@ import CboeVolumeChart from './../spx/CboeVolumeChart';
 import TrendListDisplay from './../yahoo/TrendListDisplay';
 import ExtremeBullishClassification from './../sentiments/ExtremeBullishClassification';
 
-
 const NasdaqOptions = () => {
 
   const [selectedDayOrMonth, setSelectedDayOrMonth] = useState('day'); // 'day' | 'month' | null
@@ -288,7 +287,6 @@ const NasdaqOptions = () => {
   };
   return (
     <div>
-
       <div className="panel-sticky-marquee">
         <div className="vol-or-openinterets">
           <div style={{ display: 'flex', gap: '1rem' }}>

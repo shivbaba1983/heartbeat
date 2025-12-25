@@ -144,7 +144,7 @@ const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay,
                     <h3>
                         Yahoo-{volumeOrInterest}-Call-
                         <span className={predectionInput[0].customClassName}>{localCall} </span>,
-                        Put-{localPut} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating}
+                        Put-{localPut} Exp.-{getDateForatted(expiryDate)} Earning-{getDateForatted(stockDetails?.earningsTimestamp)} Rating-{stockDetails?.averageAnalystRating} <span>SPY daily prediction</span>
                     </h3>
 
                     {totalCallVolume > 0 && (

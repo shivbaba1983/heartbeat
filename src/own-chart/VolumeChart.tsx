@@ -23,8 +23,14 @@ const VolumeChart = ({ selectedTicker, fileName }) => {
           ?.filter(item => item.selectedTicker === selectedTicker)
           ?.map(item => ({
             ...item,
-            time: new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),
-            lstPrice: parseFloat(item?.lstPrice?.replace(/[^0-9.-]+/g, "")) || 0 // ✅ convert "$120.21" → 120.21
+            time: new Date(item.timestamp).toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: false
+            }),
+
+            // Convert "$120.21" to 120.21
+            lstPrice: parseFloat(item?.lstPrice?.replace(/[^0-9.-]+/g, "")) || 0
           }));
 
         setData(formatted);
@@ -50,18 +56,49 @@ const VolumeChart = ({ selectedTicker, fileName }) => {
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="time" />
+
+            {/* LEFT Y-AXIS – Volume */}
             <YAxis yAxisId="left" />
-            <YAxis yAxisId="right" orientation="right" />
+
+            {/* RIGHT Y-AXIS – Last Price (Fixed: does NOT start from 0) */}
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              domain={['dataMin', 'dataMax']}   // 👈 FIX APPLIED HERE
+              allowDecimals={true}
+            />
 
             <Tooltip />
             <Legend />
 
             {/* Volume Lines */}
-            <Line yAxisId="left" type="monotone" dataKey="callVolume" stroke="#008000" name="Call Volume" dot={false} />
-            <Line yAxisId="left" type="monotone" dataKey="putVolume" stroke="#FF2C2C" name="Put Volume" dot={false} />
+            <Line
+              yAxisId="left"
+              type="monotone"
+              dataKey="callVolume"
+              stroke="#008000"
+              name="Call Volume"
+              dot={false}
+            />
 
-            {/* ✅ Last Price Line (Right Axis) */}
-            <Line yAxisId="right" type="monotone" dataKey="lstPrice" stroke="#00008B" name="Last Price" dot={false} />
+            <Line
+              yAxisId="left"
+              type="monotone"
+              dataKey="putVolume"
+              stroke="#FF2C2C"
+              name="Put Volume"
+              dot={false}
+            />
+
+            {/* Last Price Line */}
+            <Line
+              yAxisId="right"
+              type="monotone"
+              dataKey="lstPrice"
+              stroke="#00008B"
+              name="Last Price"
+              dot={false}
+            />
           </LineChart>
         </ResponsiveContainer>
       )}

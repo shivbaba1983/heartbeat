@@ -2,7 +2,8 @@ import TickerChartDashboard from './../analytics/expirationBarChart/TickerChartD
 import TrendListDisplay from './trendtable/TrendListDisplay';
 import OptionTrendChart from './trendtable/OptionTrendChart';
 import RSIChart from "./../analytics/rsi/RSIChart";
-
+import IndexVolumeChart from './../analytics/IndexVolumeChart/IndexVolumeChart';
+import DailyCallVolumeChart from './DailyCallVolumeChart/DailyCallVolumeChart';
 const AnalyticsDashboard = () => {
   return (
     <div>
@@ -13,6 +14,8 @@ const AnalyticsDashboard = () => {
         <TrendListDisplay />
         <OptionTrendChart />
         <RSIChart />
+        <IndexVolumeChart/>
+        <DailyCallVolumeChart/>
       </div>
     </div>
   );

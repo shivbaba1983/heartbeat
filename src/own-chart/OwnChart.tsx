@@ -89,23 +89,6 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker ,s
     console.log("Selected file:", tempFileName);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    await fetch(`${NASDAQ_TOKEN}/api/writes3bucket`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        callVolume: Number(totalCallVolumeCount),
-        putVolume: Number(totalPutVolumeCount),
-        selectedTicker: selectedTicker,
-      }),
-    });
-
-    // setCallVolume('');
-    // setPutVolume('');
-    //window.location.reload(); // Refresh chart
-  };
   const toggleExpanded = () => {
     setIsExpanded(prev => !prev);
   };
@@ -123,23 +106,6 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker ,s
           </select>
         </div>
 
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <input
-            type="number"
-            placeholder="Call Volume"
-            value={totalCallVolumeCount}
-            onChange={(e) => setCallVolume(e.target.value)}
-            required
-          />
-          <input
-            type="number"
-            placeholder="Put Volume"
-            value={totalPutVolumeCount}
-            onChange={(e) => setPutVolume(e.target.value)}
-            required
-          />
-          <button type="submit">Add Data</button>
-        </form>
 
         <VolumeChart selectedTicker={selectedTicker} fileName={selectedFileName} />
       </div>}

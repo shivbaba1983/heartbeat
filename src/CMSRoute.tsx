@@ -3,6 +3,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import MainResponsiveLayout from './main-responsive-layout/MainResponsiveLayout';
 import AnalyticsDashboard from './analytics/AnalyticsDashboard';
 import QuarterlyDashboard from './analytics/QuarterlyOpenInterest/QuarterlyDashboard';
+import WakeLockKeeper from './nasdaq/WakeLockKeeper'
 import './CMSRoute.scss';
 
 const CMSRoute = () => (
@@ -26,6 +27,7 @@ const CMSRoute = () => (
         <Route path="/quarterlydashboard" element={<QuarterlyDashboard />} />
       </Routes>
     </div>
+   <WakeLockKeeper/>
   </div>
 );
 

@@ -113,7 +113,7 @@ const RecentOpenInterestChange: React.FC<Props> = ({ ticker, history }) => {
             value={daysBefore}
             onChange={(e) => setDaysBefore(parseInt(e.target.value))}
           >
-            {[1, 2, 3, 4, 5, 6, 7].map((d) => (
+            {[1, 2, 3, 4, 5, 6, 7,10,15,20,30].map((d) => (
               <option key={d} value={d}>
                 {d} day{d > 1 ? 's' : ''} before
               </option>

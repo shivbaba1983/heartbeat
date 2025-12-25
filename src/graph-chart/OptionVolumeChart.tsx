@@ -38,6 +38,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
   const [tempRowData, setTempRowData] = useState(rows);
   const [mergedChartData, setMergedChartData] = useState([]);
   const [chartType, setChartType] = useState('bar');
+  const [expDate, setExpDate] = useState();
 
   useEffect(() => {
     setTempRowData(rows);
@@ -52,8 +53,8 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
       const strike = parseFloat(row.strike);
       if (isNaN(strike)) return;
 
-      const exp = row.expiryDate || 'Unknown';
-
+       const exp = row.expiryDate || 'Unknown';
+       setExpDate(exp);
       if (row.c_Volume != null) {
         const vol = volumeOrInterest === 'volume'
           ? parseInt(row.c_Volume.replace(/,/g, '')) || 0
@@ -124,7 +125,7 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
         predectionInput={[{ id: 1, callVolume: formattedCall, putVolume: formattedPut, timestamp: new Date().toLocaleString() }]}
       />}
 
-      <h2>{`${selectedTicker} Total ${volumeOrInterest}: Call ${callDisplay}, Put ${putDisplay}`}</h2>
+      <h2>{`${selectedTicker} Total ${volumeOrInterest}: Call ${callDisplay}, Put ${putDisplay} ExpDate ${expDate}`}</h2>
 
 
       <div className="chart-type-toggle">

@@ -28,8 +28,8 @@ const MainResponsiveLayout = () => {
             />
             <span>Log Reading</span>
           </label>
-        </div> */}
-        {showUSA && <JsonUpdater />}
+        </div> */}        
+        {/* {showUSA && <JsonUpdater />} */}
         {showUSA && <NasdaqOptions />}
         {/* <NSEHome/> */}
         <div className="market-data-checkbox">
