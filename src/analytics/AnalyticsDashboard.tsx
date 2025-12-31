@@ -4,6 +4,7 @@ import OptionTrendChart from './trendtable/OptionTrendChart';
 import RSIChart from "./../analytics/rsi/RSIChart";
 import IndexVolumeChart from './../analytics/IndexVolumeChart/IndexVolumeChart';
 import DailyCallVolumeChart from './DailyCallVolumeChart/DailyCallVolumeChart';
+import DailyTimeCallVolumeChart from './DailyCallVolumeChart/DailyTimeCallVolumeChart';
 const AnalyticsDashboard = () => {
   return (
     <div>
@@ -16,6 +17,7 @@ const AnalyticsDashboard = () => {
         <RSIChart />
         <IndexVolumeChart/>
         <DailyCallVolumeChart/>
+        <DailyTimeCallVolumeChart/>
       </div>
     </div>
   );
