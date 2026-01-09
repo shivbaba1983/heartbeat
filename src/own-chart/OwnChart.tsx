@@ -94,7 +94,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker ,s
   };
   return (
     <div>
-      {NASDAQ_TOKEN.includes('localhost') && <div>
+      <div>
         <div>
           <h2>Select a File (Local server log):</h2>
           <select value={selectedFileName} onChange={(e) => handleFileNameChange(e)}>
@@ -108,7 +108,7 @@ const OwnChart = ({ totalCallVolumeCount, totalPutVolumeCount, selectedTicker ,s
 
 
         <VolumeChart selectedTicker={selectedTicker} fileName={selectedFileName} />
-      </div>}
+      </div>
       {(!isLoading &&IS_AWS_API) && <ReadSThreeBucket selectedTicker={selectedTicker} fileName={selectedFileName} setSelectedTicker={setSelectedTicker}/>}
 
       <h2 onClick={toggleExpanded} className="link-like-header">
