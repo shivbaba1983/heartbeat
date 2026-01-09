@@ -13,6 +13,7 @@ import {
 } from 'recharts';
 import OwnChart from '../own-chart/OwnChart';
 import PredictionHint from './../components/PredictionHint';
+import { YAHOO_VOLUME_LIMIT } from './../constant/HeartbeatConstants';
 import './OptionVolumeChart.scss';
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -53,8 +54,8 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
       const strike = parseFloat(row.strike);
       if (isNaN(strike)) return;
 
-       const exp = row.expiryDate || 'Unknown';
-       setExpDate(exp);
+      const exp = row.expiryDate || 'Unknown';
+      setExpDate(exp);
       if (row.c_Volume != null) {
         const vol = volumeOrInterest === 'volume'
           ? parseInt(row.c_Volume.replace(/,/g, '')) || 0
@@ -95,7 +96,19 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
       return entry;
     });
 
-    setMergedChartData(data);
+    const filteredData = data.filter(item => {
+      let callOk = false;
+      let putOk = false;
+
+      Object.keys(item).forEach(key => {
+        if (key.startsWith('call_') && item[key] > YAHOO_VOLUME_LIMIT) callOk = true;
+        if (key.startsWith('put_') && item[key] > YAHOO_VOLUME_LIMIT) putOk = true;
+      });
+
+      return callOk || putOk; // change to callOk && putOk if needed
+    });
+
+    setMergedChartData(filteredData);
   }, [tempRowData, volumeOrInterest]);
 
   const formattedCall =
@@ -117,6 +130,8 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
   const putDisplay = new Intl.NumberFormat('en-IN').format(formattedPut)
 
   const colors = ['#8884d8', '#82ca9d', '#ff7300', '#ff6384', '#36a2eb', '#ff0000'];
+  const numberFormatter = (value) =>
+    new Intl.NumberFormat('en-IN').format(value);
 
   return (
     <div className="option-volume-chart">
@@ -156,8 +171,8 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
           <LineChart data={mergedChartData}>
             <CartesianGrid strokeDasharray="2 2" />
             <XAxis dataKey="strike" type="number" domain={["auto", "auto"]} />
-            <YAxis />
-            <Tooltip content={<CustomTooltip />} />
+            <YAxis tickFormatter={numberFormatter} />
+            <Tooltip formatter={(value) => numberFormatter(value)} content={<CustomTooltip />} />
             <Legend />
             {Object.keys(mergedChartData[0] || {})
               .filter(key => key.startsWith('call_'))
@@ -190,8 +205,8 @@ const OptionVolumeChart = ({ rows, volumeOrInterest, selectedTicker, setSelected
           <BarChart data={mergedChartData}>
             <CartesianGrid strokeDasharray="2 2" />
             <XAxis dataKey="strike" type="number" domain={["auto", "auto"]} />
-            <YAxis />
-            <Tooltip content={<CustomTooltip />} />
+            <YAxis tickFormatter={numberFormatter} />
+            <Tooltip formatter={(value) => numberFormatter(value)} content={<CustomTooltip />} />
             <Legend />
             {Object.keys(mergedChartData[0] || {})
               .filter(key => key.startsWith('call_'))

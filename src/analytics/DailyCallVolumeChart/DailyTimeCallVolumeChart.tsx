@@ -112,7 +112,7 @@ const DailyTimeCallVolumeChart = () => {
 
             <Tooltip
               formatter={(value, name) =>
-                name === "lstPrice"
+                name === "Price"
                   ? [`$${value.toFixed(2)}`, "Price"]
                   : [value.toLocaleString(), "Call Volume"]
               }

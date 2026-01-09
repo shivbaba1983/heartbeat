@@ -135,6 +135,9 @@ const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay,
     const localCall = new Intl.NumberFormat('en-IN').format(totalCallVolume)
     const localPut = new Intl.NumberFormat('en-IN').format(totalPutVolume)
 
+    const numberFormatter = (value) =>
+        new Intl.NumberFormat('en-IN').format(value);
+
     return (
         <div>
             {!isLoading && <LoadingIndicator />}
@@ -156,8 +159,8 @@ const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay,
                             <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="strike" />
-                                <YAxis />
-                                <Tooltip />
+                                <YAxis tickFormatter={numberFormatter} />
+                                <Tooltip formatter={(value) => numberFormatter(value)} />
                                 <Legend />
                                 <Bar dataKey="callVolume" fill="#8884d8" name="Call Volume" />
                                 <Bar dataKey="calllastPrice" fill="#006400" name="Call Last Price" />
@@ -172,8 +175,8 @@ const YahooData = ({ selectedTicker, volumeOrInterest, rows, isYahooDataDisplay,
                             <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="strike" />
-                                <YAxis />
-                                <Tooltip />
+                                <YAxis tickFormatter={numberFormatter} />
+                                <Tooltip formatter={(value) => numberFormatter(value)} />
                                 <Legend />
                                 <Bar dataKey="callOI" fill="#8884d8" name="Call OI" />
                                 <Bar dataKey="calllastPrice" fill="#006400" name="Call Last Price" />
