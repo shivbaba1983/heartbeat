@@ -32,7 +32,7 @@ const CallPutBarChart = ({ rows, volumeOrInterest }) => {
   ];
 
   return (
-    <div style={{ width: '20%', height: 200 }}>
+    <div style={{ width: '20%', height: 199 }}>
       <h3>Total Call vs Put {volumeOrInterest}</h3>
       <ResponsiveContainer>
         <BarChart data={data} >

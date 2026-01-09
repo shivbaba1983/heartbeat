@@ -1,8 +1,8 @@
 import axios from "axios";
 import { setInterval } from "timers";
-const LogTickerList = ['AAPL', 'NVDA', 'SPY', 'QQQ', 'IWM', 'AMZN', 'TSLA', 'SOXL', 'INTC', 'JD', 'TTD', 'NIO','AAL']; // your list
+const LogTickerList = ['AAPL', 'NVDA', 'SPY', 'QQQ', 'IWM', 'AMZN', 'TSLA', 'SOXL', 'INTC', 'AMD', 'TTD', 'NIO','AAL']; // your list
 const ETF_List = ['SPY', 'QQQ', 'IWM', 'TQQQ', 'SOXL', 'TSLL', 'SQQQQ', 'AAPU', 'NVDL', 'AMDL', 'BITX', 'AMZU', 'GGLL'];
-const JSON_UPDATE_TIME = 2; // minutes
+const JSON_UPDATE_TIME = 10; // minutes
 let assetclass = 'stocks';
 const selectedDayOrMonth = 'day';
 let lstPrice;
